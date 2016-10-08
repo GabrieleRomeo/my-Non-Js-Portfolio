@@ -8,6 +8,7 @@
   width: 100%;
   margin: 0 auto;
   max-width: 1140px;
+  min-width: 320px;
 }
 
 /* cleafix hack */
@@ -33,8 +34,16 @@
 .col-5 { width: 83.33%; }
 .col-6 { width: 100%;   }
 
+@media all and (min-width: 801px) {
+  .span-1 { margin-left: 16.66%; }
+  .span-2 { margin-left: 33.33%; }
+  .span-3 { margin-left: 50%;    }
+  .span-4 { margin-left: 66.66%; }
+  .span-5 { margin-left: 83.33%; }
 
-@media all and (max-width:800px){
+}
+
+@media all and (max-width:800px) {
   .col-1 { width: 33.33%;  }
   .col-2 { width: 50%;     }
   .col-3 { width: 100%;    }
@@ -42,17 +51,23 @@
   .col-5 { width: 100%;    }
   .col-6 { width: 100%;    }
 
-  .row .col-2:last-of-type{
+  .span-1 { margin-left: 16.66%; }
+  .span-2 { margin-left: 50%; }
+  .span-3 { margin-left: 66.67%; }
+
+  .row .col-2:last-of-type {
       width: 100%;
+      margin-left: initial;
   }
 
   .row .col-5 ~ .col-1{
       width: 100%;
+      margin-left: initial;
   }
 
 }
 
-@media all and (max-width:650px){
+@media all and (max-width:650px) {
   .col-1 { width: 50%;     }
   .col-2 { width: 100%;    }
   .col-3 { width: 100%;    }
@@ -60,4 +75,25 @@
   .col-5 { width: 100%;    }
   .col-6 { width: 100%;    }
 
+  .span-1 { margin-left: 50%; }
+  .span-2,
+  .span-3 {
+    margin-left: initial;
+  }
+
 }
+
+/*
+.outline, .outline *{
+  outline: 1px solid #F6A1A1;
+}
+
+
+[class*='col-'] > p {
+ background-color: #FFC2C2;
+ padding: 10px;
+ margin: 0;
+ text-align: center;
+ color: white;
+}
+*/
