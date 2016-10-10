@@ -21,6 +21,7 @@
       <!-- CSS
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+      <link rel="stylesheet" href="css/fontello.css">
       <link rel="stylesheet" href="css/style.css">
 
       <!-- Favicon
@@ -68,9 +69,18 @@
                  name="searchTxt"
                  type="text"
                  required>
-          <label class="search__label" for="searchTxt" accesskey="s">Search</label>
-          <div class="search__icon">
-
+          <label class="search__label--input" for="searchTxt">Search</label>
+          <label class="search__label--icon" for="searchStatus" accesskey="s">
+            <i class="search__icon icon-search" aria-hidden="true"></i>
+          </label>
+          <input id="searchStatus" type="checkbox">
+          <div class="search__modal">
+            <div class="search__modal__container">
+              <label for="searchStatus">
+                <i class="search__icon icon-cancel-circle" aria-hidden="true"></i>
+              </label>
+                Search Temporarily Disabled
+            </div>
           </div>
         </div>
       </div>
