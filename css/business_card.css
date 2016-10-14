@@ -7,6 +7,10 @@
   font-size: 0.7rem;
 }
 
+@media screen and (max-width: 846px) {
+  .businessCard { width: 75%; }
+}
+
 .businessCard label {
   cursor: pointer;
 }
@@ -75,8 +79,10 @@
   background: url('../img/card_background.png') no-repeat;
 }
 
-.businessCard .card__face--back {
-  background: url('../img/business_back.jpg') no-repeat;
+.businessCard .card__face--back > img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
 }
 
 .businessCard .card__face--back {

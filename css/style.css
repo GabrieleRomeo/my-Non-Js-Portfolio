@@ -1021,6 +1021,8 @@ div[data-name="Other"] {
 .form__input--textarea {
   padding: 10px;
   margin-top: 10px;
+  color: #8d21d8;
+  font-size: 1.8em;
   background-color: rgba(255, 255, 255, 0.19);
   border-style: none;
   border-radius: inherit;
