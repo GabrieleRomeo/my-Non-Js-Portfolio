@@ -28,9 +28,14 @@ body {
 }
 
 /* COLORS */
-.color--rose { color:#fa91e5; }
-.color--purple { color: #6914d1; }
+.color--rose { color:#fa91e5!important; }
+.color--purple { color: #6914d1!important; }
 
+.bck__color--malibu { background-color: #8d9dff!important; }
+.bck__color--Shamrock { background-color: #3BC693!important; }
+.bck__color--Bittersweet { background-color: #fd7372!important; }
+.bck__color--Supernova { background-color: #facf00!important; }
+.bck__color--Sunshade { background-color: #ffac31!important; }
 
 .visuallyhidden {
   border: 0;
@@ -898,7 +903,7 @@ div[data-name="Other"] {
   width: 66%;
   left: 17%;
   bottom: 0;
-  background-color: #26d97a;
+  background-color: #3bc693;
   cursor: help;
 }
 
@@ -908,17 +913,14 @@ div[data-name="Other"] {
 
 .bar--proficent {
   height: 75%;
-  background-color: rgb(255, 172, 49)!important;
 }
 
 .bar--competent {
   height: 50%;
-  background-color: rgb(126, 223, 210)!important;
 }
 
 .bar--learning {
   height: 25%;
-  background-color: rgb(253, 115, 114)!important;
 }
 
 .tooltiptext {
@@ -1022,7 +1024,7 @@ div[data-name="Other"] {
   padding: 10px;
   margin-top: 10px;
   color: #8d21d8;
-  font-size: 1.8em;
+  font-size: 1.4em;
   background-color: rgba(255, 255, 255, 0.19);
   border-style: none;
   border-radius: inherit;
