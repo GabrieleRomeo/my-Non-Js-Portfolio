@@ -631,29 +631,40 @@ g.nazioni {
 
 .carousel__list {
   position: relative;
+  /* min-height: 700px; */
+  max-height: 700px;
 }
 
 .carousel__list li {
+  max-height: inherit;
   display: none;
   opacity: 0;
 }
 
 .carousel__list li img {
-  width: 100%;
+  max-width: 97%;
+  min-height: inherit;
+  max-height: inherit;
+  height: auto;
+}
+
+@media screen and ( max-height: 1024px ) {
+  .carousel__list {
+    max-height: 490px;
+  }
 }
 
 .carousel__control {
   position: absolute;
-  top: 40%;
+  top: calc(50% - 1.5em);
   opacity: 0;
-  font-size: 2em;
+  font-size: 1.5em;
   color: #000;
 }
 
 .carousel:hover .carousel__control {
-  opacity: .8;
+  opacity: 1;
   transform: scale(1);
-  background: #fff;
   transition-property: opacity, background;
   transition-timing-function: ease, ease-out;
   transition-duration: 0s, 1.5s;
@@ -666,11 +677,11 @@ g.nazioni {
 }
 
 .carousel__control--prev {
-  left: 0;
+  left: -0.5em;
 }
 
 .carousel__control--next {
-  right: 0;
+  right: -0.5em;
 }
 
 .carousel__control label {
@@ -680,23 +691,24 @@ g.nazioni {
 
 .carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--prev label:nth-child(1),
 .carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__control--prev label:nth-child(2),
+.carousel input[type="radio"]:nth-of-type(4):checked ~ .carousel__control--prev label:nth-child(3),
 .carousel input[type="radio"]:nth-of-type(1):checked ~ .carousel__control--next label:nth-child(1),
-.carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--next label:nth-child(2) {
+.carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--next label:nth-child(2),
+.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__control--next label:nth-child(3)  {
   display: inline-block;
 }
 
 .carousel input[type="radio"]:nth-of-type(1):checked ~ ul li:nth-child(1),
 .carousel input[type="radio"]:nth-of-type(2):checked ~ ul li:nth-child(2),
-.carousel input[type="radio"]:nth-of-type(3):checked ~ ul li:nth-child(3)  {
+.carousel input[type="radio"]:nth-of-type(3):checked ~ ul li:nth-child(3),
+.carousel input[type="radio"]:nth-of-type(4):checked ~ ul li:nth-child(4)  {
   display: block;
   opacity: 1;
 }
 
 .carousel__bullets {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 50px;
+  position: relative;
+  padding: 1em 0;
 }
 
 .carousel__bullets > label {
@@ -704,17 +716,21 @@ g.nazioni {
   margin: 0 10px;
   padding: 6px;
   border-radius: 50%;
-  border: 2px solid #fff;
+  border: 2px solid rgba(146, 146, 146, 0.53);
   background: transparent;
-  cursor: pointer;
+  -webkit-box-shadow: inset -1px 3px 17px -2px rgba(222, 222, 222, 0.75);
+  -moz-box-shadow: inset -1px 3px 17px -2px rgba(222, 222, 222, 0.75);
+  box-shadow: inset -1px 3px 17px -2px rgba(222, 222, 222, 0.75);
   -webkit-transition: all 0.3s;
   transition: all 0.5s;
+  cursor: pointer;
 }
 
 .carousel__bullets > label:hover,
 .carousel input[type="radio"]:nth-of-type(1):checked ~ .carousel__bullets label:nth-child(1),
 .carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__bullets label:nth-child(2),
-.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__bullets label:nth-child(3)  {
+.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__bullets label:nth-child(3),
+.carousel input[type="radio"]:nth-of-type(4):checked ~ .carousel__bullets label:nth-child(4)  {
   border: 2px solid rgba(255, 255, 255, 0);
   background-color: #e91e55;
 }
