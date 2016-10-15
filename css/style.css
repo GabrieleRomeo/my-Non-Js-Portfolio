@@ -531,6 +531,9 @@ g.nazioni {
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a00f4', endColorstr='#9a1e54',GradientType=1 );
 }
 
+.project__info p { font-weight: 300; }
+.project__info strong { font-weight: 600; }
+
 .project__link {
   display: inline-block;
   padding-top: 50px;
@@ -579,7 +582,8 @@ g.nazioni {
 .tab__radio:nth-of-type(6):checked ~ ul li:nth-of-type(6),
 .tab__radio:nth-of-type(7):checked ~ ul li:nth-of-type(7),
 .tab__radio:nth-of-type(8):checked ~ ul li:nth-of-type(8),
-.tab__radio:nth-of-type(9):checked ~ ul li:nth-of-type(9) {
+.tab__radio:nth-of-type(9):checked ~ ul li:nth-of-type(9),
+.tab__radio:nth-of-type(10):checked ~ ul li:nth-of-type(10) {
   color: #e91e63;
   background-color: #fff;
   border-left-color: #fecd08;
@@ -593,7 +597,8 @@ g.nazioni {
 .tab__radio:nth-of-type(6):checked ~ .tab__containers .tab__content:nth-of-type(6),
 .tab__radio:nth-of-type(7):checked ~ .tab__containers .tab__content:nth-of-type(7),
 .tab__radio:nth-of-type(8):checked ~ .tab__containers .tab__content:nth-of-type(8),
-.tab__radio:nth-of-type(9):checked ~ .tab__containers .tab__content:nth-of-type(9) {
+.tab__radio:nth-of-type(9):checked ~ .tab__containers .tab__content:nth-of-type(9),
+.tab__radio:nth-of-type(10):checked ~ .tab__containers .tab__content:nth-of-type(10) {
   display: block;
 }
 
@@ -642,7 +647,7 @@ g.nazioni {
 }
 
 .carousel__list li img {
-  max-width: 97%;
+  max-width: 93%;
   min-height: inherit;
   max-height: inherit;
   height: auto;
