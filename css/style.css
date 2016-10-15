@@ -32,6 +32,7 @@ body {
 .color--purple { color: #6914d1!important; }
 
 .bck__color--malibu { background-color: #8d9dff!important; }
+.bck__color--Mauve { background-color: #cd97ff!important; }
 .bck__color--Shamrock { background-color: #3BC693!important; }
 .bck__color--Bittersweet { background-color: #fd7372!important; }
 .bck__color--Supernova { background-color: #facf00!important; }
@@ -924,33 +925,37 @@ div[data-name="Other"] {
 }
 
 .tooltiptext {
-    visibility: hidden;
-    width: 120px;
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    border-radius: 6px;
-    padding: 5px 0;
-    position: absolute;
-    z-index: 1;
-    bottom: 103%;
-    left: 50%;
-    margin-left: -60px;
+  position: absolute;
+  bottom: 104%;
+  left: 50%;
+  width: 180px;
+  padding: 5px;
+  margin-left: -90px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  z-index: 1;
+  visibility: hidden;
+}
+
+.tooltiptext strong {
+  font-weight: 500;
 }
 
 .tooltiptext::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: black transparent transparent transparent;
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: black transparent transparent transparent;
 }
 
 .graph--bar__list .bar:hover .tooltiptext {
-    visibility: visible;
+  visibility: visible;
 }
 
 /* Graph Variants */
@@ -990,11 +995,8 @@ div[data-name="Other"] {
 }
 
 .form__container form {
-  padding: 40px;
-  background-color: rgba(128, 71, 138, 0.15);
-  -webkit-box-shadow: inset -1px 2px 40px -17px rgba(0,0,0,1);
-  -moz-box-shadow: inset -1px 2px 40px -17px rgba(0,0,0,1);
-  box-shadow: inset -1px 2px 40px -17px rgba(0,0,0,1);
+  padding: 25px;
+  text-align: center;
 }
 
 .form__label,
@@ -1023,7 +1025,7 @@ div[data-name="Other"] {
 .form__input--textarea {
   padding: 10px;
   margin-top: 10px;
-  color: #8d21d8;
+  color: rgba(251, 251, 251, 0.51);
   font-size: 1.4em;
   background-color: rgba(255, 255, 255, 0.19);
   border-style: none;
@@ -1037,6 +1039,7 @@ div[data-name="Other"] {
 
 
 .form__input:focus {
+  color: #8d21d8;
   background-color: #fff;
   outline: none;
 }
@@ -1070,6 +1073,7 @@ div[data-name="Other"] {
   display: inline-block;
   overflow: hidden;
   height: 53px;
+  margin-top: 3em;
   font-size: 16px;
   font-weight: bold;
   text-shadow: 0px 1px 1px #888;
