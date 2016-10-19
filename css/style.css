@@ -35,8 +35,10 @@ a { text-decoration: none; }
   position: fixed;
   left: 0;
   top: 0;
+  padding: 50px;
   width: 100%;
   height: 100%;
+  background-color: beige;
   z-index: 99999999;
 }
 
@@ -482,7 +484,7 @@ a { text-decoration: none; }
 
 @media screen and ( max-height: 1024px ){
   #splash img {
-    width: 69%;
+    width: 60%;
   }
   #splash span {
     font-size: 2em;
