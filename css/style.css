@@ -27,6 +27,10 @@ body {
   line-height: 1.5;
 }
 
+a { text-decoration: none; }
+
+*:focus { outline: 0; }
+
 /* COLORS */
 .color--rose { color:#fa91e5!important; }
 .color--purple { color: #6914d1!important; }
@@ -492,6 +496,7 @@ body {
   #about .section__container {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
+    overflow: hidden;
   }
 }
 
@@ -553,11 +558,44 @@ g.nazioni {
   fill-opacity:1;
 }
 
-.about__paragraph {
-  width: 90%;
-  font-size: 1.5em;
+.about__wrapper {
+  width: 42%;
+}
+
+.about__wrapper p {
+  font-size: 1.1em;
   font-weight: 100;
   line-height: 1.5em;
+}
+
+.about__wrapper a {
+  color: #3F51B5;
+}
+
+.about__wrapper a:hover,
+.about__wrapper a:focus {
+    color: #fff;
+    background-color: deeppink;
+}
+
+.about__wrapper em {
+  font-weight: 400;
+  color: #E91E63;
+}
+
+.about__list {
+  float: left;
+  width: 50%;
+  font-size: 0.9em;
+  padding-top: 30px;
+}
+
+.about__list li:first-child {
+  font-variant: small-caps;
+}
+
+.about__list .smCaps {
+  font-variant: small-caps;
 }
 
 
@@ -592,10 +630,6 @@ g.nazioni {
   font-size: initial;
 }
 
-.project__description a {
-  text-decoration: none;
-}
-
 .project__description a:hover,
 .project__description a:focus{
   background-color: rgba(0, 0, 0, 0.06);
@@ -610,7 +644,6 @@ g.nazioni {
   padding-top: 1.8em;
   font-weight: initial;
   color: #87a1f9;
-  text-decoration: none;
 }
 
 .project__links .link:hover {
@@ -1297,7 +1330,6 @@ div[data-name="Other"] {
 
 #page-footer .contact__list a {
   color: #fff;
-  text-decoration: none;
 }
 
 #page-footer .contact__list a:hover,
