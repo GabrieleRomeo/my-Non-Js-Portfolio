@@ -563,7 +563,6 @@ g.nazioni {
 }
 
 .about__wrapper p {
-  font-size: 1.1em;
   font-weight: 100;
   line-height: 1.5em;
 }
@@ -581,6 +580,10 @@ g.nazioni {
 .about__wrapper em {
   font-weight: 400;
   color: #E91E63;
+}
+
+.paragraph--spaced {
+  padding-top: 30px;
 }
 
 .about__list {
