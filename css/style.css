@@ -1425,10 +1425,10 @@ div[data-name="Other"] {
 
 .contact__list li:hover i {
     font-size: 1.5em;
-    opacity: 1;
+    opacity: .8;
 }
 
-/*
+
 .contact__list li:hover i.icon-twitter {
   color: #2196f3;
 }
@@ -1439,5 +1439,5 @@ div[data-name="Other"] {
 
 .contact__list li:hover i.icon-github-circled-alt2 {
   color: #800080;
-}*/
+}
 
