@@ -1385,7 +1385,8 @@ div[data-name="Other"] {
 }
 
 .flag__country {
-  font-size: .8em;
+  font-variant: small-caps;
+  letter-spacing: .1em;
 }
 
 
