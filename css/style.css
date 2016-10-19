@@ -31,6 +31,15 @@ a { text-decoration: none; }
 
 *:focus { outline: 0; }
 
+.browserupgrade {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999999;
+}
+
 /* COLORS */
 .color--rose { color:#fa91e5!important; }
 .color--purple { color: #6914d1!important; }
