@@ -457,9 +457,9 @@ a { text-decoration: none; }
 }
 
 .button--circled {
-  width: 70px;
-  height: 70px;
-  font-size: 40px;
+  width: 60px;
+  height: 60px;
+  font-size: .75em;
   line-height: 1.5em;
   color: #fff;
   border: 1px solid #fff;
@@ -484,7 +484,7 @@ a { text-decoration: none; }
 
 @media screen and ( max-height: 1024px ){
   #splash img {
-    width: 60%;
+    width: 53%;
   }
   #splash span {
     font-size: 2em;
