@@ -1240,40 +1240,112 @@ div[data-name="Other"] {
 
 /* FOOTER */
 
-footer {
+#page-footer {
   background-color: rgba(29, 14, 47, 0.92);
+  color: #fff;
+  text-align: center;
 }
 
-footer .section__container {
+#page-footer .section__container {
   min-height: 200px;
-  background-color: transparent;
+  background-color: #000;
   -webkit-box-shadow: -1px 3px 17px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: -1px 3px 17px -2px rgba(0,0,0,0.75);
   box-shadow: -1px 3px 17px -2px rgba(0,0,0,0.75);
 }
 
-footer svg {
-  width: 30%;
+#page-footer .left {
+  float: left;
+  width: 50%;
+  padding: 2% 5%;
+  background-color: rgba(30, 173, 210, 0.16);
+  border-right: 1px dashed rgba(255, 255, 255, 0.18);
+}
+#page-footer .right {
+  float: right;
+  width: 50%;
+}
+
+#page-footer svg {
   height: 300px;
 }
 
-svg .html .letter {
+#page-footer #copy {
+  font-size: .8em;
+  padding-top: 28%;
+}
+
+#page-footer svg .html .letter {
   fill: #cddc39;
 }
 
-svg .css .letter {
+#page-footer svg .css .letter {
   fill: #fff;
 }
 
-svg .html__logo {
+#page-footer svg .html__logo {
   animation: shake 5.575s ease infinite;
+  animation-delay: 4s;
   transform-origin: 50% 50%;
 }
 
-svg .css__logo {
+#page-footer svg .css__logo {
   animation: shake 5.575s ease infinite;
-  animation-delay: 2s;
+  animation-delay: 6s;
   transform-origin: 50% 50%;
 }
 
+#page-footer .contact__list a {
+  color: #fff;
+  text-decoration: none;
+}
+
+#page-footer .contact__list a:hover,
+#page-footer .contact__list a:focus {
+  color: #cddc39;
+}
+
+
+
+/* ITALY FLAG */
+.flag__container {
+  font-family: "Roboto slab";
+}
+
+.flag {
+  position: relative;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  overflow: hidden;
+  list-style-type: none;
+}
+
+.flag__item {
+  float: left;
+  display: block;
+  width: 33.333333333333333333333333333333%;
+  height: 20px;
+}
+
+.flag__item--green {
+  background-color: rgb(31, 192, 0);
+}
+
+.flag__item--white {
+  background-color: rgb(255, 255, 255);
+}
+
+.flag__item--red {
+  background-color: rgb(206, 43, 55);
+}
+
+
+.contact__list li {
+  padding: 30px 0;
+}
+
+.flag__country {
+  font-size: .8em;
+}
 
