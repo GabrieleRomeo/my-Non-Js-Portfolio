@@ -507,14 +507,18 @@ a { text-decoration: none; }
   overflow: hidden;
 }
 
-@media screen and (min-width: 1200px) {
+
+
+@media screen and (min-width: 1200px) and (max-width: 1920px) {
   #about {
     padding-top: 100px;
-    background-image: url('../img/background_mini.jpg');
+    background-image: url('../img/background_1920_mini.jpg');
     background-repeat: no-repeat;
     background-position: center top;
   }
+}
 
+@media screen and (min-width: 1200px) {
   #about .section__container {
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
@@ -522,7 +526,21 @@ a { text-decoration: none; }
     background-color: rgba(0, 0, 0, 0.67);
   }
 
+  /* Shows Photo credits */
+  #page-footer #credits {
+    display: inline!important;
+  }
+
   #Italy #global {  fill: rgba(99, 82, 82, 0.56); }
+}
+
+@media screen and (min-width: 1921px) {
+  #about {
+    padding-top: 100px;
+    background-image: url('../img/background_mini.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
 }
 
 /* ITALY MAP */
@@ -1340,6 +1358,10 @@ div[data-name="Other"] {
 #page-footer svg {
   height: 300px;
   width: 100%;
+}
+
+#page-footer #credits {
+  display: none;
 }
 
 #page-footer #copy {
