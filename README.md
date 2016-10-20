@@ -1,5 +1,5 @@
-# my-Non-Js-Portfolio
+# My Non Js Portfolio
 
 Live-page:
 
-[http://gabrieleromeo.github.io/my-Non-Js-Portfolio/](http://gabrieleromeo.github.io/my-Non-Js-Portfolio/)
+[http://gabrieleromeo.github.io/portfolio/](http://gabrieleromeo.github.io/portfolio/)
