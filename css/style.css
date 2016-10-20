@@ -512,6 +512,7 @@ a { text-decoration: none; }
     padding-top: 100px;
     background-image: url('../img/background_mini.jpg');
     background-repeat: no-repeat;
+    background-position: center top;
   }
 
   #about .section__container {
