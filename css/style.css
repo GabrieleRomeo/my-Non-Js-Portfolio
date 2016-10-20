@@ -457,7 +457,7 @@ a { text-decoration: none; }
 }
 
 .button--circled {
-  font-size: 1.1em;
+  font-size: .8em;
   color: #fff;
   border: 1px solid #fff;
   border-radius: 100%!important;
