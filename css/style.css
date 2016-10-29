@@ -391,11 +391,17 @@ a { text-decoration: none; }
   text-transform: uppercase;
 }
 
-/* SPLASH */
+/* SPLASH
+
+  background: #fc00ff; /* fallback for old browsers
+  background: -webkit-linear-gradient(to left, #fc00ff , #00dbde);
+  background: linear-gradient(to left, #fc00ff , #00dbde);
+
+*/
 #splash {
-  background: #fc00ff; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to left, #fc00ff , #00dbde); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to left, #fc00ff , #00dbde); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #2bc0e4; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to left, #2bc0e4 , #eaecc6); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to left, #2bc0e4 , #eaecc6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 #splash .section__container {
@@ -1422,8 +1428,8 @@ div[data-name="Other"] {
   transform-origin: 50% 50%;
 }
 
-#page-footer svg .css__logo {
-  animation: shake 8.575s ease infinite;
+d2,2,-1#page-footer svg .css__logo {
+d2,-1,-1  animation: shake 8.575s ease infinite;
   animation-delay: 6s;
   transform-origin: 50% 50%;
 }
