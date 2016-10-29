@@ -242,7 +242,6 @@ a { text-decoration: none; }
 
 .navigation__menu__item a:after {
   position: relative;
-  top: 7px;
   width: 0;
   height: 2px;
   display: block;
@@ -266,7 +265,6 @@ a { text-decoration: none; }
   display: inline-block;
   margin-left: 35px;
 }
-
 
 .search__input {
   height: 1.7rem;
