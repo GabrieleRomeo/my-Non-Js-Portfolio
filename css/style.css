@@ -1417,13 +1417,13 @@ div[data-name="Other"] {
 }
 
 #page-footer svg .html__logo {
-  animation: shake 5.575s ease infinite;
+  animation: shake 8.575s ease infinite;
   animation-delay: 4s;
   transform-origin: 50% 50%;
 }
 
 #page-footer svg .css__logo {
-  animation: shake 5.575s ease infinite;
+  animation: shake 8.575s ease infinite;
   animation-delay: 6s;
   transform-origin: 50% 50%;
 }
