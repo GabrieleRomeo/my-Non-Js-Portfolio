@@ -1428,8 +1428,8 @@ div[data-name="Other"] {
   transform-origin: 50% 50%;
 }
 
-d2,2,-1#page-footer svg .css__logo {
-d2,-1,-1  animation: shake 8.575s ease infinite;
+#page-footer svg .css__logo {
+  animation: shake 8.575s ease infinite;
   animation-delay: 6s;
   transform-origin: 50% 50%;
 }
