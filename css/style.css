@@ -84,18 +84,18 @@ a { text-decoration: none; }
 @keyframes shake {
   0% { transform:rotate(-12deg) }
   5.16129% { transform:rotate(12deg) }
-  6.45161% { transform:rotate(24deg) }
-  11.6129% { transform:rotate(-24deg) }
-  12.90323% { transform:rotate(-24deg) }
-  18.06451% { transform:rotate(24deg) }
-  19.35484% { transform:rotate(24deg) }
-  24.51613% { transform:rotate(-24deg) }
-  25.80645% { transform:rotate(-24deg) }
-  30.96774% { transform:rotate(24deg) }
-  32.25807% { transform:rotate(24deg) }
-  37.41935% { transform:rotate(-24deg) }
-  38.70968% { transform:rotate(-24deg) }
-  43.87097% { transform:rotate(24deg) }
+  6.45161% { transform:rotate(10deg) }
+  11.6129% { transform:rotate(-10deg) }
+  12.90323% { transform:rotate(-10deg) }
+  18.06451% { transform:rotate(10deg) }
+  19.35484% { transform:rotate(10deg) }
+  24.51613% { transform:rotate(-10deg) }
+  25.80645% { transform:rotate(-10deg) }
+  30.96774% { transform:rotate(10deg) }
+  32.25807% { transform:rotate(10deg) }
+  37.41935% { transform:rotate(-10deg) }
+  38.70968% { transform:rotate(-10deg) }
+  43.87097% { transform:rotate(10deg) }
   48.3871% { transform:rotate(0deg) }
   100% { transform:rotate(0deg) }
 }
@@ -1380,6 +1380,7 @@ div[data-name="Other"] {
   fill: #fff;
 }
 
+/*
 #page-footer svg .html__logo {
   animation: shake 8.575s ease infinite;
   animation-delay: 4s;
@@ -1391,7 +1392,7 @@ div[data-name="Other"] {
   animation-delay: 6s;
   transform-origin: 50% 50%;
 }
-
+*/
 #page-footer .contact__list a {
   color: #fff;
 }
