@@ -552,7 +552,7 @@ a { text-decoration: none; }
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
     color: #fff;
-    background-color: rgba(0, 0, 0, 0.67);
+    background-color: rgba(0, 0, 0, 0.75);
   }
 
   .about__wrapper {
@@ -640,29 +640,28 @@ g.nazioni {
   fill-opacity:1;
 }
 
-
 .about__wrapper {
   width: 42%;
+  line-height: 1.8em;
 }
 
 .about__wrapper p {
-  font-weight: 100;
-  line-height: 1.5em;
+  font-weight: 300;
 }
 
 .about__wrapper a {
-  color: #03a9f4;
+  color: #ffeb3b;
 }
 
 .about__wrapper a:hover,
 .about__wrapper a:focus {
-    color: #fff;
-    background-color: deeppink;
+  color: #fff;
+  background-color: deeppink;
 }
 
 .about__wrapper em {
-  font-weight: 400;
-  color: #E91E63;
+  font-weight: 500;
+  color: #cddc39;
 }
 
 .paragraph--spaced {
