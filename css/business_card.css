@@ -44,9 +44,10 @@
 
 .businessCard .businessCard__icon {
   position: absolute;
-  right: 0;
+  top: 10px;
+  right: 10px;
   opacity: 1;
-  font-size: 3em;
+  font-size: 1.2em;
 }
 
 .businessCard label:hover .businessCard__icon {
