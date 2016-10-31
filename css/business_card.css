@@ -123,9 +123,9 @@
   position: absolute;
   bottom: 20px;
   left: 20px;
-  background-color: rgba(68, 46, 46, 0.2);
   padding: 10px;
   margin: 0;
+  background-color: deeppink;
   border-radius: 4px;
 }
 
