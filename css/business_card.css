@@ -35,6 +35,10 @@
   transform: rotateX(180deg);
   -webkit-transform: rotateX(180deg);
 }
+/* Safari FIX */
+.businessCard label input:checked + .card .card__face--front .details__social {
+  display: none;
+}
 
 .businessCard label:hover :checked + .card {
   transform: rotateX(160deg);
@@ -51,8 +55,10 @@
 }
 
 .businessCard label:hover .businessCard__icon {
-  animation: burst 2s linear infinite;
-  transform-origin: 50% 50%;
+  -webkit-animation: burst 2s linear infinite;
+          animation: burst 2s linear infinite;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
 }
 
 .businessCard .card {
@@ -63,7 +69,10 @@
   -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   -webkit-transition: transform 600ms;
+  -webkit-transition: -webkit-transform 600ms;
+  transition: -webkit-transform 600ms;
   transition: transform 600ms;
+  transition: transform 600ms, -webkit-transform 600ms;
 }
 
 .businessCard .card__face {
@@ -72,7 +81,7 @@
   width: 100%;
   background-color: #fff;
   border-radius: 4px;
-  webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 
@@ -182,6 +191,8 @@
   left: -1em;
   width: 108%;
   height: 100%;
+  background: -webkit-radial-gradient(50% 50%, circle, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
   background: radial-gradient(circle at 50% 50%, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1) 40%, rgba(0, 0, 0, 0) 50%);
-  transform: rotateX(73deg) translateZ(30px);
+  -webkit-transform: rotateX(73deg) translateZ(30px);
+          transform: rotateX(73deg) translateZ(30px);
 }
