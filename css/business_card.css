@@ -102,6 +102,13 @@
   transform: rotateX(180deg);
 }
 
+/* IE10+ */
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  .businessCard label input:checked + .card .card__face--back {
+    backface-visibility: visible;
+  }
+}
+
 .businessCard .card__details {
   padding: 15px 30px;
   background: transparent;
