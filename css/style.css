@@ -1297,7 +1297,6 @@ g.nazioni {
 .skills_list {
   position: relative;
   top: 100px;
-  width: 70%;
   margin: 0 auto 160px;
   padding: 20px;
   text-align: center;
@@ -1370,24 +1369,17 @@ g.nazioni {
 
 .skills__details {
   padding-top: 4em;
-  overflow: auto;
 }
 
 
 /* GRAPH */
 .graph {
   position: relative;
-  float: left;
-  width: 45%;
   height: 300px;
   margin: 4% 0 11em 2%;
   color: rgba(255, 255, 255, 0.54);
   text-align: right;
   background-color: rgb(66, 66, 66);
-}
-
-div[data-name="Other"] {
-  left: 25%;
 }
 
 .graph:before {
@@ -1528,6 +1520,19 @@ div[data-name="Other"] {
 
 .graph--white .graph--bar__list > li:nth-child(n+2) {
   background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAD5CAYAAABVnHfnAAAABGdBTUEAALGPC/xhBQAABRtJREFUeAHtmrFKHFEUhrOrIJIUEkgTWExCIG0Ed6OIICksLAO+j+/jG1htEJEQwSJVmqRYSBMIColauJr5GO9hZvEuM3eZ2VP8t3CE3eP973fvmfM7Zzr9fv/T/f39z7Ozs/MnhbGxsfHq7u7uzerq6ufDw8Nx+Gh7e/vFzc3NdlsxHSY8Pj7+HQRw3draenl7e/tueXn563A4/Bs+29zcfD4ej98vLS19ayumEyYP12niMtFri4uL56enp3/C97k2GVMS2OREqQsygR7FsaiFg4ODbnboV7OEePvYmXtsW9uM6QwGg48oXVlZ+XJ0dPSP3xkkxGPidnd3n15cXHzgO23EdLPxY29vb1hF3M7OzrPLy8tBmzF2BiHCiJFD3PX1dT/L4u8nJye/8m/nP5uMKQlscqLUBZlAj+JYVJcfVBMqxORNeNq2thXTXV9fX6O2Ur6KFWJ/f3/h6upq0Ol0fk6euTZjupmA1xT+ydo6Go160O31eiOuYUCuzRiZhcdu9uxG1dJqWVwnKGx3GzEmsOqK2hTHXDILUJjFYMgszGowLEnYCo/12AR6FAc0mQUoMFINhswCZ3uWpxGWJPlGVC/i4ftcmyyTJYFNTpS6IBPoURyLklmAgswCFKb9C9pkmbQkQUSTE/H3w6gzjwmsE5QyUWqMzEIgJ7MACc7pLIV/8vHKtOoV5rEkCVsxLWjWpwRhDq5V5ykJrBqUMlFqjAn0KI5FySxAQWYBCjILEQiWxTILGaGU1oXaECTYLK0LtSFmNRiWxWyFx3psAj2KA5rMAhRkFqAgsxCBYFkss5ARklkgWWYp/CnvRsgsyCzEbj+cxzYMhswCpGUWoCCzEIEgs8DxCENmARIyCxmEYrvDkiSckzbKF3NVnacksGpQWEydiVJjTKBHcSxKZgEKMgtQkFmIQLAsjln7eZFj1xh6ZyHnoBcccw7FIp7y/kFKjCVJ2ApvJa8k0Js4oJlAj+IQKLMABZkFKMyr5FmSIMJjPTaBHsUBTWYBCgy94AgFmYUHCMXWhWUxhDzWYxPoURzQZBagILMABZmFCATLYpmFjJDaECSL2hAZhKIpsSSBDsNbySsJ9CYOYCbQozgEyixAQWYBCjILEQiWxTILGSGZBZJFZiGDILPAUYjdFfisTt2320ydICZhtBEjswBpmQUoyCxEIFgWx24L8yLHrjHUhsg5qA2RcygW8ZT3D1JiLEnCVrRRvpir6jwlgVWDwmLqTJQaYwI9imNRMgtQkFmAwrxKniUJIjzWYxPoURzQZBagwNA7C1CQWXiAoHcWYrcsjkldUyKzADWZBSjILEQgyCxwPMJQGwISakNkEIqmxJIknJO6pYi4JmNKApucKACouyAT6FEci5FZgILMAhRkFiIQLItjNn1e5Ng1hp4s5Bz0ZCHnUCziKS2FlBhLkrAV3kpeSaA3cUAzgR7FIVBmAQoyC1CYV8mzJEGEx3psAj2KA5rMAhQYakNAQWbhAYLaELFbFsekrimRWYCazAIUZBYiEGQWOB5hqA0BCbUhMghFU2JJEs5J3VJEXJMxJYFNThQA1F2QCfQojsXILEBBZgEKMgsRCJbFMZs+L3LsGkNPFnIOerKQcygW8ZSWQkqMJUnYCm8lryTQmzigmUCP4hAoswAFmQUozKvkWZIgwmM9NoEexQFNZgEKDLUhoCCz8ABBbYjYLYtjUteUyCxATWYBCjILEQgyCxyPMNSGgITaEBmEoin5D6ykebn5uZ1wAAAAAElFTkSuQmCC');
+}
+
+@media screen and (min-width: 768px) {
+  .skills_list {
+    width: 70%;
+  }
+  .graph {
+    float: left;
+    width: 45%;
+  }
+  div[data-name="Other"] {
+    left: 25%;
+  }
 }
 
 
