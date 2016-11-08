@@ -1546,6 +1546,7 @@ g.nazioni {
 
 #contact .section__container {
   background-color: #673AB7;
+  padding: 120px 0;
 }
 
 #contact .section__heading:after {
@@ -1553,12 +1554,10 @@ g.nazioni {
 }
 
 .form__container {
-  width: 70%;
   margin: 50px auto;
 }
 
 .form__container form {
-  padding: 25px;
   text-align: center;
 }
 
@@ -1579,13 +1578,14 @@ g.nazioni {
   border-radius: 6px;
 }
 
+
 .form__input {
   height: 41px;
-  width: 70%;
 }
 
 .form__input,
 .form__input--textarea {
+  width: 100%;
   padding: 10px;
   margin-top: 10px;
   color: rgba(251, 251, 251, 0.51);
@@ -1597,7 +1597,6 @@ g.nazioni {
 
 .form__input--textarea {
   height: 163px;
-  width: 100%;
 }
 
 
@@ -1703,6 +1702,19 @@ g.nazioni {
   border-radius: 0 6px 6px 0;
   -moz-border-radius: 0 6px 6px 0;
   -webkit-border-radius: 0 6px 6px 0;
+}
+
+@media screen and (min-width: 768px) {
+  #contact .section__container {
+    padding: initial;
+  }
+  .form__container {
+    width: 70%;
+    padding: 25px;
+  }
+  .form__input {
+    width: 70%;
+  }
 }
 
 /* FOOTER */

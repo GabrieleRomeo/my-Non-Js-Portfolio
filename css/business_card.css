@@ -1,14 +1,10 @@
 .businessCard {
   position: relative;
   display: block;
-  width: 57%;
+  width: 95%;
   height: 375px;
   margin: 0 auto;
   font-size: 0.7rem;
-}
-
-@media screen and (max-width: 846px) {
-  .businessCard { width: 75%; }
 }
 
 .businessCard label {
@@ -110,7 +106,7 @@
 }
 
 .businessCard .card__details {
-  padding: 15px 30px;
+  padding: 15px 15px;
   background: transparent;
   box-sizing: border-box;
 }
@@ -146,7 +142,7 @@
 }
 
 .businessCard .details__social {
-  margin-top: 40px;
+  margin-top: 25px;
   overflow: hidden;
 }
 
@@ -176,7 +172,7 @@
 .businessCard .social__list__item {
   position: relative;
   display: inline;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 
 .businessCard .social__list__item--block {
@@ -203,3 +199,26 @@
   -webkit-transform: rotateX(73deg) translateZ(30px);
           transform: rotateX(73deg) translateZ(30px);
 }
+
+@media screen and (min-width: 768px) {
+  .businessCard {
+    width: 57%;
+    margin-top: 100px;
+  }
+  .businessCard .card__details {
+    padding: 15px 30px;
+  }
+  .businessCard .details__social {
+    margin-top: 40px;
+  }
+  .businessCard .social__list__item {
+    padding-right: 20px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .businessCard {
+    width: 51%;
+  }
+}
+
