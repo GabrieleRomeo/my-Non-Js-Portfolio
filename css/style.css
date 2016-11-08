@@ -891,91 +891,34 @@ a { text-decoration: none; }
 /* ABOUT */
 #about {
   position: relative;
+  background-color: rgba(3, 41, 93, 0.87);
 }
 
 #about .section__container {
   overflow: hidden;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.75);
 }
 
-
-
-@media screen and (min-width: 1200px) and (max-width: 1920px) {
-  #about {
-    padding-top: 100px;
-    background-image: url('../img/background_1920_mini.jpg');
-    background-repeat: no-repeat;
-    background-position: center top;
-  }
+#about .section__heading {
+  top: 0;
 }
 
-@media screen and (min-width: 1200px) {
-  #about .section__container {
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.75);
-  }
-
-  .about__wrapper {
-    width: 46%!important;
-    padding-top: 2em;
-    padding-left: 40px;
-  }
-
-  /* Shows Photo credits */
-  #page-footer #credits {
-    display: inline!important;
-  }
-
-  #Italy #global {  fill: rgba(99, 82, 82, 0.56); }
-}
-
-@media screen and (min-width: 1921px) {
-  #about {
-    padding-top: 100px;
-    background-image: url('../img/background_mini.jpg');
-    background-repeat: no-repeat;
-    background-position: center top;
-  }
+#about_img {
+  display: block;
+  border-radius: 50%;
+  margin: 15px auto;
+  border: 7px solid;
 }
 
 /* ITALY MAP */
-#Italy { display: none }
+#Italy { display: none; }
+#Italy #global {  fill: rgba(99, 82, 82, 0.56); }
 
-@media screen and (min-width: 767px) {
-  #Italy {
-    display: inline-block;
-    position: absolute;
-    top: 40%;
-    right: 0;
-
-    width: 600px;
-    height: 750px;
-    margin-top: -375px;
-  }
-}
-
-#italy svg {
+#Italy svg {
   width: 100%;
   height: 100%;
 }
-
-@media screen and (max-width: 1023px) {
-
-  #about .about__wrapper {
-      width: 50%;
-  }
-
-  #Italy {
-    width: 400px;
-    height: 450px;
-  }
-  #Italy #global {
-    -webkit-transform: scale(0.5);
-            transform: scale(0.5);
-  }
-}
-
 
 #Turin {
   position: relative;
@@ -990,13 +933,13 @@ a { text-decoration: none; }
 }
 
 g.nazioni {
-  stroke-width:2;
-  stroke:#000000;
-  fill-opacity:1;
+  fill: aliceblue;
+  fill-opacity: .4;
+  stroke-width: 1;
+  stroke: #000;
 }
 
 .about__wrapper {
-  width: 42%;
   line-height: 1.8em;
 }
 
@@ -1036,6 +979,59 @@ g.nazioni {
 
 .about__list .smCaps {
   font-variant: small-caps;
+}
+
+@media screen and (min-width: 768px) {
+
+
+  #Italy {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 310px;
+    height: 450px;
+    margin-top: -375px;
+  }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1920px) {
+  #about {
+    padding-top: 100px;
+    background-image: url('../img/background_1920_mini.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  #about {
+    padding-top: 200px;
+  }
+  #about .section__container {
+    left: 20%;
+    width: 55%;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+  }
+
+  .about__wrapper {
+    padding-top: 2em;
+    padding-left: 40px;
+  }
+
+  /* Shows Photo credits */
+  #page-footer #credits {
+    display: inline!important;
+  }
+}
+
+@media screen and (min-width: 1921px) {
+  #about {
+    padding-top: 100px;
+    background-image: url('../img/background_mini.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+  }
 }
 
 
