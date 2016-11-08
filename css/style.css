@@ -455,7 +455,6 @@ a { text-decoration: none; }
   100% { -webkit-transform:translate(0,0); transform:translate(0,0) }
 }
 
-
 @keyframes bounce {
   0% { -webkit-transform:translate(0,-3px); transform:translate(0,-3px) }
   5.55556% { -webkit-transform:translate(0,3px); transform:translate(0,3px) }
@@ -466,6 +465,15 @@ a { text-decoration: none; }
   30.55556% { -webkit-transform:translate(0,0); transform:translate(0,0) }
   100% { -webkit-transform:translate(0,0); transform:translate(0,0) }
 }
+
+.bounce:before {
+  -webkit-animation: bounce 2.6s ease infinite;
+          animation: bounce 2.6s ease infinite;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+
 @-webkit-keyframes load {
   0% { stroke-dashoffset:0 }
 }
@@ -747,13 +755,7 @@ a { text-decoration: none; }
   text-transform: uppercase;
 }
 
-/* SPLASH
 
-  background: #fc00ff; /* fallback for old browsers
-  background: -webkit-linear-gradient(to left, #fc00ff , #00dbde);
-  background: linear-gradient(to left, #fc00ff , #00dbde);
-
-*/
 #splash {
   background: #2bc0e4; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
   background: -webkit-linear-gradient(right, #2bc0e4 , #eaecc6);
@@ -972,15 +974,6 @@ a { text-decoration: none; }
     -webkit-transform: scale(0.5);
             transform: scale(0.5);
   }
-}
-
-
-
-.bounce:before {
-  -webkit-animation: bounce 2.6s ease infinite;
-          animation: bounce 2.6s ease infinite;
-  -webkit-transform-origin: 50% 50%;
-          transform-origin: 50% 50%;
 }
 
 
