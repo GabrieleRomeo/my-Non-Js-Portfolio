@@ -911,34 +911,6 @@ a { text-decoration: none; }
   border: 7px solid;
 }
 
-/* ITALY MAP */
-#Italy { display: none; }
-#Italy #global {  fill: rgba(99, 82, 82, 0.56); }
-
-#Italy svg {
-  width: 100%;
-  height: 100%;
-}
-
-#Turin {
-  position: relative;
-  top: 19%;
-  left: 6%;
-  font-size: 1.5em;
-  color: #fff;
-}
-
-#Turin strong {
-  font-weight: 700;
-}
-
-g.nazioni {
-  fill: aliceblue;
-  fill-opacity: .4;
-  stroke-width: 1;
-  stroke: #000;
-}
-
 .about__wrapper {
   line-height: 1.8em;
 }
@@ -979,19 +951,6 @@ g.nazioni {
 
 .about__list .smCaps {
   font-variant: small-caps;
-}
-
-@media screen and (min-width: 768px) {
-
-
-  #Italy {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    width: 310px;
-    height: 450px;
-    margin-top: -375px;
-  }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1920px) {
