@@ -1046,84 +1046,94 @@ a { text-decoration: none; }
 
 /* TAB LAYOUT */
 .tab-navigation {
-  margin-top: 200px;
+  margin-top: 150px;
 }
 
 .tab__radio {
   display: none;
 }
 
-.tab__menu {
-  float: left;
-  width: 30%;
+.tab__list {
+  position: relative;
+  padding: 0;
+  list-style: none;
 }
 
-.tab__menu li {
+.tab__list > li {
+
+}
+
+.tab__list > li:hover {
+  background-color: rgba(255, 255, 255, 0.6);
+  color: #e91e63;
+}
+
+
+.tab__radio:nth-of-type(1):checked ~ ul .tab__list__item:nth-of-type(1) .list__label,
+.tab__radio:nth-of-type(2):checked ~ ul .tab__list__item:nth-of-type(2) .list__label,
+.tab__radio:nth-of-type(3):checked ~ ul .tab__list__item:nth-of-type(3) .list__label,
+.tab__radio:nth-of-type(4):checked ~ ul .tab__list__item:nth-of-type(4) .list__label,
+.tab__radio:nth-of-type(5):checked ~ ul .tab__list__item:nth-of-type(5) .list__label,
+.tab__radio:nth-of-type(6):checked ~ ul .tab__list__item:nth-of-type(6) .list__label,
+.tab__radio:nth-of-type(7):checked ~ ul .tab__list__item:nth-of-type(7) .list__label,
+.tab__radio:nth-of-type(8):checked ~ ul .tab__list__item:nth-of-type(8) .list__label,
+.tab__radio:nth-of-type(9):checked ~ ul .tab__list__item:nth-of-type(9) .list__label,
+.tab__radio:nth-of-type(10):checked ~ ul .tab__list__item:nth-of-type(10) .list__label {
+  color: #e91e63;
+  background-color: #fff;
+  border-left-color: #fecd08;
+}
+
+.tab__radio:nth-of-type(1):checked ~ .tab__list li:nth-of-type(1) .tab__content,
+.tab__radio:nth-of-type(2):checked ~ .tab__list li:nth-of-type(2) .tab__content,
+.tab__radio:nth-of-type(3):checked ~ .tab__list li:nth-of-type(3) .tab__content,
+.tab__radio:nth-of-type(4):checked ~ .tab__list li:nth-of-type(4) .tab__content,
+.tab__radio:nth-of-type(5):checked ~ .tab__list li:nth-of-type(5) .tab__content,
+.tab__radio:nth-of-type(6):checked ~ .tab__list li:nth-of-type(6) .tab__content,
+.tab__radio:nth-of-type(7):checked ~ .tab__list li:nth-of-type(7) .tab__content,
+.tab__radio:nth-of-type(8):checked ~ .tab__list li:nth-of-type(8) .tab__content,
+.tab__radio:nth-of-type(9):checked ~ .tab__list li:nth-of-type(9) .tab__content,
+.tab__radio:nth-of-type(10):checked ~ .tab__list li:nth-of-type(10) .tab__content {
+  display: block;
+}
+
+.tab__list .list__label {
+  display: block;
+  width: 30%;
   padding: 10px;
   border-left: 6px solid transparent;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   -webkit-transition: background-color .7s;
   transition: background-color .7s;
+  cursor: pointer;
 }
 
-.tab__menu li:hover {
+.tab__list .list__label:hover {
   background-color: rgba(255, 255, 255, 0.6);
   color: #e91e63;
 }
 
-
-.tab__radio:nth-of-type(1):checked ~ ul li:nth-of-type(1),
-.tab__radio:nth-of-type(2):checked ~ ul li:nth-of-type(2),
-.tab__radio:nth-of-type(3):checked ~ ul li:nth-of-type(3),
-.tab__radio:nth-of-type(4):checked ~ ul li:nth-of-type(4),
-.tab__radio:nth-of-type(5):checked ~ ul li:nth-of-type(5),
-.tab__radio:nth-of-type(6):checked ~ ul li:nth-of-type(6),
-.tab__radio:nth-of-type(7):checked ~ ul li:nth-of-type(7),
-.tab__radio:nth-of-type(8):checked ~ ul li:nth-of-type(8),
-.tab__radio:nth-of-type(9):checked ~ ul li:nth-of-type(9),
-.tab__radio:nth-of-type(10):checked ~ ul li:nth-of-type(10) {
-  color: #e91e63;
-  background-color: #fff;
-  border-left-color: #fecd08;
-}
-
-.tab__radio:nth-of-type(1):checked ~ .tab__containers .tab__content:nth-of-type(1),
-.tab__radio:nth-of-type(2):checked ~ .tab__containers .tab__content:nth-of-type(2),
-.tab__radio:nth-of-type(3):checked ~ .tab__containers .tab__content:nth-of-type(3),
-.tab__radio:nth-of-type(4):checked ~ .tab__containers .tab__content:nth-of-type(4),
-.tab__radio:nth-of-type(5):checked ~ .tab__containers .tab__content:nth-of-type(5),
-.tab__radio:nth-of-type(6):checked ~ .tab__containers .tab__content:nth-of-type(6),
-.tab__radio:nth-of-type(7):checked ~ .tab__containers .tab__content:nth-of-type(7),
-.tab__radio:nth-of-type(8):checked ~ .tab__containers .tab__content:nth-of-type(8),
-.tab__radio:nth-of-type(9):checked ~ .tab__containers .tab__content:nth-of-type(9),
-.tab__radio:nth-of-type(10):checked ~ .tab__containers .tab__content:nth-of-type(10) {
-  display: block;
-}
-
-.tab__menu li label {
-  display: block;
-  cursor: pointer;
-}
-
-.tab__containers {
-  position: relative;
-  float: right;
+.tab__content {
+  position: absolute;
+  right: 0;
+  top: 0;
   width: 70%;
-  height: 1000px;
-  min-height: 1000px;
-  height: auto;
   padding: 20px;
+  color: initial;
   background-color: #fff;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
-}
-
-.tab__content {
   display: none;
 }
 
+.tab__list,
+.tab__content {
+  height: 1100px;
+  min-height: 1100px;
+  height: auto;
+}
 
 /* CAROUSEL */
 .carousel {
@@ -1200,19 +1210,19 @@ a { text-decoration: none; }
   cursor: pointer;
 }
 
-.carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--prev label:nth-child(1),
-.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__control--prev label:nth-child(2),
-.carousel input[type="radio"]:nth-of-type(4):checked ~ .carousel__control--prev label:nth-child(3),
-.carousel input[type="radio"]:nth-of-type(1):checked ~ .carousel__control--next label:nth-child(1),
-.carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--next label:nth-child(2),
-.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__control--next label:nth-child(3)  {
+.carousel > input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--prev label:nth-child(1),
+.carousel > input[type="radio"]:nth-of-type(3):checked ~ .carousel__control--prev label:nth-child(2),
+.carousel > input[type="radio"]:nth-of-type(4):checked ~ .carousel__control--prev label:nth-child(3),
+.carousel > input[type="radio"]:nth-of-type(1):checked ~ .carousel__control--next label:nth-child(1),
+.carousel > input[type="radio"]:nth-of-type(2):checked ~ .carousel__control--next label:nth-child(2),
+.carousel > input[type="radio"]:nth-of-type(3):checked ~ .carousel__control--next label:nth-child(3)  {
   display: inline-block;
 }
 
-.carousel input[type="radio"]:nth-of-type(1):checked ~ ul li:nth-child(1),
-.carousel input[type="radio"]:nth-of-type(2):checked ~ ul li:nth-child(2),
-.carousel input[type="radio"]:nth-of-type(3):checked ~ ul li:nth-child(3),
-.carousel input[type="radio"]:nth-of-type(4):checked ~ ul li:nth-child(4)  {
+.carousel > input[type="radio"]:nth-of-type(1):checked ~ ul li:nth-child(1),
+.carousel > input[type="radio"]:nth-of-type(2):checked ~ ul li:nth-child(2),
+.carousel > input[type="radio"]:nth-of-type(3):checked ~ ul li:nth-child(3),
+.carousel > input[type="radio"]:nth-of-type(4):checked ~ ul li:nth-child(4)  {
   display: block;
   opacity: 1;
 }
@@ -1220,6 +1230,13 @@ a { text-decoration: none; }
 .carousel__bullets {
   position: relative;
   padding: 1em 0;
+  -webkit-user-select: none; /* Chrome/Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE10+ */
+
+  /* Rules below not implemented in browsers yet */
+  -o-user-select: none;
+  user-select: none;
 }
 
 .carousel__bullets > label {
@@ -1236,10 +1253,10 @@ a { text-decoration: none; }
 }
 
 .carousel__bullets > label:hover,
-.carousel input[type="radio"]:nth-of-type(1):checked ~ .carousel__bullets label:nth-child(1),
-.carousel input[type="radio"]:nth-of-type(2):checked ~ .carousel__bullets label:nth-child(2),
-.carousel input[type="radio"]:nth-of-type(3):checked ~ .carousel__bullets label:nth-child(3),
-.carousel input[type="radio"]:nth-of-type(4):checked ~ .carousel__bullets label:nth-child(4)  {
+.carousel > input[type="radio"]:nth-of-type(1):checked ~ .carousel__bullets label:nth-child(1),
+.carousel > input[type="radio"]:nth-of-type(2):checked ~ .carousel__bullets label:nth-child(2),
+.carousel > input[type="radio"]:nth-of-type(3):checked ~ .carousel__bullets label:nth-child(3),
+.carousel > input[type="radio"]:nth-of-type(4):checked ~ .carousel__bullets label:nth-child(4)  {
   border: 2px solid rgba(255, 255, 255, 0);
   background-color: #e91e55;
 }
