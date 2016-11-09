@@ -25,6 +25,7 @@ html {
 body {
   font-family: "Roboto", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
   line-height: 1.5;
+  min-width: 320px;
 }
 
 a { text-decoration: none; }
@@ -552,6 +553,7 @@ a { text-decoration: none; }
   top: 0;
   left: 0;
   width: 100%;
+  min-width: inherit;
   color: #fff;
   line-height: 90px;
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
@@ -602,7 +604,8 @@ a { text-decoration: none; }
   position: fixed;
   top: 0;
   bottom: 0;
-  width: calc(100% - 56px);
+  width: calc(100% - 2em);
+  min-width: 240px;
   max-width: 320px;
   -webkit-transform: translateX(-100%);
   transform: translateX(-100%);
@@ -708,7 +711,7 @@ a { text-decoration: none; }
 .user--last { font-weight: 500; }
 
 @media screen and (min-width: 1024px) {
-  .header__user { font-size: 2rem; }
+  .header__user { font-size: 1.5rem; }
 }
 
 
