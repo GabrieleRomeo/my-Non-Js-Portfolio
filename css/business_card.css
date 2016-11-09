@@ -2,6 +2,7 @@
   position: relative;
   display: block;
   width: 95%;
+  max-width: 630px;
   height: 375px;
   margin: 0 auto;
   font-size: 0.7rem;
