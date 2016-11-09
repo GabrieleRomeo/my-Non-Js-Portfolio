@@ -1297,8 +1297,8 @@ g.nazioni {
 .skills_list {
   position: relative;
   top: 100px;
-  margin: 0 auto 160px;
   padding: 20px;
+  margin: 0 auto;
   text-align: center;
   background-color: rgba(240, 248, 255, 0.91);
   border-radius: 12px;
@@ -1525,6 +1525,7 @@ g.nazioni {
 @media screen and (min-width: 768px) {
   .skills_list {
     width: 70%;
+    margin-bottom: 160px;
   }
   .graph {
     float: left;
