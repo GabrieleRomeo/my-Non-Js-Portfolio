@@ -1376,7 +1376,7 @@ g.nazioni {
 .graph {
   position: relative;
   height: 300px;
-  margin: 4% 0 11em 2%;
+  margin: 8em 0;
   color: rgba(255, 255, 255, 0.54);
   text-align: right;
   background-color: rgb(66, 66, 66);
@@ -1528,7 +1528,11 @@ g.nazioni {
   }
   .graph {
     float: left;
-    width: 45%;
+    margin: 4% 0 11em 0;
+    width: 49%;
+  }
+  .graph:nth-child(2) {
+    margin-left: 2%;
   }
   div[data-name="Other"] {
     left: 25%;
@@ -1705,15 +1709,9 @@ g.nazioni {
 }
 
 @media screen and (min-width: 768px) {
-  #contact .section__container {
-    padding: initial;
-  }
   .form__container {
-    width: 70%;
+    width: 75%;
     padding: 25px;
-  }
-  .form__input {
-    width: 70%;
   }
 }
 
