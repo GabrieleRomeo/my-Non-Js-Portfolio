@@ -1079,9 +1079,8 @@ a { text-decoration: none; }
 .tab__radio:nth-of-type(8):checked ~ ul .tab__list__item:nth-of-type(8) .list__label,
 .tab__radio:nth-of-type(9):checked ~ ul .tab__list__item:nth-of-type(9) .list__label,
 .tab__radio:nth-of-type(10):checked ~ ul .tab__list__item:nth-of-type(10) .list__label {
-  color: #e91e63;
-  background-color: #fff;
-  border-left-color: #fecd08;
+  color: #ffffff;
+  background-color: rgb(233, 30, 99);
 }
 
 .tab__radio:nth-of-type(1):checked ~ .tab__list li:nth-of-type(1) .tab__content,
@@ -1099,11 +1098,10 @@ a { text-decoration: none; }
 
 .tab__list .list__label {
   display: block;
-  width: 30%;
   padding: 10px;
-  border-left: 6px solid transparent;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #d8b8ee;
   -webkit-transition: background-color .7s;
   transition: background-color .7s;
   cursor: pointer;
@@ -1115,25 +1113,12 @@ a { text-decoration: none; }
 }
 
 .tab__content {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 70%;
   padding: 20px;
   color: initial;
   background-color: #fff;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  border-bottom-left-radius: 5px;
   display: none;
 }
 
-.tab__list,
-.tab__content {
-  height: 1100px;
-  min-height: 1100px;
-  height: auto;
-}
 
 /* CAROUSEL */
 .carousel {
@@ -1259,6 +1244,45 @@ a { text-decoration: none; }
 .carousel > input[type="radio"]:nth-of-type(4):checked ~ .carousel__bullets label:nth-child(4)  {
   border: 2px solid rgba(255, 255, 255, 0);
   background-color: #e91e55;
+}
+
+@media screen and (min-width: 768px) {
+  .tab__content {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 70%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .tab__list .list__label {
+    width: 30%;
+    background-color: initial;
+    border-left: 6px solid transparent;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
+  .tab__list,
+  .tab__content {
+    height: 1100px;
+    min-height: 1100px;
+    height: auto;
+  }
+  .tab__radio:nth-of-type(1):checked ~ ul .tab__list__item:nth-of-type(1) .list__label,
+  .tab__radio:nth-of-type(2):checked ~ ul .tab__list__item:nth-of-type(2) .list__label,
+  .tab__radio:nth-of-type(3):checked ~ ul .tab__list__item:nth-of-type(3) .list__label,
+  .tab__radio:nth-of-type(4):checked ~ ul .tab__list__item:nth-of-type(4) .list__label,
+  .tab__radio:nth-of-type(5):checked ~ ul .tab__list__item:nth-of-type(5) .list__label,
+  .tab__radio:nth-of-type(6):checked ~ ul .tab__list__item:nth-of-type(6) .list__label,
+  .tab__radio:nth-of-type(7):checked ~ ul .tab__list__item:nth-of-type(7) .list__label,
+  .tab__radio:nth-of-type(8):checked ~ ul .tab__list__item:nth-of-type(8) .list__label,
+  .tab__radio:nth-of-type(9):checked ~ ul .tab__list__item:nth-of-type(9) .list__label,
+  .tab__radio:nth-of-type(10):checked ~ ul .tab__list__item:nth-of-type(10) .list__label {
+    color: #e91e63;
+    background-color: #fff;
+    border-left-color: #fecd08;
+  }
 }
 
 /* SKILLS */
