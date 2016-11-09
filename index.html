@@ -44,12 +44,24 @@
       </p>
     <![endif]-->
 
+
     <header class="header">
+      <input id="hamburger__checkbox" type="checkbox">
+      <label for="hamburger__checkbox" id="sideMenuFund"></label>
       <div class="header__wrapper">
-        <p class="header__user">
+        <div id="hamburger">
+          <label for="hamburger__checkbox">
+            <ul class="hamburger__list">
+              <li></li>
+              <li></li>
+              <li></li>
+            </ul>
+          </label>
+        </div>
+        <a class="header__user" href="/" title="Gabriele Romeo">
           <span class="user--first">Gabriele</span>
           <span class="user--last">Romeo</span>
-        </p>
+        </a>
         <nav class="navigation">
           <ul class="navigation__menu" role="navigation">
             <li class="navigation__menu__item">
@@ -66,13 +78,13 @@
             </li>
           </ul>
         </nav>
-        <div class="search">
-          <input class="search__input"
+        <div id="searchBox">
+          <input class="search search__input"
                  id="searchTxt"
                  name="searchTxt"
                  type="text"
                  required>
-          <label class="search__label--input" for="searchTxt">Search</label>
+          <label class="search search__label--input" for="searchTxt">Search</label>
           <label class="search__label--icon" for="searchStatus" accesskey="s">
             <i class="search__icon icon-search" aria-hidden="true"></i>
           </label>
@@ -85,6 +97,78 @@
                 Search Temporarily Disabled
             </div>
           </div>
+        </div>
+      </div>
+      <div id="sideMenu">
+        <div id="nav">
+          <ul class="site-menu">
+            <li>
+              <a class="header__user" href="/" title="Gabriele Romeo">
+                <span class="user--first">Gabriele</span>
+                <span class="user--last">Romeo</span>
+              </a>
+            </li>
+            <li><a href="#about">about</a></li>
+            <li>
+              <input class="input--trigger" id="site-menu--projects" type="checkbox">
+              <label for="site-menu--projects">Projects</label>
+              <ul class="submenu">
+                <li>
+                  <label for="tab__radio-1">
+                    modern developer homepage
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-2">
+                    sidebar
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-3">
+                    web buttons
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-4">
+                    forms
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-5">
+                    calculator
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-6">
+                    shopping cart
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-7">
+                    image gallery
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-8">
+                    css accordion
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-9">
+                    css tab
+                  </label>
+                </li>
+                <li>
+                  <label for="tab__radio-10">
+                    questionnarie
+                  </label>
+                </li>
+              </ul>
+            </li>
+            <li><a href="#skills">skills</a></li>
+            <li><a href="#contact">contact</a></li>
+            <li class="copy">&copy; 2016 Gabriele Romeo. All rights reserved.</li>
+          </ul>
         </div>
       </div>
   </header>

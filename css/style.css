@@ -42,6 +42,10 @@ a { text-decoration: none; }
   z-index: 99999999;
 }
 
+.input--trigger {
+  display: none;
+}
+
 /* COLORS */
 .color--rose { color:#fa91e5!important; }
 .color--purple { color: #6914d1!important; }
@@ -548,16 +552,16 @@ a { text-decoration: none; }
   top: 0;
   left: 0;
   width: 100%;
-  height: 90px;
   color: #fff;
   line-height: 90px;
-  background-color: #702dbe;
   box-shadow: 0px 4px 5px 0px rgba(0,0,0,0.75);
-  z-index: 999999;
+  z-index: 1000;
 }
 
-@media screen and (max-width: 767px) {
-  .header { display: none }
+.header,
+.site-menu > li:first-child {
+  height: 90px;
+  background-color: #702dbe;
 }
 
 .header__wrapper {
@@ -565,9 +569,133 @@ a { text-decoration: none; }
   text-align: right;
 }
 
+/* HAMBURGER */
+
+#hamburger {
+  display: none;
+  position: relative;
+  width: 40px;
+  top: 8px;
+  margin-right: 10px;
+}
+
+#hamburger__checkbox {
+  display: none;
+}
+
+#hamburger > label {
+  display: block;
+  cursor: pointer;
+}
+
+#hamburger .hamburger__list {
+  list-style-type: none;
+}
+
+#hamburger .hamburger__list li {
+  height: 3px;
+  margin: 5px;
+  background-color: #fff;
+}
+
+#sideMenu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: calc(100% - 56px);
+  max-width: 320px;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  border-right: 1px solid rgba(0,0,0,.14);
+  background-color: #fff;
+  -webkit-transition: -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  transition: -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  transition: transform .25s cubic-bezier(0,0,.2,1);
+  transition: transform .25s cubic-bezier(0,0,.2,1),
+      -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  overflow-x: hidden;
+  will-change: transform;
+  z-index: 99999999;
+}
+
+.site-menu > li {
+  padding: 0 20px;
+  color: #702dbe;
+  font-weight: 300;
+  font-variant: small-caps;
+  line-height: 40px;
+}
+
+.site-menu > li:first-child,
+.site-menu > li:last-child {
+  line-height: inherit;
+}
+.site-menu > li:first-child {
+  font-size: larger;
+}
+
+.site-menu > li:last-child {
+  color: initial;
+  font-size: .7em;
+  font-variant: initial;
+  text-align: center;
+}
+
+.site-menu > li label,
+.site-menu > li  a {
+    display: block;
+    padding: 0 10px;
+}
+
+.site-menu > li label:active,
+.site-menu > li a:active {
+  color: #e91e63;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.site-menu .submenu {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+}
+
+.site-menu .submenu li {
+  display: block;
+  height: 2em;
+  font-variant: normal;
+  text-transform: capitalize;
+}
+
+#site-menu--projects:checked ~ .submenu {
+  padding: 0 20px 10px 20px;
+  opacity: 1;
+  max-height: 400px;
+}
+
+
+#hamburger__checkbox:checked ~ #sideMenu {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  box-shadow: 0 8px 10px -5px rgba(0,0,0,.2),0 16px 24px 2px rgba(0,0,0,.14),0 6px 30px 5px rgba(0,0,0,.12);
+}
+
+#hamburger__checkbox:checked + #sideMenuFund {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.64);
+  z-index: 3000;
+}
+
+
 /* USER INFO */
 .header__user {
   float: left;
+  color: #fff;
 }
 
 .user--first {
@@ -624,7 +752,7 @@ a { text-decoration: none; }
 }
 
 /* SEARCH */
-.search {
+#searchBox {
   position: relative;
   display: inline-block;
   margin-left: 35px;
@@ -662,10 +790,6 @@ a { text-decoration: none; }
   cursor: pointer;
 }
 
-.icon-search {
-  display: inline-block;
-}
-
 .icon-search:hover {
   color: #ffeb3b;
 }
@@ -678,11 +802,11 @@ a { text-decoration: none; }
   transition: all .2s ease;
 }
 
-.search input[type=checkbox] {
+#searchStatus {
   display: none;
 }
 
-.search input[type=checkbox]:checked + .search__modal {
+#searchStatus:checked + .search__modal {
   opacity: 0.85;
   visibility: visible;
 }
@@ -717,6 +841,27 @@ a { text-decoration: none; }
 .search__modal__container .icon-cancel-circle:hover {
   color: #fff;
   opacity: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .header__wrapper {
+    text-align: left;
+  }
+  .navigation {
+    display: none;
+  }
+  #hamburger {
+    display: inline-block;
+  }
+  .header__user {
+    float: initial;
+  }
+  #searchBox {
+    float: right;
+  }
+  .search {
+    display: none;
+  }
 }
 
 /*SECTIONS*/
