@@ -317,7 +317,7 @@ a { text-decoration: none; }
             transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
   0%, 100% {
     -webkit-transform: translate(0, 0) rotate(0);
-            transform: translate(0, 0) rotate(0); } 
+            transform: translate(0, 0) rotate(0); }
 }
 
 @keyframes shaker {
@@ -470,7 +470,7 @@ a { text-decoration: none; }
             transform: translate(-1.5px, -1.5px) rotate(-0.5deg); }
   0%, 100% {
     -webkit-transform: translate(0, 0) rotate(0);
-            transform: translate(0, 0) rotate(0); } 
+            transform: translate(0, 0) rotate(0); }
 }
 
 
@@ -666,7 +666,7 @@ a { text-decoration: none; }
 .header,
 .site-menu > li:first-child {
   height: 90px;
-  background-color: #702dbe;
+  background-color: #3f51b5;
 }
 
 .header__wrapper {
@@ -888,7 +888,7 @@ a { text-decoration: none; }
 
 .search__input:focus,
 .search__input:valid {
-  background-color: #6629ae;
+  background-color: #3a4ba6;
 }
 
 .search__input:focus + label,
@@ -1090,8 +1090,8 @@ a { text-decoration: none; }
 .splash__animation {
   position: relative;
   width: 100%;
-  min-height: 300px;
-  padding-top: 40px;
+  min-height: 150px;
+  padding-top: 20px;
   -webkit-animation: open 0.4s linear forwards;
   -moz-animation: open 0.4s linear forwards;
   -ms-animation: open 0.4s linear forwards;
@@ -1226,7 +1226,8 @@ a { text-decoration: none; }
 
 @media only screen and (min-width: 768px) {
   .splash__animation {
-    padding-top: 100px;
+    padding-top: 60px;
+    min-height: 350px;
   }
   .splash__wrapper {
     font-size: 2.8em;
@@ -1238,6 +1239,18 @@ a { text-decoration: none; }
     font-size: 2.8em;
   }
 }
+
+/* iPad in landscape */
+@media only screen
+and (min-device-width : 768px)
+and (max-device-width : 1024px)
+and (orientation : landscape) {
+  #geek {
+    position: absolute;
+    right: 10%;
+  }
+}
+
 
 @media only screen and (min-width: 1140px) {
   .splash__wrapper {
