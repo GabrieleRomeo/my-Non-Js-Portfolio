@@ -71,6 +71,31 @@ a { text-decoration: none; }
 
 /* ANIMATIONS */
 
+@-webkit-keyframes fadeIN {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIN {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+@keyframes fadeIN {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
 .double-flash:before {
   color: #ff0000;
   -webkit-animation: double-flash 3s ease infinite;
@@ -547,6 +572,83 @@ a { text-decoration: none; }
           transform-origin: 50% 50%;
 }
 
+@-webkit-keyframes open{
+  0%{
+    -webkit-transform: scale(1,0);
+  }
+  100%{
+    -webkit-transform: scale(1,1);
+  }
+}
+
+@-moz-keyframes open{
+  0%{
+    -moz-transform: scale(1,0);
+  }
+  100%{
+    -moz-transform: scale(1,1);
+  }
+}
+
+@keyframes open{
+  0%{
+    transform: scale(1,0);
+  }
+  100%{
+    transform: scale(1,1);
+  }
+}
+
+@-webkit-keyframes slideLeft{
+  0%{
+    -webkit-transform: translateX(120%);
+  }
+  100%{
+    -webkit-transform: translateX(0%);
+  }
+}
+@-moz-keyframes slideLeft{
+  0%{
+    -moz-transform: translateX(120%);
+  }
+  100%{
+    -moz-transform: translateX(0%);
+  }
+}
+@keyframes slideLeft{
+  0%{
+    transform: translateX(120%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
+@-webkit-keyframes slideRight{
+  0%{
+    -webkit-transform: translateX(-120%);
+  }
+  100%{
+    -webkit-transform: translateX(0%);
+  }
+}
+@-moz-keyframes slideRight{
+  0%{
+    -moz-transform: translateX(-120%);
+  }
+  100%{
+    -moz-transform: translateX(0%);
+  }
+}
+@keyframes slideRight{
+  0%{
+    transform: translateX(-120%);
+  }
+  100%{
+    transform: translateX(0%);
+  }
+}
+
 /* HEADER */
 .header {
   position: fixed;
@@ -980,10 +1082,107 @@ a { text-decoration: none; }
 }
 
 #splash .section__container {
+  font-family: 'Yanone Kaffeesatz', sans-serif;
   text-align: center;
   background-color: transparent;
 }
 
+.splash__animation {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  padding-top: 40px;
+  -webkit-animation: open 0.4s linear forwards;
+  -moz-animation: open 0.4s linear forwards;
+  -ms-animation: open 0.4s linear forwards;
+  animation: open 0.4s linear forwards;
+}
+
+.splash__animation span {
+  display: block;
+}
+
+.splash__wrapper {
+  overflow: hidden;
+  font-size: 3.3em;
+  padding: 0 25px;
+}
+
+.sp-container .splash__wrapper--right h2 {
+  text-shadow: 0px 0px 1px rgba(255,255,255,0.9);
+}
+
+.splash__wrapper--left span.splash--top {
+  -webkit-animation: slideLeft 0.5s ease-in 0.6s backwards;
+  -moz-animation: slideLeft 0.5s ease-in 0.6s backwards;
+  -ms-animation: slideLeft 0.5s ease-in 0.6s backwards;
+  animation: slideLeft 0.5s ease-in 0.6s backwards;
+}
+.splash__wrapper--left span.splash--bottom {
+  -webkit-animation: slideLeft 0.5s ease-in 1s backwards;
+  -moz-animation: slideLeft 0.5s ease-in 1s backwards;
+  -ms-animation: slideLeft 0.5s ease-in 1s backwards;
+  animation: slideLeft 0.5s ease-in 1s backwards;
+}
+
+.splash__wrapper--right span.splash--top {
+  -webkit-animation: slideRight 0.5s ease-in 2s backwards;
+  -moz-animation: slideRight 0.5s ease-in 2s backwards;
+  -ms-animation: slideRight 0.5s ease-in 2s backwards;
+  animation: slideRight 0.5s ease-in 2s backwards;
+}
+.splash__wrapper--right span.splash--bottom {
+  -webkit-animation: slideRight 0.5s ease-in 2.4s backwards;
+  -moz-animation: slideRight 0.5s ease-in 2.4s backwards;
+  -ms-animation: slideRight 0.5s ease-in 2.4s backwards;
+  animation: slideRight 0.5s ease-in 2.4s backwards;
+}
+
+.splash__wrapper--full .splash__fadeIN {
+  -webkit-animation: fadeIN 1s linear 3.6s backwards;
+  -moz-animation: fadeIN 1s linear 3.6s backwards;
+  -ms-animation: fadeIN 1s linear 3.6s backwards;
+  animation: fadeIN 1s linear 3.6s backwards;
+}
+
+.splash__wrapper--right .splash--bold i {
+  color: initial;
+  font-style: italic;
+}
+
+.splash__animation:after {
+  content: '';
+  width: 4px;
+  background: #000;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+}
+
+.splash__wrapper--left {
+  float: left;
+  width: 50%;
+  text-align: right;
+}
+
+.splash__wrapper--right {
+  float: right;
+  width: 50%;
+  color: #fff;
+  text-align: left;
+}
+
+
+
+.splash--bold {
+  font-size: 1.6em;
+  line-height: 1.6em;
+  font-weight: 700;
+  text-transform: uppercase;
+
+}
+
+/*
 #splash img {
   opacity: 1;
   width: 55%;
@@ -1021,6 +1220,7 @@ a { text-decoration: none; }
                0 10px 10px rgba(0,0,0,.2),
                0 20px 20px rgba(0,0,0,.15);
 }
+*/
 
 .button {
   display: inline-block;

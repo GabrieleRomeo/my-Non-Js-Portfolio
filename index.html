@@ -17,7 +17,8 @@
       <link rel="stylesheet"
             href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300|
                   Roboto:100,200,300,400,500,700">
-
+      <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700"
+            rel="stylesheet">
       <!-- CSS
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
@@ -195,15 +196,31 @@
   <main role="main">
 
     <section id="splash">
-      <div class="section__container fadeIn">
-        <img src="img/me_mini.jpg">
-        <p>
-          <strong>Hello</strong> and <strong>welcome</strong> to my
-          <span>Portfolio</span>
-          <a class="button button--circled" href="#about" title="About me">
-            <i class="icon--center icon-angle-double-down" aria-hidden="true"></i>
-          </a>
-        </p>
+      <div class="section__container">
+        <div class="splash__animation">
+          <div class="splash__wrapper splash__wrapper--left">
+            <h2>
+              <span class="splash--top splash--bold">Welcome to</span>
+              <span class="splash--bottom">my portfolio</span>
+            </h2>
+          </div>
+
+          <div class="splash__wrapper splash__wrapper--right">
+            <h2>
+              <span class="splash--top">
+                Would you like to start this new journey
+              </span>
+              <span class="splash--bottom splash--bold">together<i>?</i></span>
+            </h2>
+          </div>
+        </div>
+        <div class="splash__wrapper splash__wrapper--full">
+          <h2 class="splash__fadeIN">I am glad you are here today!</h2>
+            <a class="button button--circled" href="#about" title="About me">
+              <i class="icon--center icon-angle-double-down" aria-hidden="true"></i>
+            </a>
+        </div>
+
       </div>
     </section>
 
