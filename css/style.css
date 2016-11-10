@@ -634,7 +634,15 @@ a { text-decoration: none; }
   line-height: inherit;
 }
 .site-menu > li:first-child {
+  position: relative;
   font-size: larger;
+}
+
+.site-menu > li:first-child label {
+  display: inline;
+  position: absolute;
+  right: 10px;
+  top: 0;
 }
 
 .site-menu > li:last-child {
@@ -681,7 +689,9 @@ a { text-decoration: none; }
 #hamburger__checkbox:checked ~ #sideMenu {
   -webkit-transform: translateX(0);
   transform: translateX(0);
-  box-shadow: 0 8px 10px -5px rgba(0,0,0,.2),0 16px 24px 2px rgba(0,0,0,.14),0 6px 30px 5px rgba(0,0,0,.12);
+  box-shadow: 0 8px 10px -5px rgba(0,0,0,.2),
+              0 16px 24px 2px rgba(0,0,0,.14),
+              0 6px 30px 5px rgba(0,0,0,.39);
 }
 
 #hamburger__checkbox:checked + #sideMenuFund {
@@ -784,9 +794,10 @@ a { text-decoration: none; }
   font-size: smaller;
 }
 
-.search__icon {
+.cancel__icon {
   width: 1em;
   height: 1em;
+  color: #fff;
   stroke-width: 0;
   stroke: currentColor;
   fill: currentColor;
