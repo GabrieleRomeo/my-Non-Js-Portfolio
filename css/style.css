@@ -632,6 +632,7 @@ a { text-decoration: none; }
 .site-menu > li:first-child,
 .site-menu > li:last-child {
   line-height: inherit;
+  font-variant: initial;
 }
 .site-menu > li:first-child {
   position: relative;
@@ -648,7 +649,6 @@ a { text-decoration: none; }
 .site-menu > li:last-child {
   color: initial;
   font-size: .7em;
-  font-variant: initial;
   text-align: center;
 }
 
