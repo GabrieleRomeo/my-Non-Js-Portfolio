@@ -4,7 +4,7 @@
   width: 95%;
   max-width: 630px;
   height: 375px;
-  margin: 0 auto;
+  margin: 120px auto 0;
   font-size: 0.7rem;
 }
 
@@ -204,7 +204,6 @@
 @media screen and (min-width: 768px) {
   .businessCard {
     width: 57%;
-    margin-top: 100px;
   }
   .businessCard .card__details {
     padding: 15px 30px;
