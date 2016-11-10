@@ -1519,6 +1519,10 @@ a { text-decoration: none; }
   .carousel__control {
     opacity: 0;
   }
+  .carousel__control i {
+    background-color: rgba(0, 0, 0, 0.07);
+    padding: 10px;
+  }
 }
 
 /* SKILLS */
