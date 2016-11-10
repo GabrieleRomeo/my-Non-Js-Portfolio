@@ -1183,9 +1183,13 @@ and (orientation : landscape) {
 }
 
 @media only screen and (min-width: 1024px) and (max-height: 889px) {
+  .sp__wrapper--full {
+    padding-top: .5em;
+  }
   #geek {
     position: absolute;
     right: 10%;
+    bottom: 10%;
   }
 }
 
