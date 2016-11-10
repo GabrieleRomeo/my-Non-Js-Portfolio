@@ -2032,11 +2032,6 @@ a { text-decoration: none; }
   color: #fff;
 }
 
-#page-footer .contact__list a:hover,
-#page-footer .contact__list a:focus {
-  color: #ffeb3b;
-}
-
 
 /* ITALY FLAG */
 .flag__container {
