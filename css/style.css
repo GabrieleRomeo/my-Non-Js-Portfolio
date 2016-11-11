@@ -1009,7 +1009,7 @@ a { text-decoration: none; }
 
 
 #splash {
-  background: #2bc0e4; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
+  background: #e8e8e8; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
   background-image: url('../img/graphy.png');
 }
 
