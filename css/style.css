@@ -1010,8 +1010,7 @@ a { text-decoration: none; }
 
 #splash {
   background: #2bc0e4; /* fallback for old browsers */ /* Chrome 10-25, Safari 5.1-6 */
-  background: -webkit-linear-gradient(right, #2bc0e4 , #eaecc6);
-  background: linear-gradient(to left, #2bc0e4 , #eaecc6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background-image: url('../img/graphy.png');
 }
 
 #splash .section__container {
@@ -1098,7 +1097,7 @@ a { text-decoration: none; }
 .sp__wrapper--right {
   float: right;
   width: 50%;
-  color: #fff;
+  color: #e91e63;
   text-align: left;
 }
 
@@ -1133,7 +1132,7 @@ a { text-decoration: none; }
 
 .button--circled {
   font-size: .8em;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.41);
   border: 1px solid #fff;
   border-radius: 100%!important;
 }
@@ -1145,7 +1144,8 @@ a { text-decoration: none; }
 .button--circled:hover,
 .button--circled:focus {
   outline: 0;
-  background: rgba(255,255,255,.1);
+  color: rgba(0, 0, 0, 0.81);
+  background: rgba(255,255,255,.4);
 }
 
 .button--circled:hover .icon--center:before,
@@ -1178,7 +1178,7 @@ and (max-device-width : 1024px)
 and (orientation : landscape) {
   #geek {
     position: absolute;
-    right: 10%;
+    right: 5%;
   }
 }
 
@@ -1188,7 +1188,7 @@ and (orientation : landscape) {
   }
   #geek {
     position: absolute;
-    right: 10%;
+    right: 5%;
     bottom: 10%;
   }
 }
