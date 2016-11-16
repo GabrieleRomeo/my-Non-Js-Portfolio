@@ -1145,6 +1145,7 @@ a { text-decoration: none; }
   left: 0;
   right: 0;
   margin: 0 auto;
+  height: 70px;
   width: 100px;
   background-color: #fff;
   font-size: 1.8em;
@@ -1805,9 +1806,13 @@ and (orientation : landscape) {
 
 .skills_list svg:nth-child(2) path {
   fill: none;
-  stroke-width: 9;
+  stroke-width: 15px;
   stroke-dasharray: 629;
-  stroke: rgba(144, 205, 208, 0.9);
+  stroke: #00bcd4;
+}
+
+.skills_list svg g.path {
+  stroke-width: 12px;
 }
 
 #skills:hover .skills_list svg:nth-child(2) path {
@@ -1817,8 +1822,8 @@ and (orientation : landscape) {
 
 #skills:hover .skills_list > li:before,
 #skills:hover .skills_list > li:after {
-  -webkit-animation: fadeIN 20s;
-          animation: fadeIN 20s;
+  -webkit-animation: fadeIN 10s;
+          animation: fadeIN 10s;
 }
 
 .skills__details {
