@@ -1,0 +1,77 @@
+/**
+ * Generate vendors prefix for a particular property
+ *
+ * @param {String} $property - property's name
+ * @param {String} $value - property's value
+ */
+
+@mixin prefix($property, $value) {
+  -webkit-#{$property}: $value;
+     -moz-#{$property}: $value;
+     -ms-#{$property}: $value;
+       -o-#{$property}: $value;
+          #{$property}: $value;
+}
+
+/**
+ * Set the opacity for all browsers and provide a filter fallback for IE8
+ *
+ * @param {Number} $opacity - A value between 0 an 1
+ */
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+
+/**
+ * Generate an animation
+ * based on the number of frames
+ *
+ * @param {String} $animation-name - animation name
+ */
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+/**
+ * Generate an animation
+ *
+ * @param {List} $animate - A list of possibly animations (but not mandatory)
+ */
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -ms-animation:     $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
