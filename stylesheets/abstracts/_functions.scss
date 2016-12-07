@@ -1,0 +1,9 @@
+
+
+@function get-configuration($option) {
+  @return map-get($global-configuration, $option);
+}
+
+@function conf($opt) {
+  @return get-configuration($opt);
+}
