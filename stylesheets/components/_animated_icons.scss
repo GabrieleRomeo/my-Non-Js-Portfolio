@@ -1,0 +1,12 @@
+
+
+.double-flash:before {
+  color: #ff0000;
+  @include animation('double-flash 3s ease infinite');
+  @include prefix('transform-origin', 50% 50%);
+}
+
+.pulse {
+  @include animation('pulse 2s linear infinite');
+  @include prefix('transform-origin', 50% 50%);
+}
