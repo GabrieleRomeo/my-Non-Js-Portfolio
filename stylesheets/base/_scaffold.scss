@@ -1,0 +1,18 @@
+html {
+  font-size: $base-font-size;
+
+  @include media("screen", ">=900px") {
+    font-size: 18px;
+  }
+
+  @include media("screen", ">=1200px") {
+    font-size: 20px;
+  }
+}
+
+
+body {
+  font-family: $roboto;
+  line-height: $base-line-height;
+  min-width: $min-width;
+}

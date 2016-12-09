@@ -2,3 +2,40 @@
  // This file contains all application-wide Sass variables.
  // -----------------------------------------------------------------------------
 
+
+// ----------------------------------------------------------------------
+// Font Sizes & Line-height
+// ----------------------------------------------------------------------
+
+$base-font-size: 1rem;
+$base-line-height: $base-font-size * 1.25;
+
+
+// ----------------------------------------------------------------------
+// Font Families
+// ----------------------------------------------------------------------
+$roboto:      Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$robotoSlab: 'Roboto Slab', serif;
+
+// ----------------------------------------------------------------------
+// Width
+// ----------------------------------------------------------------------
+
+$min-width: 320px;
+
+
+// ----------------------------------------------------------------------
+// Responsiveness
+// ----------------------------------------------------------------------
+
+$breakpoints: (phone: 320px,
+               tablet: 768px,
+               desktop: 1024px,
+               desktopHD: 1200px) !default;
+
+$media-expressions: (screen: "screen",
+                    print: "print",
+                    handheld: "handheld",
+                    retina2x: ("(-webkit-min-device-pixel-ratio: 2)", "(min-resolution: 192dpi)"),
+                    retina3x: ("(-webkit-min-device-pixel-ratio: 3)", "(min-resolution: 350dpi)")
+                    ) !default;

@@ -1,8 +1,47 @@
+@charset "UTF-8";
+/**
+ * Generate a black color with opacity
+ *
+ * @param {Number} $opacity [1] - A value between 0 and 1
+ */
+/**
+ * Generate a white color with opacity
+ *
+ * @param {Number} $opacity [1] - A value between 0 and 1
+ */
+/*
+ *  SASS MEDIA QUERIES BY Eduardo Bouças
+ *
+ *  https://davidwalsh.name/sass-media-query
+ */
+/**
+ * Generate box sizing
+ *
+ * @param {String} $box-model - content-box|border-box|initial|inherit;
+ */
+/**
+ * Generate both the width and the height
+ *
+ * @param {Number} $width - The element width;
+ * @param {Number} $height [$width]  - The element height is optional; if not
+ *                                     provided it is equal to the width.
+ *
+ * @example
+ *   .element {
+ *     @include size(100%);
+ *   }
+ *
+ */
 /**
  * Generate vendors prefix for a particular property
  *
- * @param {String} $property - property's name
- * @param {String} $value - property's value
+ * @param {LIST} $map - A map of declarations
+ * @param {LIST} $vendors - Default value dumps all prefixes
+ *
+ * @example
+ *   #element {
+ *     @include prefix((transform, scale(1.5)), webkit o);
+ *   }
  */
 /**
  * Set the opacity for all browsers and provide a filter fallback for IE8
@@ -21,6 +60,62 @@
  * @param {List} $animate - A list of possibly animations (but not mandatory)
  */
 /**
+ * Generate elegant and maintainable media queries with Sass
+ * https://davidwalsh.name/sass-media-query
+ *
+ * @example
+ *   @include media(">=tablet", "<1280px") {
+ *
+ *   }
+ *
+ * @param {List} $conditions - It takes a variable number of strings, parses them,
+                               detects media expressions and handle possible
+                               disjunctions and glue everything together to form
+                               the media query expression.
+ */
+/**
+ * Generate rounded borders
+ *
+ * @param {Number} $radius - The shorthand to set the four properties
+                             border-top-left-radius, border-top-right-radius,
+                             border-bottom-right-radius and
+                             border-bottom-left-radius respectively.
+ */
+/**
+ * Generate single side border-radius [TOP]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-top-right-radius, and border-top-left-radius
+                             respectively.
+ */
+/**
+ * Generate single side border-radius [RIGHT]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-top-right-radius, and border-bottom-right-radius,
+                             respectively.
+ */
+/**
+ * Generate single side border-radius [BOTTOM]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-bottom-right-radius, and border-bottom-left-radius,
+                             respectively.
+ */
+/**
+ * Generate single side border-radius [LEFT]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-top-left-radius, and border-left-radius,
+                             respectively.
+ */
+/**
+ * Generate opposite side border-radius [TOP-LEFT & BOTTOM-RIGHT | TOP-RIGHT & BOTTOM LEFT]
+ *
+ * @param {Number} $topLeftBottomRight - The TOP-LEFT & BOTTOM-RIGHT radius
+ * @param {Number} $topRightBottomLeft - TOP-RIGHT & BOTTOM LEFT radius
+ */
+/**
  * Generate padding
  *
  * @param {Number} $top - The top padding value or null
@@ -36,8 +131,48 @@
  * @param {Number} $bottom - The bottom margin value or null
  * @param {Number} $left - The left margin value or null
  */
+/**
+ * Generate margins set to auto
+ *
+ */
+/**
+ * Generate inline block cross browser
+ * @example: @include inline-block();
+ */
+/**
+ * Generate a positioned element
+ *
+ * @param {String} $position - The position system
+ * @param {List} $args - A list of properties
+ */
+/**
+ * Generate an absolute positioned element
+ *
+ * @param {List} $args - A list of properties
+ */
+/**
+ * Generate a fixed positioned element
+ *
+ * @param {List} $args - A list of properties
+ */
+/**
+ * Generate a relative positioned element
+ *
+ * @param {List} $args - A list of properties
+ */
+#hamburger, #hamburger__checkbox {
+  display: none; }
+
 *, *:after, *:before {
-  box-sizing: border-box; }
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+*:focus {
+  outline: 0; }
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
@@ -52,6 +187,9 @@ article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, 
 
 html, body {
   height: 100%; }
+
+a {
+  text-decoration: none; }
 
 a img {
   border: none; }
@@ -71,6 +209,20 @@ caption, th, td {
   text-align: left;
   font-weight: normal;
   vertical-align: middle; }
+
+html {
+  font-size: 1rem; }
+  @media screen and (min-width: to-number("900px")) {
+    html {
+      font-size: 18px; } }
+  @media screen and (min-width: to-number("1200px")) {
+    html {
+      font-size: 20px; } }
+
+body {
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.25rem;
+  min-width: 320px; }
 
 @-webkit-keyframes fadeIN {
   0% {
@@ -1387,18 +1539,46 @@ caption, th, td {
   -webkit-animation: double-flash 3s ease infinite;
   /* Chr, Saf */
   animation: double-flash 3s ease infinite;
-  /* IE >9, Fx >15, Op >12.0 */
-  -webkit-transform-origin: 50% 50%;
-  -ms-transform-origin: 50% 50%;
-  transform-origin: 50% 50%; }
+  /* IE >9, Fx >15, Op >12.0 */ }
 
 .pulse {
   -webkit-animation: pulse 2s linear infinite;
   /* Chr, Saf */
   animation: pulse 2s linear infinite;
-  /* IE >9, Fx >15, Op >12.0 */
+  /* IE >9, Fx >15, Op >12.0 */ }
+
+.pulse,
+.double-flash:before {
   -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
   -ms-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
   transform-origin: 50% 50%; }
+
+.browserupgrade {
+  position: "fixed";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 50px;
+  background-color: beige;
+  z-index: 99999999; }
+
+/* HAMBURGER */
+#hamburger {
+  position: "relative";
+  top: 8px;
+  width: 40px;
+  margin-right: 10px; }
+  #hamburger > label {
+    display: block;
+    cursor: pointer; }
+  #hamburger .hamburger__list {
+    list-style-type: none; }
+    #hamburger .hamburger__list li {
+      height: 3px;
+      margin: 5px;
+      background-color: white; }
 
 /*# sourceMappingURL=main.css.map */

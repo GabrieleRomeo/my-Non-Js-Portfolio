@@ -1,14 +1,59 @@
+
+/**
+ * Generate box sizing
+ *
+ * @param {String} $box-model - content-box|border-box|initial|inherit;
+ */
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+     -moz-box-sizing: $box-model;
+      box-sizing: $box-model;
+}
+
+
+/**
+ * Generate both the width and the height
+ *
+ * @param {Number} $width - The element width;
+ * @param {Number} $height [$width]  - The element height is optional; if not
+ *                                     provided it is equal to the width.
+ *
+ * @example
+ *   .element {
+ *     @include size(100%);
+ *   }
+ *
+ */
+
+@mixin size($width, $height: $width) {
+      width: $width;
+      height: $height;
+}
+
+
 /**
  * Generate vendors prefix for a particular property
  *
- * @param {String} $property - property's name
- * @param {String} $value - property's value
+ * @param {LIST} $map - A map of declarations
+ * @param {LIST} $vendors - Default value dumps all prefixes
+ *
+ * @example
+ *   #element {
+ *     @include prefix((transform, scale(1.5)), webkit o);
+ *   }
  */
 
-@mixin prefix($property, $value) {
-  -webkit-#{$property}: $value;
-     -ms-#{$property}: $value;
-          #{$property}: $value;
+@mixin prefix($map, $vendors: webkit moz ms o) {
+  @each $prop, $value in $map {
+        @if $vendors {
+          @each $vendor in $vendors {
+            #{"-" + $vendor + "-" + $prop}: #{$value};
+          }
+        }
+        // Dump regular property anyway
+        #{$prop}: #{$value};
+  }
 }
 
 /**
@@ -70,6 +115,146 @@
 }
 
 /**
+ * Generate elegant and maintainable media queries with Sass
+ * https://davidwalsh.name/sass-media-query
+ *
+ * @example
+ *   @include media(">=tablet", "<1280px") {
+ *
+ *   }
+ *
+ * @param {List} $conditions - It takes a variable number of strings, parses them,
+                               detects media expressions and handle possible
+                               disjunctions and glue everything together to form
+                               the media query expression.
+ */
+
+@mixin media($conditions...) {
+  @for $i from 1 through length($conditions) {
+    $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i)));
+  }
+
+  $branches: get-query-branches($conditions);
+  $query: "";
+
+  @each $branch in $branches {
+    @if (str-length($query) != 0) {
+      $query: $query + ", ";
+    }
+
+    $query: $query + $branch;
+  }
+
+  @at-root {
+    @media #{$query} {
+      #{&} {
+        @content;
+      }
+    }
+  }
+}
+
+/**
+ * Generate rounded borders
+ *
+ * @param {Number} $radius - The shorthand to set the four properties
+                             border-top-left-radius, border-top-right-radius,
+                             border-bottom-right-radius and
+                             border-bottom-left-radius respectively.
+ */
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+
+/**
+ * Generate single side border-radius [TOP]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-top-right-radius, and border-top-left-radius
+                             respectively.
+ */
+
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+/**
+ * Generate single side border-radius [RIGHT]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-top-right-radius, and border-bottom-right-radius,
+                             respectively.
+ */
+
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+ -webkit-border-top-right-radius: $radius;
+ border-top-right-radius: $radius;
+ background-clip: padding-box;
+}
+
+/**
+ * Generate single side border-radius [BOTTOM]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-bottom-right-radius, and border-bottom-left-radius,
+                             respectively.
+ */
+
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+/**
+ * Generate single side border-radius [LEFT]
+ *
+ * @param {Number} $radius - The shorthand to set the two properties
+                             border-top-left-radius, and border-left-radius,
+                             respectively.
+ */
+
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+
+/**
+ * Generate opposite side border-radius [TOP-LEFT & BOTTOM-RIGHT | TOP-RIGHT & BOTTOM LEFT]
+ *
+ * @param {Number} $topLeftBottomRight - The TOP-LEFT & BOTTOM-RIGHT radius
+ * @param {Number} $topRightBottomLeft - TOP-RIGHT & BOTTOM LEFT radius
+ */
+
+@mixin border-opposite-radius($topLeftBottomRight, $topRightBottomLeft) {
+  -webkit-border-top-left-radius: $topLeftBottomRight;
+  border-top-left-radius: $topLeftBottomRight;
+  -webkit-border-bottom-right-radius: $topLeftBottomRight;
+  border-bottom-right-radius: $topLeftBottomRight;
+  -webkit-border-top-right-radius: $topRightBottomLeft;
+  border-top-right-radius: $topRightBottomLeft;
+  -webkit-border-bottom-left-radius: $topRightBottomLeft;
+  border-bottom-left-radius: $topRightBottomLeft;
+  background-clip: padding-box;
+}
+
+/**
  * Generate padding
  *
  * @param {Number} $top - The top padding value or null
@@ -99,4 +284,78 @@
   margin-right: $right;
   margin-bottom: $bottom;
   margin-left: $left;
+}
+
+/**
+ * Generate margins set to auto
+ *
+ */
+
+@mixin margin-auto() {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+/**
+ * Generate inline block cross browser
+ * @example: @include inline-block();
+ */
+
+@mixin inline-block() {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: top;
+  zoom: 1;
+  *display: inline;
+}
+
+/**
+ * Generate a positioned element
+ *
+ * @param {String} $position - The position system
+ * @param {List} $args - A list of properties
+ */
+
+@mixin position($position, $args) {
+
+  position: $position;
+
+  @each $o in top right bottom left {
+        $i: index($args, $o);
+
+    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
+          #{$o}: nth($args, $i + 1);
+    }
+  }
+}
+
+/**
+ * Generate an absolute positioned element
+ *
+ * @param {List} $args - A list of properties
+ */
+
+@mixin absolute($args) {
+        @include position("absolute", $args);
+}
+
+/**
+ * Generate a fixed positioned element
+ *
+ * @param {List} $args - A list of properties
+ */
+
+@mixin fixed($args) {
+        @include position("fixed", $args);
+}
+
+/**
+ * Generate a relative positioned element
+ *
+ * @param {List} $args - A list of properties
+ */
+
+@mixin relative($args) {
+        @include position("relative", $args);
 }

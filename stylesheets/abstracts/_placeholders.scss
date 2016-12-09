@@ -1,0 +1,23 @@
+
+
+%marginAuto {
+  @include margin-auto();
+}
+
+%left {
+  float: left;
+}
+
+%right {
+  float: right;
+}
+
+%none {
+  display: none;
+}
+
+%center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
