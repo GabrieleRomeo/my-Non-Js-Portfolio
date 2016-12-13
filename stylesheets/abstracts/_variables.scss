@@ -1,7 +1,16 @@
 // -----------------------------------------------------------------------------
- // This file contains all application-wide Sass variables.
- // -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
 
+
+// ----------------------------------------------------------------------
+// Fixed Height
+// ----------------------------------------------------------------------
+
+$header-height: 90px;
+
+$l-modal-width: 80%;
+$l-modal-height: 100px;
 
 // ----------------------------------------------------------------------
 // Font Sizes & Line-height
@@ -28,6 +37,7 @@ $min-width: 320px;
 // Responsiveness
 // ----------------------------------------------------------------------
 
+
 $breakpoints: (phone: 320px,
                tablet: 768px,
                desktop: 1024px,
@@ -39,3 +49,43 @@ $media-expressions: (screen: "screen",
                     retina2x: ("(-webkit-min-device-pixel-ratio: 2)", "(min-resolution: 192dpi)"),
                     retina3x: ("(-webkit-min-device-pixel-ratio: 3)", "(min-resolution: 350dpi)")
                     ) !default;
+
+// ----------------------------------------------------------------------
+// Z-indexes map
+// ----------------------------------------------------------------------
+// @access private
+
+$z-indexes: (
+  'brwsUpgrade': 9000,
+  'sideMenu': 8999,
+  'hamburgerChkbox': 3000,
+  'header': 1000,
+  'sectionHeading': 10,
+  'tooltip': 2,
+  'default': 1,
+  'under': -1,
+);
+
+// ----------------------------------------------------------------------
+// Units map
+// ----------------------------------------------------------------------
+// @access private
+
+$units: (
+  'px': 1px,
+  'cm': 1cm,
+  'mm': 1mm,
+  '%' : 1%,
+  'ch': 1ch,
+  'pica': 1pica,
+  'in': 1in,
+  'em': 1em,
+  'rem': 1rem,
+  'pt': 1pt,
+  'pc': 1pc,
+  'ex': 1ex,
+  'vw': 1vw,
+  'vh': 1vh,
+  'vmin': 1vmin,
+  'vmax': 1vmax
+);
