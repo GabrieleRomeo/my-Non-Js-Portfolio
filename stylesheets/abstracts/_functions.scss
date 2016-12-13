@@ -1,54 +1,48 @@
 
-
-@function get-configuration($option) {
-  @return map-get($global-configuration, $option);
-}
-
-@function conf($opt) {
-  @return get-configuration($opt);
-}
-
-/**
- * Generate a black color with opacity
- *
- * @param {Number} $opacity [1] - A value between 0 and 1
- */
+///
+/// Generate a black color with opacity
+///
+/// @param {Number} $opacity [1] - A value between 0 and 1
+///
 
 @function black($opacity: 1){
-    @return rgba(0, 0, 0, $opacity)
+  @return rgba(0, 0, 0, $opacity)
 }
 
-/**
- * Generate a white color with opacity
- *
- * @param {Number} $opacity [1] - A value between 0 and 1
- */
+///
+/// Generate a white color with opacity
+///
+/// @param {Number} $opacity [1] - A value between 0 and 1
+/// @return {Color}
+///
 
 @function white($opacity: 1){
-    @return rgba(255, 255, 255, $opacity)
+  @return rgba(255, 255, 255, $opacity)
 }
 
 
-/*
- *  SASS MEDIA QUERIES BY Eduardo Bouças
- *
- *  https://davidwalsh.name/sass-media-query
- */
-
-@function parse-expression($expression) {
+@function parse-media($expression) {
   $operator: "";
   $value: "";
+  $unit: "";
   $element: "";
   $result: "";
   $is-width: true;
+
 
   // Separating the operator from the rest of the expression
   @if (str-slice($expression, 2, 2) == "=") {
     $operator: str-slice($expression, 1, 2);
     $value: str-slice($expression, 3);
-  } @else {
+  } @else if ((str-slice($expression, 1, 1) == "=") or
+              (str-slice($expression, 1, 1) == "<") or
+              (str-slice($expression, 1, 1) == ">")) {
     $operator: str-slice($expression, 1, 1);
     $value: str-slice($expression, 2);
+  } @else {
+    // If a unitless value was provided, the operator is >=
+    $operator: '>=';
+    $value: $expression;
   }
 
   // Checking what type of expression we're dealing with
@@ -57,20 +51,90 @@
   } @else if map-has-key($media-expressions, $expression) {
     $result: map-get($media-expressions, $expression);
     $is-width: false;
+    @warn $is-width;
   } @else {
-    $result: to-number($value);
+    $unit: _getUnit($value);
+    $result: _getNumber($value);
+    // Add the original unit
+    $result: $result * $unit;
   }
 
-  // If we're dealing with a width (breakpoint or custom value), 
+  // If we're dealing with a width (breakpoint or custom value),
   // we form the expression taking into account the operator.
   @if ($is-width) {
     @if ($operator == ">") {
       $element: "(min-width: #{$result + 1})";
-    } @else if ($operator == "&lt;") {
+    } @else if ($operator == "<") {
       $element: "(max-width: #{$result - 1})";
     } @else if ($operator == ">=") {
       $element: "(min-width: #{$result})";
-    } @else if ($operator == "&lt;=") {
+    } @else if ($operator == "<=") {
+      $element: "(max-width: #{$result})";
+    }
+  } @else {
+    $element: $result;
+  }
+
+  @return $element;
+}
+
+
+///  This a REVISED function BY Eduardo Bouças
+///
+///  https://davidwalsh.name/sass-media-query
+///
+///  @require $breakpoints
+///  @require $media-expressions
+///
+
+@function parse-expression($expression) {
+  $operator: "";
+  $value: "";
+  $unit: "";
+  $element: "";
+  $result: "";
+  $is-width: true;
+
+
+  // Separating the operator from the rest of the expression
+  @if (str-slice($expression, 2, 2) == "=") {
+    $operator: str-slice($expression, 1, 2);
+    $value: str-slice($expression, 3);
+  } @else if ((str-slice($expression, 1, 1) == "=") or
+              (str-slice($expression, 1, 1) == "<") or
+              (str-slice($expression, 1, 1) == ">")) {
+    $operator: str-slice($expression, 1, 1);
+    $value: str-slice($expression, 2);
+  } @else {
+    // If a unitless value was provided, the operator is >=
+    $operator: '>=';
+    $value: $expression;
+  }
+
+  // Checking what type of expression we're dealing with
+  @if map-has-key($breakpoints, $value) {
+    $result: map-get($breakpoints, $value);
+  } @else if map-has-key($media-expressions, $expression) {
+    $result: map-get($media-expressions, $expression);
+    $is-width: false;
+    @warn $is-width;
+  } @else {
+    $unit: _getUnit($value);
+    $result: _getNumber($value);
+    // Add the original unit
+    $result: $result * $unit;
+  }
+
+  // If we're dealing with a width (breakpoint or custom value),
+  // we form the expression taking into account the operator.
+  @if ($is-width) {
+    @if ($operator == ">") {
+      $element: "(min-width: #{$result + 1})";
+    } @else if ($operator == "<") {
+      $element: "(max-width: #{$result - 1})";
+    } @else if ($operator == ">=") {
+      $element: "(min-width: #{$result})";
+    } @else if ($operator == "<=") {
       $element: "(max-width: #{$result})";
     }
   } @else {
@@ -131,3 +195,128 @@
 
   @return $result;
 }
+
+///
+/// Get a configuration value from an option
+///
+/// @param {String} $option - Option's name
+/// @return {Value}
+/// @require $global-configuration
+///
+
+@function get-configuration($option) {
+
+  @if not map-has-key($global-configuration, $option) {
+    @error  'The option `#{$option} does not exist in $global-configuration. '
+          + 'Option should be one of #{ map-keys($global-configuration) }.';
+  }
+
+  @return map-get($global-configuration, $option);
+}
+
+///
+/// Get a configuration value from an option
+///
+/// @param {String} $opt - Option's name
+/// @return {Value}
+/// @require $global-configuration
+///
+
+@function conf($opt) {
+  @return get-configuration($opt);
+}
+
+///
+/// Get a z-index value from a layer name
+///
+/// @param {String} $layer - Layer's name
+/// @return {Number}
+/// @require $z-indexes
+///
+
+@function z($layer) {
+
+  @if not map-has-key($z-indexes, $layer) {
+    @error  'The layer `#{$layer} does not exist in $z-indexes. '
+          + 'Layer should be one of #{ map-keys($z-indexes) }.';
+  }
+
+  @return map-get($z-indexes, $layer)
+}
+
+///
+/// Given a string, it converts the provided value into a number
+/// http://hugogiraudel.com/2014/01/27/casting-types-in-sass/
+///
+/// @param {String} $value - A value like 1px, 20px, 34%
+/// @return {Number}
+///
+
+@function to-number($value) {
+  $result: 0;
+  $digits: 0;
+  $numbers: ('0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9);
+  $unit: '';
+
+  @for $i from 1 through str-length($value) {
+    $character: str-slice($value, $i, $i);
+
+
+    @if not map-get($numbers, $character) {
+      @return false;
+    }
+
+    @if ($digits == 0) {
+      $result: $result * 10 + map-get($numbers, $character);
+    } @else {
+      $digits: $digits * 10;
+      $result: $result + map-get($numbers, $character) / $digits;
+    }
+  }
+
+  @return $result;
+}
+
+///
+/// Given a value, it returns its numeri part
+///
+/// @param {String} $value - A value like 1px, 20px, 34%
+/// @return {Number}
+///
+
+@function _getNumber($value) {
+
+  @for $i from 1 through str-length($value) {
+    $character: str-slice($value, $i);
+
+    @if map-has-key($units, $character) {
+      @return to-number(str-replace-first($character, '', $value));
+    }
+  }
+
+  @warn 'Not a valid value';
+  @return false;
+}
+
+///
+/// Given a value, it returns its Unit (if any, false otherwise)
+///
+/// @param {String} $value - A value like 1px, 20px, 34%
+/// @return {Number}
+///
+
+@function _getUnit($value) {
+
+  @for $i from 1 through str-length($value) {
+    $character: str-slice($value, -$i);
+
+    @if map-has-key($units, $character) {
+      @return map-get($units, $character);
+    }
+  }
+
+  @warn 'Not a valid value';
+  @return false;
+}
+
+
