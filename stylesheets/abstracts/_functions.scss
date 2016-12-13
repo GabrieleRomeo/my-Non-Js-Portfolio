@@ -87,7 +87,7 @@
 ///  @require $media-expressions
 ///
 
-@function parse-expression($expression) {
+@function parse-expression($expression, $i, $length) {
   $operator: "";
   $value: "";
   $unit: "";
@@ -106,8 +106,12 @@
     $operator: str-slice($expression, 1, 1);
     $value: str-slice($expression, 2);
   } @else {
-    // If a unitless value was provided, the operator is >=
-    $operator: '>=';
+    // If an operator was not provided
+    @if ($i < $length) {
+      $operator: '>='; // the expression isn't the last one, left side (min-width)
+    } @else {
+      $operator: '<='; // when the expression is the last one, right side (max-width)
+    }
     $value: $expression;
   }
 
@@ -121,8 +125,12 @@
   } @else {
     $unit: _getUnit($value);
     $result: _getNumber($value);
-    // Add the original unit
-    $result: $result * $unit;
+    @if ($unit) {
+      // Add the original unit
+      $result: $result * $unit;
+    } @else {
+      @error "Please provide a value with a valid Unit (px, pt, em)";
+    }
   }
 
   // If we're dealing with a width (breakpoint or custom value),
