@@ -93,3 +93,16 @@
   0% { @include prefix((transform: translateX(-150%)), webkit ms); }
   100% { @include prefix((transform: translateX(0%)), webkit ms); }
 }
+
+@include keyframes('zoomInDown') {
+  0% {
+    opacity: 0;
+    @include prefix((transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0)), webkit);
+    @include prefix((animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190)), webkit); 
+  }
+  60% {
+    opacity: 1;
+    @include prefix((transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0)), webkit);
+    @include prefix((animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)), webkit);
+  }
+}
