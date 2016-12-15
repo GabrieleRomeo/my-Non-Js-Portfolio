@@ -121,7 +121,6 @@
   } @else if map-has-key($media-expressions, $expression) {
     $result: map-get($media-expressions, $expression);
     $is-width: false;
-    @warn $is-width;
   } @else {
     $unit: _getUnit($value);
     $result: _getNumber($value);
@@ -209,17 +208,17 @@
 ///
 /// @param {String} $option - Option's name
 /// @return {Value}
-/// @require $global-configuration
+/// @require $conf-global
 ///
 
-@function get-configuration($option) {
+@function get-configuration($option, $conf: $conf-global) {
 
-  @if not map-has-key($global-configuration, $option) {
-    @error  'The option `#{$option} does not exist in $global-configuration. '
-          + 'Option should be one of #{ map-keys($global-configuration) }.';
+  @if not map-has-key($conf, $option) {
+    @error  'The option `#{$option} does not exist in $conf. '
+          + 'Option should be one of #{ map-keys($conf) }.';
   }
 
-  @return map-get($global-configuration, $option);
+  @return map-get($conf, $option);
 }
 
 ///
@@ -227,11 +226,11 @@
 ///
 /// @param {String} $opt - Option's name
 /// @return {Value}
-/// @require $global-configuration
+/// @require $conf-global
 ///
 
-@function conf($opt) {
-  @return get-configuration($opt);
+@function conf($option, $conf) {
+  @return get-configuration($option, $conf);
 }
 
 ///
@@ -327,4 +326,71 @@
   @return false;
 }
 
+/// It merges the elements from $ext-obj into $obj
+///
+/// @param {Map} $obj - The base map of elements
+/// @param {Map} $ext-obj - A map containing the additional elements we wish to merge
+/// @return {Map}
+
+
+@function extend($obj, $ext-obj) {
+  @return map-merge($obj, $ext-obj);
+}
+
+/// Check if the provided parameter is a map
+///
+/// @param {Value} $obj - The value to check
+/// @return {Boolean}
+
+@function is-map($map) {
+  @return type-of($map) == 'map';
+}
+
+/// Replace properties for -ms-
+///
+/// @param {Value} $value - The property to check
+/// @return {String}
+
+@function fix-flex($value) {
+  @if (str-index($value, '-between')) {
+    @return justify;
+  } @else if (str-index($value, '-around')) {
+    @return distribute;
+  } @else if (str-index($value, '-start') or str-index($value, '-end')) {
+    @return str-replace-first('flex-', '', $value);
+  } @else {
+    @return $value;
+  }
+}
+
+
+/// Given a tone it returns and acutal color
+///
+/// @param {String} $palette - The palette's name
+/// @param {String} $tone [base] - The Tone's name
+/// @require $palettes
+/// @return {Color}
+
+@function palette($palette, $tone: 'base') {
+    @return map-get(map-get($palettes, $palette), $tone);
+}
+
+/// Given a specific size it returns the corresponding value
+///
+/// @param {String} $conf - The configuration's name
+/// @param {String | Map} $size - The size's name - It could be a property or a map.
+/// @param {String} $mediaFeature [base] - The media feature
+/// @return {Value}
+
+@function getSize($conf, $size, $mediaFeature: 'base') {
+    @if ($mediaFeature == base) {
+      @if (is-map(map-get($conf, $size))) {
+        @return map-get(map-get($conf, $size), $mediaFeature);
+      } @else {
+        @return map-get($conf, $size);
+      }
+    } @else {
+      @return map-get(map-get(map-get($conf, $size), media), $mediaFeature);
+    }
+}
 

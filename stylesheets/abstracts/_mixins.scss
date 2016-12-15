@@ -1,9 +1,46 @@
 
-/**
- * Generate box sizing
- *
- * @param {String} $box-model - content-box|border-box|initial|inherit;
- */
+/// Block Element
+/// @access public
+/// @param {String} $element - Element's name
+
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// @alias element
+
+@mixin e($element) {
+  @include element($element) {
+    @content;
+  }
+}
+
+
+/// Block Modifier
+/// @access public
+/// @param {String} $modifier - Modifier's name
+
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/// @alias element
+
+@mixin m($modifier) {
+  @include modifier($modifier) {
+    @content;
+  }
+}
+
+
+/// Generate box sizing
+///
+/// @param {String} $box-model - content-box|border-box|initial|inherit;
+///
 
 @mixin box-sizing($box-model) {
   -webkit-box-sizing: $box-model;
@@ -12,37 +49,37 @@
 }
 
 
-/**
- * Generate both the width and the height
- *
- * @param {Number} $width - The element width;
- * @param {Number} $height [$width]  - The element height is optional; if not
- *                                     provided it is equal to the width.
- *
- * @example
- *   .element {
- *     @include size(100%);
- *   }
- *
- */
+
+/// Generate both the width and the height
+///
+/// @param {Length} $width - The element width;
+/// @param {Length} $height [$width]  - The element height is optional; if not
+///                                     provided it is equal to the width.
+///
+/// @example
+///   .element {
+///     @include size(100%);
+///   }
+///
+///
 
 @mixin size($width, $height: $width) {
-      width: $width;
-      height: $height;
+  width: $width;
+  height: $height;
 }
 
 
-/**
- * Generate vendors prefix for a particular property
- *
- * @param {LIST} $map - A map of declarations
- * @param {LIST} $vendors - Default value dumps all prefixes
- *
- * @example
- *   #element {
- *     @include prefix((transform, scale(1.5)), webkit o);
- *   }
- */
+
+/// Generate vendors prefix for a particular property
+///
+/// @param {LIST} $map - A map of declarations
+/// @param {LIST} $vendors - Default value dumps all prefixes
+///
+/// @example
+///   #element {
+///     @include prefix((transform, scale(1.5)), webkit o);
+///   }
+///
 
 @mixin prefix($map, $vendors: webkit moz ms o) {
   @each $prop, $value in $map {
@@ -56,11 +93,11 @@
   }
 }
 
-/**
- * Set the opacity for all browsers and provide a filter fallback for IE8
- *
- * @param {Number} $opacity - A value between 0 an 1
- */
+
+/// Set the opacity for all browsers and provide a filter fallback for IE8
+///
+/// @param {Number} $opacity - A value between 0 an 1
+///
 
 @mixin opacity($opacity) {
   opacity: $opacity;
@@ -68,12 +105,12 @@
   filter: alpha(opacity=$opacity-ie); //IE8
 }
 
-/**
- * Generate an animation
- * based on the number of frames
- *
- * @param {String} $animation-name - animation name
- */
+
+/// Generate an animation
+/// based on the number of frames
+///
+/// @param {String} $animation-name - animation name
+///
 
 @mixin keyframes($animation-name) {
   @-webkit-keyframes #{$animation-name} {
@@ -93,11 +130,11 @@
   }
 }
 
-/**
- * Generate an animation
- *
- * @param {List} $animate - A list of possibly animations (but not mandatory)
- */
+
+/// Generate an animation
+///
+/// @param {List} $animate - A list of possibly animations (but not mandatory)
+///
 
 @mixin animation($animate...) {
     $max: length($animate);
@@ -114,24 +151,23 @@
     animation:         $animations; /* IE >9, Fx >15, Op >12.0 */
 }
 
-/**
- * Generate elegant and maintainable media queries with Sass
- * https://davidwalsh.name/sass-media-query
- *
- * @example
- *   @include media(">=tablet", "<1280px") {
- *
- *   }
- *
- * @param {List} $conditions - It takes a variable number of strings, parses them,
-                               detects media expressions and handle possible
-                               disjunctions and glue everything together to form
-                               the media query expression.
- */
+/// Generate elegant and maintainable media queries with Sass
+/// https://davidwalsh.name/sass-media-query
+///
+/// @example
+///   @include media(">=tablet", "<1280px") {
+///
+///   }
+///
+/// @param {List} $conditions - It takes a variable number of strings, parses them,
+///                            detects media expressions and handle possible
+///                            disjunctions and glue everything together to form
+///                            the media query expression.
+///
 
 @mixin media($conditions...) {
   @for $i from 1 through length($conditions) {
-    $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i)));
+    $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i), $i, length($conditions)));
   }
 
   $branches: get-query-branches($conditions);
@@ -154,14 +190,13 @@
   }
 }
 
-/**
- * Generate rounded borders
- *
- * @param {Number} $radius - The shorthand to set the four properties
-                             border-top-left-radius, border-top-right-radius,
-                             border-bottom-right-radius and
-                             border-bottom-left-radius respectively.
- */
+
+/// Generate rounded borders
+///
+/// @param {Number} $radius - The shorthand to set the four properties
+///                           border-top-left-radius, border-top-right-radius,
+///                           border-bottom-right-radius and
+///                           border-bottom-left-radius respectively.
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -170,13 +205,12 @@
 }
 
 
-/**
- * Generate single side border-radius [TOP]
- *
- * @param {Number} $radius - The shorthand to set the two properties
-                             border-top-right-radius, and border-top-left-radius
-                             respectively.
- */
+
+/// Generate single side border-radius [TOP]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-top-right-radius, and border-top-left-radius
+///                           respectively.
 
 @mixin border-top-radius($radius) {
   -webkit-border-top-right-radius: $radius;
@@ -186,13 +220,12 @@
   background-clip: padding-box;
 }
 
-/**
- * Generate single side border-radius [RIGHT]
- *
- * @param {Number} $radius - The shorthand to set the two properties
-                             border-top-right-radius, and border-bottom-right-radius,
-                             respectively.
- */
+
+/// Generate single side border-radius [RIGHT]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-top-right-radius, and border-bottom-right-radius,
+///                           respectively.
 
 @mixin border-right-radius($radius) {
   -webkit-border-bottom-right-radius: $radius;
@@ -202,13 +235,12 @@
  background-clip: padding-box;
 }
 
-/**
- * Generate single side border-radius [BOTTOM]
- *
- * @param {Number} $radius - The shorthand to set the two properties
-                             border-bottom-right-radius, and border-bottom-left-radius,
-                             respectively.
- */
+
+/// Generate single side border-radius [BOTTOM]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-bottom-right-radius, and border-bottom-left-radius,
+///                             respectively.
 
 @mixin border-bottom-radius($radius) {
   -webkit-border-bottom-right-radius: $radius;
@@ -218,13 +250,12 @@
   background-clip: padding-box;
 }
 
-/**
- * Generate single side border-radius [LEFT]
- *
- * @param {Number} $radius - The shorthand to set the two properties
-                             border-top-left-radius, and border-left-radius,
-                             respectively.
- */
+
+/// Generate single side border-radius [LEFT]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-top-left-radius, and border-left-radius,
+///                           respectively.
 
 @mixin border-left-radius($radius) {
   -webkit-border-bottom-left-radius: $radius;
@@ -235,12 +266,11 @@
 }
 
 
-/**
- * Generate opposite side border-radius [TOP-LEFT & BOTTOM-RIGHT | TOP-RIGHT & BOTTOM LEFT]
- *
- * @param {Number} $topLeftBottomRight - The TOP-LEFT & BOTTOM-RIGHT radius
- * @param {Number} $topRightBottomLeft - TOP-RIGHT & BOTTOM LEFT radius
- */
+
+/// Generate opposite side border-radius [TOP-LEFT & BOTTOM-RIGHT | TOP-RIGHT & BOTTOM LEFT]
+///
+/// @param {Number} $topLeftBottomRight - The TOP-LEFT & BOTTOM-RIGHT radius
+/// @param {Number} $topRightBottomLeft - TOP-RIGHT & BOTTOM LEFT radius
 
 @mixin border-opposite-radius($topLeftBottomRight, $topRightBottomLeft) {
   -webkit-border-top-left-radius: $topLeftBottomRight;
@@ -254,14 +284,13 @@
   background-clip: padding-box;
 }
 
-/**
- * Generate padding
- *
- * @param {Number} $top - The top padding value or null
- * @param {Number} $right - The right padding value or null
- * @param {Number} $bottom - The bottom padding value or null
- * @param {Number} $left - The left padding value or null
- */
+
+/// Generate padding
+///
+/// @param {Number} $top - The top padding value or null
+/// @param {Number} $right - The right padding value or null
+/// @param {Number} $bottom - The bottom padding value or null
+/// @param {Number} $left - The left padding value or null
 
 @mixin padding($top, $right, $bottom, $left) {
   padding-top: $top;
@@ -270,14 +299,13 @@
   padding-left: $left;
 }
 
-/**
- * Generate margin
- *
- * @param {Number} $top - The top margin value or null
- * @param {Number} $right - The right margin value or null
- * @param {Number} $bottom - The bottom margin value or null
- * @param {Number} $left - The left margin value or null
- */
+
+/// Generate margin
+///
+/// @param {Number} $top - The top margin value or null
+/// @param {Number} $right - The right margin value or null
+/// @param {Number} $bottom - The bottom margin value or null
+/// @param {Number} $left - The left margin value or null
 
 @mixin margin($top, $right, $bottom, $left) {
   margin-top: $top;
@@ -286,10 +314,9 @@
   margin-left: $left;
 }
 
-/**
- * Generate margins set to auto
- *
- */
+
+/// Generate margins set to auto
+/// @access public
 
 @mixin margin-auto() {
   margin-left:auto;
@@ -297,65 +324,156 @@
 }
 
 
-/**
- * Generate inline block cross browser
- * @example: @include inline-block();
- */
+/// Generate a positioned element
+///
+/// @param {String} $position - The position system
+/// @param {List} $args - A list of properties
 
-@mixin inline-block() {
-  display: -moz-inline-stack;
-  display: inline-block;
-  vertical-align: top;
-  zoom: 1;
-  *display: inline;
-}
-
-/**
- * Generate a positioned element
- *
- * @param {String} $position - The position system
- * @param {List} $args - A list of properties
- */
-
-@mixin position($position, $args) {
+@mixin position($position, $args: null) {
 
   position: $position;
 
-  @each $o in top right bottom left {
-        $i: index($args, $o);
+  @if ($args) {
+    @each $o in top right bottom left {
+          $i: index($args, $o);
 
-    @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
-          #{$o}: nth($args, $i + 1);
+      @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
+            #{$o}: nth($args, $i + 1);
+      }
     }
   }
 }
 
-/**
- * Generate an absolute positioned element
- *
- * @param {List} $args - A list of properties
- */
 
-@mixin absolute($args) {
-        @include position("absolute", $args);
+/// Generate an absolute positioned element
+///
+/// @param {List} $args - A list of properties
+
+@mixin absolute($args: null) {
+  @include position(absolute, $args);
 }
 
-/**
- * Generate a fixed positioned element
- *
- * @param {List} $args - A list of properties
- */
 
-@mixin fixed($args) {
-        @include position("fixed", $args);
+/// Generate a fixed positioned element
+///
+/// @param {List} $args - A list of properties
+
+@mixin fixed($args: null) {
+  @include position(fixed, $args);
 }
 
-/**
- * Generate a relative positioned element
- *
- * @param {List} $args - A list of properties
- */
 
-@mixin relative($args) {
-        @include position("relative", $args);
+/// Generate a relative positioned element
+///
+/// @param {List} $args - A list of properties
+
+@mixin relative($args: null) {
+  @include position(relative, $args);
 }
+
+/// Generate a cross-browser flexbox item
+
+/// flex-direction: row | row-reverse | column | column-reverse;
+/// flex-wrap: nowrap | wrap | wrap-reverse;
+
+@mixin flex($conf: ()) {
+
+  $base-conf: (
+    box-direction: row,
+    wrap: wrap,
+    /*
+    justify-content: flex-start,
+    align-items: flex-start,
+    align-content: flex-start,*/
+  );
+
+  @if is-map($conf) {
+    // Using the provided config map, extend the basic configuration
+    // if necessary
+    $base-conf: extend($base-conf, $conf);
+  }
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+
+  @each $property, $value in $base-conf {
+    @if ($property == 'box-direction') {
+      @if (str-index($value, '-reverse')) {
+          -webkit-box-direction: reverse;
+      } @else {
+          -webkit-box-direction: normal;
+      }
+      @if (str-index($value, 'column')) {
+          -webkit-box-orient: vertical;
+      } @else {
+          -webkit-box-orient: horizontal;
+      }
+
+      -ms-flex-direction: $value;
+          flex-direction: $value;
+    } @else if ($property == 'wrap') {
+      -ms-flex-wrap: $value;
+          flex-wrap: $value;
+    } @else if ($property == 'justify-content') {
+      @if (str-index($value, '-start') or
+           str-index($value, '-end') or
+           str-index($value, '-between')) {
+        -webkit-box-pack: fix-flex($value);
+      }
+
+      -ms-flex-pack: fix-flex($value);
+      justify-content: $value;
+    } @else if ($property == 'align-items') {
+        -webkit-box-align: fix-flex($value);
+        -ms-flex-align: fix-flex($value);
+            align-items: $value;
+    } @else if ($property == 'align-content') {
+        -ms-flex-align: fix-flex($value);
+            align-items: $value;
+    }
+  }
+}
+
+/// Generate a relative positioned element
+///
+/// @param {List} $alignment - auto | flex-start | flex-end | center | baseline | stretch;
+
+@mixin flex-align-self($alignment) {
+  -ms-flex-item-align: fix-flex($alignment);
+           align-self: $alignment;
+}
+
+/// This defines the ability for a flex item to shrink if necessary
+///
+/// @param {Number} $value - Negative numbers are invalid.
+
+@mixin flex-shrink($value) {
+  -ms-flex-negative: $value;
+           flex-shrink: $value;
+}
+
+/// The order property controls the order in which the elements
+// appear in the flex container
+///
+/// @param {Number} $value
+
+@mixin flex-order($value) {
+  -webkit-box-ordinal-group: $value + 1;
+        -ms-flex-order: $value;
+            order: $value;
+}
+
+/// This defines the ability for a flex item to grow if necessary
+///
+/// @param {Number} $value
+
+@mixin flex-grow($value) {
+  -webkit-box-flex: $value;
+      -ms-flex-positive: $value;
+          flex-grow: $value;
+}
+
+
+
