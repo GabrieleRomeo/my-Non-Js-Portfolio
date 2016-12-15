@@ -1,18 +1,103 @@
 // COLORS
 // ---------------------------
 
-$color-san-marino: #3F51B3;
-$color-persian-rose: #FF1493;
-$color-amaranth: #E91E63;
-$color-gorse: #FFEB3B;
+$_color-base--san-marino: #3F51B3;
+$_color-base--persian-rose: #FF1493;
+$_color-base--amaranth: #E91E63;
+$_color-base--gorse: #FFEB3B;
+$_color-base--azure: #3A4BA6;
+$_color-base--negroni: #FFE4C4;
+$_color-base--goldenrod: #F7D371;
+$_color-base--rose: #FA91E5;
+$_color-base--malibu: #8D9DFF;
+$_color-base--mauve: #CD97FF;
+$_color-base--shamrock: #3BC693;
+$_color-base--bittersweet: #FD7372;
+$_color-base--supernova: #FACF00;
+$_color-base--sunshade: #FFAC31;
 
-$color-goldenrod: #F7D371;
-$color-rose: #FA91E5;
-
-$color-malibu: #8D9DFF;
-$color-mauve: #CD97FF;
-$color-shamrock: #3BC693;
-$color-bittersweet: #FD7372;
-$color-supernova: #FACF00;
-$color-sunshade: #FFAC31;
-
+$palettes: (
+  white: (
+    base: white(),
+    lighter: white(.3),
+    light: white(.5),
+    dark: white(.8)
+  ),
+  black: (
+    base: black(),
+    light: black(.3),
+    lighter: black(.5),
+    dark: black(.8),
+    darker: black(.9)
+  ),
+  san-marino:(
+    base: $_color-base--san-marino,
+    light: lighten($_color-base--san-marino, 10%),
+    dark: darken($_color-base--san-marino, 10%)
+  ),
+  persian-rose: (
+    base: $_color-base--persian-rose,
+    light: lighten($_color-base--persian-rose, 10%),
+    dark: darken($_color-base--persian-rose, 10%)
+  ),
+  amaranth: (
+    base: $_color-base--amaranth,
+    light: lighten($_color-base--amaranth, 10%),
+    dark: darken($_color-base--amaranth, 10%)
+  ),
+  gorse: (
+    base: $_color-base--gorse,
+    light: lighten($_color-base--gorse, 10%),
+    dark: darken($_color-base--gorse, 10%)
+  ),
+  azure: (
+    base: $_color-base--azure,
+    light: lighten($_color-base--azure, 10%),
+    dark: darken($_color-base--azure, 10%)
+  ),
+  negroni: (
+    base: $_color-base--negroni,
+    light: lighten($_color-base--negroni, 10%),
+    dark: darken($_color-base--negroni, 10%)
+  ),
+  goldenrod: (
+    base: $_color-base--goldenrod,
+    light: lighten($_color-base--goldenrod, 10%),
+    dark: darken($_color-base--goldenrod, 10%)
+  ),
+  rose: (
+    base: $_color-base--rose,
+    light: lighten($_color-base--rose, 10%),
+    dark: darken($_color-base--rose, 10%)
+  ),
+  malibu:(
+    base: $_color-base--malibu,
+    light: lighten($_color-base--malibu, 10%),
+    dark: darken($_color-base--malibu, 10%)
+  ),
+  mauve: (
+    base: $_color-base--mauve,
+    light: lighten($_color-base--mauve, 10%),
+    dark: darken($_color-base--mauve, 10%)
+  ),
+  shamrock: (
+    base: $_color-base--shamrock,
+    light: lighten($_color-base--shamrock, 10%),
+    dark: darken($_color-base--shamrock, 10%)
+  ),
+  bittersweet: (
+    base: $_color-base--bittersweet,
+    light: lighten($_color-base--bittersweet, 10%),
+    dark: darken($_color-base--bittersweet, 10%)
+  ),
+  supernova: (
+    base: $_color-base--supernova,
+    light: lighten($_color-base--supernova, 10%),
+    dark: darken($_color-base--supernova, 10%)
+  ),
+  sunshade: (
+    base: $_color-base--sunshade,
+    light: lighten($_color-base--sunshade, 10%),
+    dark: darken($_color-base--sunshade, 10%)
+  )
+) !default;

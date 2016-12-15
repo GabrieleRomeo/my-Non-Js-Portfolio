@@ -9,6 +9,25 @@
 
 $header-height: 90px;
 
+
+$conf-global: ();
+
+$conf-c-modal: (
+  width: (
+    base: 80%,
+    media: (
+      '>=Tablet': 500px
+    )
+  ),
+  height: 100px
+);
+
+$conf-c-sideMenu: (
+  width: 78%,
+  min-width: 240px,
+  max-width: 320px
+);
+
 $l-modal-width: 80%;
 $l-modal-height: 100px;
 
