@@ -1,0 +1,124 @@
+
+$width: getSize($conf-c-sideMenu, width);
+$min-width: getSize($conf-c-sideMenu, min-width);
+$max-width: getSize($conf-c-sideMenu, max-width);
+
+#sideMenu {
+  @include fixed(top 0 bottom 0);
+  width: $width;
+  min-width: $min-width;
+  max-width: $max-width;
+  -webkit-transform: translateX(-100%);
+  transform: translateX(-100%);
+  border-right: 1px solid rgba(0,0,0,.14);
+  background-color: #fff;
+  -webkit-transition: -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  transition: -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  transition: transform .25s cubic-bezier(0,0,.2,1);
+  transition: transform .25s cubic-bezier(0,0,.2,1),
+      -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  overflow-x: hidden;
+  will-change: transform;
+  z-index: 99999999;
+}
+
+.site-menu > li {
+  padding: 0 20px;
+  color: #702dbe;
+  font-weight: 300;
+  font-variant: small-caps;
+  line-height: 40px;
+}
+
+.site-menu > li:first-child,
+.site-menu > li:last-child {
+  line-height: inherit;
+  font-variant: initial;
+}
+.site-menu > li:first-child {
+  position: relative;
+  font-size: larger;
+}
+
+.site-menu > li:first-child label {
+  display: inline;
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+.site-menu > li:last-child {
+  color: initial;
+  font-size: .7em;
+  text-align: center;
+}
+
+.site-menu > li label,
+.site-menu > li  a {
+    display: block;
+    padding: 0 10px;
+}
+
+.site-menu > li label:active,
+.site-menu > li a:active {
+  color: #e91e63;
+  background-color: rgba(0, 0, 0, 0.03);
+}
+
+.site-menu .submenu {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.25s ease-in-out;
+}
+
+.site-menu .submenu li {
+  display: block;
+  height: 2em;
+  font-variant: normal;
+  text-transform: capitalize;
+}
+
+#site-menu--projects:checked ~ .submenu {
+  padding: 0 20px 10px 20px;
+  opacity: 1;
+  max-height: 400px;
+}
+
+
+#hamburger__checkbox:checked ~ #sideMenu {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+  box-shadow: 0 8px 10px -5px rgba(0,0,0,.2),
+              0 16px 24px 2px rgba(0,0,0,.14),
+              0 6px 30px 5px rgba(0,0,0,.39);
+}
+
+#hamburger__checkbox:checked + #sideMenuFund {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.64);
+  z-index: 3000;
+}
+
+
+
+
+
+
+@media only screen and (min-width: 767px) {
+
+  #sideMenu {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  #sideMenu {
+    display: none;
+  }
+}
