@@ -25,8 +25,9 @@ $palettes: (
   ),
   black: (
     base: black(),
-    light: black(.3),
-    lighter: black(.5),
+    superlight: black(.1),
+    lighter: black(.3),
+    light: black(.5),
     dark: black(.8),
     darker: black(.9)
   ),
