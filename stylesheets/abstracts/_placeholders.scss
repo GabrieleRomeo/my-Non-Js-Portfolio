@@ -33,6 +33,11 @@
   margin-right: auto;
 }
 
+%centerBlock {
+  @extend %center;
+  display: block;
+}
+
 %pointer {
   cursor: pointer;
 }
