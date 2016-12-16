@@ -211,26 +211,19 @@
 /// @require $conf-global
 ///
 
-@function get-configuration($option, $conf: $conf-global) {
+@function conf($conf, $property, $subProperty: 'base') {
 
-  @if not map-has-key($conf, $option) {
-    @error  'The option `#{$option} does not exist in $conf. '
+  @if not map-has-key($conf, $property) {
+    @error  'The option `#{$property} does not exist in $conf. '
           + 'Option should be one of #{ map-keys($conf) }.';
   }
 
-  @return map-get($conf, $option);
-}
+  @if (is-map(map-get($conf, $property))) {
+    @return map-get(map-get($conf, $property), $subProperty);
+  } @else {
+    @return map-get($conf, $property);
+  }
 
-///
-/// Get a configuration value from an option
-///
-/// @param {String} $opt - Option's name
-/// @return {Value}
-/// @require $conf-global
-///
-
-@function conf($option, $conf) {
-  @return get-configuration($option, $conf);
 }
 
 ///
@@ -382,15 +375,17 @@
 /// @param {String} $mediaFeature [base] - The media feature
 /// @return {Value}
 
-@function getSize($conf, $size, $mediaFeature: 'base') {
-    @if ($mediaFeature == base) {
-      @if (is-map(map-get($conf, $size))) {
-        @return map-get(map-get($conf, $size), $mediaFeature);
-      } @else {
-        @return map-get($conf, $size);
-      }
-    } @else {
-      @return map-get(map-get(map-get($conf, $size), media), $mediaFeature);
-    }
-}
+@function getSize($conf, $property, $subProperty: 'base') {
 
+      @if not map-has-key($conf, $property) {
+        @error  'The option `#{$property} does not exist in $conf. '
+              + 'Option should be one of #{ map-keys($conf) }.';
+      }
+
+      @if (is-map(map-get($conf, $property))) {
+        @return map-get(map-get($conf, $property), $subProperty);
+      } @else {
+        @return map-get($conf, $property);
+      }
+
+}
