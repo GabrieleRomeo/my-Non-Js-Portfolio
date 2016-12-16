@@ -1,7 +1,7 @@
 .c-modal {
-  $width: getSize($conf-c-modal, width);
-  $tabletWidth: getSize($conf-c-modal, width, '>=Tablet');
-  $height: getSize($conf-c-modal, height);
+  $width: conf($conf-c-modal, width);
+  $tabletWidth: conf($conf-c-modal, width, '>=Tablet');
+  $height: conf($conf-c-modal, height);
 
   @extend %none;
 

@@ -1,7 +1,7 @@
 
-$width: getSize($conf-c-sideMenu, width);
-$min-width: getSize($conf-c-sideMenu, min-width);
-$max-width: getSize($conf-c-sideMenu, max-width);
+$width: conf($conf-c-sideMenu, width);
+$min-width: conf($conf-c-sideMenu, min-width);
+$max-width: conf($conf-c-sideMenu, max-width);
 
 %c-sideMenu--active {
   color: palette(amaranth);
