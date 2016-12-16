@@ -28,7 +28,7 @@
           position: relative;
           width: 0;
           height: 2px;
-          @extend %center;
+          @extend %centerBlock;
           background: palette(supernova);
           opacity: 0;
           @include prefix((transition-duration: .3s), 'webkit');
