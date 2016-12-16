@@ -368,24 +368,3 @@
     @return map-get(map-get($palettes, $palette), $tone);
 }
 
-/// Given a specific size it returns the corresponding value
-///
-/// @param {String} $conf - The configuration's name
-/// @param {String | Map} $size - The size's name - It could be a property or a map.
-/// @param {String} $mediaFeature [base] - The media feature
-/// @return {Value}
-
-@function getSize($conf, $property, $subProperty: 'base') {
-
-      @if not map-has-key($conf, $property) {
-        @error  'The option `#{$property} does not exist in $conf. '
-              + 'Option should be one of #{ map-keys($conf) }.';
-      }
-
-      @if (is-map(map-get($conf, $property))) {
-        @return map-get(map-get($conf, $property), $subProperty);
-      } @else {
-        @return map-get($conf, $property);
-      }
-
-}
