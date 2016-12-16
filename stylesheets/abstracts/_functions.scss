@@ -230,9 +230,6 @@
 ///   specific. In that case we can use thhe following syntax
 ///   conf($conf-c-modal, media, base)
 
-
-
-
 @function conf($conf, $property, $subProperty:null) {
 
   $result: '';
