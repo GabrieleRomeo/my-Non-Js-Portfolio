@@ -93,6 +93,15 @@
   }
 }
 
+/// Generate vendors prefixes for the CSS animation rule.
+///
+/// @param {LIST} $properties - The list of the animation's properties
+/// @param {LIST} $vendors - Default value dumps only the -webkit- prefix
+
+@mixin prefix-anim($animation, $vendors: webkit) {
+  @include prefix((animation: $animation), $vendors);
+}
+
 
 /// Set the opacity for all browsers and provide a filter fallback for IE8
 ///
