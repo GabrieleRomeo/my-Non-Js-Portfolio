@@ -1,0 +1,104 @@
+
+.c-button {
+  @include prefix((touch-action: manipulation), 'ms');
+  @include prefix((transition: all .3s ease-in-out), 'webkit');
+  @extend %pointer;
+  display: inline-block;
+  font-size: 1.5em;
+  line-height: 1.5em;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  -webkit-user-select: none;
+
+    @include modifier('roundedTop') {
+      @include absolute(left 0 right 0 bottom 0);
+      @include border-top-radius(20px);
+      @extend %center;
+      @extend %shadow-2px;
+      height: 70px;
+      width: 100px;
+      font-size: 1.8em;
+      color: palette(black, lighter);
+      background-color: palette(white);
+      border: 1px solid #fff;
+
+        &:hover,
+        &:focus {
+          color: palette(amaranth);
+
+            .icon-angle-double-down:before {
+              @include prefix-anim(pulse 2s linear infinite);
+              @include prefix((transform-origin: 50% 50%), 'webkit');
+            }
+        };
+    }
+
+    @include modifier('fadeIN') {
+      @include prefix-anim(fadeIN 1s linear 3.6s backwards);
+    }
+}
+
+
+
+/*
+
+.icon--center {
+  vertical-align: middle;
+}
+
+.button--next:hover,
+.button--next:focus {
+  outline: 0;
+  color: #e91e63;
+}
+
+.button--next:hover .icon--center:before,
+.button--next:focus .icon--center:before{
+  -webkit-animation: pulse 2s linear infinite;
+          animation: pulse 2s linear infinite;
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+}
+
+.button--next {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  height: 70px;
+  width: 100px;
+  background-color: #fff;
+  font-size: 1.8em;
+  color: rgba(0, 0, 0, 0.41);
+  border: 1px solid #fff;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0.00px 2.00px 5px 0px rgba(0,0,0,0.35);
+}
+
+.button {
+  display: inline-block;
+  margin-bottom: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -ms-touch-action: manipulation;
+      touch-action: manipulation;
+  cursor: pointer;
+  
+  -webkit-transition: all .3s ease-in-out;
+  transition: all .3s ease-in-out;
+}
+.button--fadeIN {
+  -webkit-animation: fadeIN 1s linear 3.6s backwards;
+  -moz-animation: fadeIN 1s linear 3.6s backwards;
+  -ms-animation: fadeIN 1s linear 3.6s backwards;
+  animation: fadeIN 1s linear 3.6s backwards;
+}
+*/
+
