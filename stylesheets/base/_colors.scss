@@ -16,6 +16,7 @@ $_color-base--bittersweet: #FD7372;
 $_color-base--supernova: #FACF00;
 $_color-base--sunshade: #FFAC31;
 $_color-base--green-vogue: #03295F;
+$_color-base--electric-violet: #6A00F4;
 
 $palettes: (
   white: (
@@ -107,5 +108,11 @@ $palettes: (
     lighter: lighten($_color-base--green-vogue, 20%),
     light: lighten($_color-base--green-vogue, 10%),
     dark: darken($_color-base--green-vogue, 10%)
+  ),
+  electric-violet: (
+    base: $_color-base--electric-violet,
+    lighter: lighten($_color-base--electric-violet, 20%),
+    light: lighten($_color-base--electric-violet, 10%),
+    dark: darken($_color-base--electric-violet, 10%)
   )
 ) !default;
