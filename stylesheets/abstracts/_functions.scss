@@ -204,13 +204,14 @@
 }
 
 ///
-/// Get a configuration value from an option
+/// Get a configuration value from a property (or sub property)
 ///
 /// @param {String} $conf - The configuration's name
 /// @param {String} $property - The property's name
 /// @param {String} $subProperty - A sub property's name [optional]
 /// @return {Value}
 /// @require $conf
+///
 /// @example
 ///   $conf: (
 ///     width: (
@@ -223,14 +224,32 @@
 ///     height: 100px
 ///   );
 ///
-///   The $conf maps contains two property named 'base'
-///   Using conf($conf-c-modal, base), this function returns the value of
-///   the first occurence, so in that case it will be return 80%
-///   If we want to access to the second occurence instead, we need to be more
-///   specific. In that case we can use thhe following syntax
-///   conf($conf-c-modal, media, base)
+///   In this example, the $conf map contains two property with the same name: 'base'
+///   Using the $property parameter only, the 'conf' function returns the value of
+///   the first occurence (if any). Using the $property and $subProperty paramaters
+///   we give a more specific query and the 'conf' function gives back the second
+///    occurence of the 'base' option instead.
+///
+///   conf($conf-c-modal, media)  ---> 80%
+///
+///   conf($conf-c-modal, media, base) --> 200px
+///
+///   If are looking for a map nested inside the $conf map, the 'conf' function
+///   returns it as it is
+///
+///   conf($conf-c-modal, width)   ---> (
+///                                     base: 80%,
+///                                     media: (
+///                                       '>=Tablet': 500px,
+///                                       base: 200px
+///                                     )
+///
 
 @function conf($conf, $property, $subProperty:null) {
+
+  @if not is-map($conf) {
+    @error 'The option `#{$conf} is not a map.'
+  }
 
   $result: '';
 
