@@ -15,6 +15,7 @@ $_color-base--shamrock: #3BC693;
 $_color-base--bittersweet: #FD7372;
 $_color-base--supernova: #FACF00;
 $_color-base--sunshade: #FFAC31;
+$_color-base--green-vogue: #03295F;
 
 $palettes: (
   white: (
@@ -100,5 +101,11 @@ $palettes: (
     base: $_color-base--sunshade,
     light: lighten($_color-base--sunshade, 10%),
     dark: darken($_color-base--sunshade, 10%)
+  ),
+  green-vogue: (
+    base: $_color-base--green-vogue,
+    lighter: lighten($_color-base--green-vogue, 20%),
+    light: lighten($_color-base--green-vogue, 10%),
+    dark: darken($_color-base--green-vogue, 10%)
   )
 ) !default;
