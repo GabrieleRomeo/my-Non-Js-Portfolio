@@ -34,6 +34,12 @@ $conf-c-sideMenu: (
   max-width: 320px
 );
 
+$conf-c-splash: (
+  animation: (
+    width: 100%
+  )
+);
+
 $l-modal-width: 80%;
 $l-modal-height: 100px;
 
