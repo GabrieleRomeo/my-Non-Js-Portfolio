@@ -160,6 +160,20 @@
     animation:         $animations; /* IE >9, Fx >15, Op >12.0 */
 }
 
+
+// -----------------------------------------------------------------------------
+// Media Queries
+// -----------------------------------------------------------------------------
+
+// Caching current breakpoint
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;
+
+// Caching existing placeholders and queries
+$placeholders: ();
+$queries-in-use: ();
+
+
 /// Generate elegant and maintainable media queries with Sass
 /// https://davidwalsh.name/sass-media-query
 ///
@@ -197,6 +211,81 @@
       }
     }
   }
+}
+
+/// HACKS Used to enable placeholders inside @media queries
+/// You may not @extend an outer selector from within @media.
+/// You may only @extend selectors within the same directive.
+
+@mixin media-extensible($conditions...) {
+  @for $i from 1 through length($conditions) {
+    $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i), $i, length($conditions)));
+  }
+
+  $branches: get-query-branches($conditions);
+  $query: "";
+
+  @each $branch in $branches {
+    @if (str-length($query) != 0) {
+      $query: $query + ", ";
+    }
+
+    $query: $query + $branch;
+  }
+
+  // Cache query
+  @if not index($queries-in-use, $query) {
+    $queries-in-use: append($queries-in-use, $query) !global;
+  }
+
+  $current-breakpoint: str-replace-first($query, '-', ' ')        !global;
+  @at-root {
+    @media #{$query} {
+      #{&} {
+        @content;
+      }
+    }
+  }
+  $current-breakpoint: $default-breakpoint !global;
+}
+
+/// HACKS Used to enable placeholders inside @media queries
+/// You may not @extend an outer selector from within @media.
+/// You may only @extend selectors within the same directive.
+
+@mixin _placeholder($name) {
+  @if not index($placeholders, $name) {
+    $placeholders: append($placeholders, $name) !global;
+
+    @at-root {
+      @each $query in $queries-in-use {
+        @media #{$query} {
+          %#{$name}-#{str-replace-first($query, '-', ' ')} {
+            @content;
+          }
+        }
+      }
+
+      %#{$name}-#{$default-breakpoint} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @warn "Placeholder `#{$name}` already exists.";
+  }
+}
+
+// Extend the accurate placeholder
+// according to the current scope
+// Basically instead of doing:
+//    @extend %clear;
+// You go:
+//    @include _(clear);
+// Not much longer, is it?
+@mixin _($name) {
+  @extend %#{$name}-#{$current-breakpoint} !optional;
 }
 
 
