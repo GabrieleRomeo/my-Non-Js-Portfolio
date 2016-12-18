@@ -40,6 +40,16 @@ $conf-c-splash: (
   )
 );
 
+$conf-c-tab: (
+  width: (
+      content: (
+        media: (
+          '>=tablet': 500px
+        )
+      )
+    ),
+);
+
 $l-modal-width: 80%;
 $l-modal-height: 100px;
 
