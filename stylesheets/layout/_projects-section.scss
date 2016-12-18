@@ -1,0 +1,64 @@
+
+
+/* PROJECTS */
+#projects {
+  overflow: auto;
+  background: palette(electric-violet);
+  background: -webkit-linear-gradient(315deg, #6a00f4 0%,#ca2075 40%,#d82a84 61%,#ca2075 84%,#9a1e54 100%);
+  background: linear-gradient(135deg, #6a00f4 0%,#ca2075 40%,#d82a84 61%,#ca2075 84%,#9a1e54 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a00f4', endColorstr='#9a1e54',GradientType=1 );
+  background-repeat: no-repeat;
+
+    .project__info {
+        p {
+          font-weight: 300;
+          line-height: 1.75em;
+        }
+        em {
+          font-style: italic;
+          color: #e91e63;
+        }
+        strong {
+          font-weight: 600;
+        }
+    }
+
+    .project__description {
+      padding: 1em 0;
+      font-size: initial;
+
+      .project__link {
+        &:hover,
+        &focus {
+          background-color: palette(black, light);
+        };
+      }
+
+        .project__links {
+            i:nth-of-type(2) {
+              padding-left: 25px;
+            }
+
+            .project__link {
+              display: inline-block;
+              padding-top: 1.8em;
+              font-weight: initial;
+              color: palette(malibu);
+
+              &:hover,
+              &focus {
+                color: #e91e55;
+              };
+            }
+        }
+
+        .list__team {
+          font-size: initial;
+          font-weight: 300;
+        }
+
+        .span__role {
+          color: palette(cerise);
+        }
+    }
+}
