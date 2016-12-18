@@ -17,6 +17,8 @@ $_color-base--supernova: #FACF00;
 $_color-base--sunshade: #FFAC31;
 $_color-base--green-vogue: #03295F;
 $_color-base--electric-violet: #6A00F4;
+$_color-base--french-lilac: #D8B8EE;
+$_color-base--cerise: #D72983;
 
 $palettes: (
   white: (
@@ -114,5 +116,17 @@ $palettes: (
     lighter: lighten($_color-base--electric-violet, 20%),
     light: lighten($_color-base--electric-violet, 10%),
     dark: darken($_color-base--electric-violet, 10%)
+  ),
+  french-lilac: (
+    base: $_color-base--french-lilac,
+    lighter: lighten($_color-base--french-lilac, 20%),
+    light: lighten($_color-base--french-lilac, 10%),
+    dark: darken($_color-base--french-lilac, 10%)
+  ),
+  cerise: (
+    base: $_color-base--cerise,
+    lighter: lighten($_color-base--cerise, 20%),
+    light: lighten($_color-base--cerise, 10%),
+    dark: darken($_color-base--cerise, 10%)
   )
 ) !default;
