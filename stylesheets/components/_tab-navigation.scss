@@ -1,15 +1,57 @@
 /* TAB LAYOUT */
 
-$tablet-width: conf(conf($conf-c-tab, content), media, '>=tablet');
+$tab__content--min-height: conf(conf(conf($conf-c-tab, min-height), content), media , '>=tablet');
+$tab__content--width: conf(conf(conf($conf-c-tab, width), content), media , '>=tablet');
+$tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=tablet');
+
+%c-tab__label--default {
+  color: palette(white);
+  background-color: palette(amaranth);
+}
+
+%c-tab__content--default {
+  @include prefix((transform: translate(0, 0)), webkit);
+  padding: 20px;
+  opacity: 1;
+  max-height: 1050px;
+}
 
 
+@mixin c-tab__checked($version: default) {
+
+  $tabItems: 12;
+  $g: 1;
+
+  @for $i from $g to $tabItems {
+
+    // The eleven tab represents the HACKATHONS sticker
+    // for this reason, it must be not clickable
+    $g: if($i != 11, $i, $i + 1);
+
+    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:nth-of-type(#{$g}) .c-tab__label {
+      @if $version == default {
+          @extend %c-tab__label--default;
+      } @else {
+          @include _('c-tab__label--greater-than-tablet');
+      }
+    }
+    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:nth-of-type(#{$g}) .c-tab__content {
+      @if $version == default {
+          @extend %c-tab__content--default;
+      } @else {
+          @include _('c-tab__content--greater-than-tablet');
+      }
+    }
+  }
+}
+// .tab__radio:nth-of-type(1):checked ~ .tab__list li:nth-of-type(1) .tab__content
 .c-tab {
   margin-top: 150px;
 
     // .c-tab__radio
     @include element('radio') {
       @extend %none;
-      //@include c-tab__checked;
+      @include c-tab__checked(default);
     }
 
     // .c-tab__list
@@ -74,28 +116,26 @@ $tablet-width: conf(conf($conf-c-tab, content), media, '>=tablet');
 
 }
 
-
-@media only screen and (min-width: 768px) {
-
   .c-tab {
 
-      .tab__list,
-      .tab__content {
-        height: 1100px;
-        min-height: 1100px;
+    @include media-extensible('screen', '>=tablet') {
+      .c-tab__list,
+      .c-tab__content {
+        height: $tab__content--min-height;
+        min-height: $tab__content--min-height;
         height: auto;
       }
 
       // .c-tab__radio
       @include element('radio') {
-        //@include c-tab__checked('greater-than-tablet');
+        @include c-tab__checked(greater-than-tablet);
       }
 
       // .c-tab__content
       @include element('content') {
         @include absolute(top 0 right 0);
         display: none;
-        width: $tablet-width;
+        width: $tab__content--width;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
         border-bottom-left-radius: 5px;
@@ -111,7 +151,7 @@ $tablet-width: conf(conf($conf-c-tab, content), media, '>=tablet');
       // .c-tab__label
       @include element('label') {
         @include border-left-radius(5px);
-        width: 30%;
+        width: $tab__label--width;
         background-color: initial;
         text-transform: capitalize;
         text-align: left;
@@ -141,77 +181,20 @@ $tablet-width: conf(conf($conf-c-tab, content), media, '>=tablet');
             }
           }
       }
-
+    }
   }
 
+/// HACKS Used to enable placeholders inside @media queries
+/// You may not @extend an outer selector from within @media.
+/// You may only @extend selectors within the same directive.
+
+@include _placeholder('c-tab__label--greater-than-tablet') {
+  color: palette(amaranth);
+  background-color: palette(white);
+  border-left-color: palette(supernova);
 }
 
-
-
-/*
-
-
-.tab__radio:nth-of-type(1):checked ~ .tab__list li:nth-of-type(1) .tab__content,
-.tab__radio:nth-of-type(2):checked ~ .tab__list li:nth-of-type(2) .tab__content,
-.tab__radio:nth-of-type(3):checked ~ .tab__list li:nth-of-type(3) .tab__content,
-.tab__radio:nth-of-type(4):checked ~ .tab__list li:nth-of-type(4) .tab__content,
-.tab__radio:nth-of-type(5):checked ~ .tab__list li:nth-of-type(5) .tab__content,
-.tab__radio:nth-of-type(6):checked ~ .tab__list li:nth-of-type(6) .tab__content,
-.tab__radio:nth-of-type(7):checked ~ .tab__list li:nth-of-type(7) .tab__content,
-.tab__radio:nth-of-type(8):checked ~ .tab__list li:nth-of-type(8) .tab__content,
-.tab__radio:nth-of-type(9):checked ~ .tab__list li:nth-of-type(9) .tab__content,
-.tab__radio:nth-of-type(10):checked ~ .tab__list li:nth-of-type(10) .tab__content,
-.tab__radio:nth-of-type(11):checked ~ .tab__list li:nth-of-type(12) .tab__content {
-  padding: 20px;
-  opacity: 1;
-  transform: translate(0, 0);
-  max-height: 1050px;
-}
-
-.tab__radio {
-  display: none;
-}
-
-
-.tab__list .tab__item--sticker ~ .tab__item label.list__label {
-  font-size: 0.9em;
-  font-variant: small-caps;
-}
-.tab__list .list__label--sticket {
-  color: #fff!important;
-  background-color: #d72983!important;
-  text-transform: uppercase!important;
-  cursor: initial;
-}
-
-.tab__list .list__label:hover {
-  background-color: rgba(255, 255, 255, 0.6);
-  color: #e91e63;
-}
-
-.tab__radio:nth-of-type(1):checked ~ ul .tab__item:nth-of-type(1) .list__label,
-.tab__radio:nth-of-type(2):checked ~ ul .tab__item:nth-of-type(2) .list__label,
-.tab__radio:nth-of-type(3):checked ~ ul .tab__item:nth-of-type(3) .list__label,
-.tab__radio:nth-of-type(4):checked ~ ul .tab__item:nth-of-type(4) .list__label,
-.tab__radio:nth-of-type(5):checked ~ ul .tab__item:nth-of-type(5) .list__label,
-.tab__radio:nth-of-type(6):checked ~ ul .tab__item:nth-of-type(6) .list__label,
-.tab__radio:nth-of-type(7):checked ~ ul .tab__item:nth-of-type(7) .list__label,
-.tab__radio:nth-of-type(8):checked ~ ul .tab__item:nth-of-type(8) .list__label,
-.tab__radio:nth-of-type(9):checked ~ ul .tab__item:nth-of-type(9) .list__label,
-.tab__radio:nth-of-type(10):checked ~ ul .tab__item:nth-of-type(10) .list__label,
-.tab__radio:nth-of-type(11):checked ~ ul .tab__item:nth-of-type(12) .list__label {
-  color: #ffffff;
-  background-color: rgb(233, 30, 99);
-}
-.tab__list .list__label {
+@include _placeholder('c-tab__content--greater-than-tablet') {
   display: block;
-  padding: 10px;
-  text-align: center;
-  text-transform: uppercase;
-  background-color: #d8b8ee;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.22);
-  -webkit-transition: background-color .7s;
-  transition: background-color .7s;
-  cursor: pointer;
 }
-*/
+
