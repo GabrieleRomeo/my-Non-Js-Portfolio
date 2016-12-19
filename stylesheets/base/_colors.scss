@@ -19,6 +19,7 @@ $_color-base--green-vogue: #03295F;
 $_color-base--electric-violet: #6A00F4;
 $_color-base--french-lilac: #D8B8EE;
 $_color-base--cerise: #D72983;
+$_color-base--gray: #929292;
 
 $palettes: (
   white: (
@@ -129,5 +130,11 @@ $palettes: (
     lighter: lighten($_color-base--cerise, 20%),
     light: lighten($_color-base--cerise, 10%),
     dark: darken($_color-base--cerise, 10%)
+  ),
+  gray: (
+    base: $_color-base--gray,
+    lighter: lighten($_color-base--gray, 20%),
+    light: lighten($_color-base--gray, 10%),
+    dark: darken($_color-base--gray, 10%)
   )
 ) !default;
