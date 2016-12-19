@@ -1,0 +1,136 @@
+$conf: $base-conf-skills;
+
+$graphs-conf: conf($conf, graphs);
+$graph-pie: conf($graphs-conf, pie);
+
+$graph-pie__width: conf($graph-pie, width, base);
+$graph-pie__width-grather-than-tablet: conf($graph-pie, width, '>=tablet');
+$graph-pie__bg-color: conf($graph-pie, background-color);
+$graph-pie__border-radius: conf($graph-pie, border-radius);
+
+$graph-pie__c-circle-size: conf($graph-pie, c-circle, size);
+$graph-pie__c-circle-font-weight: conf($graph-pie, c-circle, font-weight);
+$graph-pie__c-circle-margin: conf($graph-pie, c-circle, margin);
+$graph-pie__c-circle-before-color: conf($graph-pie, c-circle, before-color);
+$graph-pie__c-circle-before-font-weight: conf($graph-pie, c-circle, before-font-weight);
+$graph-pie__c-circle-after-color: conf($graph-pie, c-circle, after-color);
+$graph-pie__c-circle-after-font-size: conf($graph-pie, c-circle, after-font-size);
+
+$conf-graph-pie-svg: conf($graph-pie, svg);
+
+$graph-pie__animation-details-speed: conf($conf-graph-pie-svg, animation-details-speed);
+$graph-pie__front-path-fill: conf($conf-graph-pie-svg, front-paths, path-fill);
+$graph-pie__front-path-stroke-width: conf($conf-graph-pie-svg, front-paths, path-stroke-width);
+$graph-pie__front-path-stroke-dasharray: conf($conf-graph-pie-svg, front-paths, path-stroke-dasharray);
+$graph-pie__front-path-color: conf($conf-graph-pie-svg, front-paths, path-color);
+$graph-pie__front-path-animation-speed: conf($conf-graph-pie-svg, front-paths, animation-speed);
+
+$graph-pie__back-path-stroke-width: conf($conf-graph-pie-svg, back-paths, path-stroke-width);
+$graph-pie__back-path-color: conf($conf-graph-pie-svg, back-paths, path-color);
+
+
+@mixin _path-gradient() {
+  @for $i from 1 through 6 {
+    &:nth-of-type(#{$i}) {
+      stroke: lighten($graph-pie__back-path-color, 2.2 * $i * 1%);
+    };
+  }
+}
+
+%animation-details {
+  @include prefix-anim(fadeIN $graph-pie__animation-details-speed);
+}
+
+.graph {
+  @include relative(top 100px);
+
+    // Layout for every type of graph
+    .l-graph {
+      // .l-graph__item
+      @include element('item') {
+        // .l-graph__item--inline
+        @include modifier('inline') {
+          @extend %inline-b;
+        }
+      }
+    }
+
+    // .graph--rounded
+    @include modifier('rounded') {
+      @include border-radius($graph-pie__border-radius);
+    }
+
+    // .graph--pie
+    @include modifier('pie') {
+      width: $graph-pie__width;
+      padding: 20px;
+      margin: 30px auto 0 auto;
+      text-align: center;
+      background-color: $graph-pie__bg-color;
+      z-index: z('default');
+
+      @include media('screen', '>=tablet') {
+        width: $graph-pie__width-grather-than-tablet;
+        margin-bottom: 160px;
+      }
+
+        .c-circle {
+          position: relative;
+          text-align: center;
+          font-weight: $graph-pie__c-circle-font-weight;
+          margin: $graph-pie__c-circle-margin;
+
+            &:before {
+              @extend %animation-details;
+              content: attr(data-name);
+              position: absolute;
+              width: 100%;
+              bottom: -2rem;
+              color: $graph-pie__c-circle-before-color;
+              font-weight: $graph-pie__c-circle-before-font-weight;
+              text-transform: uppercase;
+            }
+
+            &:after {
+              @extend %animation-details;
+              content: attr(data-percent);
+              position: absolute;
+              width: 100%;
+              top: calc(50% - 1rem);
+              left: 0;
+              color: $graph-pie__c-circle-after-color;
+              font-size: $graph-pie__c-circle-after-font-size;
+              text-align: center;
+
+            }
+
+            @include element('svg') {
+              @include size($graph-pie__c-circle-size);
+
+              // .skills__svg--back
+              @include modifier('back') {
+                @include absolute(top 0 left 0);
+                @include prefix((transform: rotate(-90deg)));
+
+                path.graph__path--front {
+                  @include prefix-anim(load $graph-pie__front-path-animation-speed);
+                  fill: $graph-pie__front-path-fill;
+                  stroke-width: $graph-pie__front-path-stroke-width;
+                  stroke-dasharray: $graph-pie__front-path-stroke-dasharray;
+                  stroke: $graph-pie__front-path-color;
+                }
+              }
+
+              path.graph__path--back {
+                  @include _path-gradient;
+                }
+            }
+
+            // back paths
+            .path__group {
+              fill: none;
+              stroke-width: $graph-pie__back-path-stroke-width;
+            }
+        }
+    }
+}
