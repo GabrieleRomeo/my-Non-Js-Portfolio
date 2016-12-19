@@ -24,7 +24,7 @@ $base-graph-bars: (
     )
   ),
   )
-);
+) !default;
 
 
 //------------------------------------------------------------------------------
@@ -34,7 +34,8 @@ $base-graph-bars: (
 $base-c-tooltip: (
   width: 180px,
   color: palette(black),
-  background-color: palette(white)
+  background-color: palette(white),
+  font-size: .8rem
 ) !default;
 
 

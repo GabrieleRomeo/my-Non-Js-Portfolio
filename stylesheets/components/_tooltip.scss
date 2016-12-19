@@ -5,9 +5,10 @@
   width: conf($base-c-tooltip, width);
   padding: 5px;
   margin-left: -90px;
-  background-color: conf($base-c-tooltip, background-color);
+  font-size: conf($base-c-tooltip, font-size);
   color: conf($base-c-tooltip, color);
   text-align: center;
+  background-color: conf($base-c-tooltip, background-color);
   z-index: z(default);
   visibility: hidden;
 
