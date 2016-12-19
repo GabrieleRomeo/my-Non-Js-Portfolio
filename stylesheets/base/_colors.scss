@@ -21,6 +21,8 @@ $_color-base--french-lilac: #D8B8EE;
 $_color-base--cerise: #D72983;
 $_color-base--gray: #929292;
 $_color-base--alice-blue: #F0F8FF;
+$_color-base--gull-gray: #93A2AC;
+$_color-base--crimson: #ED143D;
 
 $palettes: (
   white: (
@@ -143,5 +145,17 @@ $palettes: (
     lighter: lighten($_color-base--gray, 20%),
     light: lighten($_color-base--gray, 10%),
     dark: darken($_color-base--gray, 10%)
+  ),
+  gull-gray: (
+    base: $_color-base--gull-gray,
+    lighter: lighten($_color-base--gull-gray, 20%),
+    light: lighten($_color-base--gull-gray, 10%),
+    dark: darken($_color-base--gull-gray, 10%)
+  ),
+  crimson: (
+    base: $_color-base--crimson,
+    lighter: lighten($_color-base--crimson, 20%),
+    light: lighten($_color-base--crimson, 10%),
+    dark: darken($_color-base--crimson, 10%)
   )
 ) !default;
