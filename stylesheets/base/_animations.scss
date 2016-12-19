@@ -98,11 +98,20 @@
   0% {
     opacity: 0;
     @include prefix((transform: scale3d(.1, .1, .1) translate3d(0, -1000px, 0)), webkit);
-    @include prefix((animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190)), webkit); 
+    @include prefix((animation-timing-function: cubic-bezier(0.550, 0.055, 0.675, 0.190)), webkit);
   }
   60% {
     opacity: 1;
     @include prefix((transform: scale3d(.475, .475, .475) translate3d(0, 60px, 0)), webkit);
     @include prefix((animation-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1)), webkit);
   }
+}
+
+@include keyframes('rubberBand') {
+  30% { @include prefix((transform: scale3d(1.25, 0.75, 1)), webkit); }
+  40% { @include prefix((transform: scale3d(0.75, 1.25, 1)), webkit); }
+  50% { @include prefix((transform: scale3d(1.15, 0.85, 1)), webkit); }
+  65% { @include prefix((transform: scale3d(.95, 1.05, 1)), webkit); }
+  75% { @include prefix((transform: scale3d(1.05, .95, 1)), webkit); }
+  0%, 100% { @include prefix((transform: scale3d(1, 1, 1)), webkit); }
 }
