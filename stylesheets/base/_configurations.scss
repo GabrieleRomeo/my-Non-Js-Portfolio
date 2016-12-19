@@ -1,0 +1,43 @@
+
+
+
+//------------------------------------------------------------------------------
+//                       SKILLS Section Configuration
+//------------------------------------------------------------------------------
+
+$base-conf-skills: (
+  background-color: palette(caribbean-green),
+  graphs: (
+    pie: (
+      width: (
+        base: 100%,
+        '>=tablet': 70%
+      ),
+      background-color: palette(alice-blue),
+      border-radius: 24px,
+      c-circle: (
+        size: 10rem,
+        font-weight: 300,
+        margin: 2rem,
+        before-color: palette(gull-gray),
+        before-font-weight: 400,
+        after-color: palette(crimson),
+        after-font-size: 2rem
+      ),
+      svg: (
+        animation-details-speed: 10s,
+        front-paths: (
+          path-fill: none,
+          path-stroke-width: 15px,
+          path-stroke-dasharray: 629,
+          path-color: palette(robin-egg-blue),
+          animation-speed: 6s
+        ),
+        back-paths: (
+          path-stroke-width: 10px,
+          path-color: palette(amaranth)
+        )
+      )
+    )
+  )
+);
