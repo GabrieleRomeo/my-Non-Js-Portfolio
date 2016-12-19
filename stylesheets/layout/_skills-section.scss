@@ -11,8 +11,19 @@ $bg-color: conf($conf, background-color);
   background: linear-gradient(135deg,  $bg-color 0%,#2989d8 86%,#207cca 99%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$bg-color', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+  .l-container {
+    @extend %background-film;
+  }
+
   .skills__details {
     padding-top: 4em;
+
+    @include media('screen', '>=tablet') {
+      @include flex((
+        flex-wrap: wrap,
+        justify-content: space-around
+      ));
+    }
   }
 
 }

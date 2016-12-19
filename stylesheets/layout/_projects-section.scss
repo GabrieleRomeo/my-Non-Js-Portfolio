@@ -9,6 +9,10 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a00f4', endColorstr='#9a1e54',GradientType=1 );
   background-repeat: no-repeat;
 
+    .l-container {
+      @extend %background-film;
+    }
+
     .project__info {
 
         p {
