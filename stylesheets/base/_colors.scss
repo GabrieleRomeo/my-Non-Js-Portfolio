@@ -20,6 +20,7 @@ $_color-base--electric-violet: #6A00F4;
 $_color-base--french-lilac: #D8B8EE;
 $_color-base--cerise: #D72983;
 $_color-base--gray: #929292;
+$_color-base--alice-blue: #F0F8FF;
 
 $palettes: (
   white: (
@@ -36,6 +37,12 @@ $palettes: (
     light: black(.5),
     dark: black(.8),
     darker: black(.9)
+  ),
+  alice-blue: (
+    base: $_color-base--alice-blue,
+    lighter: lighten($_color-base--alice-blue, 20%),
+    light: lighten($_color-base--alice-blue, 10%),
+    dark: darken($_color-base--alice-blue, 10%)
   ),
   san-marino:(
     base: $_color-base--san-marino,
