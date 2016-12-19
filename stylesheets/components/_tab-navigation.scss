@@ -146,6 +146,13 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
         &:nth-of-type(1) {
           border-top-right-radius: initial;
         }
+        // .c-tab__item--sticker
+        @include modifier('sticker') {
+          // Next c-tab__item--sticker's tab_items must be moved to the right
+          & ~ li {
+            padding-left: 50px;
+          }
+        }
       }
 
       // .c-tab__label
@@ -165,10 +172,6 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
             padding-left: 10px;
 
               .img { vertical-align: text-top; }
-
-              + li {
-                padding-left: 50px;
-              }
           }
           // .c-tab__label--sticker-item
           @include modifier('sticket-item') {
