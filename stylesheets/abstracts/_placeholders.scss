@@ -1,32 +1,4 @@
 
-
-%visuallyhidden {
-  position: absolute;
-  @include size(1px);
-  margin: -1px;
-  padding: 0;
-  border: 0;
-  clip: rect(0 0 0 0);
-  overflow: hidden;
-}
-
-
-%marginAuto {
-  @include margin-auto();
-}
-
-%left {
-  float: left;
-}
-
-%right {
-  float: right;
-}
-
-%none {
-  display: none;
-}
-
 %center {
   margin-left: auto;
   margin-right: auto;
@@ -35,6 +7,26 @@
 %centerBlock {
   @extend %center;
   display: block;
+}
+
+%inline-b {
+  display: inline-block;
+}
+
+%left {
+  float: left;
+}
+
+%marginAuto {
+  @include margin-auto();
+}
+
+%none {
+  display: none;
+}
+
+%right {
+  float: right;
 }
 
 %pointer {
@@ -47,4 +39,14 @@
 
 %smallCaps {
   font-variant: small-caps;
+}
+
+%visuallyhidden {
+  position: absolute;
+  @include size(1px);
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
