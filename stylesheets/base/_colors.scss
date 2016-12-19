@@ -23,6 +23,9 @@ $_color-base--gray: #929292;
 $_color-base--alice-blue: #F0F8FF;
 $_color-base--gull-gray: #93A2AC;
 $_color-base--crimson: #ED143D;
+$_color-base--robin-egg-blue: #00BCD4;
+$_color-base--caribbean-green: #00C4AA;
+$_color-base--caribbean-cadillac: #A55073;
 
 $palettes: (
   white: (
@@ -157,5 +160,20 @@ $palettes: (
     lighter: lighten($_color-base--crimson, 20%),
     light: lighten($_color-base--crimson, 10%),
     dark: darken($_color-base--crimson, 10%)
+  ),
+  robin-egg-blue: (
+    base: $_color-base--robin-egg-blue,
+    lighter: lighten($_color-base--robin-egg-blue, 20%),
+    light: lighten($_color-base--robin-egg-blue, 10%),
+    dark: darken($_color-base--robin-egg-blue, 10%)
+  ),
+  caribbean-green: (
+    base: $_color-base--caribbean-green,
+    lighter: lighten($_color-base--caribbean-green, 20%),
+    light: lighten($_color-base--caribbean-green, 10%),
+    dark: darken($_color-base--caribbean-green, 10%)
+  ),
+  caribbean-cadillac: (
+    base: $_color-base--caribbean-cadillac
   )
 ) !default;
