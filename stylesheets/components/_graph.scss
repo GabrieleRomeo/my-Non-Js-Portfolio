@@ -1,6 +1,11 @@
 $conf: $base-conf-skills;
 
 $graphs-conf: conf($conf, graphs);
+
+//------------------------------------------------------------------------------
+//                       Pie Graph
+//------------------------------------------------------------------------------
+
 $graph-pie: conf($graphs-conf, pie);
 
 $graph-pie__width: conf($graph-pie, width, base);
@@ -27,6 +32,36 @@ $graph-pie__front-path-animation-speed: conf($conf-graph-pie-svg, front-paths, a
 
 $graph-pie__back-path-stroke-width: conf($conf-graph-pie-svg, back-paths, path-stroke-width);
 $graph-pie__back-path-color: conf($conf-graph-pie-svg, back-paths, path-color);
+
+
+//------------------------------------------------------------------------------
+//                       Bars Graph
+//------------------------------------------------------------------------------
+
+$graph-bars: conf($graphs-conf, bars);
+
+$graph-bars__height: conf($graph-bars, height);
+$graph-bars__color: conf($graph-bars, color);
+$graph-bars__bg-color: conf($graph-bars, background-color);
+
+$graph-bars-before: conf($graph-bars, before);
+
+$graph-bars__before-font-weight: conf($graph-bars-before, font-weight);
+$graph-bars__before-color: conf($graph-bars-before, color);
+$graph-bars__before-bg-color: conf($graph-bars-before, background-color);
+$graph-bars__before-top-radius: conf($graph-bars-before, top-radius);
+
+$graph-bars__list: conf($graph-bars, bars__list);
+
+$graph-bars__list-border-bottom: conf($graph-bars__list, border-bottom);
+
+$graph-bars__bars: conf($graph-bars__list, bars);
+
+$graph-bars__bars--bg-color: conf($graph-bars__bars, background-color);
+$graph-bars-description-color: conf($graph-bars__bars, text-description, color);
+$graph-bars-description-font-size: conf($graph-bars__bars, text-description, font-size);
+$graph-bars-description-font-weight: conf($graph-bars__bars, text-description, font-weight);
+
 
 
 @mixin _path-gradient() {
@@ -60,6 +95,11 @@ $graph-pie__back-path-color: conf($conf-graph-pie-svg, back-paths, path-color);
       @include border-radius($graph-pie__border-radius);
     }
 
+    // .graph--shadowed
+    @include modifier('shadowed') {
+      @extend %shadow-2px;
+    }
+
     // .graph--pie
     @include modifier('pie') {
       width: $graph-pie__width;
@@ -73,6 +113,8 @@ $graph-pie__back-path-color: conf($conf-graph-pie-svg, back-paths, path-color);
         width: $graph-pie__width-grather-than-tablet;
         margin-bottom: 160px;
       }
+
+        .l-graph {  margin-bottom: 1em; }
 
         .c-circle {
           position: relative;
@@ -130,6 +172,113 @@ $graph-pie__back-path-color: conf($conf-graph-pie-svg, back-paths, path-color);
             .path__group {
               fill: none;
               stroke-width: $graph-pie__back-path-stroke-width;
+            }
+        }
+    }
+
+    // .graph--bars
+    @include modifier('bars') {
+      height: $graph-bars__height;
+      margin: 8em 0;
+      color: $graph-bars__color;
+      text-align: right;
+      background-color: $graph-bars__bg-color;
+
+      @include media('screen', '>=tablet') {
+        margin: 4% 0 11em 0;
+        width: 49%;
+      }
+
+        &:before {
+          @include absolute(top -1.5em);
+          @include border-top-radius($graph-bars__before-top-radius);
+          content: attr(data-name);
+          display: block;
+          width: 100%;
+          padding: 3px;
+          font-weight: $graph-bars__before-font-weight;
+          color: $graph-bars__before-color;
+          text-transform: capitalize;
+          text-align: center;
+          background-color: $graph-bars__before-bg-color;
+        }
+
+        .graph__list {
+          @include absolute(bottom 10% right 10%);
+          height: 80%;
+          width: 83%;
+          border-bottom: $graph-bars__list-border-bottom;
+        }
+
+        .graph__item--bar {
+          @extend %inline-b;
+          position: relative;
+          margin-right: 2%;
+          height: 100%;
+          width: 9%;
+          background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAD5CAYAAABVnHfnAAAAAXNSR0IArs4c6QAABWBJREFUeAHtnL9qFEEcx714Bl8gIEnA5BFCLkmjL2ChjYWFkDS+QF7BPhaWKpIuhbUgioJaJRfiGxibNAFJKXgk/j6XnWMPZvaY2WFY5Luw3N1ufszcd39/Pvvbudzc2Nj4vbi4eOfs7OzDjdpmx58uLS29nJ+fP7i4uBi5U+vr6/eWl5d/lLLp93q9R0dHR9/cBHgdDAYP7GXHzu2cnp7+cec2NzcHV1dXz0vauLEnr0zO9s82mdXJQXvD5EzVr7zWj/O+lE2xgVK+0I2tra1o5UrY9Mzpb5lPPbF92/Znh4eHP90lrHxuz47v2vGhO17Spj83N/eRgUej0fbJyckvN4m1tTUCYs+O79rxyeTs+F2z2S9l07dJvLH9wCbx102urlx9cnZ81f72VUkbN6fJK5PzRSuTI7rxu8kfV29K2QRTiZsc0Rc7uVw2nZ/cfbusX7hUdYVQzo5/CqhQxKZvg78wp9++vLx8eHx8PInWlZWV23b8rU349XA4fF+feEmbOfKfTWTfJve9PomFhYXH9rl3fn7+rn4cWChpI1jwpSyuCH5texSUJBmlDJRiI1hIBQzBAsne0lgyYNRT3Pg91cQXeQxE1AkWTASiPFo5n9EstXPZQDJFCn/KOIIFfKkNYAgWfCkLVQkg2wUL0SrEdiPUWcDf2nQj1FkgUnMBRudv3hsxK1fhTwEMwUJVOZI6GOos4HN2T5L86AL1p7aUIl7KJokwik0utogjewkbwQJKCxZQwdKFOgtOBF/d7zzJqLNgl02wMPbTNoU/ZW0EGWRqK1VbU8YRLHCpYgFDsIBqggVUcHUyV5eAexVf77BpnM7X48Zv5COMWSrkskE5wYKpKVgQLFTpzBusnBMsIIJgoU3hR8HYhZR6DGEJWo8hxj2ZXIU/BTAEC0SvYAEV8B91FgL3KggkWEAEwYJgwdzAssVkUSRuMbXNKkXqLGiBo/mPNYWy/YJCCxyJQC1wRIVQ+uEctM29B/mLz27LbVNsoJQvFF3EUSm28KfY6DEEqrUBDHUWiO5cgBFMJaQPBiL6uGT1LZRKctt0fnJ6DGHuoccQYz9VZ0GdBUuSodxI/owFDMECqgkWUMHV1lyFP+SnTeMEndsZCRYCxIRyggXBQhXJegwRSj8IpM4CIggW2hR+FNSaBcFCQz32rpnqCskIFgQL5DDqpDoL6ixUruBbZY6bCBYEC9cuojULk1ZJrm5E59seggXBAlVAsFCJECqT6izgJoIFwcJ1oAgWBAtkhLEKORcrWiWKhhItcORKaIFj5Y/e9hznwHrbtcAxWoXYwo/asTZas4BqbQBDCxyJbvwOJesb9zc+tLfjwX/+1Pmb98ZvRK6rK8D7WSrksmGg6CJeykawgCsIFpoCgnMEA+mEFMFnt4WCiPMpNklGKQOl2EQXcVSILfwpNoIFVBMsoAIRSqTmKvyhCG8ap1htnTU5ohxRprYUo1I2ggUulV02/RpiHERasxC4VxlHdEoRL2VTpPCjQixgCBZQTbCACk1FfFbJywUYgoXqSkR3MAQLKCdYcP4jWBAsmC+EEjduIlhoU/hRUL+GyFX4Q37aBCVB53ZG4D2Xqb7NGiiXTecnp8cQggUCg4AQLAgWKlfwPQvGTQQLgoVrF9ECR3Jm1n/kJFggxZiq0VCiNQsopzULlf9422acA+tt15qFaBViCz9qx9roMQSqtQEMLXAkunN1Izpfj715LjeVcGfoux1oGiepiKcU/hQbwQJpRrCACiHn5pxgARVii3gpG8ECSgsWUMGVolyFP5QVmsYJphJnRDphsvVt1kC5bDo/ueg7flOuiI1gAX/9r2HhH2mwSYNyIDH3AAAAAElFTkSuQmCC');
+
+            &:after {
+              @include absolute(left -1.5em bottom -8.5em);
+              @include prefix((transform: rotate(48deg)), webkit);
+              content: attr(data-title);
+              text-align: left;
+              font-weight: $graph-bars-description-font-weight;
+              color: $graph-bars-description-color;
+              font-size: $graph-bars-description-font-size;
+              width: 13em;
+            }
+        }
+
+        .graph__item--bar-light {
+          background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAD5CAYAAABVnHfnAAAABGdBTUEAALGPC/xhBQAABRtJREFUeAHtmrFKHFEUhrOrIJIUEkgTWExCIG0Ed6OIICksLAO+j+/jG1htEJEQwSJVmqRYSBMIColauJr5GO9hZvEuM3eZ2VP8t3CE3eP973fvmfM7Zzr9fv/T/f39z7Ozs/MnhbGxsfHq7u7uzerq6ufDw8Nx+Gh7e/vFzc3NdlsxHSY8Pj7+HQRw3draenl7e/tueXn563A4/Bs+29zcfD4ej98vLS19ayumEyYP12niMtFri4uL56enp3/C97k2GVMS2OREqQsygR7FsaiFg4ODbnboV7OEePvYmXtsW9uM6QwGg48oXVlZ+XJ0dPSP3xkkxGPidnd3n15cXHzgO23EdLPxY29vb1hF3M7OzrPLy8tBmzF2BiHCiJFD3PX1dT/L4u8nJye/8m/nP5uMKQlscqLUBZlAj+JYVJcfVBMqxORNeNq2thXTXV9fX6O2Ur6KFWJ/f3/h6upq0Ol0fk6euTZjupmA1xT+ydo6Go160O31eiOuYUCuzRiZhcdu9uxG1dJqWVwnKGx3GzEmsOqK2hTHXDILUJjFYMgszGowLEnYCo/12AR6FAc0mQUoMFINhswCZ3uWpxGWJPlGVC/i4ftcmyyTJYFNTpS6IBPoURyLklmAgswCFKb9C9pkmbQkQUSTE/H3w6gzjwmsE5QyUWqMzEIgJ7MACc7pLIV/8vHKtOoV5rEkCVsxLWjWpwRhDq5V5ykJrBqUMlFqjAn0KI5FySxAQWYBCjILEQiWxTILGaGU1oXaECTYLK0LtSFmNRiWxWyFx3psAj2KA5rMAhRkFqAgsxCBYFkss5ARklkgWWYp/CnvRsgsyCzEbj+cxzYMhswCpGUWoCCzEIEgs8DxCENmARIyCxmEYrvDkiSckzbKF3NVnacksGpQWEydiVJjTKBHcSxKZgEKMgtQkFmIQLAsjln7eZFj1xh6ZyHnoBcccw7FIp7y/kFKjCVJ2ApvJa8k0Js4oJlAj+IQKLMABZkFKMyr5FmSIMJjPTaBHsUBTWYBCgy94AgFmYUHCMXWhWUxhDzWYxPoURzQZBagILMABZmFCATLYpmFjJDaECSL2hAZhKIpsSSBDsNbySsJ9CYOYCbQozgEyixAQWYBCjILEQiWxTILGSGZBZJFZiGDILPAUYjdFfisTt2320ydICZhtBEjswBpmQUoyCxEIFgWx24L8yLHrjHUhsg5qA2RcygW8ZT3D1JiLEnCVrRRvpir6jwlgVWDwmLqTJQaYwI9imNRMgtQkFmAwrxKniUJIjzWYxPoURzQZBagwNA7C1CQWXiAoHcWYrcsjkldUyKzADWZBSjILEQgyCxwPMJQGwISakNkEIqmxJIknJO6pYi4JmNKApucKACouyAT6FEci5FZgILMAhRkFiIQLItjNn1e5Ng1hp4s5Bz0ZCHnUCziKS2FlBhLkrAV3kpeSaA3cUAzgR7FIVBmAQoyC1CYV8mzJEGEx3psAj2KA5rMAhQYakNAQWbhAYLaELFbFsekrimRWYCazAIUZBYiEGQWOB5hqA0BCbUhMghFU2JJEs5J3VJEXJMxJYFNThQA1F2QCfQojsXILEBBZgEKMgsRCJbFMZs+L3LsGkNPFnIOerKQcygW8ZSWQkqMJUnYCm8lryTQmzigmUCP4hAoswAFmQUozKvkWZIgwmM9NoEexQFNZgEKDLUhoCCz8ABBbYjYLYtjUteUyCxATWYBCjILEQgyCxyPMNSGgITaEBmEoin5D6ykebn5uZ1wAAAAAElFTkSuQmCC');
+        }
+
+        .graph__lines {
+          @include absolute(left 6em);
+          height: 100%;
+          width: 79%;
+          font-weight: 200;
+        }
+
+        .graph__line {
+          position: relative;
+          display: block;
+          height: 25%;
+          width: 90%;
+          border-top: 1px dashed grey;
+
+            span {
+              position: absolute;
+              left: -5.5em;
+              top: -0.8em;
+              font-size: 0.9em;
+              font-weight: 300;
+            }
+        }
+
+        .graph__bar {
+          @include absolute(left 17% bottom 0);
+          width: 66%;
+          background-color: $graph-bars__bars--bg-color;
+          cursor: help;
+
+            @include modifier('expert') {
+              height: 100%;
+            }
+            @include modifier('proficent') {
+              height: 75%;
+            }
+            @include modifier('competent') {
+              height: 50%;
+            }
+            @include modifier('learning') {
+              height: 25%;
+            }
+
+            &:hover .c-tooltip {
+              visibility: visible;
+              @include prefix((animation: rubberBand .6s both), webkit)
             }
         }
     }
