@@ -26,6 +26,8 @@ $_color-base--crimson: #ED143D;
 $_color-base--robin-egg-blue: #00BCD4;
 $_color-base--caribbean-green: #00C4AA;
 $_color-base--caribbean-cadillac: #A55073;
+$_color-base--tundora: #424242;
+$_color-base--orient: #00618A;
 
 $palettes: (
   white: (
@@ -172,6 +174,18 @@ $palettes: (
     lighter: lighten($_color-base--caribbean-green, 20%),
     light: lighten($_color-base--caribbean-green, 10%),
     dark: darken($_color-base--caribbean-green, 10%)
+  ),
+  tundora: (
+    base: $_color-base--tundora,
+    lighter: lighten($_color-base--tundora, 20%),
+    light: lighten($_color-base--tundora, 10%),
+    dark: darken($_color-base--tundora, 10%)
+  ),
+  orient: (
+    base: $_color-base--orient,
+    lighter: lighten($_color-base--orient, 20%),
+    light: lighten($_color-base--orient, 10%),
+    dark: darken($_color-base--orient, 10%)
   ),
   caribbean-cadillac: (
     base: $_color-base--caribbean-cadillac
