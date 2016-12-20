@@ -16,3 +16,7 @@ body {
   line-height: $base-line-height;
   min-width: $min-width;
 }
+
+.visuallyhidden {
+  @extend %visuallyhidden;
+}
