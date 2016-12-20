@@ -43,7 +43,11 @@ $_conf-subHeading: _c-card-conf(subHeading);
       };
 
       /* Safari FIX */
-       &:checked + .c-card .c-card__face--front .details__social {
+      &:checked + .c-card .c-card__face--front .c-card__social {
+        @extend %none;
+      }
+      /* Safari FIX */
+      &:checked + .c-card .c-card__face--front .c-card__icon {
         @extend %none;
       }
 
@@ -69,6 +73,11 @@ $_conf-subHeading: _c-card-conf(subHeading);
       @include absolute(top 10px right 10px);
       opacity: 1;
       font-size: _c-card-conf(icon-loop-size);
+
+      @include modifier('back') {
+        top: initial;
+        bottom: 10px;
+      }
     }
 
     // .c-card__face
@@ -158,6 +167,7 @@ $_conf-subHeading: _c-card-conf(subHeading);
     // .c-card__social
     @include element('social') {
       margin-top: 25px;
+      overflow: auto;
 
         .l-social-list {
           float: right;
