@@ -115,3 +115,22 @@
   75% { @include prefix((transform: scale3d(1.05, .95, 1)), webkit); }
   0%, 100% { @include prefix((transform: scale3d(1, 1, 1)), webkit); }
 }
+
+
+@include keyframes('rotateIn') {
+  0% {
+    @include prefix((transform-origin: center), webkit);
+    @include prefix((transform: rotate3d(0, 0, 1, -200deg)), webkit);
+    opacity: 0;
+  }
+  100% {
+    @include prefix((transform-origin: center), webkit);
+    @include prefix((transform: none), webkit);
+    opacity: 1;
+  }
+}
+
+
+
+
+
