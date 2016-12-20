@@ -40,6 +40,37 @@ $base-c-tooltip: (
 
 
 //------------------------------------------------------------------------------
+//                       BusinessCard Configuration
+//------------------------------------------------------------------------------
+
+$base-c-card: (
+  width: 95%,
+  font-size: .7rem,
+  hover-rotation: 20deg,
+  icon-loop-size: 1.2em,
+  base-color: white(),
+  heading: (
+    font-family: ('Roboto Slab', serif),
+    font-size: 2rem,
+    font-weight: 300
+  ),
+  subHeading: (
+    font-size: 1.2em,
+    font-weight: 300
+  ),
+  front-face: (
+    color: white(),
+    background: url('../img/card_background.png') no-repeat
+  ),
+  back-face: (
+    color: white(),
+    background-color: palette(black, superlight)
+  )
+
+) !default;
+
+
+//------------------------------------------------------------------------------
 //                       SKILLS Section Configuration
 //------------------------------------------------------------------------------
 
