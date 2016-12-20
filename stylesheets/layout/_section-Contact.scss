@@ -1,0 +1,19 @@
+
+/* CONTACT */
+#contact {
+  background-color: #aa48d7;
+  /* IE9, iOS 3.2+ */
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxsaW5lYXJHcmFkaWVudCBpZD0idnNnZyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiIHgxPSIxMDAlIiB5MT0iMTAwJSIgeDI9IjAlIiB5Mj0iMCUiPjxzdG9wIHN0b3AtY29sb3I9IiNmZjAwOWQiIHN0b3Atb3BhY2l0eT0iMSIgb2Zmc2V0PSIwIi8+PHN0b3Agc3RvcC1jb2xvcj0iIzcwNzlmZiIgc3RvcC1vcGFjaXR5PSIxIiBvZmZzZXQ9IjAuODE4Ii8+PC9saW5lYXJHcmFkaWVudD48cmVjdCB4PSIwIiB5PSIwIiB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSJ1cmwoI3ZzZ2cpIiAvPjwvc3ZnPg==);
+  background-image: -webkit-gradient(linear, 100% 100%, 0% 0%,color-stop(0, rgb(255, 0, 157)),color-stop(0.818, rgb(112, 121, 255)));
+  /* Android 2.3 */
+  background-image: -webkit-linear-gradient(bottom right,rgb(255, 0, 157) 0%,rgb(112, 121, 255) 81.8%);
+  /* IE10+ */
+  background-image: linear-gradient(to top left,rgb(255, 0, 157) 0%,rgb(112, 121, 255) 81.8%);
+  background-image: -ms-linear-gradient(bottom right,rgb(255, 0, 157) 0%,rgb(112, 121, 255) 81.8%);
+
+  .l-container {
+    padding: 90px 0;
+    background-color: #673AB7;
+  }
+
+}
