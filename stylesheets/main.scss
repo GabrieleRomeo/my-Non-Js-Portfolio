@@ -15,9 +15,10 @@
 @import 'layout/header';
 @import 'layout/section';
 @import 'layout/splash';
-@import 'layout/about-section';
-@import 'layout/projects-section';
-@import 'layout/skills-section';
+@import 'layout/section-About';
+@import 'layout/section-Projects';
+@import 'layout/section-Skills';
+@import 'layout/section-Contact';
 
 @import 'components/animated_icons';
 @import 'components/browserUpgrade';
