@@ -102,6 +102,60 @@
   @include prefix((animation: $animation), $vendors);
 }
 
+/// Generate vendors prefixes for the CSS transition rule.
+///
+/// @param {LIST} $properties - The list of the transition's properties
+///
+/// @example
+///
+///   @include prefix-transition(width 2s, height 2s, background-color 2s, transform 2s);
+///
+
+@mixin prefix-transition($properties...) {
+
+  $result: '';
+  $webkit-result: null;
+  $old-transform: null;
+  $new-transform: null;
+  $i: 1;
+
+  @each $property, $value in $properties {
+    @if $property == transform {
+        $old-transform: $property + ' ' + $value;
+        $new-transform: ' -webkit-transform ' + $value;
+      } @else {
+        @if ($i > 1) and ($i <= length($properties)) {
+          $result: $result + ', ';
+        }
+        $result: $result + ' ' + $property + ' ' + $value;
+      }
+
+
+    $i: $i + 1;
+  }
+
+  @if ($new-transform) {
+      $webkit-result: $result + ', ' + $new-transform;
+
+      -webkit-transition: #{$webkit-result};
+      transition: #{$webkit-result};
+      transition: #{$result};
+      transition: #{ $result + ', ' + $old-transform + ', ' + $new-transform };
+
+  } @else {
+    -webkit-transition: #{$result};
+    transition: #{$result};
+  }
+
+}
+
+
+
+
+///-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+///transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+///transition: width 2s, height 2s, background-color 2s, transform 2s;
+///transition: width 2s, height 2s, background-color 2s, transform 2s, -webkit-transform 2s;
 
 /// Set the opacity for all browsers and provide a filter fallback for IE8
 ///
