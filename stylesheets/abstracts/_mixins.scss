@@ -88,6 +88,7 @@
             #{"-" + $vendor + "-" + $prop}: #{$value};
           }
         }
+
         // Dump regular property anyway
         #{$prop}: #{$value};
   }
@@ -117,6 +118,7 @@
   $webkit-result: null;
   $old-transform: null;
   $new-transform: null;
+  $sep: ', ';
   $i: 1;
 
   @each $property, $value in $properties {
@@ -125,7 +127,7 @@
         $new-transform: ' -webkit-transform ' + $value;
       } @else {
         @if ($i > 1) and ($i <= length($properties)) {
-          $result: $result + ', ';
+          $result: $result + $sep;
         }
         $result: $result + ' ' + $property + ' ' + $value;
       }
@@ -134,13 +136,17 @@
     $i: $i + 1;
   }
 
+  @if length($properties) == 1 {
+    $sep: '';
+  }
+
   @if ($new-transform) {
-      $webkit-result: $result + ', ' + $new-transform;
+      $webkit-result: $result + $sep + $new-transform;
 
       -webkit-transition: #{$webkit-result};
       transition: #{$webkit-result};
       transition: #{$result};
-      transition: #{ $result + ', ' + $old-transform + ', ' + $new-transform };
+      transition: #{ $result + $sep + $old-transform + ', ' + $new-transform };
 
   } @else {
     -webkit-transition: #{$result};
