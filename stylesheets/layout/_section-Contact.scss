@@ -1,6 +1,6 @@
 
 
-$conf: $conf-skills;
+$conf: $conf-contact;
 $conf-c-button--contact: conf($conf, c-button--contact);
 
 
@@ -28,6 +28,10 @@ $conf-c-button--contact: conf($conf, c-button--contact);
     &:hover {
       background-color: conf($conf-c-button--contact, background-color-hover);
     };
+  }
+
+  .l-form {
+    margin-top: 100px;
   }
 
 }
