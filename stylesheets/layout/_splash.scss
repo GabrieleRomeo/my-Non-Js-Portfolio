@@ -17,11 +17,11 @@ $width: conf($conf-c-splash, animation, width);
       position: relative;
       width: $width;
       min-height: 150px;
-      padding-top: 20px;
       line-height: 1.5em;
 
       @include media('screen', '>=tablet') {
         min-height: 350px;
+        padding-top: 20px;
         font-size: 2.8em;
       }
 
