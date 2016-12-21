@@ -12,7 +12,7 @@ $_c-form-width: conf($conf, width);
 
     width: conf($_c-form-width, base);
     padding: 20px;
-    margin: 20px;
+    margin: 20px 0;
     font-size: 0.6em;
     font-weight: 700;
     color: palette(white);
