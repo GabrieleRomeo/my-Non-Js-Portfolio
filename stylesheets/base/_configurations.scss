@@ -153,3 +153,22 @@ $conf-contact: (
     background-color-hover: palette(curious-blue)
   )
 );
+
+//------------------------------------------------------------------------------
+//                       FOOTER Configuration
+//------------------------------------------------------------------------------
+
+$conf-footer: (
+  background-color: rgba(palette(haiti), .92),
+  color: palette(white),
+  l-container: (
+    background-color: palette(black)
+  ),
+  svg: (
+    html-color: palette(pear),
+    css-color: palette(white)
+  ),
+  icon: (
+    color: palette(white)
+  )
+);
