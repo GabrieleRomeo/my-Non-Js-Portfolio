@@ -51,7 +51,8 @@ $base-c-button: (
     border-radius: 6px
   ),
   3D: (
-    shadow-color: black(.23)
+    shadow-color: black(.23),
+    shadow-Y-offset: 3px
   )
 ) !default;
 

@@ -1,5 +1,7 @@
 
-@function _c-button-conf($property, $config: $base-c-button) {
+$_conf-base: $base-c-button !default;
+
+@function _c-button-conf($property, $config: $_conf-base) {
   @return conf($config, $property);
 }
 
@@ -57,12 +59,13 @@ $_conf-3D: _c-button-conf(3D);
     // .c-button--3D
     @include modifier('3D') {
 
-      $_Yoffset: 3px;
+      $_c-button-shadow-Y-offset: _c-button-conf(shadow-Y-offset, $_conf-3D);
+      $_c-button-shadow-color: _c-button-conf(shadow-color, $_conf-3D);
 
-        box-shadow: 0 $_Yoffset 0 0 _c-button-conf(shadow-color, $_conf-3D);
+        box-shadow: 0 $_c-button-shadow-Y-offset 0 0 $_c-button-shadow-color;
 
         &:active {
-          top: $_Yoffset;
+          top: $_c-button-shadow-Y-offset;
           box-shadow: none;
         }
     }
