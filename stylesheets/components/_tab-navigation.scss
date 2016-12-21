@@ -44,7 +44,7 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
     }
   }
 }
-// .tab__radio:nth-of-type(1):checked ~ .tab__list li:nth-of-type(1) .tab__content
+
 .c-tab {
   margin-top: 150px;
 
@@ -56,8 +56,10 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
 
     // .c-tab__list
     @include element('list') {
+      @extend %shadow-2px;
       position: relative;
       padding: 0;
+      background-color: palette(alice-blue);
       list-style: none;
     }
 
@@ -89,7 +91,7 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
       @include prefix((transition: background-color .7s), webkit);
       @extend %pointer;
       display: block;
-      padding: 10px;
+      padding: 20px;
       text-align: center;
       text-transform: uppercase;
       background-color: palette(french-lilac);
@@ -102,8 +104,9 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
 
         // .c-tab__label--sticker
         @include modifier('sticket') {
+          font-size: 20px;
           color: palette(white) !important;
-          background-color: palette(cerise) !important;
+          background-color: palette(purple-heart) !important;
           text-transform: uppercase!important;
           cursor: initial;
         }
@@ -146,30 +149,20 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
         &:nth-of-type(1) {
           border-top-right-radius: initial;
         }
-        // .c-tab__item--sticker
-        @include modifier('sticker') {
-          // Next c-tab__item--sticker's tab_items must be moved to the right
-          & ~ li {
-            padding-left: 50px;
-          }
-        }
       }
 
       // .c-tab__label
       @include element('label') {
-        @include border-left-radius(5px);
         width: $tab__label--width;
         background-color: initial;
         text-transform: capitalize;
         text-align: left;
         border-bottom: initial;
-        border-left: 6px solid transparent;
-
 
           // .c-tab__label--sticker
           @include modifier('sticket') {
-            margin-left: 20px;
             padding-left: 10px;
+            text-align: center;
 
               .img { vertical-align: text-top; }
           }
@@ -194,7 +187,7 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
 @include _placeholder('c-tab__label--greater-than-tablet') {
   color: palette(amaranth);
   background-color: palette(white);
-  border-left-color: palette(supernova);
+  border-left: 8px solid palette(amaranth);
 }
 
 @include _placeholder('c-tab__content--greater-than-tablet') {
