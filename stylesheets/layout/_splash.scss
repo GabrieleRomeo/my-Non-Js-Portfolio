@@ -6,6 +6,7 @@ $width: conf($conf-c-splash, animation, width);
   background-image: url('../img/graphy.png');
 
     .l-container {
+      @extend %flex-row-centered;
       font-family: 'Yanone Kaffeesatz', sans-serif;
       text-align: center;
       background-color: transparent;
