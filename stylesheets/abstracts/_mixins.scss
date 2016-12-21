@@ -558,19 +558,7 @@ $queries-in-use: ();
 
   @each $property, $value in $base-conf {
     @if ($property == 'box-direction') {
-      @if (str-index($value, '-reverse')) {
-          -webkit-box-direction: reverse;
-      } @else {
-          -webkit-box-direction: normal;
-      }
-      @if (str-index($value, 'column')) {
-          -webkit-box-orient: vertical;
-      } @else {
-          -webkit-box-orient: horizontal;
-      }
-
-      -ms-flex-direction: $value;
-          flex-direction: $value;
+      @include flex-box-direction($value);
     } @else if ($property == 'wrap') {
       -ms-flex-wrap: $value;
           flex-wrap: $value;
@@ -633,12 +621,35 @@ $queries-in-use: ();
           flex-grow: $value;
 }
 
-/// Generate a cross-browser flex row
-///
+/// Generate cross-browser flex directions
+/// @param {String} $direction - A valid flex direction
+/// @require $_flex-directions
 
-@mixin flex-row() {
-  -webkit-box-orient: horizontal;-webkit-box-direction: normal;-ms-flex-direction: row;flex-direction: row;
+@mixin flex-box-direction($direction) {
+
+  @if not index($_flex-directions, $direction) {
+    @error '#{$direction} is not a valid flex direction. ' +
+           'You should use one of the following properties #{$_flex-directions}';
+  }
+
+  @if (str-index($direction, '-reverse')) {
+      -webkit-box-direction: reverse;
+  } @else {
+      -webkit-box-direction: normal;
+  }
+  @if (str-index($direction, 'column') or
+       $direction == 'initial'
+       or $direction == 'inherit') {
+      -webkit-box-orient: vertical;
+  } @else {
+      -webkit-box-orient: horizontal;
+  }
+
+  -ms-flex-direction: $direction;
+      flex-direction: $direction;
 }
+
+
 
 
 
