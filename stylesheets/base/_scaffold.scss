@@ -4,10 +4,10 @@ html {
   @include media("screen", ">=900px") {
     font-size: 18px;
   }
-
+  /*
   @include media("screen", ">=1200px") {
     font-size: 20px;
-  }
+  }*/
 }
 
 
