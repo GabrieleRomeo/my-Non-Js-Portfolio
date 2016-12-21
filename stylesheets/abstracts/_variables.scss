@@ -142,3 +142,11 @@ $units: (
   'vmin': 1vmin,
   'vmax': 1vmax
 );
+
+
+// ----------------------------------------------------------------------
+// Flex directions
+// ----------------------------------------------------------------------
+// @access private
+
+$_flex-directions: 'row' 'row-reverse' 'column' 'column-reverse' 'initial' 'inherit'
