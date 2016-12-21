@@ -15,7 +15,6 @@ $_conf-subHeading: _c-card-conf(subHeading);
   height: 375px;
   margin: 120px auto 0;
   font-size: _c-card-conf(font-size);
-  line-height: _c-card-conf(line-height);
 
   .l-label {
 
@@ -229,6 +228,7 @@ $_conf-subHeading: _c-card-conf(subHeading);
 @media screen and (min-width: 768px) {
   .c-businessCard {
     width: 57%;
+    line-height: _c-card-conf(line-height);
 
     .c-card__subHeading {
       margin-top: 25px;
