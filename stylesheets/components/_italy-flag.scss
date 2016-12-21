@@ -1,0 +1,42 @@
+
+$conf: $base-c-italy-flag;
+$items: 3;
+
+.flag__container {
+  width: conf($conf, width);
+  margin: 20px auto;
+  font-family: conf($conf, font-family);
+
+
+  @include media('screen', '>=tablet') {
+    margin: 100px auto 0;
+  }
+
+  .c-flag {
+    @include flex();
+    height: conf($conf, height);
+
+    @include element('item') {
+      display: block;
+      width: 100% / $items;
+      height: inherit;
+
+      @include modifier('green') {
+        background-color: rgb(31, 192, 0);
+      }
+
+      @include modifier('white') {
+        background-color: rgb(255, 255, 255);
+      }
+
+      @include modifier('red') {
+        background-color: rgb(206, 43, 55);
+      }
+    }
+
+    @include element('country') {
+      font-variant: small-caps;
+      letter-spacing: .1em;
+    }
+  }
+}
