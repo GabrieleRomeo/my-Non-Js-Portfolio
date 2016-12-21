@@ -1,16 +1,38 @@
 
+@function _c-button-conf($property, $config: $base-c-button) {
+  @return conf($config, $property);
+}
+
+$_conf-rounded: _c-button-conf(rounded);
+$_conf-3D: _c-button-conf(3D);
+
 .c-button {
   @include prefix((touch-action: manipulation), 'ms');
   @include prefix((transition: all .3s ease-in-out), 'webkit');
+  @include prefix((user-select: none), 'webkit');
+  @extend%flex-row-centered;
   @extend %pointer;
-  display: inline-block;
-  font-size: 1.5em;
-  line-height: 1.5em;
-  font-weight: 400;
-  text-align: center;
+  position: relative;
+  font-size: 1rem;
+  color: _c-button-conf(color);
+  background-color: _c-button-conf(background-color);
+  padding: _c-button-conf(padding);
   white-space: nowrap;
-  -webkit-user-select: none;
+  text-shadow: 0px 1px 1px palette(black, light);
 
+
+    // .c-button--white
+    @include modifier('white') {
+      color: palette(black, lighter);
+      background-color: palette(white);
+    }
+
+    // .c-button--light
+    @include modifier('light') {
+      font-weight: 300;
+    }
+
+    // .c-button--roundedTop
     @include modifier('roundedTop') {
       @include absolute(left 0 right 0 bottom 0);
       @include border-top-radius(20px);
@@ -19,9 +41,7 @@
       height: 70px;
       width: 100px;
       font-size: 1.8em;
-      color: palette(black, lighter);
-      background-color: palette(white);
-      border: 1px solid #fff;
+
 
         &:hover,
         &:focus {
@@ -32,6 +52,24 @@
               @include prefix((transform-origin: 50% 50%), 'webkit');
             }
         };
+    }
+
+    // .c-button--3D
+    @include modifier('3D') {
+
+      $_Yoffset: 3px;
+
+        box-shadow: 0 $_Yoffset 0 0 _c-button-conf(shadow-color, $_conf-3D);
+
+        &:active {
+          top: $_Yoffset;
+          box-shadow: none;
+        }
+    }
+
+    // .c-button--rounded
+    @include modifier('rounded') {
+      @include border-radius(_c-button-conf(border-radius, $_conf-rounded));
     }
 
     @include modifier('fadeIN') {
