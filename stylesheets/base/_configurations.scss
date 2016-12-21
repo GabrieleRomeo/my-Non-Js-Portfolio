@@ -56,6 +56,18 @@ $base-c-button: (
   )
 ) !default;
 
+
+//------------------------------------------------------------------------------
+//                       Italy Flag Configuration
+//------------------------------------------------------------------------------
+
+$base-c-italy-flag: (
+  width: 50%,
+  height: 13px,
+  font-family: ('Roboto Slab', serif),
+) !default;
+
+
 //------------------------------------------------------------------------------
 //                       BusinessCard Configuration
 //------------------------------------------------------------------------------
@@ -162,7 +174,7 @@ $conf-footer: (
   background-color: rgba(palette(haiti), .92),
   color: palette(white),
   l-container: (
-    background-color: palette(black)
+    background-color: palette(black, lighter)
   ),
   svg: (
     html-color: palette(pear),
