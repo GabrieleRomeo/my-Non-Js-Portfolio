@@ -1,20 +1,20 @@
 
 /* ABOUT */
 #about {
+  @include prefix((background-size: cover), webkit moz);
   position: relative;
-  padding-top: 90px;
+  padding: 90px 10px;
   background-color: palette(black);
   background-repeat: no-repeat;
   background-position: center top;
-  background-size: cover;
-  -moz-background-size: cover;
-  -webkit-background-size: cover;
+  overflow: auto;
 
     /* Tablet */
 
     @include media ('screen', '>=tablet') {
-      padding-top: 200px;
+      padding: 200px 0 0 0;
       background-color: palette(green-vogue, light);
+      overflow: initial;
     }
 
     @include media ('screen', '>=760px', '<980px') {
