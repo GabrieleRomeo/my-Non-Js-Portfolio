@@ -40,6 +40,22 @@ $base-c-tooltip: (
 
 
 //------------------------------------------------------------------------------
+//                       Button Configuration
+//------------------------------------------------------------------------------
+
+$base-c-button: (
+  padding: 10px,
+  color: palette(white),
+  background-color: palette(black, lighter),
+  rounded: (
+    border-radius: 6px
+  ),
+  3D: (
+    shadow-color: black(.23)
+  )
+) !default;
+
+//------------------------------------------------------------------------------
 //                       BusinessCard Configuration
 //------------------------------------------------------------------------------
 
@@ -110,5 +126,18 @@ $base-conf-skills: (
       )
     ),
     bars: extend($base-graph-bars, ())
+  )
+);
+
+
+//------------------------------------------------------------------------------
+//                       CONTACT Section Configuration
+//------------------------------------------------------------------------------
+
+$conf-skills: (
+  c-button--contact: (
+    width: 220px,
+    background-color: rgba(palette(curious-blue), .5),
+    background-color-hover: palette(curious-blue)
   )
 );
