@@ -30,6 +30,7 @@ $_color-base--tundora: #424242;
 $_color-base--orient: #00618A;
 $_color-base--medium-purple: #AA48D7;
 $_color-base--purple-heart: #673AB7;
+$_color-base--curious-blue: #1E94CD;
 
 $palettes: (
   white: (
@@ -200,6 +201,12 @@ $palettes: (
     lighter: lighten($_color-base--purple-heart, 20%),
     light: lighten($_color-base--purple-heart, 10%),
     dark: darken($_color-base--purple-heart, 10%)
+  ),
+  curious-blue: (
+    base: $_color-base--curious-blue,
+    lighter: lighten($_color-base--curious-blue, 20%),
+    light: lighten($_color-base--curious-blue, 10%),
+    dark: darken($_color-base--curious-blue, 10%)
   ),
   caribbean-cadillac: (
     base: $_color-base--caribbean-cadillac
