@@ -25,6 +25,11 @@
   float: left;
 }
 
+%l-container {
+  @extend %background-film;
+  padding: $header-height 0;
+}
+
 %marginAuto {
   @include margin-auto();
 }
