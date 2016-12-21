@@ -1,4 +1,9 @@
 
+
+$conf: $conf-skills;
+$conf-c-button--contact: conf($conf, c-button--contact);
+
+
 /* CONTACT */
 #contact {
   background-color: #aa48d7;
@@ -14,6 +19,15 @@
   .l-container {
     padding: 90px 0;
     background-color: palette(purple-heart);
+  }
+
+  #c-button--contact {
+    width: conf($conf-c-button--contact, width);
+    background-color: conf($conf-c-button--contact, background-color);
+
+    &:hover {
+      background-color: conf($conf-c-button--contact, background-color-hover);
+    };
   }
 
 }
