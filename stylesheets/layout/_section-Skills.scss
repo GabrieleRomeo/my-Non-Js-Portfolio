@@ -6,13 +6,14 @@ $bg-color: conf($conf, background-color);
 
 
 #skills {
-  @extend %background-film;
-  padding: $header-height 0;
   background: $bg-color; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */
   background: -webkit-linear-gradient(315deg,  $bg-color 0%,#2989d8 86%,#207cca 99%,#7db9e8 100%);
   background: linear-gradient(135deg,  $bg-color 0%,#2989d8 86%,#207cca 99%,#7db9e8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$bg-color', endColorstr='#7db9e8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
+    .l-container {
+      @extend %l-container;
+    }
 
   .skills__details {
 

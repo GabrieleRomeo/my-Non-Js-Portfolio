@@ -2,13 +2,15 @@
 
 /* PROJECTS */
 #projects {
-  @extend %background-film;
-  padding: $header-height 0;
   background: palette(electric-violet);
   background: -webkit-linear-gradient(315deg, #6a00f4 0%,#ca2075 40%,#d82a84 61%,#ca2075 84%,#9a1e54 100%);
   background: linear-gradient(135deg, #6a00f4 0%,#ca2075 40%,#d82a84 61%,#ca2075 84%,#9a1e54 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6a00f4', endColorstr='#9a1e54',GradientType=1 );
   background-repeat: no-repeat;
+
+    .l-container {
+      @extend %l-container;
+    }
 
     .project__info {
 
