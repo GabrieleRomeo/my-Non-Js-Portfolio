@@ -1,0 +1,112 @@
+/* FOOTER */
+
+$conf: $conf-footer;
+
+$_conf-l-container: conf($conf, l-container);
+$_conf-svg: conf($conf, svg);
+$_conf-icon: conf($conf, icon);
+
+#page-footer {
+  background-color: conf($conf, background-color);
+  color: conf($conf, color);
+  text-align: center;
+
+  .l-container {
+    @extend %shadow-2px;
+    min-height: 200px;
+    background-color: conf($_conf-l-container, background-color);
+    padding: 0;
+  }
+
+  .c-footer {
+
+    // .c-footer__svg
+    @include element('svg') {
+      height: 230px;
+      width: 100%;
+
+       .html {
+         fill: conf($_conf-svg, html-color);
+       }
+
+       .css {
+         fill: conf($_conf-svg, css-color);
+       }
+
+       .html__logo:hover,
+       .css__logo:hover {
+        @include prefix-anim((shaker 100ms ease-in-out infinite));
+        @extend %pointer;
+      }
+    }
+
+    // .c-footer__copy
+    @include element('copy') {
+      font-size: .8em;
+      padding: 2%;
+      clear: both;
+    }
+
+    // .c-footer__link
+    @include element('link') {
+      color: palette(gray, light);
+
+      &:hover {
+        color: palette(gorse, light);
+      };
+      // .c-footer__link--hover
+      @include modifier('hover-amaranth') {
+        &:hover {
+          color: palette(amaranth);
+        };
+      }
+    }
+
+    // .c-footer__credits
+    @include element('credits') {
+      @extend %none;
+
+      @include media('screen', '>=tablet') {
+        display: inline!important;
+      }
+    }
+
+    // .c-footer__referenceList
+    @include element('referenceList') {
+      @include flex((
+        box-direction: column,
+        justify-content: space-around
+      ));
+      margin-top: 2em;
+
+      @include media('screen', '>=tablet') {
+        @include flex-box-direction(row);
+      }
+    }
+
+    // .c-footer__referenceItem
+    @include element('referenceItem') {
+      width: 33.333333%;
+      padding: 30px 0;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-transition-duration: 0.3s;
+              transition-duration: 0.3s;
+      -webkit-transition-property: box-shadow, -webkit-transform;
+      transition-property: box-shadow, -webkit-transform;
+      transition-property: box-shadow, transform;
+      transition-property: box-shadow, transform, -webkit-transform;
+
+      &:hover {
+      background-color: rgba(palette(white), 0.05);
+      box-shadow: inset 0px -1px 0px 20px rgb(0, 0, 0);
+      };
+    }
+
+    // .c-footer__icon
+    @include element('icon') {
+      color: conf($_conf-icon, color);
+    }
+  }
+}
