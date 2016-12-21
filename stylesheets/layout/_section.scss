@@ -37,7 +37,6 @@ $font-size-title: conf($conf-c-section, title, font-size);
     // .c-section__body
     @include element('body') {
       padding: 90px 15px;
-      overflow-x: hidden;
 
       @include media('screen', '>=tablet') {
         padding: 90px 20px;
