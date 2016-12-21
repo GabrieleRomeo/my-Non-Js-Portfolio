@@ -563,14 +563,7 @@ $queries-in-use: ();
       -ms-flex-wrap: $value;
           flex-wrap: $value;
     } @else if ($property == 'justify-content') {
-      @if (str-index($value, '-start') or
-           str-index($value, '-end') or
-           str-index($value, '-between')) {
-        -webkit-box-pack: fix-flex($value);
-      }
-
-      -ms-flex-pack: fix-flex($value);
-      justify-content: $value;
+      @include flex-justify-content($value);
     } @else if ($property == 'align-items') {
         -webkit-box-align: fix-flex($value);
         -ms-flex-align: fix-flex($value);
@@ -647,6 +640,27 @@ $queries-in-use: ();
 
   -ms-flex-direction: $direction;
       flex-direction: $direction;
+}
+
+/// Generate cross-browser flex justify content
+/// @param {String} $direction - A valid justify content
+/// @require $_flex-justifyContent
+
+@mixin flex-justify-content($justify) {
+
+  @if not index($_flex-justifyContent, $justify) {
+    @error '#{$justify} is not a valid flex direction. ' +
+           'You should use one of the following properties #{$_flex-justifyContent}';
+  }
+
+  @if (str-index($justify, '-start') or
+       str-index($justify, '-end') or
+       str-index($justify, '-between')) {
+    -webkit-box-pack: fix-flex($justify);
+  }
+
+  -ms-flex-pack: fix-flex($justify);
+  justify-content: $justify;
 }
 
 

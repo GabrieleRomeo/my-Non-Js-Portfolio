@@ -145,8 +145,9 @@ $units: (
 
 
 // ----------------------------------------------------------------------
-// Flex directions
+// Flex
 // ----------------------------------------------------------------------
 // @access private
 
-$_flex-directions: 'row' 'row-reverse' 'column' 'column-reverse' 'initial' 'inherit'
+$_flex-directions: 'row' 'row-reverse' 'column' 'column-reverse' 'initial' 'inherit';
+$_flex-justifyContent: 'flex-start' 'flex-end' 'center' 'space-between' 'space-around' 'initial' 'inherit';
