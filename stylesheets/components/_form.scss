@@ -1,0 +1,48 @@
+
+$conf: $base-c-form;
+$_c-form-width: conf($conf, width);
+
+
+.c-form {
+  @extend %flex-column-centered;
+
+  // .c-form__label
+  @include element('label') {
+    @extend %block;
+
+    width: conf($_c-form-width, base);
+    padding: 20px;
+    margin: 20px;
+    font-size: 0.6em;
+    font-weight: 700;
+    color: palette(white);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: rgba(palette(white), .08);
+    border-radius: 6px;
+    text-align: center;
+
+      @include media('screen', '>=tablet') {
+        width: conf($_c-form-width, '>=tablet');
+      }
+  }
+
+  // .c-form__input
+  @include element('input') {
+    @extend %block;
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    color: rgba(251, 251, 251, 0.51);
+    font-size: 1.4em;
+    background-color: rgba(255, 255, 255, 0.19);
+    border-style: none;
+    border-radius: inherit;
+
+      // .form__input--textarea
+      @include modifier('textarea') {
+        height: 163px;
+      }
+  }
+}
