@@ -2,68 +2,7 @@
 // This file contains all application-wide Sass variables.
 // -----------------------------------------------------------------------------
 
-
-// ----------------------------------------------------------------------
-// Fixed Height
-// ----------------------------------------------------------------------
-
 $header-height: 90px;
-
-
-$conf-c-section: (
-  min-height: 100vh,
-  max-width: 1140px,
-  title: (
-    font-size: 3em
-  )
-);
-
-$conf-c-modal: (
-  width: (
-    base: 80%,
-    media: (
-      '>=Tablet': 500px
-    )
-  ),
-  height: 100px
-);
-
-$conf-c-sideMenu: (
-  width: 78%,
-  min-width: 240px,
-  max-width: 320px
-);
-
-$conf-c-splash: (
-  animation: (
-    width: 100%
-  )
-);
-
-$conf-c-tab: (
-  min-height: (
-    content: (
-        media: (
-          '>=tablet': 1100px
-        )
-    )
-  ),
-  width: (
-      content: (
-        media: (
-          '>=tablet': 70%
-        )
-      ),
-      label: (
-        media: (
-          '>=tablet': 30%
-        )
-      )
-    ),
-);
-
-$l-modal-width: 80%;
-$l-modal-height: 100px;
 
 // ----------------------------------------------------------------------
 // Font Sizes & Line-height
