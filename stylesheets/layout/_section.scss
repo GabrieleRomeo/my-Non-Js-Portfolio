@@ -1,7 +1,7 @@
 
-$min-height: conf($conf-c-section, min-height);
-$max-width: conf($conf-c-section, max-width);
-$font-size-title: conf($conf-c-section, title, font-size);
+$min-height: conf($base-c-section, min-height);
+$max-width: conf($base-c-section, max-width);
+$font-size-title: conf($base-c-section, title, font-size);
 
 .c-section {
   position: relative;
