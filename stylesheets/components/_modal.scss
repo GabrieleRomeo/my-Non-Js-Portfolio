@@ -1,0 +1,117 @@
+.c-modal {
+  $width: conf($conf-c-modal, width, base);
+  $tabletWidth: conf($conf-c-modal, '>=Tablet');
+  $height: conf($conf-c-modal, height);
+
+  @extend %none;
+
+  // .c-modal--fullscreen
+  @include modifier('fullScreen') {
+    @include fixed(top 0 left 0);
+    @include size(100%);
+  }
+
+  // .c-modal__background
+  @include element('background') {
+    @include size(inherit);
+    @include flex((
+      box-direction: column,
+      wrap: nowrap,
+      justify-content: center
+    ));
+    // .c-modal__background--dark
+    @include modifier('dark') {
+      background-color: palette(black, darker);
+    }
+  }
+    // .c-modal__body
+    @include element('body') {
+      @include size($width, $height);
+      @include border-radius(20px);
+      @include flex-align-self(center);
+      color: palette(amaranth);
+      text-align: center;
+      border: 2px solid;
+
+      @include media("screen", ">=tablet") {
+        width: $tabletWidth;
+        font-size: 1.5em;
+      }
+
+        @include modifier('black') {
+          background-color: palette(black);
+        }
+    }
+
+    // .c-modal__paragraph
+    @include element('paragraph') {
+
+      display: inline-block;
+
+      @include modifier('width') {
+        display: none;
+        font-size: .7em;
+        color: white(.6);
+      }
+
+      @include modifier('less_than_320') {
+        @include media('screen', '<320px') {
+          display: block;
+        }
+      }
+
+      @include modifier('320_600') {
+        @include media("screen", ">=phone", '<600px') {
+          display: block;
+        }
+      }
+
+      @include modifier('600_768') {
+        @include media(">=600px", "<tablet") {
+          display: block;
+        }
+      }
+
+      @include modifier('768_1024') {
+        @include media(">=tablet", "<desktop") {
+          display: block;
+        }
+      }
+
+      @include modifier('greater_than_1024') {
+        @include media("screen", ">desktop") {
+          display: block;
+        }
+      }
+
+    }
+
+    // .c-modal__label
+    @include element('label') {
+
+      @include modifier('fullScreen') {
+        @include size(100%);
+        display: block;
+        position: fixed;
+      }
+    }
+
+    // .c-modal__icon
+    @include element('icon') {
+
+      @include modifier('close') {
+        @extend %pointer;
+        color: palette(white, lighter);
+        stroke-width: 0;
+        stroke: currentColor;
+        fill: currentColor;
+      }
+
+      &:hover {
+        color: palette(white);
+        opacity: 1;
+      }
+    }
+
+}
+

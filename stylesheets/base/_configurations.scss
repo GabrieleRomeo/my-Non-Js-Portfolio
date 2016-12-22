@@ -1,0 +1,266 @@
+
+
+//------------------------------------------------------------------------------
+//                       Splash Animation Configuration
+//------------------------------------------------------------------------------
+
+$conf-c-splash: (
+  animation: (
+    width: 100%
+  )
+);
+
+
+//------------------------------------------------------------------------------
+//                       Modal Window Configuration
+//------------------------------------------------------------------------------
+
+$conf-c-modal: (
+  width: (
+    base: 80%,
+    media: (
+      '>=Tablet': 500px
+    )
+  ),
+  height: 100px
+);
+
+
+//------------------------------------------------------------------------------
+//                       Side Menu Configuration
+//------------------------------------------------------------------------------
+
+
+$conf-c-sideMenu: (
+  width: 78%,
+  min-width: 240px,
+  max-width: 320px
+);
+
+//------------------------------------------------------------------------------
+//                       Tab Configuration
+//------------------------------------------------------------------------------
+
+$conf-c-tab: (
+  min-height: (
+    content: (
+        media: (
+          '>=tablet': 1100px
+        )
+    )
+  ),
+  width: (
+      content: (
+        media: (
+          '>=tablet': 70%
+        )
+      ),
+      label: (
+        media: (
+          '>=tablet': 30%
+        )
+      )
+    ),
+);
+
+
+
+//------------------------------------------------------------------------------
+//                       Graph Configuration
+//------------------------------------------------------------------------------
+
+
+$base-graph-bars: (
+  height: 300px,
+  color: palette(white, light),
+  background-color: palette(tundora),
+  before: (
+    font-weight: 500,
+    color: palette(white),
+    background-color: palette(orient, light),
+    top-radius: 8px
+  ),
+  bars__list: (
+    border-bottom: 1px solid palette(white, lighter),
+    bars: (
+    background-color: palette(shamrock),
+    text-description: (
+      color: palette(black),
+      font-size: 0.8em,
+      font-weight: 400
+    )
+  ),
+  )
+) !default;
+
+
+//------------------------------------------------------------------------------
+//                       Tooltip Configuration
+//------------------------------------------------------------------------------
+
+$base-c-tooltip: (
+  width: 180px,
+  color: palette(black),
+  background-color: palette(white),
+  font-size: .8rem
+) !default;
+
+
+//------------------------------------------------------------------------------
+//                       Button Configuration
+//------------------------------------------------------------------------------
+
+$base-c-button: (
+  padding: 10px,
+  color: palette(white),
+  background-color: palette(black, lighter),
+  rounded: (
+    border-radius: 6px
+  ),
+  3D: (
+    shadow-color: black(.23),
+    shadow-Y-offset: 3px
+  )
+) !default;
+
+
+//------------------------------------------------------------------------------
+//                       Italy Flag Configuration
+//------------------------------------------------------------------------------
+
+$base-c-italy-flag: (
+  width: 50%,
+  height: 13px,
+  font-family: ('Roboto Slab', serif),
+) !default;
+
+
+//------------------------------------------------------------------------------
+//                       BusinessCard Configuration
+//------------------------------------------------------------------------------
+
+$base-c-card: (
+  width: 95%,
+  font-size: .7rem,
+  line-height: 1.5rem,
+  hover-rotation: 20deg,
+  icon-loop-size: 1.2em,
+  base-color: white(),
+  heading: (
+    font-family: ('Roboto Slab', serif),
+    font-size: 2rem,
+    font-weight: 300
+  ),
+  subHeading: (
+    font-size: 1.2em,
+    font-weight: 300
+  ),
+  front-face: (
+    color: white(),
+    background: url('../img/card_background.png') no-repeat
+  ),
+  back-face: (
+    color: white(),
+    background-color: palette(purple-heart, dark)
+  )
+
+) !default;
+
+
+//------------------------------------------------------------------------------
+//                       Form Configuration
+//------------------------------------------------------------------------------
+
+$base-c-form: (
+  width: (
+    base: 100%,
+    '>=tablet': 80%
+  )
+) !default;
+
+
+//------------------------------------------------------------------------------
+//                       Section Configuration
+//------------------------------------------------------------------------------
+
+$base-c-section: (
+  min-height: 100vh,
+  max-width: 1140px,
+  title: (
+    font-size: 3em
+  )
+);
+
+//------------------------------------------------------------------------------
+//                       SKILLS Section Configuration
+//------------------------------------------------------------------------------
+
+$base-conf-skills: (
+  background-color: palette(caribbean-green),
+  graphs: (
+    pie: (
+      width: (
+        base: 100%,
+        '>=tablet': 70%
+      ),
+      background-color: palette(tundora),
+      border-radius: 24px,
+      c-circle: (
+        size: 10rem,
+        font-weight: 300,
+        margin: 2rem,
+        before-color: palette(gull-gray),
+        before-font-weight: 400,
+        after-color: palette(white),
+        after-font-size: 2rem
+      ),
+      svg: (
+        animation-details-speed: 10s,
+        front-paths: (
+          path-fill: none,
+          path-stroke-width: 15px,
+          path-stroke-dasharray: 629,
+          path-color: palette(robin-egg-blue),
+          animation-speed: 6s
+        ),
+        back-paths: (
+          path-stroke-width: 10px,
+          path-color: palette(amaranth)
+        )
+      )
+    ),
+    bars: extend($base-graph-bars, ())
+  )
+);
+
+
+//------------------------------------------------------------------------------
+//                       CONTACT Section Configuration
+//------------------------------------------------------------------------------
+
+$conf-contact: (
+  c-button--contact: (
+    width: 220px,
+    background-color: rgba(palette(curious-blue), .5),
+    background-color-hover: palette(curious-blue)
+  )
+);
+
+//------------------------------------------------------------------------------
+//                       FOOTER Configuration
+//------------------------------------------------------------------------------
+
+$conf-footer: (
+  background-color: rgba(palette(haiti), .92),
+  color: palette(white),
+  l-container: (
+    background-color: palette(black, lighter)
+  ),
+  svg: (
+    html-color: palette(pear),
+    css-color: palette(white)
+  ),
+  icon: (
+    color: palette(white)
+  )
+);

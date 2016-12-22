@@ -1,0 +1,106 @@
+
+$width: conf($conf-c-sideMenu, width);
+$min-width: conf($conf-c-sideMenu, min-width);
+$max-width: conf($conf-c-sideMenu, max-width);
+
+%c-sideMenu--active {
+  color: palette(amaranth);
+  background-color: black(0.03);
+}
+
+.c-sideMenu {
+  @include fixed(top 0 bottom 0);
+  @include prefix((transform: translateX(-100%)), webkit);
+  @include prefix((transition: -webkit-transform .25s cubic-bezier(0,0,.2,1)), webkit);
+  @extend %none;
+
+  transition: transform .25s cubic-bezier(0,0,.2,1);
+  transition: transform .25s cubic-bezier(0,0,.2,1),
+              -webkit-transform .25s cubic-bezier(0,0,.2,1);
+  width: $width;
+  min-width: $min-width;
+  max-width: $max-width;
+  background-color: palette(white);
+  overflow-x: hidden;
+  will-change: transform;
+  z-index: z(sideMenu);
+
+  @include media('screen', '<tablet') {
+    display: initial;
+  }
+
+    // .c-sideMenu__item
+    @include element('item') {
+      padding: 0 20px;
+      color: #702dbe;
+      font-weight: 300;
+      font-variant: small-caps;
+      line-height: 40px;
+
+      &:first-child,
+      &:last-child {
+        line-height: inherit;
+        font-variant: initial;
+      }
+
+      &:first-child {
+        position: relative;
+        height: inherit;
+        font-size: larger;
+        background-color: palette(san-marino);
+      }
+
+      &:last-child {
+        color: initial;
+        font-size: .7em;
+        text-align: center;
+      }
+    }
+
+    // .c-sideMenu__label
+    @include element('label') {
+      display: block;
+
+      &:active {
+        @extend %c-sideMenu--active;
+      }
+
+      // .c-sideMenu__label--close
+      @include modifier('close') {
+        @include absolute(top 0 right 10px);
+        @extend %pointer;
+        color: palette(white);
+      }
+    }
+
+    // .c-sideMenu__link
+    @include element('link') {
+      display: block;
+
+      &:active {
+        @extend %c-sideMenu--active;
+      }
+    }
+}
+
+
+// Trigger
+
+#hamburger__checkbox:checked ~ .c-sideMenu {
+  @include prefix((transform: translateX(0)), webkit);
+  box-shadow: 0 8px 10px -5px rgba(0,0,0,.2),
+              0 16px 24px 2px rgba(0,0,0,.14),
+              0 6px 30px 5px rgba(0,0,0,.39);
+}
+
+// Closing Area (All viewport must be clickable)
+
+#hamburger__checkbox:checked + #sideMenuFund {
+  @include fixed(top 0 bottom 0);
+  @include size(100%);
+  background-color: palette(black, light);
+  z-index: z(hamburgerTrigger);
+}
+
+
+

@@ -1,0 +1,669 @@
+
+/// Block Element
+/// @access public
+/// @param {String} $element - Element's name
+
+@mixin element($element) {
+  &__#{$element} {
+    @content;
+  }
+}
+
+/// @alias element
+
+@mixin e($element) {
+  @include element($element) {
+    @content;
+  }
+}
+
+
+/// Block Modifier
+/// @access public
+/// @param {String} $modifier - Modifier's name
+
+@mixin modifier($modifier) {
+  &--#{$modifier} {
+    @content;
+  }
+}
+
+/// @alias element
+
+@mixin m($modifier) {
+  @include modifier($modifier) {
+    @content;
+  }
+}
+
+
+/// Generate box sizing
+///
+/// @param {String} $box-model - content-box|border-box|initial|inherit;
+///
+
+@mixin box-sizing($box-model) {
+  -webkit-box-sizing: $box-model;
+     -moz-box-sizing: $box-model;
+      box-sizing: $box-model;
+}
+
+
+
+/// Generate both the width and the height
+///
+/// @param {Length} $width - The element width;
+/// @param {Length} $height [$width]  - The element height is optional; if not
+///                                     provided it is equal to the width.
+///
+/// @example
+///   .element {
+///     @include size(100%);
+///   }
+///
+///
+
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+
+
+/// Generate vendors prefix for a particular property
+///
+/// @param {LIST} $map - A map of declarations
+/// @param {LIST} $vendors - Default value dumps all prefixes
+///
+/// @example
+///   #element {
+///     @include prefix((transform, scale(1.5)), webkit o);
+///   }
+///
+
+@mixin prefix($map, $vendors: webkit moz ms o) {
+  @each $prop, $value in $map {
+        @if $vendors {
+          @each $vendor in $vendors {
+            #{"-" + $vendor + "-" + $prop}: #{$value};
+          }
+        }
+
+        // Dump regular property anyway
+        #{$prop}: #{$value};
+  }
+}
+
+/// Generate vendors prefixes for the CSS animation rule.
+///
+/// @param {LIST} $properties - The list of the animation's properties
+/// @param {LIST} $vendors - Default value dumps only the -webkit- prefix
+
+@mixin prefix-anim($animation, $vendors: webkit) {
+  @include prefix((animation: $animation), $vendors);
+}
+
+/// Generate vendors prefixes for the CSS transition rule.
+///
+/// @param {LIST} $properties - The list of the transition's properties
+///
+/// @example
+///
+///   @include prefix-transition(width 2s, height 2s, background-color 2s, transform 2s);
+///
+
+@mixin prefix-transition($properties...) {
+
+  $result: '';
+  $webkit-result: null;
+  $old-transform: null;
+  $new-transform: null;
+  $sep: ', ';
+  $i: 1;
+
+  @each $property, $value in $properties {
+    @if $property == transform {
+        $old-transform: $property + ' ' + $value;
+        $new-transform: ' -webkit-transform ' + $value;
+      } @else {
+        @if ($i > 1) and ($i <= length($properties)) {
+          $result: $result + $sep;
+        }
+        $result: $result + ' ' + $property + ' ' + $value;
+      }
+
+
+    $i: $i + 1;
+  }
+
+  @if length($properties) == 1 {
+    $sep: '';
+  }
+
+  @if ($new-transform) {
+      $webkit-result: $result + $sep + $new-transform;
+
+      -webkit-transition: #{$webkit-result};
+      transition: #{$webkit-result};
+      transition: #{$result};
+      transition: #{ $result + $sep + $old-transform + ', ' + $new-transform };
+
+  } @else {
+    -webkit-transition: #{$result};
+    transition: #{$result};
+  }
+
+}
+
+
+
+
+///-webkit-transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+///transition: width 2s, height 2s, background-color 2s, -webkit-transform 2s;
+///transition: width 2s, height 2s, background-color 2s, transform 2s;
+///transition: width 2s, height 2s, background-color 2s, transform 2s, -webkit-transform 2s;
+
+/// Set the opacity for all browsers and provide a filter fallback for IE8
+///
+/// @param {Number} $opacity - A value between 0 an 1
+///
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}
+
+
+/// Generate an animation
+/// based on the number of frames
+///
+/// @param {String} $animation-name - animation name
+///
+
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes #{$animation-name} {
+    @content;
+  }
+  @-moz-keyframes #{$animation-name} {
+    @content;
+  }
+  @-ms-keyframes #{$animation-name} {
+    @content;
+  }
+  @-o-keyframes #{$animation-name} {
+    @content;
+  }
+  @keyframes #{$animation-name} {
+    @content;
+  }
+}
+
+
+/// Generate an animation
+///
+/// @param {List} $animate - A list of possibly animations (but not mandatory)
+///
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations; /* Chr, Saf */
+    animation:         $animations; /* IE >9, Fx >15, Op >12.0 */
+}
+
+
+// -----------------------------------------------------------------------------
+// Media Queries
+// -----------------------------------------------------------------------------
+
+// Caching current breakpoint
+$default-breakpoint: root;
+$current-breakpoint: $default-breakpoint;
+
+// Caching existing placeholders and queries
+$placeholders: ();
+$queries-in-use: ();
+
+
+/// Generate elegant and maintainable media queries with Sass
+/// https://davidwalsh.name/sass-media-query
+///
+/// @example
+///   @include media(">=tablet", "<1280px") {
+///
+///   }
+///
+/// @param {List} $conditions - It takes a variable number of strings, parses them,
+///                            detects media expressions and handle possible
+///                            disjunctions and glue everything together to form
+///                            the media query expression.
+///
+
+@mixin media($conditions...) {
+  @for $i from 1 through length($conditions) {
+    $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i), $i, length($conditions)));
+  }
+
+  $branches: get-query-branches($conditions);
+  $query: "";
+
+  @each $branch in $branches {
+    @if (str-length($query) != 0) {
+      $query: $query + ", ";
+    }
+
+    $query: $query + $branch;
+  }
+
+  @at-root {
+    @media #{$query} {
+      #{&} {
+        @content;
+      }
+    }
+  }
+}
+
+/// HACKS Used to enable placeholders inside @media queries
+/// You may not @extend an outer selector from within @media.
+/// You may only @extend selectors within the same directive.
+
+@mixin media-extensible($conditions...) {
+  @for $i from 1 through length($conditions) {
+    $conditions: set-nth($conditions, $i, parse-expression(nth($conditions, $i), $i, length($conditions)));
+  }
+
+  $branches: get-query-branches($conditions);
+  $query: "";
+
+  @each $branch in $branches {
+    @if (str-length($query) != 0) {
+      $query: $query + ", ";
+    }
+
+    $query: $query + $branch;
+  }
+
+  // Cache query
+  @if not index($queries-in-use, $query) {
+    $queries-in-use: append($queries-in-use, $query) !global;
+  }
+
+  $current-breakpoint: str-replace-first($query, '-', ' ')        !global;
+  @at-root {
+    @media #{$query} {
+      #{&} {
+        @content;
+      }
+    }
+  }
+  $current-breakpoint: $default-breakpoint !global;
+}
+
+/// HACKS Used to enable placeholders inside @media queries
+/// You may not @extend an outer selector from within @media.
+/// You may only @extend selectors within the same directive.
+
+@mixin _placeholder($name) {
+  @if not index($placeholders, $name) {
+    $placeholders: append($placeholders, $name) !global;
+
+    @at-root {
+      @each $query in $queries-in-use {
+        @media #{$query} {
+          %#{$name}-#{str-replace-first($query, '-', ' ')} {
+            @content;
+          }
+        }
+      }
+
+      %#{$name}-#{$default-breakpoint} {
+        @content;
+      }
+    }
+  }
+
+  @else {
+    @warn "Placeholder `#{$name}` already exists.";
+  }
+}
+
+// Extend the accurate placeholder
+// according to the current scope
+// Basically instead of doing:
+//    @extend %clear;
+// You go:
+//    @include _(clear);
+// Not much longer, is it?
+@mixin _($name) {
+  @extend %#{$name}-#{$current-breakpoint} !optional;
+}
+
+
+/// Generate rounded borders
+///
+/// @param {Number} $radius - The shorthand to set the four properties
+///                           border-top-left-radius, border-top-right-radius,
+///                           border-bottom-right-radius and
+///                           border-bottom-left-radius respectively.
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+  background-clip: padding-box;  /* stops bg color from leaking outside the border: */
+}
+
+
+
+/// Generate single side border-radius [TOP]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-top-right-radius, and border-top-left-radius
+///                           respectively.
+
+@mixin border-top-radius($radius) {
+  -webkit-border-top-right-radius: $radius;
+  border-top-right-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+
+/// Generate single side border-radius [RIGHT]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-top-right-radius, and border-bottom-right-radius,
+///                           respectively.
+
+@mixin border-right-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+ -webkit-border-top-right-radius: $radius;
+ border-top-right-radius: $radius;
+ background-clip: padding-box;
+}
+
+
+/// Generate single side border-radius [BOTTOM]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-bottom-right-radius, and border-bottom-left-radius,
+///                             respectively.
+
+@mixin border-bottom-radius($radius) {
+  -webkit-border-bottom-right-radius: $radius;
+  border-bottom-right-radius: $radius;
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+
+/// Generate single side border-radius [LEFT]
+///
+/// @param {Number} $radius - The shorthand to set the two properties
+///                           border-top-left-radius, and border-left-radius,
+///                           respectively.
+
+@mixin border-left-radius($radius) {
+  -webkit-border-bottom-left-radius: $radius;
+  border-bottom-left-radius: $radius;
+  -webkit-border-top-left-radius: $radius;
+  border-top-left-radius: $radius;
+  background-clip: padding-box;
+}
+
+
+
+/// Generate opposite side border-radius [TOP-LEFT & BOTTOM-RIGHT | TOP-RIGHT & BOTTOM LEFT]
+///
+/// @param {Number} $topLeftBottomRight - The TOP-LEFT & BOTTOM-RIGHT radius
+/// @param {Number} $topRightBottomLeft - TOP-RIGHT & BOTTOM LEFT radius
+
+@mixin border-opposite-radius($topLeftBottomRight, $topRightBottomLeft) {
+  -webkit-border-top-left-radius: $topLeftBottomRight;
+  border-top-left-radius: $topLeftBottomRight;
+  -webkit-border-bottom-right-radius: $topLeftBottomRight;
+  border-bottom-right-radius: $topLeftBottomRight;
+  -webkit-border-top-right-radius: $topRightBottomLeft;
+  border-top-right-radius: $topRightBottomLeft;
+  -webkit-border-bottom-left-radius: $topRightBottomLeft;
+  border-bottom-left-radius: $topRightBottomLeft;
+  background-clip: padding-box;
+}
+
+
+/// Generate padding
+///
+/// @param {Number} $top - The top padding value or null
+/// @param {Number} $right - The right padding value or null
+/// @param {Number} $bottom - The bottom padding value or null
+/// @param {Number} $left - The left padding value or null
+
+@mixin padding($top, $right, $bottom, $left) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+
+/// Generate margin
+///
+/// @param {Number} $top - The top margin value or null
+/// @param {Number} $right - The right margin value or null
+/// @param {Number} $bottom - The bottom margin value or null
+/// @param {Number} $left - The left margin value or null
+
+@mixin margin($top, $right, $bottom, $left) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+
+/// Generate margins set to auto
+/// @access public
+
+@mixin margin-auto() {
+  margin-left:auto;
+  margin-right:auto;
+}
+
+
+/// Generate a positioned element
+///
+/// @param {String} $position - The position system
+/// @param {List} $args - A list of properties
+
+@mixin position($position, $args: null) {
+
+  position: $position;
+
+  @if ($args) {
+    @each $o in top right bottom left {
+          $i: index($args, $o);
+
+      @if $i and $i + 1 <= length($args) and type-of(nth($args, $i + 1)) == number  {
+            #{$o}: nth($args, $i + 1);
+      }
+    }
+  }
+}
+
+
+/// Generate an absolute positioned element
+///
+/// @param {List} $args - A list of properties
+
+@mixin absolute($args: null) {
+  @include position(absolute, $args);
+}
+
+
+/// Generate a fixed positioned element
+///
+/// @param {List} $args - A list of properties
+
+@mixin fixed($args: null) {
+  @include position(fixed, $args);
+}
+
+
+/// Generate a relative positioned element
+///
+/// @param {List} $args - A list of properties
+
+@mixin relative($args: null) {
+  @include position(relative, $args);
+}
+
+/// Generate a cross-browser flexbox item
+
+/// flex-direction: row | row-reverse | column | column-reverse;
+/// flex-wrap: nowrap | wrap | wrap-reverse;
+
+@mixin flex($conf: ()) {
+
+  $base-conf: (
+    box-direction: row,
+    wrap: wrap,
+    /*
+    justify-content: flex-start,
+    align-items: flex-start,
+    align-content: flex-start,*/
+  );
+
+  @if is-map($conf) {
+    // Using the provided config map, extend the basic configuration
+    // if necessary
+    $base-conf: extend($base-conf, $conf);
+  }
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+
+
+  @each $property, $value in $base-conf {
+    @if ($property == 'box-direction') {
+      @include flex-box-direction($value);
+    } @else if ($property == 'wrap') {
+      -ms-flex-wrap: $value;
+          flex-wrap: $value;
+    } @else if ($property == 'justify-content') {
+      @include flex-justify-content($value);
+    } @else if ($property == 'align-items') {
+        -webkit-box-align: fix-flex($value);
+        -ms-flex-align: fix-flex($value);
+            align-items: $value;
+    } @else if ($property == 'align-content') {
+        -ms-flex-align: fix-flex($value);
+            align-items: $value;
+    }
+  }
+}
+
+/// Generate a relative positioned element
+///
+/// @param {List} $alignment - auto | flex-start | flex-end | center | baseline | stretch;
+
+@mixin flex-align-self($alignment) {
+  -ms-flex-item-align: fix-flex($alignment);
+           align-self: $alignment;
+}
+
+/// This defines the ability for a flex item to shrink if necessary
+///
+/// @param {Number} $value - Negative numbers are invalid.
+
+@mixin flex-shrink($value) {
+  -ms-flex-negative: $value;
+           flex-shrink: $value;
+}
+
+/// The order property controls the order in which the elements
+// appear in the flex container
+///
+/// @param {Number} $value
+
+@mixin flex-order($value) {
+  -webkit-box-ordinal-group: $value + 1;
+        -ms-flex-order: $value;
+            order: $value;
+}
+
+/// This defines the ability for a flex item to grow if necessary
+///
+/// @param {Number} $value
+
+@mixin flex-grow($value) {
+  -webkit-box-flex: $value;
+      -ms-flex-positive: $value;
+          flex-grow: $value;
+}
+
+/// Generate cross-browser flex directions
+/// @param {String} $direction - A valid flex direction
+/// @require $_flex-directions
+
+@mixin flex-box-direction($direction) {
+
+  @if not index($_flex-directions, $direction) {
+    @error '#{$direction} is not a valid flex direction. ' +
+           'You should use one of the following properties #{$_flex-directions}';
+  }
+
+  @if (str-index($direction, '-reverse')) {
+      -webkit-box-direction: reverse;
+  } @else {
+      -webkit-box-direction: normal;
+  }
+  @if (str-index($direction, 'column') or
+       $direction == 'initial'
+       or $direction == 'inherit') {
+      -webkit-box-orient: vertical;
+  } @else {
+      -webkit-box-orient: horizontal;
+  }
+
+  -ms-flex-direction: $direction;
+      flex-direction: $direction;
+}
+
+/// Generate cross-browser flex justify content
+/// @param {String} $direction - A valid justify content
+/// @require $_flex-justifyContent
+
+@mixin flex-justify-content($justify) {
+
+  @if not index($_flex-justifyContent, $justify) {
+    @error '#{$justify} is not a valid flex direction. ' +
+           'You should use one of the following properties #{$_flex-justifyContent}';
+  }
+
+  @if (str-index($justify, '-start') or
+       str-index($justify, '-end') or
+       str-index($justify, '-between')) {
+    -webkit-box-pack: fix-flex($justify);
+  }
+
+  -ms-flex-pack: fix-flex($justify);
+  justify-content: $justify;
+}
+
+
+
+
+

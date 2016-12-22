@@ -1,0 +1,151 @@
+
+$width: conf($conf-c-splash, animation, width);
+
+#splash {
+  background: palette(black, superlight);
+  background-image: url('../img/graphy.png');
+
+    .l-container {
+      @extend %flex-row-centered;
+      font-family: 'Yanone Kaffeesatz', sans-serif;
+      text-align: center;
+      background-color: transparent;
+    }
+
+    .animation {
+      @include flex();
+      @include prefix-anim(open 0.4s linear forwards);
+      position: relative;
+      width: $width;
+      min-height: 150px;
+      line-height: 1.5em;
+
+      @include media('screen', '>=tablet') {
+        min-height: 350px;
+        padding-top: 20px;
+        font-size: 2.8em;
+      }
+
+        // It's the vertical line
+        &:after {
+          @include absolute(left 50% top 3%);
+          content: '';
+          width: 4px;
+          background: palette(black);
+          height: calc(90% - 250px);
+
+          @include media('screen', '>=tablet') {
+            height: calc(80% - 280px);
+          }
+
+          /* iPad in landscape */
+          @media only screen
+          and (min-device-width : 768px)
+          and (max-device-width : 1024px)
+          and (orientation : landscape) {
+              height: 70%;
+          }
+
+          @media only screen and (min-width: 1024px) and (max-height: 889px) {
+            height: 70%
+          }
+        }
+
+        // It contains the animation layout and the SPANs animations
+        .l-animation {
+          padding: 10px 15px;
+          font-size: 1.2em;
+          overflow: hidden;
+
+          @include media('screen', '>=tablet') {
+              padding: 0 25px;
+          }
+
+            // .l-animation--left
+            @include modifier('left') {
+
+              width: $width / 2;
+              text-align: right;
+
+                .animation__span--top {
+                  @include prefix-anim(slideLeft 0.5s ease-in 0.6s backwards);
+                }
+                .animation__span--bottom {
+                  @include prefix-anim(slideLeft 0.5s ease-in 1s backwards);
+                }
+            }
+            // .l-animation--right
+            @include modifier('right') {
+
+              width: $width / 2;
+              text-align: left;
+              color: palette(amaranth);
+
+              .animation__span--top {
+                @include prefix-anim(slideRight 0.5s ease-in 2s backwards);
+              }
+              .animation__span--bottom {
+                @include prefix-anim(slideRight 0.5s ease-in 2.4s backwards);
+              }
+            }
+            // .l-animation--full
+            @include modifier('full') {
+              @include flex-grow(2);
+              padding-top: 1.2em;
+
+              @media only screen and (min-width: 1024px) and (max-height: 889px) {
+                padding-top: .5em;
+              }
+            }
+        }
+
+        // .animation__span
+        @include element('span') {
+          display: block;
+            // .animation__span--big
+            @include modifier('big') {
+              font-size: 1.5em;
+              line-height: 1.6em;
+              font-weight: 700;
+              text-transform: uppercase;
+            }
+        }
+        // .animation__info
+        @include element('info') {
+          color: initial;
+          font-style: italic;
+        }
+
+        // .animation--fadeIN
+        @include modifier('fadeIN') {
+          @include prefix-anim(fadeIN 1s linear 3.6s backwards);
+        }
+    }
+}
+
+
+#geek {
+
+  /* iPad in landscape */
+  @media only screen
+  and (min-device-width : 768px)
+  and (max-device-width : 1024px)
+  and (orientation : landscape) {
+      position: absolute;
+      right: 5%;
+  }
+
+  @media only screen and (min-width: 1024px) and (max-height: 889px) {
+    position: absolute;
+    right: 5%;
+  }
+}
+
+
+
+
+
+
+
+
+

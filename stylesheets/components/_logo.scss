@@ -1,0 +1,25 @@
+
+.c-logo {
+  float: left;
+  color: white();
+
+  @include media("screen", "<tablet") {
+    float: initial;
+  }
+
+  @include media('screen', '>=desktop') {
+    font-size: 1.5rem;
+  }
+
+    @include e('span--first') {
+      padding: 2px;
+      font-weight: 300;
+      text-decoration: overline;
+      background-color: palette(persian-rose);
+    }
+
+    @include e('span--last') {
+      font-weight: 500;
+    }
+
+}
