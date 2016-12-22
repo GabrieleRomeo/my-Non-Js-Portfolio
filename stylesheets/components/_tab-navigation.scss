@@ -20,22 +20,26 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
 @mixin c-tab__checked($version: default) {
 
   $tabItems: 12;
+  $tabStickers: 1;
+
+  $totalItems: $tabItems + $tabStickers;
   $g: 1;
 
-  @for $i from $g to $tabItems {
+  @for $i from $g to $totalItems {
 
     // The eleven tab represents the HACKATHONS sticker
-    // for this reason, it must be not clickable
-    $g: if($i != 11, $i, $i + 1);
+    // for this reason, it must be not clickable and we need to increment the
+    // $g variable by 1 more step
+    $g: if($i > 10, $i + 1, $i);
 
-    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:nth-of-type(#{$g}) .c-tab__label {
+    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:not(.c-tab__item--sticker):nth-of-type(#{$g}) .c-tab__label {
       @if $version == default {
           @extend %c-tab__label--default;
       } @else {
           @include _('c-tab__label--greater-than-tablet');
       }
     }
-    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:nth-of-type(#{$g}) .c-tab__content {
+    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:not(.c-tab__item--sticker):nth-of-type(#{$g}) .c-tab__content {
       @if $version == default {
           @extend %c-tab__content--default;
       } @else {
