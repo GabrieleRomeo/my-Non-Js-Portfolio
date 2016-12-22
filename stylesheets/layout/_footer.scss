@@ -18,6 +18,16 @@ $_conf-icon: conf($conf, icon);
     padding: 0;
   }
 
+  .c-section__header {
+    position: initial;
+    right: initial;
+    padding-top: 5em;
+  }
+
+  .c-section__body {
+    padding-top: 55px;
+  }
+
   .c-footer {
 
     // .c-footer__svg
