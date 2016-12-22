@@ -6,10 +6,15 @@ $width: conf($conf-c-splash, animation, width);
   background-image: url('../img/graphy.png');
 
     .l-container {
+      @extend %l-container;
       @extend %flex-row-centered;
       font-family: 'Yanone Kaffeesatz', sans-serif;
       text-align: center;
       background-color: transparent;
+    }
+
+    .c-section__body {
+      padding: 30px 15px 0;
     }
 
     .animation {
@@ -125,6 +130,12 @@ $width: conf($conf-c-splash, animation, width);
 
 
 #geek {
+
+  height: 190px;
+
+  @include media('screen', '>=tablet') {
+    height: auto;
+  }
 
   /* iPad in landscape */
   @media only screen
