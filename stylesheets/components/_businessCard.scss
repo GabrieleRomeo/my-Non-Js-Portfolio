@@ -228,6 +228,7 @@ $_conf-subHeading: _c-card-conf(subHeading);
 @media screen and (min-width: 768px) {
   .c-businessCard {
     width: 57%;
+    margin-top: 50px;
     line-height: _c-card-conf(line-height);
 
     .c-card__subHeading {
