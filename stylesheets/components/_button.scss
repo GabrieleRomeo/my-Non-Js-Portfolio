@@ -8,11 +8,17 @@ $_conf-base: $base-c-button !default;
 $_conf-rounded: _c-button-conf(rounded);
 $_conf-3D: _c-button-conf(3D);
 
+$backToTop-position: (
+  bottom: 20px,
+  left: 10px,
+  right: initial
+);
+
 .c-button {
   @include prefix((touch-action: manipulation), 'ms');
   @include prefix((transition: all .3s ease-in-out), 'webkit');
   @include prefix((user-select: none), 'webkit');
-  @extend%flex-row-centered;
+  @extend %flex-row-centered;
   @extend %pointer;
   position: relative;
   font-size: 1rem;
@@ -22,6 +28,19 @@ $_conf-3D: _c-button-conf(3D);
   white-space: nowrap;
   text-shadow: 0px 1px 1px palette(black, light);
 
+    &#backToTop {
+      position: fixed;
+      bottom: conf($backToTop-position, bottom);
+      left: conf($backToTop-position, left);
+      right: conf($backToTop-position, right);
+      visibility: hidden;
+      z-index: z('default');
+
+        &.c-button--3D:active {
+          top: initial;
+          bottom: conf($backToTop-position, bottom) - 3px;
+        }
+    }
 
     // .c-button--white
     @include modifier('white') {
@@ -32,6 +51,16 @@ $_conf-3D: _c-button-conf(3D);
     // .c-button--light
     @include modifier('light') {
       font-weight: 300;
+    }
+
+    // .c-button--scroll
+    @include modifier('scroll') {
+      @include size(40px);
+      padding: 5px 10px;
+
+        i:before {
+          transform: rotate(180deg);
+        }
     }
 
     // .c-button--roundedTop
