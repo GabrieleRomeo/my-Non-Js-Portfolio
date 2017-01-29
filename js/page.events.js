@@ -34,12 +34,14 @@
 
     function handleScroll() {
 
-        var viewPort = Portfolio.namespace('Utils').Window.viewPort;
+        var viewPort = Portfolio.namespace('Utils').Window.viewPort();
         var body = dom.getBody();
         var isVisible = dom.getComputed(backToTop)('visibility') === true;
 
 
-        if ( ( body.scrollTop + toolBarHeight > viewPort.height ) && !isVisible ) {
+        if ( ( body.scrollTop + toolBarHeight > viewPort.height ) &&
+                                                       !isVisible &&
+                                                    viewPort.width >= '768') {
             backToTop.style.visibility = 'visible';
         } else {
             backToTop.style.visibility = 'hidden';
