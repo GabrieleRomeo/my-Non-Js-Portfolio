@@ -108,15 +108,24 @@ Portfolio.namespace('Utils').Dom = (function() {
 
 Portfolio.namespace('Utils').Window = (function() {
 
-    var body = Portfolio.namespace('Utils').Dom.getBody();
-    var w = Math.max(body.clientWidth, window.innerWidth || 0);
-    var h = Math.max(body.clientHeight, window.innerHeight || 0);
+    /**
+     * Give ViewPort Info (height and width)
+     * @param {Object}
+     */
 
-    return {
-        viewPort: {
+    function getViewPortInfo() {
+        var body = Portfolio.namespace('Utils').Dom.getBody();
+        var w = Math.max(body.clientWidth, window.innerWidth || 0);
+        var h = Math.max(body.clientHeight, window.innerHeight || 0);
+
+        return {
             width: w,
             height: h
-        }
+        };
+    }
+
+    return {
+        viewPort: getViewPortInfo
     };
 })();
 
