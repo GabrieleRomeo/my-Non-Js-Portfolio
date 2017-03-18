@@ -32,9 +32,15 @@ $conf-c-modal: (
 
 
 $conf-c-sideMenu: (
-  width: 78%,
+  width: 100%,
   min-width: 240px,
-  max-width: 320px
+  max-width: 320px,
+  item: (
+    line-height: 40px,
+    hover-bg-color: rgb(170, 21, 159),
+    current-bg-color: rgba(125, 19, 117, 0.22)
+  )
+
 );
 
 //------------------------------------------------------------------------------
@@ -132,6 +138,18 @@ $base-c-italy-flag: (
   width: 50%,
   height: 13px,
   font-family: ('Roboto Slab', serif),
+) !default;
+
+//------------------------------------------------------------------------------
+//                       Navicon Configuration
+//------------------------------------------------------------------------------
+
+$base-c-navicon: (
+  width: 35px,
+  height: 3px,
+  margin-bottom: 8px,
+  bg-color: rgb(0, 0, 0),
+  box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0.38)
 ) !default;
 
 

@@ -42,6 +42,10 @@ $font-size-title: conf($base-c-section, title, font-size);
       @include media('screen', '>=tablet') {
         padding: 90px 20px;
       }
+
+      @include media('screen', '>=desktop') {
+        padding: 90px 50px;
+      }
     }
 
     .l-container {
