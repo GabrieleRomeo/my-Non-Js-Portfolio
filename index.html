@@ -22,6 +22,7 @@
       <!-- CSS
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="css/fontello.css">
       <link rel="stylesheet" href="stylesheets/main.min.css">
       <!-- Favicon
@@ -31,7 +32,7 @@
       <link rel="apple-touch-icon" sizes="60x60" href="icons/touch-icon-ipad-76x76.png">
       <link rel="apple-touch-icon" sizes="114x114" href="icons/touch-icon-iphone-retina-120x120.png">
       <link rel="apple-touch-icon" sizes="144x144" href="icons/touch-icon-ipad-retina-152x152.png">
-
+      <script src="https://use.fontawesome.com/118670e9e2.js"></script>
   </head>
   <body>
 
@@ -43,10 +44,57 @@
       </p>
     <![endif]-->
 
+  <!-- Start sideMenu component (Desktop) -->
+  <div class="c-sideMenu--desktop">
+    <nav role="navigation">
+      <ul class="c-sideMenu__items">
+        <li class="c-sideMenu__item">
+          <div class="c-menucard c-menucard--titled" data-title="menu">
+            <div class="c-menucard__side">
+              <p class="c-dotNav"></p>
+            </div>
+            <div class="c-menucard__side c-menucard__side--back">
+              <a class="c-sideMenu__link" href="#about" data-section="a">about</a>
+            </div>
+          </div>
+        </li>
+        <li class="c-sideMenu__item">
+          <div class="c-menucard">
+            <div class="c-menucard__side">
+              <p class="c-dotNav"></p>
+            </div>
+            <div class="c-menucard__side c-menucard__side--back">
+              <a class="c-sideMenu__link" href="#projects" data-section="p">Projects</a>
+            </div>
+          </div>
+        </li>
+        <li class="c-sideMenu__item">
+          <div class="c-menucard">
+            <div class="c-menucard__side">
+              <p class="c-dotNav"></p>
+            </div>
+            <div class="c-menucard__side c-menucard__side--back">
+              <a class="c-sideMenu__link" href="#skills" data-section="s">skills</a>
+            </div>
+          </div>
+        </li>
+        <li class="c-sideMenu__item">
+          <div class="c-menucard">
+            <div class="c-menucard__side">
+              <p class="c-dotNav"></p>
+            </div>
+            <div class="c-menucard__side c-menucard__side--back">
+              <a class="c-sideMenu__link" href="#contact" data-section="c">contact</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <!-- End sideMenu -->
 
   <header class="c-header" id="header" role="banner">
-    <input id="hamburger__checkbox" type="checkbox">
-    <label for="hamburger__checkbox" id="sideMenuFund"></label>
+
     <div class="l-wrapper">
 
       <div id="hamburger">
@@ -125,6 +173,13 @@
 
     </div>
 
+  </header>
+
+  <main role="main">
+
+    <input id="hamburger__checkbox" type="checkbox">
+    <label for="hamburger__checkbox" id="sideMenuFund"></label>
+
     <!-- Start sideMenu component (Mobile only) -->
     <div class="c-sideMenu">
       <nav role="navigation">
@@ -141,10 +196,12 @@
             </label>
           </li>
           <li class="c-sideMenu__item">
+            <i class="c-sideMenu__icon fa fa-user-o" aria-hidden="true"></i>
             <a class="c-sideMenu__link" href="#about">about</a>
           </li>
           <li class="c-sideMenu__item">
-            <label class="c-sideMenu__label" for="subMenu--trigger-1">Projects</label>
+            <i class="c-sideMenu__icon fa fa-cubes" aria-hidden="true"></i>
+            <label class="c-sideMenu__label" for="subMenu--trigger-1">projects</label>
             <input class="input__trigger input__trigger--subMenu"
                    id="subMenu--trigger-1"
                    type="checkbox">
@@ -199,12 +256,24 @@
                   questionnarie
                 </label>
               </li>
+              <li class="c-subMenu__item c-subMenu__item--capitalized">
+                <label class="c-subMenu__label" for="tab__radio-11">
+                  JIGSAW Puzzle
+                </label>
+              </li>
+              <li class="c-subMenu__item c-subMenu__item--capitalized">
+                <label class="c-subMenu__label" for="tab__radio-12">
+                  Seed UI Framework
+                </label>
+              </li>
             </ul>
           </li>
           <li class="c-sideMenu__item">
+            <i class="c-sideMenu__icon fa fa-address-card" aria-hidden="true"></i>
             <a class="c-sideMenu__link" href="#skills">skills</a>
           </li>
           <li class="c-sideMenu__item">
+            <i class="c-sideMenu__icon fa fa-envelope-o" aria-hidden="true"></i>
             <a class="c-sideMenu__link" href="#contact">contact</a>
           </li>
           <li class="c-sideMenu__item c-sideMenu__item--copy">
@@ -214,10 +283,6 @@
       </nav>
     </div>
     <!-- End sideMenu component -->
-
-  </header>
-
-  <main role="main">
 
     <section class="c-section" id="splash" role="application">
       <div class="l-container">
@@ -370,6 +435,8 @@
             <input class="c-tab__radio" id="tab__radio-10" name="tab__radio" type="radio">
             <input class="c-tab__radio" id="tab__radio-11" name="tab__radio" type="radio">
             <input class="c-tab__radio" id="tab__radio-12" name="tab__radio" type="radio">
+            <input class="c-tab__radio" id="tab__radio-13" name="tab__radio" type="radio">
+            <input class="c-tab__radio" id="tab__radio-14" name="tab__radio" type="radio">
 
             <!-- Start TAB List -->
             <ul class="c-tab__list">
@@ -1259,6 +1326,227 @@
                 </div>
                 <!-- End TAB 10 - Content -->
               </li>
+              <!-- TAB 11 - Seed UI -->
+              <li class="c-tab__item">
+                <label class="c-tab__label" for="tab__radio-11">JIGSAW Drag & Drop Puzzle</label>
+                <!-- Start TAB 11 - JIGSAW Drag & Drop Puzzle Content -->
+                <div class="c-tab__content">
+                  <div class="c-carousel">
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel11__radio-1" name="carousel11__radio"
+                           type="radio" checked>
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel11__radio-2" name="carousel11__radio"
+                           type="radio">
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel11__radio-3" name="carousel11__radio"
+                           type="radio">
+                    <ul class="c-carousel__list">
+                      <li class="c-carousel__item">
+                        <img src="img/carousel-11__image_1.png" alt="JIGSAW Drag & Drop Puzzle">
+                      </li>
+                      <li class="c-carousel__item">
+                        <img src="img/carousel-11__image_2.png" alt="JIGSAW Drag & Drop Puzzle">
+                      </li>
+                      <li class="c-carousel__item">
+                        <img src="img/carousel-11__image_3.png" alt="JIGSAW Drag & Drop Puzzle">
+                      </li>
+                    </ul>
+
+                    <div class="c-carousel__control c-carousel__control--prev">
+                      <label for="carousel11__radio-1">
+                        <i class="icon-left-open" aria-hidden="true"></i>
+                      </label>
+                      <label for="carousel11__radio-2">
+                        <i class="icon-left-open" aria-hidden="true"></i>
+                      </label>
+                    </div>
+                    <div class="c-carousel__control c-carousel__control--next">
+                      <label for="carousel11__radio-2">
+                        <i class="icon-right-open" aria-hidden="true"></i>
+                      </label>
+                      <label for="carousel11__radio-3">
+                        <i class="icon-right-open" aria-hidden="true"></i>
+                      </label>
+                    </div>
+
+                    <div class="c-carousel__bullets" unselectable="on">
+                      <label for="carousel11__radio-1">
+                        <span></span>
+                      </label>
+                      <label for="carousel11__radio-2">
+                        <span></span>
+                      </label>
+                      <label for="carousel11__radio-3">
+                        <span></span>
+                      </label>
+                    </div>
+
+                  </div>
+                  <div class="project__info">
+                    <p class="project__technologies">
+                      <strong>Technologies:</strong>
+                      HTML5, CSS3, Vanilla Javascript
+                    </p>
+                    <p class="project__description">
+                      This showcase shows the JIGSAW Drag & Drop Puzzle Project
+                      that has a full drag and drop interface.
+                    </p>
+                    <p>
+                      The system is based on the <strong>Model-View-ViewModel
+                      (MVVM) Architectural Pattern</strong>
+                    </p>
+                    <p class="project__URLs">
+                    <i class="icon-link-ext" aria-hidden="true">
+                      <a class="project__URL"
+                         href="https://gabrieleromeo.github.io/Bov-Jigsaw-Puzzle/"
+                         title="Visit the Jigsaw Puzzle home page"
+                         target="_new">
+                         Demo
+                      </a>
+                    </i>
+                    <i class="icon-github-circled" aria-hidden="true">
+                      <a class="project__URL"
+                         href="https://github.com/GabrieleRomeo/Bov-Jigsaw-Puzzle"
+                         title="Source Code"
+                         target="_new">
+                         Source
+                      </a>
+                    </i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End TAB 11 - Content -->
+              </li>
+              <!-- TAB 12 - Seed UI -->
+              <li class="c-tab__item">
+                <label class="c-tab__label" for="tab__radio-12">Seed UI Framework</label>
+                <!-- Start TAB 11 - Content -->
+                <div class="c-tab__content">
+                  <div class="c-carousel">
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel12__radio-1" name="carousel12__radio"
+                           type="radio" checked>
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel12__radio-2" name="carousel12__radio"
+                           type="radio">
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel12__radio-3" name="carousel12__radio"
+                           type="radio">
+                    <ul class="c-carousel__list">
+                      <li class="c-carousel__item">
+                        <img src="img/carousel-12__image_1.png" alt="Seed UI Typography">
+                      </li>
+                      <li class="c-carousel__item">
+                        <img src="img/carousel-12__image_2.png" alt="Seed UI Animations">
+                      </li>
+                      <li class="c-carousel__item">
+                        <img src="img/carousel-12__image_3.png" alt="Seed UI Modals and Dot Navigation">
+                      </li>
+                    </ul>
+
+                    <div class="c-carousel__control c-carousel__control--prev">
+                      <label for="carousel12__radio-1">
+                        <i class="icon-left-open" aria-hidden="true"></i>
+                      </label>
+                      <label for="carousel12__radio-2">
+                        <i class="icon-left-open" aria-hidden="true"></i>
+                      </label>
+                    </div>
+                    <div class="c-carousel__control c-carousel__control--next">
+                      <label for="carousel12__radio-2">
+                        <i class="icon-right-open" aria-hidden="true"></i>
+                      </label>
+                      <label for="carousel12__radio-3">
+                        <i class="icon-right-open" aria-hidden="true"></i>
+                      </label>
+                    </div>
+
+                    <div class="c-carousel__bullets" unselectable="on">
+                      <label for="carousel12__radio-1">
+                        <span></span>
+                      </label>
+                      <label for="carousel12__radio-2">
+                        <span></span>
+                      </label>
+                      <label for="carousel12__radio-3">
+                        <span></span>
+                      </label>
+                    </div>
+
+                  </div>
+                  <div class="project__info">
+                    <p class="project__technologies">
+                      <strong>Technologies:</strong>
+                      HTML5, CSS3, Vanilla Javascript
+                    </p>
+                    <p class="project__description">
+                      This showcase shows the result of the Hackathon number 3 at
+                      <em>Bov Academy</em>. A three-day event, February the
+                      26(th) - 27(th) - 28(th), 2017, during which our Team developed
+                      an UI Framework called <em>Seed UI</em>.
+                    </p>
+                    <p>
+                      <strong>Team Members</strong>
+                        <ul class="list__team">
+                          <li>
+                            <span class="span__role">Project Manager:</span>
+                            <a href="https://github.com/codephobe"
+                               title="Jake Tom's Github profile page"
+                               target="_new">Jake Tom</a>
+                          </li>
+                          <li>
+                            <span class="span__role">Developer:</span>
+                            <a href="hhttps://github.com/jmatembu"
+                               title="Joseph Michael Matembu's Github profile page"
+                               target="_new">Joseph Michael Matembu</a>
+                          </li>
+                          <li>
+                            <span class="span__role">Product Manager:</span>
+                            Gabriele Romeo
+                          </li>
+                          <li>
+                            <span class="span__role">Developer:</span>
+                            <a href="https://github.com/Gruximillian"
+                               title="Vojislav Grujić's Github profile page"
+                               target="_new">Vojislav Grujić</a>
+                          </li>
+                          <li>
+                            <span class="span__role">Developer:</span>
+                            <a href="https://github.com/brianhernandez"
+                               title="Brian Hernandez's Github profile page"
+                               target="_new">Brian Hernandez</a>
+                          </li>
+                          <li>
+                            <span class="span__role">Developer:</span>
+                            <a href="https://github.com/lenafaure"
+                               title="Léna Faure's Github profile page"
+                               target="_new">Léna Faure</a>
+                          </li>
+                        </ul>
+                    </p>
+                    <p class="project__URLs">
+                    <i class="icon-link-ext" aria-hidden="true">
+                      <a class="project__URL"
+                         href="https://codephobe.github.io/seed-ui/"
+                         title="Visit the Seed UI home page"
+                         target="_new">
+                         Demo
+                      </a>
+                    </i>
+                    <i class="icon-github-circled" aria-hidden="true">
+                      <a class="project__URL"
+                         href="https://github.com/codephobe/seed-ui"
+                         title="Source Code"
+                         target="_new">
+                         Source
+                      </a>
+                    </i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End TAB 12 - Content -->
+              </li>
                 <!-- Sticker TAB Hackthons -->
               <li class="c-tab__item c-tab__item--sticker">
                 <label class="c-tab__label c-tab__label--sticket">
@@ -1266,9 +1554,9 @@
                   <img src="img/MD_logo.png" alt="Modern Developer">
                 </label>
               </li>
-              <!-- TAB 11 - Hackathon number 1 -->
+              <!-- TAB 12 - Hackathon number 1 -->
               <li class="c-tab__item">
-                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-11">#1 - October-2016</label>
+                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-13">#1 - October-2016</label>
                 <!-- Start TAB 11 - Content -->
                 <div class="c-tab__content">
                   <div class="c-carousel">
@@ -1283,13 +1571,13 @@
                            type="radio">
                     <ul class="c-carousel__list">
                       <li class="c-carousel__item">
-                        <img src="img/carousel-11__image_1.png" alt="Dropdown Menu">
+                        <img src="img/HACKATHON_1__image_1.png" alt="Dropdown Menu">
                       </li>
                       <li class="c-carousel__item">
-                        <img src="img/carousel-11__image_2.png" alt="Modal Windows">
+                        <img src="img/HACKATHON_1__image_2.png" alt="Modal Windows">
                       </li>
                       <li class="c-carousel__item">
-                        <img src="img/carousel-11__image_3.png" alt="Collapsible">
+                        <img src="img/HACKATHON_1__image_3.png" alt="Collapsible">
                       </li>
                     </ul>
 
@@ -1330,7 +1618,7 @@
                     </p>
                     <p class="project__description">
                       This showcase shows the result of the first Hackathon at
-                      <em>Modern Developer</em>. A three-day event, during which our
+                      <em>Bov Academy</em>. A three-day event, during which our
                       Team replicated four
                       <a class="project__link" href="http://materializecss.com/" target="_new">
                         Materialize.css
@@ -1369,9 +1657,9 @@
                 </div>
                 <!-- End TAB 11 - Content -->
               </li>
-              <!-- TAB 12 - Hackathon number 2 -->
+              <!-- TAB 13 - Hackathon number 2 -->
               <li class="c-tab__item">
-                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-12">#2 - december-2016</label>
+                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-14">#2 - december-2016</label>
                 <!-- Start TAB 12 - Content -->
                 <div class="c-tab__content">
                   <div class="c-carousel">
@@ -1386,13 +1674,13 @@
                            type="radio">
                     <ul class="c-carousel__list">
                       <li class="c-carousel__item">
-                        <img src="img/carousel-12__image_1.png" alt="Dropdown Menu">
+                        <img src="img/HACKATHON_2__image_1.png" alt="Dropdown Menu">
                       </li>
                       <li class="c-carousel__item">
-                        <img src="img/carousel-12__image_2.png" alt="Modal Windows">
+                        <img src="img/HACKATHON_2__image_2.png" alt="Modal Windows">
                       </li>
                       <li class="c-carousel__item">
-                        <img src="img/carousel-12__image_3.png" alt="Collapsible">
+                        <img src="img/HACKATHON_2__image_3.png" alt="Collapsible">
                       </li>
                     </ul>
 
@@ -1433,7 +1721,7 @@
                     </p>
                     <p class="project__description">
                       This showcase shows the result of the Hackathon number 2 at
-                      <em>Modern Developer</em>. A three-day event, December the
+                      <em>Bov Academy</em>. A three-day event, December the
                       9(th) - 10(th) - 11(th), 2016, during which our Team developed
                       a preliminary version of the <em>Bov Academy Blog</em>.
                     </p>
@@ -2042,5 +2330,6 @@
   </footer>
 
   <script src="js/main.min.js"></script>
+
   </body>
 </html>

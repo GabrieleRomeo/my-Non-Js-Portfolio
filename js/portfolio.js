@@ -63,11 +63,61 @@ Portfolio.namespace('Utils').Dom = (function() {
     /**
      * A shorthand of the document.querySelector method
      * @param  {String}   selector A valid CSS selector
+     * @param  {String}   parent   An optional parent Node
      * @return {Node}      An HTML node element
      */
 
-    var $ = function( selector ) {
-        return document.querySelector( selector );
+    var $ = function( selector, parent ) {
+        return ( parent || document ).querySelector( selector );
+    };
+
+    /**
+     * A shorthand of the document.querySelectorAll method
+     * @param  {String}   selector A valid CSS selector
+     * @param  {String}   parent   An optional parent Node
+     * @return {Node}      An HTML node List
+     */
+
+    var $$ = function( selector , parent) {
+        return ( parent || document ).querySelectorAll( selector );
+    };
+
+    /**
+     * Get the closest matching element up the DOM tree.
+     * @param  {Element} elem     Starting element
+     * @param  {String}  selector Selector to match notwithstanding
+     * @return {Boolean|Element}  Returns null if not match found
+     */
+    var getClosest = function ( elem, selector ) {
+
+        // When elem is a Text node, get its parent node
+        if (elem.nodeType === 3) {
+            elem = elem.parentNode;
+        }
+
+        // Element.matches() polyfill
+        if (!Element.prototype.matches) {
+            Element.prototype.matches =
+                Element.prototype.matchesSelector ||
+                Element.prototype.mozMatchesSelector ||
+                Element.prototype.msMatchesSelector ||
+                Element.prototype.oMatchesSelector ||
+                Element.prototype.webkitMatchesSelector ||
+                function(s) {
+                    var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+                        i = matches.length;
+                    while (--i >= 0 && matches.item(i) !== this) {}
+                    return i > -1;
+                };
+        }
+
+        // Get closest match
+        for ( ; elem && elem !== document; elem = elem.parentNode ) {
+            if ( elem.matches( selector ) ) return elem;
+        }
+
+        return null;
+
     };
 
     /**
@@ -101,6 +151,8 @@ Portfolio.namespace('Utils').Dom = (function() {
     return {
         getBody: getBody,
         $: $,
+        $$: $$,
+        getClosest: getClosest,
         getElemDistance: getElemDistance,
         getComputed: getComputed
     };
