@@ -122,8 +122,17 @@ $graph-bars-description-font-weight: conf($graph-bars__bars, text-description, f
           font-weight: $graph-pie__c-circle-font-weight;
           margin: $graph-pie__c-circle-margin;
 
+          @include m('activated') {
             &:before {
               @extend %animation-details;
+            }
+
+            &:after {
+              @extend %animation-details;
+            }
+          }
+
+            &:before {
               content: attr(data-name);
               position: absolute;
               width: 100%;
@@ -134,7 +143,6 @@ $graph-bars-description-font-weight: conf($graph-bars__bars, text-description, f
             }
 
             &:after {
-              @extend %animation-details;
               content: attr(data-percent);
               position: absolute;
               width: 100%;
@@ -155,10 +163,9 @@ $graph-bars-description-font-weight: conf($graph-bars__bars, text-description, f
                 @include prefix((transform: rotate(-90deg)));
 
                 path.graph__path--front {
-                  @include prefix-anim(load $graph-pie__front-path-animation-speed);
                   fill: $graph-pie__front-path-fill;
                   stroke-width: $graph-pie__front-path-stroke-width;
-                  stroke-dasharray: $graph-pie__front-path-stroke-dasharray;
+                  ///stroke-dasharray: $graph-pie__front-path-stroke-dasharray;
                   stroke: $graph-pie__front-path-color;
                 }
               }
