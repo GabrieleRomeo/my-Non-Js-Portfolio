@@ -1,0 +1,84 @@
+
+%background-film {
+  background-color: rgba(250, 235, 222, 0.14);
+}
+
+%block {
+  display: block;
+}
+
+%center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+%centerBlock {
+  @extend %center;
+  display: block;
+}
+
+%inline-b {
+  display: inline-block;
+}
+
+%left {
+  float: left;
+}
+
+%l-container {
+  @extend %background-film;
+  padding: $header-height 0;
+}
+
+%marginAuto {
+  @include margin-auto();
+}
+
+%none {
+  display: none;
+}
+
+%right {
+  float: right;
+}
+
+%pointer {
+  cursor: pointer;
+}
+
+%black-text-shadow {
+  text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+%shadow-2px {
+  box-shadow: 0.00px 2.00px 5px 0px rgba(0, 0, 0, 0.35);
+}
+
+%smallCaps {
+  font-variant: small-caps;
+}
+
+%visuallyhidden {
+  position: absolute;
+  @include size(1px);
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+%flex-row-centered {
+  @include flex((
+      justify-content: center,
+          align-items: center
+    ));
+}
+
+%flex-column-centered {
+  @include flex((
+      box-direction: column,
+    justify-content: center,
+        align-items: center
+    ));
+}

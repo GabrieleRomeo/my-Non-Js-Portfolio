@@ -1,0 +1,229 @@
+// COLORS
+// ---------------------------
+
+$_color-base--san-marino: #3F51B3;
+$_color-base--persian-rose: #FF1493;
+$_color-base--amaranth: #E91E63;
+$_color-base--gorse: #FFEB3B;
+$_color-base--azure: #3A4BA6;
+$_color-base--negroni: #FFE4C4;
+$_color-base--goldenrod: #F7D371;
+$_color-base--rose: #FA91E5;
+$_color-base--malibu: #8D9DFF;
+$_color-base--mauve: #CD97FF;
+$_color-base--shamrock: #3BC693;
+$_color-base--bittersweet: #FD7372;
+$_color-base--supernova: #FACF00;
+$_color-base--sunshade: #FFAC31;
+$_color-base--green-vogue: #03295F;
+$_color-base--electric-violet: #6A00F4;
+$_color-base--french-lilac: #D8B8EE;
+$_color-base--cerise: #D72983;
+$_color-base--gray: #929292;
+$_color-base--alice-blue: #F0F8FF;
+$_color-base--gull-gray: #93A2AC;
+$_color-base--crimson: #ED143D;
+$_color-base--robin-egg-blue: #00BCD4;
+$_color-base--caribbean-green: #00C4AA;
+$_color-base--caribbean-cadillac: #A55073;
+$_color-base--tundora: #424242;
+$_color-base--orient: #00618A;
+$_color-base--medium-purple: #AA48D7;
+$_color-base--purple-heart: #673AB7;
+$_color-base--curious-blue: #1E94CD;
+$_color-base--shalimar: #FAFFBD;
+$_color-base--haiti: #1D0E2F;
+$_color-base--pear: #CDDC39;
+
+$palettes: (
+  white: (
+    base: white(),
+    lighter: white(.3),
+    light: white(.5),
+    dark: white(.8),
+    darker: white(.9)
+  ),
+  black: (
+    base: black(),
+    superlight: black(.1),
+    lighter: black(.3),
+    light: black(.5),
+    dark: black(.8),
+    darker: black(.9)
+  ),
+  alice-blue: (
+    base: $_color-base--alice-blue,
+    lighter: lighten($_color-base--alice-blue, 20%),
+    light: lighten($_color-base--alice-blue, 10%),
+    dark: darken($_color-base--alice-blue, 10%)
+  ),
+  san-marino:(
+    base: $_color-base--san-marino,
+    light: lighten($_color-base--san-marino, 10%),
+    dark: darken($_color-base--san-marino, 10%)
+  ),
+  persian-rose: (
+    base: $_color-base--persian-rose,
+    light: lighten($_color-base--persian-rose, 10%),
+    dark: darken($_color-base--persian-rose, 10%)
+  ),
+  amaranth: (
+    base: $_color-base--amaranth,
+    light: lighten($_color-base--amaranth, 10%),
+    dark: darken($_color-base--amaranth, 10%)
+  ),
+  gorse: (
+    base: $_color-base--gorse,
+    light: lighten($_color-base--gorse, 10%),
+    dark: darken($_color-base--gorse, 10%)
+  ),
+  azure: (
+    base: $_color-base--azure,
+    light: lighten($_color-base--azure, 10%),
+    dark: darken($_color-base--azure, 10%)
+  ),
+  negroni: (
+    base: $_color-base--negroni,
+    light: lighten($_color-base--negroni, 10%),
+    dark: darken($_color-base--negroni, 10%)
+  ),
+  goldenrod: (
+    base: $_color-base--goldenrod,
+    light: lighten($_color-base--goldenrod, 10%),
+    dark: darken($_color-base--goldenrod, 10%)
+  ),
+  rose: (
+    base: $_color-base--rose,
+    light: lighten($_color-base--rose, 10%),
+    dark: darken($_color-base--rose, 10%)
+  ),
+  malibu:(
+    base: $_color-base--malibu,
+    light: lighten($_color-base--malibu, 10%),
+    dark: darken($_color-base--malibu, 10%)
+  ),
+  mauve: (
+    base: $_color-base--mauve,
+    light: lighten($_color-base--mauve, 10%),
+    dark: darken($_color-base--mauve, 10%)
+  ),
+  shamrock: (
+    base: $_color-base--shamrock,
+    light: lighten($_color-base--shamrock, 10%),
+    dark: darken($_color-base--shamrock, 10%)
+  ),
+  bittersweet: (
+    base: $_color-base--bittersweet,
+    light: lighten($_color-base--bittersweet, 10%),
+    dark: darken($_color-base--bittersweet, 10%)
+  ),
+  supernova: (
+    base: $_color-base--supernova,
+    light: lighten($_color-base--supernova, 10%),
+    dark: darken($_color-base--supernova, 10%)
+  ),
+  sunshade: (
+    base: $_color-base--sunshade,
+    light: lighten($_color-base--sunshade, 10%),
+    dark: darken($_color-base--sunshade, 10%)
+  ),
+  green-vogue: (
+    base: $_color-base--green-vogue,
+    lighter: lighten($_color-base--green-vogue, 20%),
+    light: lighten($_color-base--green-vogue, 10%),
+    dark: darken($_color-base--green-vogue, 10%)
+  ),
+  electric-violet: (
+    base: $_color-base--electric-violet,
+    lighter: lighten($_color-base--electric-violet, 20%),
+    light: lighten($_color-base--electric-violet, 10%),
+    dark: darken($_color-base--electric-violet, 10%)
+  ),
+  french-lilac: (
+    base: $_color-base--french-lilac,
+    lighter: lighten($_color-base--french-lilac, 20%),
+    light: lighten($_color-base--french-lilac, 10%),
+    dark: darken($_color-base--french-lilac, 10%)
+  ),
+  cerise: (
+    base: $_color-base--cerise,
+    lighter: lighten($_color-base--cerise, 20%),
+    light: lighten($_color-base--cerise, 10%),
+    dark: darken($_color-base--cerise, 10%)
+  ),
+  gray: (
+    base: $_color-base--gray,
+    lighter: lighten($_color-base--gray, 20%),
+    light: lighten($_color-base--gray, 10%),
+    dark: darken($_color-base--gray, 10%)
+  ),
+  gull-gray: (
+    base: $_color-base--gull-gray,
+    lighter: lighten($_color-base--gull-gray, 20%),
+    light: lighten($_color-base--gull-gray, 10%),
+    dark: darken($_color-base--gull-gray, 10%)
+  ),
+  crimson: (
+    base: $_color-base--crimson,
+    lighter: lighten($_color-base--crimson, 20%),
+    light: lighten($_color-base--crimson, 10%),
+    dark: darken($_color-base--crimson, 10%)
+  ),
+  robin-egg-blue: (
+    base: $_color-base--robin-egg-blue,
+    lighter: lighten($_color-base--robin-egg-blue, 20%),
+    light: lighten($_color-base--robin-egg-blue, 10%),
+    dark: darken($_color-base--robin-egg-blue, 10%)
+  ),
+  caribbean-green: (
+    base: $_color-base--caribbean-green,
+    lighter: lighten($_color-base--caribbean-green, 20%),
+    light: lighten($_color-base--caribbean-green, 10%),
+    dark: darken($_color-base--caribbean-green, 10%)
+  ),
+  tundora: (
+    base: $_color-base--tundora,
+    lighter: lighten($_color-base--tundora, 20%),
+    light: lighten($_color-base--tundora, 10%),
+    dark: darken($_color-base--tundora, 10%)
+  ),
+  orient: (
+    base: $_color-base--orient,
+    lighter: lighten($_color-base--orient, 20%),
+    light: lighten($_color-base--orient, 10%),
+    dark: darken($_color-base--orient, 10%)
+  ),
+  medium-purple: (
+    base: $_color-base--medium-purple,
+    lighter: lighten($_color-base--medium-purple, 20%),
+    light: lighten($_color-base--medium-purple, 10%),
+    dark: darken($_color-base--medium-purple, 10%)
+  ),
+  purple-heart: (
+    base: $_color-base--purple-heart,
+    lighter: lighten($_color-base--purple-heart, 20%),
+    light: lighten($_color-base--purple-heart, 10%),
+    dark: darken($_color-base--purple-heart, 10%)
+  ),
+  curious-blue: (
+    base: $_color-base--curious-blue,
+    lighter: lighten($_color-base--curious-blue, 20%),
+    light: lighten($_color-base--curious-blue, 10%),
+    dark: darken($_color-base--curious-blue, 10%)
+  ),
+  shalimar: (
+    base: $_color-base--shalimar,
+    lighter: lighten($_color-base--shalimar, 20%),
+    light: lighten($_color-base--shalimar, 10%),
+    dark: darken($_color-base--shalimar, 10%)
+  ),
+  caribbean-cadillac: (
+    base: $_color-base--caribbean-cadillac
+  ),
+  haiti: (
+    base: $_color-base--haiti
+  ),
+  pear: (
+    base: $_color-base--pear
+  )
+) !default;

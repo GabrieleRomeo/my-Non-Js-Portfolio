@@ -1,0 +1,36 @@
+.c-subMenu {
+  margin-top: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  flex: 1 100%;
+  transition: all 0.25s ease-in-out;
+
+    @include element('item') {
+      display: block;
+      height: 2em;
+      font-variant: normal;
+
+        @include modifier('capitalized') {
+          text-transform: capitalize;
+        }
+    }
+
+    @include element('label') {
+      @extend %pointer;
+      color: rgba(0, 0, 255, 0.76);
+
+        &:hover {
+          color: rgb(0, 0, 0);
+        }
+    }
+}
+
+// Trigger
+
+.input__trigger--subMenu:checked  + .c-subMenu {
+  padding: 0 20px 10px 20px;
+  opacity: 1;
+  background-color: white(.6);
+  max-height: 400px;
+}

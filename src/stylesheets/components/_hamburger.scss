@@ -1,0 +1,32 @@
+/* HAMBURGER */
+
+#hamburger {
+  @include relative(top 8px);
+  @extend %none;
+  width: 40px;
+  margin-right: 10px;
+
+  @include media("screen", "<tablet") {
+    display: inline-block;
+  }
+
+    > label {
+      display: block;
+      cursor: pointer;
+    }
+
+    .hamburger__list {
+      list-style-type: none;
+
+        li {
+          height: 3px;
+          margin: 5px;
+          background-color: white();
+        }
+    }
+}
+
+#hamburger__checkbox {
+  @extend %none;
+}
+

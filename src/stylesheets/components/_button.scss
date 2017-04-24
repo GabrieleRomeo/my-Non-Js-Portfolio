@@ -1,0 +1,110 @@
+
+$_conf-base: $base-c-button !default;
+
+@function _c-button-conf($property, $config: $_conf-base) {
+  @return conf($config, $property);
+}
+
+$_conf-rounded: _c-button-conf(rounded);
+$_conf-3D: _c-button-conf(3D);
+
+$backToTop-position: (
+  bottom: 20px,
+  left: 10px,
+  right: initial
+);
+
+.c-button {
+  @include prefix((touch-action: manipulation), 'ms');
+  @include prefix((transition: all .3s ease-in-out), 'webkit');
+  @include prefix((user-select: none), 'webkit');
+  @extend %black-text-shadow;
+  @extend %flex-row-centered;
+  @extend %pointer;
+  position: relative;
+  font-size: 1rem;
+  color: _c-button-conf(color);
+  background-color: _c-button-conf(background-color);
+  padding: _c-button-conf(padding);
+  white-space: nowrap;
+
+    &#backToTop {
+      position: fixed;
+      bottom: conf($backToTop-position, bottom);
+      left: conf($backToTop-position, left);
+      right: conf($backToTop-position, right);
+      visibility: hidden;
+      z-index: z('backToTop');
+
+        &.c-button--3D:active {
+          top: initial;
+          bottom: conf($backToTop-position, bottom) - 3px;
+        }
+    }
+
+    // .c-button--white
+    @include modifier('white') {
+      color: palette(black, lighter);
+      background-color: palette(white);
+    }
+
+    // .c-button--light
+    @include modifier('light') {
+      font-weight: 300;
+    }
+
+    // .c-button--scroll
+    @include modifier('scroll') {
+      @include size(40px);
+      padding: 5px 10px;
+
+        i:before {
+          transform: rotate(180deg);
+        }
+    }
+
+    // .c-button--roundedTop
+    @include modifier('roundedTop') {
+      @include absolute(left 0 right 0 bottom 0);
+      @include border-top-radius(20px);
+      @extend %center;
+      @extend %shadow-2px;
+      height: 70px;
+      width: 100px;
+      font-size: 1.8em;
+
+
+        &:hover,
+        &:focus {
+          color: palette(amaranth);
+
+            .icon-angle-double-down:before {
+              @include prefix-anim(pulse 2s linear infinite);
+              @include prefix((transform-origin: 50% 50%), 'webkit');
+            }
+        };
+    }
+
+    // .c-button--3D
+    @include modifier('3D') {
+
+      $_c-button-shadow-Y-offset: _c-button-conf(shadow-Y-offset, $_conf-3D);
+      $_c-button-shadow-color: _c-button-conf(shadow-color, $_conf-3D);
+
+        box-shadow: 0 $_c-button-shadow-Y-offset 0 0 $_c-button-shadow-color;
+
+        &:active {
+          top: $_c-button-shadow-Y-offset;
+          box-shadow: none;
+        }
+    }
+
+    // .c-button--rounded
+    @include modifier('rounded') {
+      @include border-radius(_c-button-conf(border-radius, $_conf-rounded));
+    }
+
+    @include modifier('fadeIN') {
+      @include prefix-anim(fadeIN 1s linear 3.6s backwards);
+    }
+}

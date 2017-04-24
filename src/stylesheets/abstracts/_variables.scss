@@ -1,0 +1,96 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+$header-height: 90px;
+
+// ----------------------------------------------------------------------
+// Font Sizes & Line-height
+// ----------------------------------------------------------------------
+
+$base-font-size: 1rem;
+$base-line-height: $base-font-size * 1.25;
+
+
+// ----------------------------------------------------------------------
+// Font Families
+// ----------------------------------------------------------------------
+$roboto:      Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+$robotoSlab: 'Roboto Slab', serif;
+
+// ----------------------------------------------------------------------
+// Width
+// ----------------------------------------------------------------------
+
+$min-width: 320px;
+
+
+// ----------------------------------------------------------------------
+// Responsiveness
+// ----------------------------------------------------------------------
+
+
+$breakpoints: (phone: 320px,
+               tablet: 768px,
+               desktop: 1024px,
+               desktopHD: 1200px) !default;
+
+$media-expressions: (screen: "screen",
+                    print: "print",
+                    handheld: "handheld",
+                    retina2x: ("(-webkit-min-device-pixel-ratio: 2)", "(min-resolution: 192dpi)"),
+                    retina3x: ("(-webkit-min-device-pixel-ratio: 3)", "(min-resolution: 350dpi)")
+                    ) !default;
+
+// ----------------------------------------------------------------------
+// Z-indexes map
+// ----------------------------------------------------------------------
+// @access private
+
+$z-indexes: (
+  'brwsUpgrade': 9000,
+  'sideMenu': 8999,
+  'hamburgerTrigger': 3000,
+  'header': 1000,
+  'sectionHeading': 10,
+  'navicon': 3,
+  'backToTop': 3,
+  'menucard': 3,
+  'sideMenu-desktop': 2,
+  'tooltip': 2,
+  'default': 1,
+  'under': -1,
+);
+
+// ----------------------------------------------------------------------
+// Units map
+// ----------------------------------------------------------------------
+// @access private
+
+$units: (
+  'px': 1px,
+  'cm': 1cm,
+  'mm': 1mm,
+  '%' : 1%,
+  'ch': 1ch,
+  'pica': 1pica,
+  'in': 1in,
+  'em': 1em,
+  'rem': 1rem,
+  'pt': 1pt,
+  'pc': 1pc,
+  'ex': 1ex,
+  'vw': 1vw,
+  'vh': 1vh,
+  'vmin': 1vmin,
+  'vmax': 1vmax
+);
+
+
+// ----------------------------------------------------------------------
+// Flex
+// ----------------------------------------------------------------------
+// @access private
+
+$_flex-directions: 'row' 'row-reverse' 'column' 'column-reverse' 'initial' 'inherit';
+$_flex-justifyContent: 'flex-start' 'flex-end' 'center' 'space-between' 'space-around' 'initial' 'inherit';
