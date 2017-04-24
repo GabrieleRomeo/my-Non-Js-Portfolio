@@ -1,0 +1,4 @@
+/* IE fix */
+.businessCard label input:checked + .card .card__face--back {
+  backface-visibility: visible;
+}
