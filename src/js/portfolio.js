@@ -106,14 +106,18 @@ Portfolio.namespace('Utils').Dom = (function() {
                 function(s) {
                     var matches = (this.document || this.ownerDocument).querySelectorAll(s),
                         i = matches.length;
-                    while (--i >= 0 && matches.item(i) !== this) {}
+                    while (i >= 0 && matches.item(i) !== this) {
+                        --i;
+                    }
                     return i > -1;
                 };
         }
 
         // Get closest match
         for ( ; elem && elem !== document; elem = elem.parentNode ) {
-            if ( elem.matches( selector ) ) return elem;
+            if ( elem.matches( selector ) ) {
+                return elem;
+            }
         }
 
         return null;

@@ -1,6 +1,7 @@
 (function() {
     'use strict';
 
+    var Portfolio = window.Portfolio || {};
     var anim = Portfolio.Animation.scrolling;
     var dom  = Portfolio.Utils.Dom;
     var $  = dom.$;
@@ -23,7 +24,9 @@
         sideMenuDesktop:  $( '.c-sideMenu--desktop' ),
         subMenuTrigger: $( '#subMenu--trigger-1' ),
         projects: $( '#projects' ),
-        graphPaths: $$( '.graph__path--front' )
+        graphPaths: $$( '.graph__path--front' ),
+        card: $( '.c-card' ),
+        scrollButton: $( '.c-button--scroll' )
     };
 
     var headerHeight = parseInt(dom.getComputed(DOMcache.header)('height'));
@@ -39,7 +42,7 @@
         isLessThanDesktop = ( viewPort.width < '1024' ) ? true : false;
     }
 
-    function handleHeaderClick(e) {
+    function handleClick(e) {
 
         var target = null;
         var classL = e.target.classList;
@@ -97,6 +100,24 @@
             Portfolio.Animation.scrolling.scrollTo( targetElement );
             window.clearInterval(delay);
         }, 300);
+    }
+
+    function handleCardClick(e) {
+
+        var target = e.target;
+        var card = target === DOMcache.card ? target :
+                                              dom.getClosest(target, '.c-card');
+
+        var input = card && card.previousElementSibling || null;
+
+        if (target.nodeName === 'A' || target.parentNode.nodeName === 'A' ) {
+            return;
+        }
+
+        if ( input ) {
+            input.checked = !!!input.checked;
+        }
+
     }
 
     function showHideScrollUPButton() {
@@ -269,7 +290,11 @@
 
     // Event Listeners
     document.addEventListener('scroll', handleScroll, false);
-    document.addEventListener('click', handleHeaderClick, false);
+    DOMcache.header.addEventListener('click', handleClick, false);
+    DOMcache.scrollButton.addEventListener('click', handleClick, false);
+    DOMcache.sideMenuDesktop.addEventListener('click', handleClick, false);
     DOMcache.sideMenuMobile.addEventListener('click', mobileSideMenuClick, false);
+
+    DOMcache.card.addEventListener('click', handleCardClick, false);
 
 })();
