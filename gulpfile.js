@@ -296,10 +296,12 @@ gulp.task('_push', false, function(callback){
 
 gulp.task('_release-merge', false, function(callback) {
 
-    var relBr = shell.exec('git rev-parse --abbrev-ref @{-1}', {silent:true}).stdout;
+    var cmd = 'git branch | grep "' + RELEASEPREFIX + '"';
+    var relBr = shell.exec(cmd, {silent:true}).stdout.trim();
+
 
     if (relBr.indexOf(RELEASEPREFIX) === -1) {
-        shell.echo('Start the deploy task from the ' + RELEASEPREFIX + 'x.x.x branch');
+        shell.echo('It seems that a ' + RELEASEPREFIX + 'x.x.x branch does not exist');
         return;
     }
 
@@ -401,7 +403,7 @@ gulp.task('build-styles', false, function(callback) {
 gulp.task('build-html', false, function(callback) {
     runSequence('_copy-html-to-dist',
                 '_add-versioning-tags-to-html',
-                //'_lint-html',
+                '_lint-html',
                 '_minify-html',
                 callback);
 });
