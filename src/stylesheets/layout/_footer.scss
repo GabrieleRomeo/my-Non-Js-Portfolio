@@ -31,7 +31,7 @@ $_conf-icon: conf($conf, icon);
 
   .c-footer {
 
-    // .c-footer__svg
+    /* .c-footer__svg
     @include element('svg') {
       height: 230px;
       width: 100%;
@@ -49,7 +49,7 @@ $_conf-icon: conf($conf, icon);
         @include prefix-anim((shaker 100ms ease-in-out infinite));
         @extend %pointer;
       }
-    }
+    }*/
 
     // .c-footer__copy
     @include element('copy') {

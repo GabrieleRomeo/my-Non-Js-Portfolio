@@ -15,7 +15,7 @@
   66.66667% { opacity: 1; }
   100%      { opacity: 1; }
 }
-
+/*
 @include keyframes('shaker') {
   2% { @include prefix((transform: translate(0.5px, -1.5px) rotate(-0.5deg)), webkit ms); }
   4% { @include prefix((transform: translate(0.5px, 1.5px) rotate(1.5deg)), webkit ms); }
@@ -68,7 +68,7 @@
   98% { @include prefix((transform: translate(-1.5px, -1.5px) rotate(-0.5deg)), webkit ms); }
   0%, 100% { @include prefix((transform: translate(0, 0) rotate(0)), webkit ms); }
 }
-
+*/
 @include keyframes('load') {
   0% { stroke-dashoffset:0 }
 }
