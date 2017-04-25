@@ -20,7 +20,6 @@ var gulp = require('gulp-help')(require('gulp')),
 var development = $.environments.development;
 var production  = $.environments.production;
 
-
 /**
  * Utility function that takes in an error, makes the OS beep and
  * prints the error to the console
@@ -111,7 +110,7 @@ gulp.task('_minify-styles', false, function(callback) {
 });
 
 gulp.task('_lint', false, function (callback) {
-  return gulp.src(['**/*.js', '!**/*min.js'], {cwd: PATHS.JS_SRC})
+  return gulp.src(['portfolio.js','**/*.js', '!**/*min.js'], {cwd: PATHS.JS_SRC})
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.jshint.reporter('fail'))
@@ -125,7 +124,7 @@ gulp.task('_jasmine', false, function (callback) {
 });
 
 gulp.task('_minify-scripts', false, function(callback) {
-  return gulp.src(['**/*.js', '!**/*min.js'], {cwd: PATHS.JS_SRC})
+  return gulp.src(['portfolio.js', '**/*.js', '!**/*min.js'], {cwd: PATHS.JS_SRC})
     .pipe($.concat('main.js'))
     .pipe(gulp.dest(PATHS.TMP))
     .pipe(development($.sourcemaps.init()))
@@ -138,10 +137,17 @@ gulp.task('_minify-scripts', false, function(callback) {
     .pipe(production(gulp.dest(PATHS.JS_DST)));
 });
 
+gulp.task('_lint-html', false, function(callback) {
+    return gulp.src(path.join(PATHS.SRC_DIR, '**/*.html'))
+            .pipe($.w3cjs())
+            .pipe($.w3cjs.reporter())
+            .on('error', onError);
+});
+
 gulp.task('_minify-html', false, function(callback) {
     return gulp.src(path.join(PATHS.DIST_DIR, '**/*.html'))
             .pipe($.versionAppend(['html', 'js', 'css']))
-            .pipe($.htmlmin({collapseWhitespace: true}))
+            .pipe($.htmlmin({removeComments: true, collapseWhitespace: true}))
             .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
@@ -174,9 +180,11 @@ gulp.task('_images', false, function(callback) {
         progressive: true,
         interlaced: true }
     )))
+    .pipe($.print(function(filepath) {
+      return "Image built: " + filepath;
+    }))
     .on('error', onError)
-    .pipe(gulp.dest(PATHS.IMAGES_DST))
-    .pipe($.notify({ message: 'Images task complete' }));
+    .pipe(gulp.dest(PATHS.IMAGES_DST));
 });
 
 
@@ -390,6 +398,7 @@ gulp.task('build-styles', false, function(callback) {
 gulp.task('build-html', false, function(callback) {
     runSequence('_copy-html-to-dist',
                 '_add-versioning-tags-to-html',
+                //'_lint-html',
                 '_minify-html',
                 callback);
 });
@@ -404,6 +413,7 @@ gulp.task('build-html', false, function(callback) {
 gulp.task('default', function(callback) {
 
     runSequence(['build-styles', 'build-scripts', '_images', '_mv-assets-to-dist'],
+                '_lint-html',
                 'server',
                 callback);
 });
