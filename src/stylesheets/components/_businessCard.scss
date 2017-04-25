@@ -16,13 +16,8 @@ $_conf-subHeading: _c-card-conf(subHeading);
   margin: 120px auto 0;
   font-size: _c-card-conf(font-size);
 
-  .l-label {
-
-    @extend %pointer;
-
-    &:hover .c-card__icon:before {
-        @include prefix-anim(rotateIn 1.5s both infinite);
-      }
+  &:hover .c-card__icon:before {
+      @include prefix-anim(rotateIn 1.5s both infinite);
   }
 
   // .c-businessCard__input
@@ -65,6 +60,7 @@ $_conf-subHeading: _c-card-conf(subHeading);
     @include size(100%);
     @include prefix((transform-style: preserve-3d), webkit);
     @include prefix-transition(transform 600ms);
+    @extend %pointer;
     position: relative;
     color: _c-card-conf(base-color);
 
