@@ -298,6 +298,11 @@ gulp.task('_release-merge', false, function(callback) {
 
     var relBr = shell.exec('git rev-parse --abbrev-ref @{-1}', {silent:true}).stdout;
 
+    if (relBr.indexOf(RELEASEPREFIX) === -1) {
+        shell.echo('Start the deploy task from the ' + RELEASEPREFIX + 'x.x.x branch');
+        return;
+    }
+
     $.git.merge(relBr, {args: '--no-ff' }, function(err) {
 
         if (err) { throw err; }
