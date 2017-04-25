@@ -62,11 +62,11 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
       flex-direction: row;
       flex-wrap: wrap;
       background-image: -webkit-gradient(linear, left top, left bottom, from(#f6f6f6), to(#eaeaea));
-      background-image: -webkit-linear-gradient(top, #f6f6f6, #eaeaea);
-      background-image: -moz-linear-gradient(top, #f6f6f6, #eaeaea);
-      background-image: -ms-linear-gradient(top, #f6f6f6, #eaeaea);
-      background-image: -o-linear-gradient(top, #f6f6f6, #eaeaea);
-      background-image: linear-gradient(top, #f6f6f6, #eaeaea);
+      background-image: -webkit-linear-gradient(to top, #f6f6f6, #eaeaea);
+      background-image: -moz-linear-gradient(to top, #f6f6f6, #eaeaea);
+      background-image: -ms-linear-gradient(to top, #f6f6f6, #eaeaea);
+      background-image: -o-linear-gradient(to top, #f6f6f6, #eaeaea);
+      background-image: linear-gradient(to top, #f6f6f6, #eaeaea);
 
 
       &:first-child,
