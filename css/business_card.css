@@ -70,6 +70,7 @@
   transition: -webkit-transform 600ms;
   transition: transform 600ms;
   transition: transform 600ms, -webkit-transform 600ms;
+  cursor: pointer;
 }
 
 .businessCard .card__face {
