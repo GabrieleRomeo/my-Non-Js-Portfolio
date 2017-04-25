@@ -296,9 +296,7 @@ gulp.task('_push', false, function(callback){
 
 gulp.task('_release-merge', false, function(callback) {
 
-    var config = getConfig();
-    var vers   = config.version;
-    var relBr  = RELEASEPREFIX + vers;
+    var relBr = shell.exec('git rev-parse --abbrev-ref @{-1}', {silent:true}).stdout;
 
     $.git.merge(relBr, {args: '--no-ff' }, function(err) {
 
