@@ -1,4 +1,4 @@
-# Interactive Portfolio v2.1.0
+# Interactive Portfolio v2.1.1
 
 LivePage:
 
