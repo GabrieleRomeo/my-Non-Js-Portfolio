@@ -4,6 +4,5 @@ main.css.map
 .pleeeaserc
 node_modules/
 *tmp*
-public/
-*.min.js
-*.min.css
+src/*.min.js
+src/*.min.css
