@@ -262,6 +262,9 @@ gulp.task('_checkout-release', false, function(callback) {
         if (err) {
             throw err;
         }
+        gutil.log(gutil.colors.red('INFO: Remember to add the current ' +
+                                   ' version number with the gulp task '  +
+                                   ' gulp _add-versioning-tags-to-html '));
         callback();
     });
 
@@ -499,14 +502,13 @@ gulp.task('release', HELPS.release, function(callback) {
       });
 
       child.stdout.on('end', function(data) {
-        runSequence('_checkout-release',
-                    '_append-version-and-minify-html');
+        runSequence('_checkout-release');
+
         callback();
       });
     } else {
         // Do not update the version, switch to the release branch immediately
-        runSequence('_checkout-release',
-                    '_append-version-and-minify-html');
+        runSequence('_checkout-release');
         callback();
     }
 
@@ -519,7 +521,7 @@ gulp.task('deploy', HELPS.deploy, function(callback) {
 
     // Check if the deploy task has been started from the deploy branch
     if (currentBranch.indexOf(RELEASEPREFIX) === -1) {
-        shell.echo('Start the deploy task from the ' + RELEASEPREFIX + 'x.x.x branch');
+        shell.echo(gutil.colors.yellow('Start the deploy task from the ' + RELEASEPREFIX + 'x.x.x branch'));
         return;
     }
 
