@@ -259,13 +259,12 @@ gulp.task('_checkout-release', false, function(callback) {
     var branchName = RELEASEPREFIX + config.version;
 
     $.git.checkout(branchName, {args:'-b', '--track':'develop'}, function (err) {
+
         if (err) {
             throw err;
         }
-        gutil.log(gutil.colors.red('INFO: Remember to add the current ' +
-                                   ' version number with the gulp task '  +
-                                   ' gulp _add-versioning-tags-to-html '));
-        callback();
+
+        runSequence('_append-version-and-minify-html', callback);
     });
 
 });
