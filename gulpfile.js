@@ -259,10 +259,12 @@ gulp.task('_checkout-release', false, function(callback) {
     var branchName = RELEASEPREFIX + config.version;
 
     $.git.checkout(branchName, {args:'-b', '--track':'develop'}, function (err) {
-        if (err) throw err;
+        if (err) {
+            throw err;
+        }
+        callback();
     });
 
-    callback();
 });
 
 gulp.task('_add-git-tag', false, function(callback){
