@@ -15,7 +15,7 @@
       <!-- FONT
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <link rel="stylesheet"
-            href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300%7CRoboto:100,200,300,400,500,700">
+            href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300%7CRoboto:100,200,300,400,500,700%7CNeucha">
       <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700"
             rel="stylesheet">
       <!-- CSS
@@ -283,10 +283,12 @@
 
     <section class="c-section" id="splash" role="application">
       <div class="l-container">
+
         <div class="c-section__body">
 
           <!-- Start Animation -->
           <div class="animation">
+
             <div class="l-animation l-animation--left">
               <h2>
                 <span class="animation__span
@@ -310,7 +312,7 @@
             </div>
             <div class="l-animation l-animation--full animation--fadeIN">
               <img id="geek" src="img/geek.png" alt="Geek">
-              <h2>I am glad you are here today!</h2>
+              <h2 class="animation__subtitle">I am glad you are here today!</h2>
             </div>
           </div>
           <!-- End Animation -->
@@ -2001,6 +2003,16 @@
           <h2 class="c-section__title" data-section="contact">C</h2>
         </div>
         <div class="c-section__body">
+
+          <div class="c-random-fact">
+            <h2 class="c-random-fact__title">Trivia</h2>
+            <i class="c-random-fact__icon fa fa-refresh" id="random-fact__Icon" aria-hidden="true"></i>
+            <p class="c-random-fact__paragraph">
+              Did you know that <span id="random-fact__span">
+              120 is the maximum number of power stars a player can get in Super Mario 64 for the Nintendo 64.
+              </span> ?
+            </p>
+          </div>
 
           <!-- Start businessCard -->
           <div class="c-businessCard">
