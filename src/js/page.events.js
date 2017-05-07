@@ -282,7 +282,7 @@
     function loadRandomFact() {
         var rnd = Math.floor(Math.random() * 200);
         var xhr = new XMLHttpRequest();
-        var url = 'http://numbersapi.com/' + rnd;
+        var url = 'https://numbersapi.p.mashape.com/' + rnd;
 
         if (!xhr) {
             return;
@@ -303,6 +303,7 @@
         };
 
         xhr.open('GET', url);
+        xhr.setRequestHeader('X-Mashape-Authorization', 'cCRn3ndWPPmshXp3hZ6finUK92HIp10pB2sjsne4SUvAkUkoCz');
         xhr.send();
     }
 
