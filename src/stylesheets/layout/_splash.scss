@@ -24,6 +24,7 @@ $width: conf($conf-c-splash, animation, width);
       width: $width;
       min-height: 150px;
       line-height: 1.5em;
+      font-family: 'Neucha', cursive;
 
       @include media('screen', '>=tablet') {
         min-height: 350px;
