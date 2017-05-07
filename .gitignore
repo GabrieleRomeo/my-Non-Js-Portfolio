@@ -5,3 +5,5 @@ main.css.map
 node_modules/
 *tmp*
 public/
+*.min.js
+*.min.css
