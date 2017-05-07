@@ -500,13 +500,13 @@ gulp.task('release', HELPS.release, function(callback) {
 
       child.stdout.on('end', function(data) {
         runSequence('_checkout-release',
-                    'build-html');
+                    '_append-version-and-minify-html');
         callback();
       });
     } else {
         // Do not update the version, switch to the release branch immediately
         runSequence('_checkout-release',
-                    'build-html');
+                    '_append-version-and-minify-html');
         callback();
     }
 
