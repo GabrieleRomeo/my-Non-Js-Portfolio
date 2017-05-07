@@ -26,7 +26,9 @@
         projects: $( '#projects' ),
         graphPaths: $$( '.graph__path--front' ),
         card: $( '.c-card' ),
-        scrollButton: $( '.c-button--scroll' )
+        scrollButton: $( '.c-button--scroll' ),
+        randomFactTrigger: $( '#random-fact__Icon'),
+        randomFactMsg: $( '#random-fact__span' )
     };
 
     var headerHeight = parseInt(dom.getComputed(DOMcache.header)('height'));
@@ -277,6 +279,33 @@
         isScrolled = true;
     }
 
+    function loadRandomFact() {
+        var rnd = Math.floor(Math.random() * 200);
+        var xhr = new XMLHttpRequest();
+        var url = 'http://numbersapi.com/' + rnd;
+
+        if (!xhr) {
+            return;
+        }
+
+        xhr.onload = function () {
+
+            var message = '';
+
+            if (xhr.status === 200) {
+                 message = xhr.response;
+                 message = message.substr(1, message.length - 2);
+            } else {
+                message = 'I am glad you visited my Portfolio';
+            }
+
+            DOMcache.randomFactMsg.innerHTML = message;
+        };
+
+        xhr.open('GET', url);
+        xhr.send();
+    }
+
     window.setInterval( function() {
         // Check if the page has been scrolled
         if ( isScrolled ) {
@@ -296,5 +325,11 @@
     DOMcache.sideMenuMobile.addEventListener('click', mobileSideMenuClick, false);
 
     DOMcache.card.addEventListener('click', handleCardClick, false);
+    DOMcache.randomFactTrigger.addEventListener('click', loadRandomFact, false);
+
+
+    document.addEventListener('DOMContentLoaded', function(event) {
+        loadRandomFact();
+    });
 
 })();
