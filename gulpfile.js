@@ -19,6 +19,7 @@ var gulp = require('gulp-help')(require('gulp')),
 // Initialise environments
 var development = $.environments.development;
 var production  = $.environments.production;
+var deploy = $.environments.make('deploy');
 
 /**
  * Utility function that takes in an error, makes the OS beep and
@@ -77,15 +78,11 @@ HELPS.updateVersion += 'i.e. from 0.1.1 to 0.1.2';
 
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
                            GENERAL SUB-TASKS
-
  NOTE: Tasks which begin with an underscore are considered private and they
        shouldn't be launched directly
-
     Use gulp help for helps
     Use gulp help --all to watch all tasks
-
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 gulp.task('_sass', false, function(callback) {
@@ -127,12 +124,10 @@ gulp.task('_minify-scripts', false, function(callback) {
   return gulp.src(['portfolio.js', '**/*.js', '!**/*min.js'], {cwd: PATHS.JS_SRC})
     .pipe($.concat('main.js'))
     .pipe(gulp.dest(PATHS.TMP))
-    .pipe(development($.sourcemaps.init()))
     .pipe($.rename({suffix: '.min'}))
-    .pipe($.uglify())
+    .pipe(production($.uglify()))
     .pipe(production($.size({ showFiles: true })))
     .on('error', onError)
-    .pipe(development($.sourcemaps.write()))
     .pipe(development(gulp.dest(PATHS.JS_SRC)))
     .pipe(production(gulp.dest(PATHS.JS_DST)));
 });
@@ -144,7 +139,7 @@ gulp.task('_lint-html', false, function(callback) {
             .on('error', onError);
 });
 
-gulp.task('_minify-html', false, function(callback) {
+gulp.task('_append-version-and-minify-html', false, function(callback) {
     return gulp.src(path.join(PATHS.DIST_DIR, '**/*.html'))
             .pipe($.versionAppend(['html', 'js', 'css']))
             .pipe($.htmlmin({removeComments: true, collapseWhitespace: true}))
@@ -223,8 +218,8 @@ gulp.task('update-version', HELPS.updateVersion, function (callback) {
 
 gulp.task('_add-versioning-tags-to-html', false, function(callback) {
     return gulp.src(path.join(PATHS.DIST_DIR, '**/*.html'))
-           .pipe($.replace(/\.css/g, '.css' + VERSIONING))
-           .pipe($.replace(/\.js/g, '.js' + VERSIONING))
+           .pipe($.replace(/(href="css\/.+)\.css/g, '$1.css' + VERSIONING))
+           .pipe($.replace(/(src="js\/.+)\.js/g, '$1.js' + VERSIONING))
            .on('error', onError)
            .pipe(gulp.dest(PATHS.DIST_DIR));
 });
@@ -264,10 +259,14 @@ gulp.task('_checkout-release', false, function(callback) {
     var branchName = RELEASEPREFIX + config.version;
 
     $.git.checkout(branchName, {args:'-b', '--track':'develop'}, function (err) {
-        if (err) throw err;
+
+        if (err) {
+            throw err;
+        }
+
+        runSequence('_append-version-and-minify-html', callback);
     });
 
-    callback();
 });
 
 gulp.task('_add-git-tag', false, function(callback){
@@ -387,7 +386,8 @@ gulp.task('server', 'Start the browserSync server', function() {
 
 
 gulp.task('build-clean', false, function(callback) {
-    return del([PATHS.CSS_DST,
+    return del([path.join(PATHS.DIST_DIR, '**/*.html'),
+                PATHS.CSS_DST,
                 PATHS.JS_DST,
                 PATHS.IMAGES_DST]);
 });
@@ -400,13 +400,21 @@ gulp.task('build-styles', false, function(callback) {
     runSequence('_sass', '_minify-styles', callback);
 });
 
+gulp.task('pre-build-html', false, function(callback) {
+    runSequence('_copy-html-to-dist',
+                '_add-versioning-tags-to-html',
+                '_lint-html',
+                callback);
+});
+
 gulp.task('build-html', false, function(callback) {
     runSequence('_copy-html-to-dist',
                 '_add-versioning-tags-to-html',
                 '_lint-html',
-                '_minify-html',
+                '_append-version-and-minify-html',
                 callback);
 });
+
 
 /*******************************************************************************
 *
@@ -417,7 +425,7 @@ gulp.task('build-html', false, function(callback) {
 
 gulp.task('default', function(callback) {
 
-    runSequence(['build-styles', 'build-scripts', '_images', '_mv-assets-to-dist'],
+    runSequence(['build-styles', 'build-scripts'],
                 '_lint-html',
                 'server',
                 callback);
@@ -429,7 +437,7 @@ gulp.task('production', HELPS.production ,function(callback) {
 
     runSequence('build-clean',
                 ['build-styles', 'build-scripts', '_images', '_mv-assets-to-dist'],
-                'build-html',
+                'pre-build-html',
                 'server',
                 callback);
 });
@@ -494,6 +502,7 @@ gulp.task('release', HELPS.release, function(callback) {
 
       child.stdout.on('end', function(data) {
         runSequence('_checkout-release');
+
         callback();
       });
     } else {
@@ -509,10 +518,19 @@ gulp.task('deploy', HELPS.deploy, function(callback) {
 
     var currentBranch = shell.exec('git rev-parse --abbrev-ref HEAD', {silent:true}).stdout;
 
+    // Check if the deploy task has been started from the deploy branch
     if (currentBranch.indexOf(RELEASEPREFIX) === -1) {
-        shell.echo('Start the deploy task from the ' + RELEASEPREFIX + 'x.x.x branch');
+        shell.echo(gutil.colors.yellow('Start the deploy task from the ' + RELEASEPREFIX + 'x.x.x branch'));
         return;
     }
+
+    // Check if the index.html file exists into the distribution folder
+    fs.access(path.join(PATHS.DIST_DIR, 'index.html'), fs.F_OK, function(err) {
+        if (err) {
+            gutil.log(gutil.colors.red('ERROR: The index.html file does not exist into ' + PATHS.DIST_DIR));
+            return;
+        }
+    });
 
     runSequence('_checkout-master',
                 '_release-merge',
@@ -525,4 +543,3 @@ gulp.task('deploy', HELPS.deploy, function(callback) {
                 callback);
 
 });
-
