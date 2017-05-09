@@ -8,7 +8,8 @@
   // .c-modal--fullscreen
   @include modifier('fullScreen') {
     @include fixed(top 0 left 0);
-    @include size(100%);
+    width: 100vw;
+    height: 100vh;
   }
 
   // .c-modal__background
