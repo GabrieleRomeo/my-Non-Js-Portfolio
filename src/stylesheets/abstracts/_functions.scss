@@ -428,3 +428,19 @@
   @return not not index($list, $needle);
 }
 
+///
+/// Generate a number without the unit
+///
+/// @param {Number} $number - A value like 1px, 2rem, etc.
+/// @return {Number}
+///
+
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+@function rem($size) {
+  $remSize: $size / 16px;
+  @return #{$remSize}rem;
+}
+

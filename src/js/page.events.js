@@ -4,6 +4,7 @@
     var Portfolio = window.Portfolio || {};
     var anim = Portfolio.Animation.scrolling;
     var dom  = Portfolio.Utils.Dom;
+    var data = Portfolio.Utils.data;
     var $  = dom.$;
     var $$ = dom.$$;
 
@@ -28,7 +29,24 @@
         card: $( '.c-card' ),
         scrollButton: $( '.c-button--scroll' ),
         randomFactTrigger: $( '#random-fact__Icon'),
-        randomFactMsg: $( '#random-fact__span' )
+        randomFactMsg: $( '#random-fact__span' ),
+        welcomeMsgElement: {
+            1: $( '#welcomeMsg--1' ),
+            2: $( '#welcomeMsg--2' ),
+            3: $( '#welcomeMsg--3' ),
+            4: $( '#welcomeMsg--4' ),
+            5: $( '#welcomeMsg--5' )
+        }
+    };
+
+    var welcomeMessages = {
+        visit2: {
+            part1: 'Welcome back',
+            part2: '',
+            part3: 'I feel like you believe in me...',
+            part4: 'isn\'t it<i class="animation__info">?</i>',
+            part5: 'That\'s a wonderful thing!'
+        }
     };
 
     var headerHeight = parseInt(dom.getComputed(DOMcache.header)('height'));
@@ -307,6 +325,49 @@
         xhr.send();
     }
 
+    function setCookie() {
+
+        var now = new Date();
+        var oneWeek = 1000 * 60 * 60 * 24 * 7;
+        var visitCounter = data.getCookies('counter');
+        var counter = 0;
+
+        if (!visitCounter || isNaN(parseInt(visitCounter['counter']))) {
+            counter = 0;
+        } else {
+            counter = parseInt(visitCounter['counter']) + 1;
+        }
+
+        updateWelcomeMsg(counter);
+
+        now.setTime(now.getTime() + oneWeek);
+
+        document.cookie = 'counter=' + counter +';expires=' + now.toUTCString();
+    }
+
+    function updateWelcomeMsg(counter) {
+
+        var msgObj;
+
+        if (counter === 0) {
+            return;
+        }
+
+        // Check if a specific welcome msg exists
+        if (welcomeMessages['visit' + counter]) {
+            msgObj = welcomeMessages['visit' + counter];
+        } else {
+            msgObj = welcomeMessages['visit2'];
+        }
+
+        DOMcache.welcomeMsgElement[1].innerHTML = msgObj['part1'];
+        DOMcache.welcomeMsgElement[2].innerHTML = msgObj['part2'];
+        DOMcache.welcomeMsgElement[3].innerHTML = msgObj['part3'];
+        DOMcache.welcomeMsgElement[4].innerHTML = msgObj['part4'];
+        DOMcache.welcomeMsgElement[5].innerHTML = msgObj['part5'];
+
+    }
+
     window.setInterval( function() {
         // Check if the page has been scrolled
         if ( isScrolled ) {
@@ -331,6 +392,7 @@
 
     document.addEventListener('DOMContentLoaded', function(event) {
         loadRandomFact();
+        setCookie();
     });
 
 })();

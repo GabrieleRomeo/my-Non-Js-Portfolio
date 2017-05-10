@@ -34,25 +34,25 @@ $_c-form-width: conf($conf, width);
     max-width: 100%;
     padding: 10px;
     margin-top: 10px;
-    color: rgba(251, 251, 251, 0.51);
+    color: rgba(251, 251, 251, 7);
     font-size: 1.4em;
     background-color: rgba(255, 255, 255, 0.19);
     border-style: none;
     border-radius: inherit;
 
       &::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-          color:    #909;
+          color:    rgba(181, 181, 181, 0.55);
       }
       &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-         color:    #909;
+         color:    rgba(181, 181, 181, 0.55);
          opacity:  1;
       }
       &::-moz-placeholder { /* Mozilla Firefox 19+ */
-         color:    #909;
+         color:    rgba(181, 181, 181, 0.55);
          opacity:  1;
       }
       &:-ms-input-placeholder { /* Internet Explorer 10-11 */
-         color:    #909;
+         color:    rgba(181, 181, 181, 0.55);
       }
 
       // .form__input--textarea
