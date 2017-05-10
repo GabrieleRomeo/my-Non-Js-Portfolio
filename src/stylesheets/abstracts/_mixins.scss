@@ -665,5 +665,15 @@ $queries-in-use: ();
 
 
 
+@mixin rhythm($font-size, $multiplier: 1, $margin-bottom: null) {
+
+    font-size: $font-size / strip-units($base-font-size);
+    line-height: ceil($font-size / $base-line-height) * (($base-line-height * $multiplier)  / $font-size);
+
+    @if ($margin-bottom != null) {
+      margin-bottom: $spacing * $margin-bottom;
+    }
+
+}
 
 

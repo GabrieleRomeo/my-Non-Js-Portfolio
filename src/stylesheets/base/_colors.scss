@@ -34,6 +34,7 @@ $_color-base--curious-blue: #1E94CD;
 $_color-base--shalimar: #FAFFBD;
 $_color-base--haiti: #1D0E2F;
 $_color-base--pear: #CDDC39;
+$_color-base--conifer: #88D54E;
 
 $palettes: (
   white: (
@@ -216,6 +217,12 @@ $palettes: (
     lighter: lighten($_color-base--shalimar, 20%),
     light: lighten($_color-base--shalimar, 10%),
     dark: darken($_color-base--shalimar, 10%)
+  ),
+  conifer: (
+    base: $_color-base--conifer,
+    lighter: lighten($_color-base--conifer, 20%),
+    light: lighten($_color-base--conifer, 10%),
+    dark: darken($_color-base--conifer, 10%)
   ),
   caribbean-cadillac: (
     base: $_color-base--caribbean-cadillac
