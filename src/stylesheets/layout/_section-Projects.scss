@@ -24,7 +24,8 @@
           color: #e91e63;
         }
 
-        strong {
+        .team_members__title {
+          padding: 10px 0;
           font-weight: 600;
         }
 
@@ -33,6 +34,9 @@
         .list__team {
           font-size: initial;
           font-weight: 300;
+        }
+        .list__team li {
+          padding: 10px 0;
         }
         .span__role {
           color: palette(cerise);
