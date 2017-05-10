@@ -13,10 +13,10 @@
     }
 
     .project__info {
+      @include rhythm(16px, 2.5);
 
         p {
           font-weight: 300;
-          line-height: 1.75em;
         }
 
         em {
@@ -36,16 +36,19 @@
           font-weight: 300;
         }
         .list__team li {
-          padding: 10px 0;
+          padding: 3px 0;
         }
         .span__role {
           color: palette(cerise);
         }
     }
 
+    .project__technologies strong {
+      font-weight: 700;
+    }
+
     .project__description {
       padding: 1em 0;
-      font-size: initial;
 
         .project__link {
           &:hover,
