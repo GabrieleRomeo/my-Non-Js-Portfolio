@@ -14,6 +14,49 @@ var Portfolio = {
     }
 };
 
+Portfolio.namespace('Utils').data = (function() {
+
+    /**
+     * Get an object containing all cookies or an intended cookie (if any)
+     * @param  {string}   name An optional cookie's name
+     * @return {Object}     Return an object containing all cookies, the intended
+     *                      cookie (if the name argument has been provided), or
+     *                      an empty object
+     */
+
+    var getCookies = function(name) {
+
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var cookies = decodedCookie.split(';');
+
+      var cookieObj = cookies.reduce(function(prev, curr) {
+
+          var parts = curr.split('=');
+
+          if (name) {
+             if (parts[0].trim() === name) {
+                 prev[parts[0].trim()] = parts[1];
+             }
+          } else {
+             prev[parts[0].trim()] = parts[1];
+          }
+
+          return prev;
+      }, {});
+
+      if (Object.keys(cookieObj).length === 0) {
+        return null;
+      }
+
+      return cookieObj;
+    };
+
+
+    return {
+        getCookies: getCookies
+    };
+})();
+
 Portfolio.namespace('Utils').Obj = (function() {
 
     /**
