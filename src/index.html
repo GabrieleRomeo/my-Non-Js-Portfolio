@@ -446,6 +446,7 @@
             <input class="c-tab__radio" id="tab__radio-12" name="tab__radio" type="radio">
             <input class="c-tab__radio" id="tab__radio-13" name="tab__radio" type="radio">
             <input class="c-tab__radio" id="tab__radio-14" name="tab__radio" type="radio">
+            <input class="c-tab__radio" id="tab__radio-15" name="tab__radio" type="radio">
 
             <!-- Start TAB List -->
             <ul class="c-tab__list">
@@ -1702,6 +1703,118 @@
                 </div>
                 <!-- End TAB 12 - Content -->
               </li>
+              <!-- TAB - Music Catalog -->
+              <li class="c-tab__item">
+                <label class="c-tab__label" for="tab__radio-13">Music Catalog</label>
+                <div class="c-tab__content">
+                  <div class="c-carousel">
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel13__radio-1" name="carousel13__radio"
+                           type="radio" checked>
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel13__radio-2" name="carousel13__radio"
+                           type="radio">
+                    <input class="c-carousel__input c-carousel__input--trigger"
+                           id="carousel13__radio-3" name="carousel13__radio"
+                           type="radio">
+                    <ul class="c-carousel__list">
+                      <li class="c-carousel__item">
+                        <img src="img/music_catalog_1.png" alt="Indexed Music Catalog - list view">
+                      </li>
+                      <li class="c-carousel__item">
+                        <img src="img/music_catalog_2.png" alt="Indexed Music Catalog - Search functionality">
+                      </li>
+                      <li class="c-carousel__item">
+                        <img src="img/music_catalog_3.png" alt="Indexed Music Catalog - table view">
+                      </li>
+                    </ul>
+
+                    <div class="c-carousel__control c-carousel__control--prev">
+                      <label for="carousel13__radio-1">
+                        <i class="icon-left-open" aria-hidden="true"></i>
+                      </label>
+                      <label for="carousel13__radio-2">
+                        <i class="icon-left-open" aria-hidden="true"></i>
+                      </label>
+                    </div>
+                    <div class="c-carousel__control c-carousel__control--next">
+                      <label for="carousel13__radio-2">
+                        <i class="icon-right-open" aria-hidden="true"></i>
+                      </label>
+                      <label for="carousel13__radio-3">
+                        <i class="icon-right-open" aria-hidden="true"></i>
+                      </label>
+                    </div>
+
+                    <div class="c-carousel__bullets">
+                      <label for="carousel13__radio-1">
+                        <span></span>
+                      </label>
+                      <label for="carousel13__radio-2">
+                        <span></span>
+                      </label>
+                      <label for="carousel13__radio-3">
+                        <span></span>
+                      </label>
+                    </div>
+
+                  </div>
+                  <div class="project__info">
+                    <p class="project__technologies">
+                      <strong>Technologies:</strong>
+                      HTML5, CSS3, Vanilla Javascript, Indexed DB, localStorage
+                    </p>
+                    <p class="project__description">
+                      Each album is stored as an IndexedDB record. The first time
+                      a user visits the page, the data are downloaded from the
+                      Free Music Archive through a <em>XMLHttpRequest</em> and
+                      then stored in IndexedDB.
+                    </p>
+                    <p>
+                      Subsequent visits to the page are loaded the data from
+                      IndexedDB.
+                    </p>
+                    <p>
+                      The Music Catalog project I developed makes use of
+                      <em>IndexedDB</em> as well as the
+                      <em>sessionStorage object</em> for holding
+                      user preference about the view.
+                    </p>
+                    <p>
+                      Long text descriptions are cut and the system shows a
+                      <em>Show More</em> link so that the user can see the
+                      remaining text.
+                    </p>
+                    <p>
+                      A user may switch between the <em>list</em> and <em>table</em>
+                      view using the appropriate button.
+                    </p>
+                    <p>
+                      I also added the search capability so that a user can
+                      seek a particular text within Albums titles and descriptions.
+                    </p>
+                    <p class="project__URLs">
+                      <i class="icon-link-ext" aria-hidden="true">
+                        <a class="project__URL"
+                           href="http://gabrieleromeo.github.io/Bov-Projects/Course-08-Building-high-performance-modern-javascript-web-applications/chapter-08-Frontend-Datastore/music-catalog"
+                           title="Visit the Music Catalog"
+                           target="_blank">
+                           Demo
+                        </a>
+                      </i>
+                      <i class="icon-github-circled" aria-hidden="true">
+                        <a class="project__URL"
+                           href="https://github.com/GabrieleRomeo/Bov-Projects/tree/master/Course-08-Building-high-performance-modern-javascript-web-applications/chapter-08-Frontend-Datastore/music-catalog"
+                           title="Source Code"
+                           target="_blank">
+                           Source
+                        </a>
+                      </i>
+                    </p>
+                  </div>
+                </div>
+                <!-- End TAB -->
+              </li>
                 <!-- Sticker TAB Hackthons -->
               <li class="c-tab__item c-tab__item--sticker">
                 <label class="c-tab__label c-tab__label--sticket">
@@ -1711,7 +1824,7 @@
               </li>
               <!-- TAB 12 - Hackathon number 1 -->
               <li class="c-tab__item">
-                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-13">#1 - October-2016</label>
+                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-14">#1 - October-2016</label>
                 <!-- Start TAB 11 - Content -->
                 <div class="c-tab__content">
                   <div class="c-carousel">
@@ -1814,7 +1927,7 @@
               </li>
               <!-- TAB 13 - Hackathon number 2 -->
               <li class="c-tab__item">
-                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-14">#2 - december-2016</label>
+                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-15">#2 - december-2016</label>
                 <!-- Start TAB 12 - Content -->
                 <div class="c-tab__content">
                   <div class="c-carousel">
