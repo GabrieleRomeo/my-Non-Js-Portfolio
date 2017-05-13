@@ -19,7 +19,7 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
 
 @mixin c-tab__checked($version: default) {
 
-  $tabItems: 15;
+  $tabItems: 16;
   $tabStickers: 1;
 
   $totalItems: $tabItems + $tabStickers;
@@ -30,7 +30,7 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
     // The eleven tab represents the HACKATHONS sticker
     // for this reason, it must be not clickable and we need to increment the
     // $g variable by 1 more step
-    $g: if($i > 13, $i + 1, $i);
+    $g: if($i > 14, $i + 1, $i);
 
     &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:not(.c-tab__item--sticker):nth-of-type(#{$g}) .c-tab__label {
       @if $version == default {
