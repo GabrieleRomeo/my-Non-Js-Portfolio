@@ -1,21 +1,21 @@
 (function() {
     'use strict';
 
-    var Portfolio = window.Portfolio || {};
-    var anim = Portfolio.Animation.scrolling;
-    var dom  = Portfolio.Utils.Dom;
-    var data = Portfolio.Utils.data;
-    var $  = dom.$;
-    var $$ = dom.$$;
+    const PORTFOLIO = window.Portfolio || {};
+    const ANIM = PORTFOLIO.Animation.scrolling;
+    const DOM  = PORTFOLIO.Utils.Dom;
+    const COOKIES = PORTFOLIO.Utils.cookies;
+    const $  = DOM.$;
+    const $$ = DOM.$$;
 
-    var isScrolled = true;
-    var throttleInterval = 500;
-    var lastScrollTop = 0;
-    var deltaScroll = 5;
+    let isScrolled = true;
+    const throttleInterval = 500;
+    let lastScrollTop = 0;
+    const deltaScroll = 5;
 
-    var isGraphFirstAnimation = true;
+    let isGraphFirstAnimation = true;
 
-    var DOMcache = {
+    const DOMcache = {
         header: $( '#header' ),
         main: $( ' [role="main"] '),
         backToTop: $( '#backToTop' ),
@@ -39,7 +39,7 @@
         }
     };
 
-    var welcomeMessages = {
+    const welcomeMessages = {
         visit2: {
             part1: 'Welcome back',
             part2: '',
@@ -49,16 +49,22 @@
         }
     };
 
-    var headerHeight = parseInt(dom.getComputed(DOMcache.header)('height'));
-    var viewPort;
-    var body;
-    var isLessThanDesktop;
+    const TRIVIA = {
+        url: 'https://numbersapi.p.mashape.com/',
+        key:'cCRn3ndWPPmshXp3hZ6finUK92HIp10pB2sjsne4SUvAkUkoCz',
+        defaultMsg:'I am glad you visited my Portfolio'
+    };
+
+    let headerHeight = parseInt(DOM.getComputed(DOMcache.header)('height'));
+    let viewPort;
+    let body;
+    let isLessThanDesktop;
 
 
 
     function getSystemInformation() {
-        body = dom.getBody();
-        viewPort = Portfolio.namespace('Utils').Window.viewPort();
+        body = DOM.getBody();
+        viewPort = PORTFOLIO.namespace('Utils').Window.viewPort();
         isLessThanDesktop = ( viewPort.width < '1024' ) ? true : false;
     }
 
@@ -86,7 +92,7 @@
 
         element = $( target.hash );
 
-        anim.scrollTo(element, { ease: 'easeOutCubic', duration: 800 });
+        ANIM.scrollTo(element, { ease: 'easeOutCubic', duration: 800 });
     }
 
     function mobileSideMenuClick(e) {
@@ -117,7 +123,7 @@
 
         // Jump to the element
         var delay = window.setInterval( function() {
-            Portfolio.Animation.scrolling.scrollTo( targetElement );
+            PORTFOLIO.Animation.scrolling.scrollTo( targetElement );
             window.clearInterval(delay);
         }, 300);
     }
@@ -126,7 +132,7 @@
 
         var target = e.target;
         var card = target === DOMcache.card ? target :
-                                              dom.getClosest(target, '.c-card');
+                                              DOM.getClosest(target, '.c-card');
 
         var input = card && card.previousElementSibling || null;
 
@@ -142,9 +148,9 @@
 
     function showHideScrollUPButton() {
 
-        var buttonVisibility = dom.getComputed(DOMcache.backToTop)('visibility');
-        var isVisible = buttonVisibility && ( buttonVisibility === 'visible' );
-        var scrolledValue = body.scrollTop + headerHeight;
+        let buttonVisibility = DOM.getComputed(DOMcache.backToTop)('visibility');
+        let isVisible = buttonVisibility && ( buttonVisibility === 'visible' );
+        let scrolledValue = body.scrollTop + headerHeight;
 
         // On mobiles do nothing
         if ( isLessThanDesktop && isVisible ) {
@@ -181,8 +187,8 @@
 
     function showHideHeaderAndSideMenu() {
 
-        var scrolledValue = Math.abs( lastScrollTop - body.scrollTop );
-        var targetClass = 'c-header--isUp';
+        let scrolledValue = Math.abs( lastScrollTop - body.scrollTop );
+        const TARGETCLASS = 'c-header--isUp';
 
         // Make sure the scroll is more than delta
         if( scrolledValue <= deltaScroll ) {
@@ -192,14 +198,14 @@
         // On Desktop it shows the header bar only when the viewport's height is
         // less than the amount of scroll minus the header's height
         if ( viewPort.height > viewPort.height + body.scrollTop - headerHeight ) {
-            DOMcache.header.classList.remove(targetClass);
+            DOMcache.header.classList.remove(TARGETCLASS);
             hideSideMenu();
             return;
         }
 
         if ( body.scrollTop > lastScrollTop && body.scrollTop > headerHeight ){
             // Scroll Down
-            DOMcache.header.classList.add(targetClass);
+            DOMcache.header.classList.add(TARGETCLASS);
             showSideMenu();
         } else {
             // Scroll Up
@@ -208,7 +214,7 @@
             //time the user srolls up the page
             if (( viewPort.height <= viewPort.height + body.scrollTop ) &&
                   isLessThanDesktop ) {
-                DOMcache.header.classList.remove(targetClass);
+                DOMcache.header.classList.remove(TARGETCLASS);
             }
         }
 
@@ -230,16 +236,14 @@
 
     function activateSideMenuItem( position ) {
 
-        var coords = [].slice.call( DOMcache.sections ).map( function(section) {
+        let coords = Array.from( DOMcache.sections ).map(section => {
             return {
                 id: section.id,
-                coord: dom.getElemDistance(section)
+                coord: DOM.getElemDistance(section)
             };
-        }).filter(function( section ) {
-            return section.coord <= position;
-        });
+        }).filter(section => section.coord <= position);
 
-        var id = coords[coords.length -1].id;
+        let id = coords[coords.length -1].id;
 
         handleGraphAnimation( id );
         setCurrentSideMenuItem( id );
@@ -247,12 +251,12 @@
 
     function setCurrentSideMenuItem( id ) {
 
-        var link = $('.c-sideMenu__link[href="#' + id +'"]');
-        var dotNav;
-        var classN;
-        var classL;
-        var currentLink;
-        var currentNav;
+        let link = $('.c-sideMenu__link[href="#' + id +'"]');
+        let dotNav;
+        let classN;
+        let classL;
+        let currentLink;
+        let currentNav;
 
         if (!link) {
             return;
@@ -276,14 +280,14 @@
         link.classList.add( classL );
         dotNav.classList.add( classN );
 
-        //item.parentNode.previousElementSibling.classList.add('')
     }
+
 
     function handleGraphAnimation( id ) {
         if ( isGraphFirstAnimation && id === 'skills' ) {
-            [].slice.call( DOMcache.graphPaths ).forEach( function( path ) {
+            Array.from( DOMcache.graphPaths ).forEach(path => {
 
-                var circle = dom.getClosest( path, '.c-circle' );
+                let circle = DOM.getClosest( path, '.c-circle' );
 
                 path.setAttribute('style', 'stroke-dasharray: 629;-webkit-animation: load 6s; animation: load 6s;');
                 circle.setAttribute('style', '-webkit-animation: fadeIN 10s; animation: fadeIN 10s;');
@@ -298,56 +302,57 @@
     }
 
     function loadRandomFact() {
-        var rnd = Math.floor(Math.random() * 200);
-        var xhr = new XMLHttpRequest();
-        var url = 'https://numbersapi.p.mashape.com/' + rnd;
 
-        if (!xhr) {
-            return;
-        }
+        let msg = new Promise(function(resolve, reject){
 
-        xhr.onload = function () {
+            let rnd = Math.floor(Math.random() * 200);
+            let xhr = new XMLHttpRequest();
+            let url = TRIVIA.url + rnd;
 
-            var message = '';
+            xhr.onload = () => resolve(xhr.response);
 
-            if (xhr.status === 200) {
-                 message = xhr.response;
-                 message = message.substr(1, message.length - 2);
-            } else {
-                message = 'I am glad you visited my Portfolio';
-            }
+            xhr.onerror = () => reject();
 
-            DOMcache.randomFactMsg.innerHTML = message;
-        };
+            xhr.open('GET', url);
+            xhr.setRequestHeader('X-Mashape-Authorization', TRIVIA.key);
+            xhr.send();
 
-        xhr.open('GET', url);
-        xhr.setRequestHeader('X-Mashape-Authorization', 'cCRn3ndWPPmshXp3hZ6finUK92HIp10pB2sjsne4SUvAkUkoCz');
-        xhr.send();
+        });
+
+        msg.then(
+            function(result) {
+                let msg = result.substr(1, result.length - 2);
+                DOMcache.randomFactMsg.innerHTML = msg;
+            },
+            function() {
+                DOMcache.randomFactMsg.innerHTML = TRIVIA.defaultMSG;
+            });
+
     }
 
     function setCookie() {
 
-        var now = new Date();
-        var oneWeek = 1000 * 60 * 60 * 24 * 7;
-        var visitCounter = data.getCookies('counter');
-        var counter = 0;
+        let now = new Date();
+        let oneWeek = 1000 * 60 * 60 * 24 * 7;
+        let counter = COOKIES.get('counter');
+        let count = 0;
 
-        if (!visitCounter || isNaN(parseInt(visitCounter['counter']))) {
-            counter = 0;
+        if (!counter || Number.isNaN(parseInt(counter))) {
+            count = 0;
         } else {
-            counter = parseInt(visitCounter['counter']) + 1;
+            count = parseInt(counter) + 1;
         }
 
-        updateWelcomeMsg(counter);
+        updateWelcomeMsg(count);
 
         now.setTime(now.getTime() + oneWeek);
 
-        document.cookie = 'counter=' + counter +';expires=' + now.toUTCString();
+        document.cookie = 'counter=' + count +';expires=' + now.toUTCString();
     }
 
     function updateWelcomeMsg(counter) {
 
-        var msgObj;
+        let msgObj;
 
         if (counter === 0) {
             return;
@@ -390,7 +395,7 @@
     DOMcache.randomFactTrigger.addEventListener('click', loadRandomFact, false);
 
 
-    document.addEventListener('DOMContentLoaded', function(event) {
+    document.addEventListener('DOMContentLoaded', function() {
         loadRandomFact();
         setCookie();
     });
