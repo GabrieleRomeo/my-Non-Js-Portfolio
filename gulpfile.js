@@ -496,7 +496,6 @@ gulp.task('release', HELPS.release, callback => {
 
         child.stdout.on('end', () => {
             runSequence('_append-version-and-minify-html', callback);
-            callback();
         });
     } else {
         // Do not update the version, switch to the release branch immediately
