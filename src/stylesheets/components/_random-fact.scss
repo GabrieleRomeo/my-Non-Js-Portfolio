@@ -41,6 +41,11 @@ $c-random-fact-padding: 50px;
     position: absolute;
     right: 5%;
     bottom: 15%;
+
+
+    &.is-loading {
+      animation: rotate 2.5s linear infinite;
+    }
   }
 
 }
