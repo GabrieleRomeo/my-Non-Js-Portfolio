@@ -1,5 +1,6 @@
 'use strict';
 
+
 let Portfolio = {
     namespace (name) {
         let parts = name.split('.');
@@ -318,3 +319,5 @@ Portfolio.namespace('Animation').scrolling = (function() {
         scrollTo: scrollTo
     };
 })();
+
+export { Portfolio };
