@@ -144,14 +144,9 @@ gulp.task('_lint-html', false, () => {
 });
 
 gulp.task('_append-version-and-minify-html', false, () => {
-    let config = getConfig();
-    let version = 'v' + config.version;
-
     return gulp.src(path.join(PATHS.DIST_DIR, '**/*.html'))
             .pipe($.versionAppend(['html', 'js', 'css']))
             .pipe($.htmlmin({removeComments: true, collapseWhitespace: true}))
-            .pipe($.git.add())
-            .pipe($.git.commit(`Version update ${version}`))
             .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
@@ -271,6 +266,16 @@ gulp.task('_checkout-release', false, () => {
 
     });
 
+});
+
+gulp.task('_add-and-commit', false, () => {
+
+    let config = getConfig();
+    let version = 'v' + config.version;
+
+    return gulp.src(path.join(PATHS.DIST_DIR, '/*'))
+    .pipe($.git.add())
+    .pipe($.git.commit(`Version update ${version}`));
 });
 
 gulp.task('_add-git-tag', false, callback => {
@@ -531,6 +536,7 @@ gulp.task('deploy', HELPS.deploy, callback => {
     });
 
     runSequence('_append-version-and-minify-html',
+                '_add-and-commit',
                 '_checkout-master',
                 '_release-merge',
                 '_checkout-develop',
