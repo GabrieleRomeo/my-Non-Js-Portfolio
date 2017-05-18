@@ -16,6 +16,9 @@ const gulp = require('gulp-help')(require('gulp')),
     readlineSync = require('readline-sync'),
     fs = require('fs');
 
+import webpack from 'webpack-stream';
+import webpackConfig from './webpack.config.babel.js';
+
 // Initialise environments
 let development = $.environments.development;
 let production  = $.environments.production;
@@ -121,18 +124,16 @@ gulp.task('_jasmine', false, () => {
 });
 
 gulp.task('_minify-scripts', false, () => {
-    return gulp.src(['portfolio.js', '**/*.js', '!**/*min.js'], {cwd: PATHS.JS_SRC})
-            .pipe($.babel({
-                presets: ['es2015']
-            }))
+    return gulp.src(path.join(PATHS.JS_SRC, 'portfolio.js'))
+            .pipe(webpack(webpackConfig))
             .pipe($.concat('main.js'))
-            .pipe(gulp.dest(PATHS.TMP))
-            .pipe($.rename({suffix: '.min'}))
             .pipe(production($.uglify()))
+            .pipe($.rename({suffix: '.min'}))
             .pipe(production($.size({ showFiles: true })))
             .on('error', onError)
             .pipe(development(gulp.dest(PATHS.JS_SRC)))
             .pipe(production(gulp.dest(PATHS.JS_DST)));
+
 });
 
 gulp.task('_lint-html', false, () => {
@@ -143,9 +144,14 @@ gulp.task('_lint-html', false, () => {
 });
 
 gulp.task('_append-version-and-minify-html', false, () => {
+    let config = getConfig();
+    let version = 'v' + config.version;
+
     return gulp.src(path.join(PATHS.DIST_DIR, '**/*.html'))
             .pipe($.versionAppend(['html', 'js', 'css']))
             .pipe($.htmlmin({removeComments: true, collapseWhitespace: true}))
+            .pipe($.git.add())
+            .pipe($.git.commit(`Version update ${version}`))
             .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
@@ -474,8 +480,7 @@ gulp.task('release', HELPS.release, callback => {
         if (index === -1) {
             // CANCEL was pressed
             return;
-        }
-        else if (index > 0 && index < (updateTypeList.length - 1)) {
+        } else if (index > 0 && index < (updateTypeList.length - 1)) {
             updateType = updateTypeList[index];
         } else if (index === updateTypeList.length - 1) {
             // Specific version
@@ -488,20 +493,17 @@ gulp.task('release', HELPS.release, callback => {
 
         runSequence('_checkout-release', () => {
 
-            gulpReleaseTask += 'update-version --type=' + updateType + ' ' + specificVersion;
+            gulpReleaseTask += `update-version --type=${updateType} ${specificVersion}`;
 
             let child = exec(gulpReleaseTask);
 
             child.stdout.on('data', data => shell.echo(data));
 
-            child.stdout.on('end', () => {
-                runSequence('_append-version-and-minify-html', callback);
-            });
         });
 
     } else {
         // Do not update the version, switch to the release branch immediately
-        runSequence('_checkout-release', '_append-version-and-minify-html');
+        runSequence('_checkout-release');
         callback();
     }
 
@@ -528,7 +530,8 @@ gulp.task('deploy', HELPS.deploy, callback => {
         }
     });
 
-    runSequence('_checkout-master',
+    runSequence('_append-version-and-minify-html',
+                '_checkout-master',
                 '_release-merge',
                 '_checkout-develop',
                 '_release-merge',
