@@ -313,7 +313,7 @@ function main() {
 
     function loadRandomFact(event) {
 
-        if (event.target.nodeName === 'I') {
+        if (event && event.target.nodeName === 'I') {
             DOMcache.randomFactTrigger.classList.add(isLoadingClass);
         }
 
@@ -400,24 +400,31 @@ function main() {
     }, throttleInterval );
 
 
-    // Event Listeners
+    // Start custom actions
+    loadRandomFact();
+    setCookie();
+
+
+    /***************************************************************************
+     *
+     *                         Events listeners
+     *
+     ***************************************************************************/
+
     document.addEventListener('scroll', handleScroll, false);
+
     DOMcache.header.addEventListener('click', handleClick, false);
+
     DOMcache.scrollButton.addEventListener('click', handleClick, false);
+
     DOMcache.sideMenuDesktop.addEventListener('click', handleClick, false);
     DOMcache.sideMenuMobile.addEventListener('click', mobileSideMenuClick, false);
 
     DOMcache.card.addEventListener('click', handleCardClick, false);
     DOMcache.randomFactTrigger.addEventListener('click', loadRandomFact, false);
-
-
-    document.addEventListener('DOMContentLoaded', function() {
-        loadRandomFact();
-        setCookie();
-    });
-
 }
 
+// When DOM is ready, call the main function
 documentReady(
     main
 );
