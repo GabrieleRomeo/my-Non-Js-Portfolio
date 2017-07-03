@@ -21,6 +21,7 @@ function main() {
     let isGraphFirstAnimation = true;
 
     const DOMcache = {
+        animation: $( '.animation '),
         header: $( '#header' ),
         main: $( ' [role="main"] '),
         backToTop: $( '#backToTop' ),
@@ -35,13 +36,6 @@ function main() {
         scrollButton: $( '.c-button--scroll' ),
         randomFactTrigger: $( '#random-fact__Icon'),
         randomFactMsg: $( '#random-fact__span' ),
-        welcomeMsgElement: {
-            1: $( '#welcomeMsg--1' ),
-            2: $( '#welcomeMsg--2' ),
-            3: $( '#welcomeMsg--3' ),
-            4: $( '#welcomeMsg--4' ),
-            5: $( '#welcomeMsg--5' )
-        }
     };
 
     const isLoadingClass = 'is-loading';
@@ -367,6 +361,9 @@ function main() {
     }
 
     function updateWelcomeMsg(counter) {
+        const animation = DOMcache.animation;
+        const clonedAnimation = DOMcache.animation.cloneNode(true);
+        const messageList = Array.from($$('[id*=welcomeMsg]', clonedAnimation));
 
         let msgObj;
 
@@ -381,12 +378,13 @@ function main() {
             msgObj = welcomeMessages['visit2'];
         }
 
-        DOMcache.welcomeMsgElement[1].innerHTML = msgObj['part1'];
-        DOMcache.welcomeMsgElement[2].innerHTML = msgObj['part2'];
-        DOMcache.welcomeMsgElement[3].innerHTML = msgObj['part3'];
-        DOMcache.welcomeMsgElement[4].innerHTML = msgObj['part4'];
-        DOMcache.welcomeMsgElement[5].innerHTML = msgObj['part5'];
+        messageList[0].innerHTML = msgObj['part1'];
+        messageList[1].innerHTML = msgObj['part2'];
+        messageList[2].innerHTML = msgObj['part3'];
+        messageList[3].innerHTML = msgObj['part4'];
+        messageList[4].innerHTML = msgObj['part5'];
 
+        animation.parentNode.replaceChild(clonedAnimation, animation);
     }
 
     window.setInterval( function() {
@@ -401,8 +399,10 @@ function main() {
 
 
     // Start custom actions
-    loadRandomFact();
-    setCookie();
+    requestAnimationFrame(function() {
+        loadRandomFact();
+        setCookie();
+    });
 
 
     /***************************************************************************
