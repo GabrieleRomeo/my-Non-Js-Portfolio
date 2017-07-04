@@ -510,8 +510,9 @@ gulp.task('release', HELPS.release, callback => {
 
     } else {
         // Do not update the version, switch to the release branch immediately
-        runSequence('_checkout-release');
-        callback();
+        runSequence('_checkout-release',
+                    'production',
+                    callback);
     }
 
 
