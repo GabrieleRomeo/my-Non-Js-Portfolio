@@ -496,7 +496,9 @@ gulp.task('release', HELPS.release, callback => {
             });
         }
 
-        runSequence('_checkout-release', () => {
+        runSequence('_checkout-release',
+                    'production',
+                    () => {
 
             gulpReleaseTask += `update-version --type=${updateType} ${specificVersion}`;
 
