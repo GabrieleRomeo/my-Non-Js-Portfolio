@@ -1,5 +1,31 @@
 {
   "sections": ["about", "projects", "skills", "contact"],
+  "links": {
+    "BovAcademy": {
+      "text": "Bov Academy",
+      "title": "Bov Academy",
+      "URL": "https://www.bovacademy.com/",
+      "target": "_blank"
+    },
+    "Turin": {
+      "text": "Turin",
+      "title": "Turin - Italy",
+      "URL": "https://en.wikipedia.org/wiki/Turin",
+      "target": "_blank"
+    },
+    "Romeo": {
+      "text": "Romeo",
+      "title": "Romeo",
+      "URL": "https://en.wikipedia.org/wiki/Romeo",
+      "target": "_blank"
+    },
+    "Urbino": {
+      "text": "University of Urbino",
+      "title": "University of Urbino - Carlo Bo",
+      "URL": "http://informatica.uniurb.it/en/home-en/",
+      "target": "_blank"
+    }
+  },
   "splash": {
     "message-1": {
       "part-1": ["welcome to", "my portfolio"],
@@ -13,5 +39,51 @@
       "part-3": ["isn't it", "?"],
       "part-4": "That's a wonderful thing!"
     }
+  },
+  "info": {
+    "work": "Full-stack Developer",
+    "education": "@@urbino"
+    }
+  },
+  "about": {
+    "paragraphs": [
+      {
+        "text": "I am a student at the prestigious
+               @@BovAcademy/class='about__link', and I am an aspiring Full-stack
+               developer who specializes in creating modern and attractive web
+               pages.",
+        "isSpaced": false
+      },
+      {
+       "text": "I am living in @@Turin/class='about__link', a beautiful city in
+               northern Italy.",
+        "isSpaced": false
+      },
+      {
+        "text": "As you probably know, We
+                @@Romeo/class='about__link'(s) are famous for being passionate
+                lovers.<br>
+                <em class='about__emphasis'>
+                  Probably it is for this reason that I love what I do, and I am
+                  always looking for new exciting projects.
+                </em>",
+        "isSpaced": false
+      },
+      {
+        "text": "If you are interested in my work, feel free to contact me anytime.",
+        "isSpaced": false
+      },
+      {
+        "text": "Check out some of the projects below to see what I have been up to recently.",
+        "isSpaced": false
+      },
+      {
+        "text": "My hobbies include sports (bodybuilding in particular), gardening,
+                writing (I wrote some technical articles for the Bov academy),
+                reading some interesting book and, above all,
+                <em class='about__emphasis'>enjoy my life</em>.",
+        "isSpaced": true
+      }
+    ]
   }
 }
