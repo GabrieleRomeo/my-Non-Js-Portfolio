@@ -1,0 +1,17 @@
+{
+  "sections": ["about", "projects", "skills", "contact"],
+  "splash": {
+    "message-1": {
+      "part-1": ["welcome to", "my portfolio"],
+      "part-2": "would you like to start a new journey",
+      "part-3": ["together", "?"],
+      "part-4": "I am glad you are here today!"
+    },
+    "message-2": {
+      "part-1": ["welcome back", ""],
+      "part-2": "I feel like you believe in me...",
+      "part-3": ["isn't it", "?"],
+      "part-4": "That's a wonderful thing!"
+    }
+  }
+}
