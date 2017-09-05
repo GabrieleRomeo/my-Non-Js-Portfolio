@@ -502,5 +502,91 @@
       "images_path": "img/projects/musicCatalog",
       "images": ["image_1.png", "image_2.png", "image_3.png"]
     }
+  ],
+  "hackathons": [
+    {
+      "date": "October-2016",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "This showcase shows the result of the first Hackathon at
+                      <em>Bov Academy</em>. A three-day event, during which our
+                      Team replicated four
+                      <a class='project__link' href='http://materializecss.com/' target='_blank'>
+                        Materialize.css
+                      </a> components in pure CSS3 <em>from scratch</em>.",
+      "Team": [
+      {
+        "name": "Gabriele Romeo",
+        "role": "Project and Product Manager",
+        "url": "https://github.com/gabrieleromeo"
+      },
+      {
+        "name": "Frank Stepanski",
+        "role": "Developer",
+        "url": "https://github.com/frankstepanski"
+      }
+      ],
+        "URLs": [
+        {
+          "text": "Project Link",
+          "title": "Visit the hackathon's projects",
+          "URL": "https://frankstepanski.github.io/hackathon-oct-2016",
+          "target": "_blank"
+        },
+        {
+          "text": "Project Repository",
+          "title": "Repository",
+          "URL": "https://github.com/frankstepanski/hackathon-oct-2016",
+          "target": "_blank"
+        }
+        ],
+        "images_path": "img/hackathons/hackathon_1",
+        "images": ["image_1.png", "image_2.png", "image_3.png"]
+      },
+      {
+      "date": "december-2016",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "This showcase shows the result of the Hackathon number 2 at
+                      <em>Bov Academy</em>. A three-day event, December the
+                      9(th) - 10(th) - 11(th), 2016, during which our Team developed
+                      a preliminary version of the <em>Bov Academy Blog</em>.",
+      "Team": [
+      {
+        "name": "Brian Hernandez",
+        "role": "Project Manager",
+        "url": "https://github.com/brianhernandez"
+      },
+      {
+        "name": "Gabriele Romeo",
+        "role": "Developer",
+        "url": "https://github.com/gabrieleromeo"
+      },
+      {
+        "name": "Imanuel Gittens",
+        "role": "Developer",
+        "url": "https://github.com/imanuelgittens"
+      },
+      {
+        "name": "David Gierman",
+        "role": "Developer",
+        "url": "https://github.com/DGeero89"
+      }
+      ],
+        "URLs": [
+        {
+          "text": "Project Link",
+          "title": "Visit the hackathon's projects",
+          "URL": "https://gabrieleromeo.github.io/bov-academy-blog/",
+          "target": "_blank"
+        },
+        {
+          "text": "Project Repository",
+          "title": "Repository",
+          "URL": "https://github.com/GabrieleRomeo/bov-academy-blog",
+          "target": "_blank"
+        }
+        ],
+        "images_path": "img/hackathons/hackathon_2",
+        "images": ["image_1.png", "image_2.png", "image_3.png"]
+      }
   ]
 }
