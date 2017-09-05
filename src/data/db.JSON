@@ -587,5 +587,96 @@
         "images_path": "img/hackathons/hackathon_2",
         "images": ["image_1.png", "image_2.png", "image_3.png"]
       }
-  ]
+  ],
+  "skills": {
+    "Frontend": {
+      "percentage": 80,
+      "list": [
+        {
+          "name": "Javascript",
+          "level": "expert",
+          "description": "<strong>Expert: </strong>Cool stuff"
+        },
+        {
+          "name": "Sass",
+          "level": "expert",
+          "description": "<strong>Expert: </strong> I love mixins, functions, and all the other stuff"
+        },
+        {
+          "name": "JQuery",
+          "level": "competent",
+          "description": "<strong>Competent: </strong> Lovely (JS) library. I know how to control It, but I want to master it"
+        },
+        {
+          "name": "(JS) GreenSock",
+          "level": "competent",
+          "description": "<strong>Competent: </strong> Have a look at the MD's Homepage animations, Please"
+        },
+        {
+          "name": "React JS",
+          "level": "learning",
+          "description": "<strong>Learning: </strong> I'm sure that BovAcademy will improve this"
+        },
+        {
+          "name": "Vue.js",
+          "level": "learning",
+          "description": "<strong>Learning: </strong> I'm sure that BovAcademy will improve this"
+        }
+      ]
+    },
+    "Backend": {
+      "percentage": 20,
+      "list": [
+        {
+          "name": "NodeJs",
+          "level": "competent",
+          "description": "<strong>Competent: </strong> Not too bad but I need to improve its profound aspects"
+        },
+        {
+          "name": "PHP",
+          "level": "learning",
+          "description": "<strong>Learning: </strong> I used Symfony PHP for a while"
+        },
+        {
+          "name": "MongoDB",
+          "level": "learning",
+          "description": "<strong>Learning: </strong> I'm sure that L.MD will improve this"
+        },
+        {
+          "name": "MySQL",
+          "level": "learning",
+          "description": "<strong>Learning: </strong> I used it during University and for some personal projects."
+        }
+      ]
+    },
+    "Other": {
+      "list": [
+        {
+          "name": "Written Communication",
+          "level": "proficent",
+          "description": "<strong>Proficent: </strong> I like writing. I wrote some articles for BovAcademy"
+        },
+        {
+          "name": "Problem-Solving",
+          "level": "expert",
+          "description": "<strong>Expert: </strong> I like to solve problems! It's funny"
+        },
+        {
+          "name": "Project-Management",
+          "level": "competent",
+          "description": "<strong>Competent: </strong> I reach the goals, always, whatever it takes."
+        },
+        {
+          "name": "Research",
+          "level": "proficent",
+          "description": "<strong>Proficent: </strong> I like it."
+        },
+        {
+          "name": "Public Speaking",
+          "level": "learning",
+          "description": "<strong>Learning: </strong> I'm working on this aspect."
+        }
+      ]
+    }
+  }
 }
