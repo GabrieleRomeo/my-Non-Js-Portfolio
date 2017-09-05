@@ -7,6 +7,18 @@
       "URL": "https://www.bovacademy.com/",
       "target": "_blank"
     },
+    "StudentsBovAcademy": {
+      "text": "students",
+      "title": "Students Bov Academy",
+      "URL": "https://students.bovacademy.com/",
+      "target": "_blank"
+    },
+    "BlogBovAcademy": {
+      "text": "Bov Academy Blog",
+      "title": "Bov Academy Blog",
+      "URL": "https://blog.bovacademy.com/",
+      "target": "_blank"
+    },
     "Turin": {
       "text": "Turin",
       "title": "Turin - Italy",
@@ -85,5 +97,67 @@
         "isSpaced": true
       }
     ]
+  },
+  "projects": {
+    "Modern Developer Home Page": {
+      "Technologies": ["HTML5", "CSS3", "GreenSock", "Vanilla JavaScript", "and a bit of <em>passion &amp; love</em><i class='icon-heartbeat double-flash' aria-hidden='true'></i>"],
+      "description": "When @@BovAcademy/text='Richard Bovell'/class='about__link',
+                      the founder of @@BovAcademy/class='about__link',
+                      asked me to develop the new homepage for the course,
+                      sincerely, I was a little bit nervous because of the big
+                      responsibility.<br>
+                      Now I can say that I am very proud and honored to have
+                      been involved in a project so ambitious and formidable.
+                      The most difficult part was the synchronization of the
+                      various animations at different screen dimensions.<br>
+                      <em>I want to say thank you to Richard
+                      for the great opportunity he gave me.</em>",
+      "URLs": [
+      {
+        "text": "www.moderndeveloper.com",
+        "title": "Modern Developer",
+        "URL": "",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/moderndeveloper",
+      "images": ["image_1.png", "image_2.png", "image_3.png", "image_4.png"]
+    },
+    "Evolution UI": {
+      "Technologies": ["HTML5", "CSS3", "Sass", "Vanilla JavaScript", "ES6"],
+      "description": "The first of its kind, Evolution UI is an open source
+                      front-end web framework comprising a collection of
+                      innovative and unique web components.
+                      These never-before-seen web components are intended to
+                      provide a different and enriched online experience and
+                      were created by the @@StudentsBovAcademy of Bov Academy
+                      Institute of Programming and Futuristic Engineering (you can
+                     learn more about this project and read a write-up on
+                     each component by visiting the @@BlogBovAcademy/evolution-ui-a-ui-framework-of-dozens-of-innovative-ui-components/
+                     ).<br>This framework is intended to be a hub of web
+                     development innovation and we invite everyone to
+                     explore their creativity and contribute something
+                     innovative of their own to keep the project thriving.<br>
+                     <em>
+                     I want to say thank all guys from the Evolution
+                     Core Team
+                     </em>",
+      "URLs": [
+      {
+        "text": "evolution-ui.github.io/evolution-ui/",
+        "title": "Take a look at Evolution UI",
+        "URL": "https://evolution-ui.github.io/evolution-ui/",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Evolution UI - Repository",
+        "URL": "https://github.com/evolution-ui/evolution-ui/",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/evolutionUI",
+      "images": ["image_1.png", "image_2.png", "image_3.png", "image_4.png"]
+    }
   }
 }
