@@ -98,8 +98,9 @@
       }
     ]
   },
-  "projects": {
-    "Modern Developer Home Page": {
+  "projects": [
+    {
+      "Name": "Modern Developer Home Page",
       "Technologies": ["HTML5", "CSS3", "GreenSock", "Vanilla JavaScript", "and a bit of <em>passion &amp; love</em><i class='icon-heartbeat double-flash' aria-hidden='true'></i>"],
       "description": "When @@BovAcademy/text='Richard Bovell'/class='about__link',
                       the founder of @@BovAcademy/class='about__link',
@@ -123,7 +124,8 @@
       "images_path": "img/projects/moderndeveloper",
       "images": ["image_1.png", "image_2.png", "image_3.png", "image_4.png"]
     },
-    "Evolution UI": {
+    {
+      "Name": "Evolution UI",
       "Technologies": ["HTML5", "CSS3", "Sass", "Vanilla JavaScript", "ES6"],
       "description": "The first of its kind, Evolution UI is an open source
                       front-end web framework comprising a collection of
@@ -158,6 +160,347 @@
       ],
       "images_path": "img/projects/evolutionUI",
       "images": ["image_1.png", "image_2.png", "image_3.png", "image_4.png"]
+    },
+    {
+      "Name": "Sidebar",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "Profile sidebar developed during the <em>Introduction to CSS</em> course.",
+      "URLs": [
+      {
+        "text": "Project Link",
+        "title": "Visit the DEMO",
+        "URL": "http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_3.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Sidebar Repository",
+        "URL": "https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_3.html",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/sideBar",
+      "images": ["image_1.png", "image_2.png"]
+    },
+    {
+      "Name": "Web Buttons",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "Minimal CSS3 Web buttons developed during the <em>Introduction
+                      to CSS</em> course.",
+      "URLs": [
+      {
+        "text": "Project Link",
+        "title": "Visit the DEMO",
+        "URL": "http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_2.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Web buttons Repository",
+        "URL": "https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_2.html",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/webButtons",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
+    },
+    {
+      "Name": "Forms",
+      "Technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
+      "description": "A list of web forms developed with the aim to practice
+                      modern development techniques. They make use of a
+                      self-made validation library written in pure Javascript
+                      as well as a utility library.
+                      Have a look at the demos to see the final result.",
+      "URLs": [
+      {
+        "text": "Project Link",
+        "title": "Visit the DEMO",
+        "URL": "http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_4.html",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/forms",
+      "images": ["image_1.png", "image_2.png", "image_3.png", "image_4.png"]
+    },
+    {
+      "Name": "Calculator",
+      "Technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
+      "description": "A fully functional calculator made in three different
+                      versions with a little bit of <em>passion &amp; love</em>
+                      <i class='icon-heartbeat double-flash' aria-hidden='true'></i>
+                       for the <em>Introduction to CSS</em> course.",
+      "URLs": [
+      {
+        "text": "Project Link",
+        "title": "Visit the DEMO",
+        "URL": "http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_5.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "The Calculator - Repository",
+        "URL": "https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_5.html",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/calculator",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
+    },
+    {
+      "Name": "Shopping Cart",
+      "Technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
+      "description": "A demo of an e-commerce website with an integrated shopping
+                      cart at the end of the page. I built it using pure
+                      javascript in functional reactive style.",
+      "URLs": [
+      {
+        "text": "Project Link",
+        "title": "Visit the DEMO",
+        "URL": "http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_6.html",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Shopping Cart - Repository",
+        "URL": "https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_6.html",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/shoppingCart",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
+    },
+    {
+      "Name": "Image Gallery",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "Image gallery carousel created during the
+                      <em>Mastering CSS</em> course.",
+      "URLs": [
+      {
+        "text": "View DEMO 1",
+        "title": "Visit DEMO 1",
+        "URL": "http://codepen.io/DrLeleMeo/pen/bwLxVW",
+        "target": "_blank"
+      },
+      {
+        "text": "View DEMO 2",
+        "title": "Visit DEMO 2",
+        "URL": "http://codepen.io/DrLeleMeo/pen/XjkPWP",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/imageGallery",
+      "images": ["image_1.png", "image_2.png"]
+    },
+    {
+      "Name": "CSS Accordion",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "A customized version of a <em>CSS3 accordion</em> project
+                      developed during the <em>Mastering CSS</em> course.",
+      "URLs": [
+      {
+        "text": "View DEMO",
+        "title": "Visit DEMO",
+        "URL": "http://codepen.io/DrLeleMeo/pen/rrqYXg",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/accordion",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
+    },
+    {
+      "Name": "CSS Tab",
+      "Technologies": ["HTML5", "CSS3"],
+      "description": "A customized version of a <em>CSS3 tab</em> project developed
+                      during the <em>Mastering CSS</em> course.",
+      "URLs": [
+      {
+        "text": "View DEMO",
+        "title": "Visit DEMO",
+        "URL": "http://codepen.io/DrLeleMeo/pen/JRryqb",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/tab",
+      "images": ["image_1.png", "image_2.png"]
+    },
+    {
+      "Name": "Questionnaire",
+      "Technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
+      "description": "I developed this questionnaire with my teammate,
+                      <a class='project__link'
+                         href='https://github.com/stefanfrede'
+                         target='_blank'>@Stefan Frede</a>.
+                      The initial requirements were: 'Build an app similar to
+                      the popular Google Forms app called the Questionnaire App
+                      including some response fields for collecting information
+                      from end users using HTML and CSS.'<br>
+                      As a naming convention for classes in HTML and CSS,
+                      we used the Block, Element, Modifier (BEM) methodology
+                      whereas for the layout we followed a Mobile-First
+                      Responsive-Design approach based on a vertical rhythm
+                      with a base font-size of 16px (100&#37;) and a line-height
+                      of 1.5rem.
+                      We used plain Javascript for the validation as well as
+                      HTML5 Local Storage to memorize the information.
+                      The application logic is written almost entirely in the
+                      functional style (FP).<br>
+                       Well done, Stefan!",
+        "Team": [
+        {
+          "name": "Gabriele Romeo",
+          "role": "Developer",
+          "url": "https://github.com/gabrieleromeo"
+        },
+        {
+          "name": "Stefan Frede",
+          "role": "Developer",
+          "url": "https://github.com/stefanfrede"
+        }
+        ],
+        "URLs": [
+        {
+          "text": "View DEMO",
+          "title": "Visit DEMO",
+          "URL": "http://stefanfrede.github.io/moderndeveloper-questionnaire/",
+          "target": "_blank"
+        },
+        {
+          "text": "Project Repository",
+          "title": "Visit the repository",
+          "URL": "https://github.com/stefanfrede/moderndeveloper-questionnaire",
+          "target": "_blank"
+        }
+        ],
+        "images_path": "img/projects/questionnaire",
+        "images": ["image_1.png", "image_2.png"]
+    },
+    {
+      "Name": "JIGSAW Drag & Drop Puzzle",
+      "Technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
+      "description": "This showcase shows the JIGSAW Drag & Drop Puzzle Project
+                      that has a full drag and drop interface.
+                    <p>
+                      The system is based on the <strong>Model-View-ViewModel
+                      (MVVM) Architectural Pattern</strong>
+                    </p>",
+      "URLs": [
+      {
+        "text": "View DEMO",
+        "title": "Visit DEMO",
+        "URL": "https://gabrieleromeo.github.io/Bov-Jigsaw-Puzzle/",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Visit the repository",
+        "URL": "https://github.com/GabrieleRomeo/Bov-Jigsaw-Puzzle",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/JIGSAW",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
+    },
+    {
+      "Name": "Seed UI Framework",
+      "Technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
+      "description": "This showcase shows the result of the Hackathon number 3 at
+                      <em>Bov Academy</em>. A three-day event, February the
+                      26(th) - 27(th) - 28(th), 2017, during which our Team developed
+                      an UI Framework called <em>Seed UI</em>.",
+      "Team": [
+      {
+        "name": "Jake Tom",
+        "role": "Project Manager",
+        "url": "https://github.com/codephobe"
+      },
+      {
+        "name": "Gabriele Romeo",
+        "role": "Product Manager",
+        "url": "https://github.com/gabrieleromeo"
+      },
+      {
+        "name": "Joseph Michael Matembu",
+        "role": "Developer",
+        "url": "https://github.com/jmatembu"
+      },
+      {
+        "name": "Vojislav Grujić",
+        "role": "Developer",
+        "url": "https://github.com/Gruximillian"
+      },
+      {
+        "name": "Brian Hernandez",
+        "role": "Developer",
+        "url": "https://github.com/brianhernandez"
+      },
+      {
+        "name": "Léna Faure",
+        "role": "Developer",
+        "url": "https://github.com/lenafaure"
+      }
+      ],
+      "URLs": [
+      {
+        "text": "View Seed UI",
+        "title": "Visit Seed UI",
+        "URL": "https://codephobe.github.io/seed-ui/",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Visit the repository",
+        "URL": "https://github.com/codephobe/seed-ui",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/seedUI",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
+    },
+    {
+      "Name": "Music Catalog",
+      "Technologies": ["HTML5", "CSS3", "Vanilla Javascript", "ES6", "Indexed DB", "localStorage"],
+      "description": "Each album is stored as an IndexedDB record. The first time
+                      a user visits the page, the data are downloaded from the
+                      Free Music Archive through a <em>XMLHttpRequest</em> and
+                      then stored in IndexedDB.<p>
+                      Subsequent visits to the page are loaded the data from
+                      IndexedDB.
+                    </p><p>
+                      The Music Catalog project I developed makes use of
+                      <em>IndexedDB</em> as well as the
+                      <em>sessionStorage object</em> for holding
+                      user preference about the view.
+                    </p>
+                    <p>
+                      Long text descriptions are cut and the system shows a
+                      <em>Show More</em> link so that the user can see the
+                      remaining text.
+                    </p>
+                    <p>
+                      A user may switch between the <em>list</em> and <em>table</em>
+                      view using the appropriate button.
+                    </p>
+                    <p>
+                      I also added the search capability so that a user can
+                      seek a particular text within Albums titles and descriptions.
+                    </p>",
+      "URLs": [
+      {
+        "text": "View Music Catalog",
+        "title": "Visit Music Catalog",
+        "URL": "http://gabrieleromeo.github.io/Bov-Projects/Course-08-Building-high-performance-modern-javascript-web-applications/chapter-08-Frontend-Datastore/music-catalog",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Visit the repository",
+        "URL": "https://github.com/GabrieleRomeo/Bov-Projects/tree/master/Course-08-Building-high-performance-modern-javascript-web-applications/chapter-08-Frontend-Datastore/music-catalog",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "img/projects/musicCatalog",
+      "images": ["image_1.png", "image_2.png", "image_3.png"]
     }
-  }
+  ]
 }
