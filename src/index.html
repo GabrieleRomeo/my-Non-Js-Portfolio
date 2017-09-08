@@ -482,15 +482,15 @@
                           <label for="carousel__{{../@index}}_radio-{{@index+2}}">
                             <i class="icon-right-open" aria-hidden="true"></i>
                           </label>
-                        {{/unless}}
+                        {{/unless index}}
                       {{/each}}
                       </div>
 
                       <div class="c-carousel__bullets">
                         {{#each images}}
-                          <label for="carousel__{{../@index}}_radio-{{@index+1}}">
-                            <span class="carousel__point"></span>
-                          </label>
+                            <label for="carousel__{{../@index}}_radio-{{@index+1}}">
+                              <span class="carousel__point"></span>
+                            </label>
                         {{/each}}
                       </div>
                     </div>
@@ -501,6 +501,21 @@
                       </p>
                       <p class="project__description">
                         {{description}}
+                        {{#if Team}}
+                          <div>
+                            <h4 class="team_members__title">Team Members</h4>
+                              <ul class="list__team">
+                                {{#each Team}}
+                                  <li>
+                                    <span class="span__role">{{role}}</span>
+                                    <a href="{{url}}"
+                                       title="{{name}}'s Github profile page"
+                                       target="_blank">{{name}}</a>
+                                  </li>
+                                {{/each}}
+                              </ul>
+                          </div>
+                        {{/if}}
                       </p>
                       <p class="project__URLs">
                         {{#if URLs[0]}}
