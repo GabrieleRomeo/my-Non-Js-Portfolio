@@ -43,7 +43,7 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
           @include prefix((transform: translate(0, 0)), webkit);
           padding: 20px;
           opacity: 1;
-          max-height: 1050px;
+          max-height: $tab__content--min-height;
           @include media-extensible('screen', '>=tablet') {
             display: block;
           }
