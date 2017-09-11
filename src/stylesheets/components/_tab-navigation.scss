@@ -4,58 +4,12 @@ $tab__content--min-height: conf(conf(conf($conf-c-tab, min-height), content), me
 $tab__content--width: conf(conf(conf($conf-c-tab, width), content), media , '>=tablet');
 $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=tablet');
 
-%c-tab__label--default {
-  color: palette(white);
-  background-color: palette(amaranth);
-}
-
-%c-tab__content--default {
-  @include prefix((transform: translate(0, 0)), webkit);
-  padding: 20px;
-  opacity: 1;
-  max-height: 1050px;
-}
-
-
-@mixin c-tab__checked($version: default) {
-
-  $tabItems: 16;
-  $tabStickers: 1;
-
-  $totalItems: $tabItems + $tabStickers;
-  $g: 1;
-
-  @for $i from $g to $totalItems {
-
-    // The eleven tab represents the HACKATHONS sticker
-    // for this reason, it must be not clickable and we need to increment the
-    // $g variable by 1 more step
-    $g: if($i > 14, $i + 1, $i);
-
-    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:not(.c-tab__item--sticker):nth-of-type(#{$g}) .c-tab__label {
-      @if $version == default {
-          @extend %c-tab__label--default;
-      } @else {
-          @include _('c-tab__label--greater-than-tablet');
-      }
-    }
-    &:nth-of-type(#{$i}):checked ~ .c-tab__list .c-tab__item:not(.c-tab__item--sticker):nth-of-type(#{$g}) .c-tab__content {
-      @if $version == default {
-          @extend %c-tab__content--default;
-      } @else {
-          @include _('c-tab__content--greater-than-tablet');
-      }
-    }
-  }
-}
-
 .c-tab {
   margin-top: 150px;
 
     // .c-tab__radio
     @include element('radio') {
       @extend %none;
-      @include c-tab__checked(default);
     }
 
     // .c-tab__list
@@ -71,6 +25,30 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
     @include element('item') {
       &:nth-of-type(1) {
         @include border-top-radius(10px);
+      }
+
+      &.is-active {
+
+        & .c-tab__label {
+          color: palette(white);
+          background-color: palette(amaranth);
+          @include media-extensible('screen', '>=tablet') {
+            color: palette(amaranth);
+            background-color: palette(white);
+            border-left: 8px solid palette(amaranth);
+          }
+        }
+
+        & .c-tab__content {
+          @include prefix((transform: translate(0, 0)), webkit);
+          padding: 20px;
+          opacity: 1;
+          max-height: 1050px;
+          @include media-extensible('screen', '>=tablet') {
+            display: block;
+          }
+        }
+
       }
     }
 
@@ -131,11 +109,6 @@ $tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=table
         height: $tab__content--min-height;
         min-height: $tab__content--min-height;
         height: auto;
-      }
-
-      // .c-tab__radio
-      @include element('radio') {
-        @include c-tab__checked(greater-than-tablet);
       }
 
       // .c-tab__content
