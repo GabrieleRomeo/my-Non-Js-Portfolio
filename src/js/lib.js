@@ -1,5 +1,30 @@
 'use strict';
 
+import { types } from '../../../sjs/src/types';
+import F from '../../../sjs/src/functional';
+
+const {not, curry, rcompose, maybe, asyncAction} = F;
+
+const lib = {not, curry, rcompose, maybe, asyncAction};
+lib.getParent = node => node.parentNode;
+lib.cloneNode = maybe((node, deep = true) => document.importNode(node, deep));
+lib.handleClass = action => curry((node, className) => {
+  let n = lib.cloneNode(node);
+  action.call(n.classList, className);
+  return n;
+});
+lib.removeClass = lib.handleClass(window.DOMTokenList.prototype.remove);
+lib.addClass = lib.handleClass(window.DOMTokenList.prototype.add);
+
+lib.replaceNode = curry((oldNode, newNode) => {
+  const r = asyncAction(document.replaceChild);
+  r(lib.getParent(oldNode), newNode, oldNode);
+});
+
+lib.maybeValid = predicate => item => predicate(item) ? item : null;
+lib.deactivateItem = item => lib.replaceNode(item, lib.removeClass(item, 'is-active'));
+lib.activateItem = item => lib.replaceNode(item, lib.addClass(item, 'is-active'));
+
 
 let Portfolio = {
     namespace (name) {
@@ -14,7 +39,6 @@ let Portfolio = {
         return ns;
     }
 };
-
 
 Portfolio.namespace('Utils').cookies = (function() {
 
@@ -320,4 +344,4 @@ Portfolio.namespace('Animation').scrolling = (function() {
     };
 })();
 
-export { Portfolio };
+export { Portfolio, lib };
