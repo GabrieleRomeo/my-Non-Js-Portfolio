@@ -3,7 +3,7 @@
 import { Portfolio, lib } from '../../lib';
 
 const {rcompose, cloneNode, replaceNode} = lib;
-const {DOM} = Portfolio;
+const DOM = Portfolio.Utils.Dom;
 
 /**
  * Takes the node having the '.c-card' class
@@ -21,7 +21,7 @@ const takeTheCard = e => e.target === e.currentTarget ?
  * @param      {HTMLNode}  c    The card component
  * @return     {HTMLInputElement}  The input element used as trigger
  */
-const takeTheTrigger = c => c.querySelector('.c-businessCard__input--trigger');
+const takeTheTrigger = c => c.parentNode.querySelector('.c-businessCard__input--trigger');
 
 /**
  * Changes the current status of the trigger
@@ -32,7 +32,7 @@ const takeTheTrigger = c => c.querySelector('.c-businessCard__input--trigger');
 const switchTriggerStatus = i => {
   const clone = cloneNode(i);
   // Invert the status
-  clone.checked = !!clone.checked;
+  clone.checked = !i.checked;
   return {
     prevTrigger: i,
     newTrigger: clone
