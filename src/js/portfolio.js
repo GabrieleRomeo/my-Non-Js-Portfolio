@@ -2,8 +2,9 @@
 
 
 import { Portfolio } from './lib';
+import tabComponent from './components/tab/tab';
+import cardComponent from './components/card/card';
 import documentReady from './document-ready';
-
 
 function main() {
 
@@ -33,6 +34,7 @@ function main() {
         projects: $( '#projects' ),
         graphPaths: $$( '.graph__path--front' ),
         card: $( '.c-card' ),
+        tab: $( '.c-tab' ),
         scrollButton: $( '.c-button--scroll' ),
         randomFactTrigger: $( '#random-fact__Icon'),
         randomFactMsg: $( '#random-fact__span' ),
@@ -127,24 +129,6 @@ function main() {
             Portfolio.Animation.scrolling.scrollTo( targetElement );
             window.clearInterval(delay);
         }, 300);
-    }
-
-    function handleCardClick(e) {
-
-        let target = e.target;
-        let card = target === DOMcache.card ? target :
-                                              DOM.getClosest(target, '.c-card');
-
-        let input = card && card.previousElementSibling || null;
-
-        if (target.nodeName === 'A' || target.parentNode.nodeName === 'A' ) {
-            return;
-        }
-
-        if ( input ) {
-            input.checked = !!!input.checked;
-        }
-
     }
 
     function showHideScrollUPButton() {
@@ -420,7 +404,8 @@ function main() {
     DOMcache.sideMenuDesktop.addEventListener('click', handleClick, false);
     DOMcache.sideMenuMobile.addEventListener('click', mobileSideMenuClick, false);
 
-    DOMcache.card.addEventListener('click', handleCardClick, false);
+    DOMcache.card.addEventListener('click', cardComponent, false);
+    DOMcache.tab.addEventListener('click', tabComponent, false);
     DOMcache.randomFactTrigger.addEventListener('click', loadRandomFact, false);
 }
 
