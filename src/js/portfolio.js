@@ -4,6 +4,7 @@
 import { Portfolio } from './lib';
 import tabComponent from './components/tab/tab';
 import cardComponent from './components/card/card';
+import trivia from './components/trivia/trivia';
 import documentReady from './document-ready';
 
 function main() {
@@ -36,8 +37,7 @@ function main() {
         card: $( '.c-card' ),
         tab: $( '.c-tab' ),
         scrollButton: $( '.c-button--scroll' ),
-        randomFactTrigger: $( '#random-fact__Icon'),
-        randomFactMsg: $( '#random-fact__span' ),
+        randomFactTrigger: $( '.c-random-fact' )
     };
 
     const isLoadingClass = 'is-loading';
@@ -50,12 +50,6 @@ function main() {
             part4: 'isn\'t it<i class="animation__info">?</i>',
             part5: 'That\'s a wonderful thing!'
         }
-    };
-
-    const TRIVIA = {
-        url: 'https://numbersapi.p.mashape.com/',
-        key:'cCRn3ndWPPmshXp3hZ6finUK92HIp10pB2sjsne4SUvAkUkoCz',
-        defaultMsg:'I am glad you visited my Portfolio'
     };
 
     let headerHeight = parseInt(DOM.getComputed(DOMcache.header)('height'));
@@ -284,44 +278,8 @@ function main() {
         }
     }
 
-
     function handleScroll() {
         isScrolled = true;
-    }
-
-    function loadRandomFact(event) {
-
-        if (event && event.target.nodeName === 'I') {
-            DOMcache.randomFactTrigger.classList.add(isLoadingClass);
-        }
-
-        let msg = new Promise(function(resolve, reject){
-
-            let rnd = Math.floor(Math.random() * 200);
-            let xhr = new XMLHttpRequest();
-            let url = TRIVIA.url + rnd;
-
-            xhr.onload = () => resolve(xhr.response);
-
-            xhr.onerror = () => reject();
-
-            xhr.open('GET', url);
-            xhr.setRequestHeader('X-Mashape-Authorization', TRIVIA.key);
-            xhr.send();
-
-        });
-
-        msg.then(
-            function(result) {
-                let msg = result.substr(1, result.length - 2);
-                DOMcache.randomFactMsg.innerHTML = msg;
-                DOMcache.randomFactTrigger.classList.remove(isLoadingClass);
-            },
-            function() {
-                DOMcache.randomFactMsg.innerHTML = TRIVIA.defaultMSG;
-                DOMcache.randomFactTrigger.classList.remove(isLoadingClass);
-            });
-
     }
 
     function setCookie() {
@@ -384,7 +342,7 @@ function main() {
 
     // Start custom actions
     requestAnimationFrame(function() {
-        loadRandomFact();
+        trivia.init();
         setCookie();
     });
 
@@ -406,7 +364,7 @@ function main() {
 
     DOMcache.card.addEventListener('click', cardComponent, false);
     DOMcache.tab.addEventListener('click', tabComponent, false);
-    DOMcache.randomFactTrigger.addEventListener('click', loadRandomFact, false);
+    DOMcache.randomFactTrigger.addEventListener('click', trivia.handler, false);
 }
 
 // When DOM is ready, call the main function
