@@ -51,7 +51,7 @@ const replaceTrigger = function(o) { replaceNode(o.prevTrigger, o.newTrigger); }
  *
  * @param      {Event}  e       The click event
  */
-function cardComponent(e) {
+function cardHandler(e) {
   const run = rcompose(
               takeTheCard,
               takeTheTrigger,
@@ -60,4 +60,4 @@ function cardComponent(e) {
   run(e);
 }
 
-export default cardComponent;
+export default cardHandler;
