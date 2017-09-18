@@ -31,11 +31,11 @@ const clickItem = maybe(function(target, activeItem) {
 /**
  * Defines the Tab event handler
  */
-function tabComponent(e) {
+function tabHandler(e) {
   const activeLabel = e.currentTarget.querySelector('.is-active .c-tab__label');
   const activeItem  = getParent(activeLabel);
   const target      = maybeValid(predicate(activeLabel))(e.target);
   clickItem(target, activeItem);
 }
 
-export default tabComponent;
+export default tabHandler;
