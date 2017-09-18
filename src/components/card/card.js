@@ -1,6 +1,6 @@
 'use strict';
 
-import { Portfolio, lib } from '../../lib';
+import { Portfolio, lib } from '../../js/lib';
 
 const {rcompose, cloneNode, replaceNode} = lib;
 const DOM = Portfolio.Utils.Dom;
