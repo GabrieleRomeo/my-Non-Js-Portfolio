@@ -1,6 +1,6 @@
 'use strict';
 
-import { lib } from '../../lib';
+import { lib } from '../../js/lib';
 
 const {not, curry, maybe, maybeValid, deactivateItem, activateItem, getParent} = lib;
 
