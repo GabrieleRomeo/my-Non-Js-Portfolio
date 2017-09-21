@@ -121,6 +121,7 @@ $graph-bars-description-font-weight: conf($graph-bars__bars, text-description, f
           text-align: center;
           font-weight: $graph-pie__c-circle-font-weight;
           margin: $graph-pie__c-circle-margin;
+          stroke-dasharray: 629;
 
           @include m('activated') {
             &:before {
