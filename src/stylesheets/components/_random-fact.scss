@@ -26,6 +26,14 @@ $c-random-fact-padding: 50px;
     background: rgba(255, 255, 255, 0.07);
   }
 
+  @include element(number) {
+    display: inline-block;
+    margin: 9px 0;
+    padding: 6px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 5px;
+  }
+
   @include element(img) {
     display: none;
     position: absolute;
