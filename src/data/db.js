@@ -400,24 +400,24 @@ data = {
     },
     /*
     {
-      "name": "Web Buttons",
-      "technologies": ["HTML5", "CSS3"],
-      "description": "Minimal CSS3 Web buttons developed during the <em>Introduction to CSS</em> course.",
+      "name": "MD-Toolkit",
+      "technologies": ["HTML5", "CSS3", "Vanilla Javascript"],
+      "description": "",
       "URLs": [
       {
         "text": "Live Page",
-        "title": "Visit the DEMO",
-        "URL": "http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_2.html",
+        "title": "Visit MD-Toolkit",
+        "URL": "https://gabrieleromeo.github.io/MD-U-toolkit/",
         "target": "_blank"
       },
       {
         "text": "Project Repository",
-        "title": "Web buttons Repository",
-        "URL": "https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_2.html",
+        "title": "MD-Toolkit Repository",
+        "URL": "https://github.com/GabrieleRomeo/MD-U-toolkit",
         "target": "_blank"
       }
       ],
-      "images_path": "components/tab/img/projects/webButtons",
+      "images_path": "components/tab/img/projects/md_toolkit",
       "images": ["webButtons_01.png", "webButtons_02.png", "webButtons_03.png"]
     },
     */
