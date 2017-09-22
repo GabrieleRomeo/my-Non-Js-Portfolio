@@ -145,6 +145,10 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
     opacity: 0;
     z-index: z('sideMenu-desktop');
 
+    &.is-visible {
+      visibility: visible;
+      opacity: 1;
+    }
 
     & .c-sideMenu__items {
       & li:first-child .c-menucard,
@@ -224,7 +228,7 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
 
       }
 
-      @include m('current') {
+      &.is-current {
 
         &:before {
           box-shadow: 0 0 0 2px white();
@@ -264,7 +268,7 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
           background-color: $c-item-hover-bg-color!important;
         }
 
-        @include m('current') {
+        &.is-current {
           background-color: $c-item-current-bg-color;
         }
     }
@@ -378,7 +382,7 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
     transition: background-color 0.3s ease, transform 0.3s ease;
   }
 
-  @include m('current') {
+  &.is-current {
 
     &:before {
       box-shadow: 0 0 0 2px white();
@@ -390,6 +394,7 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
       transform: scale(0.4);
     }
   }
+
 }
 
 
