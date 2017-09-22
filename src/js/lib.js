@@ -3,27 +3,99 @@
 import { types } from '../../../sjs/src/types';
 import F from '../../../sjs/src/functional';
 
-const {not, curry, rcompose, maybe, asyncAction} = F;
+const {not, curry, rcompose, maybe, asyncAction, head, tail} = F;
 
-const lib = {not, curry, rcompose, maybe, asyncAction};
+const lib = {not, curry, rcompose, maybe, asyncAction, head, tail};
 lib.getParent = node => node.parentNode;
+lib.last = a => tail(a, a.length -1)[0];
 lib.cloneNode = maybe((node, deep = true) => document.importNode(node, deep));
 lib.handleClass = action => curry((node, className) => {
   let n = lib.cloneNode(node);
   action.call(n.classList, className);
   return n;
 });
+lib.replaceNode = curry((oldNode, newNode) => {
+  const context = lib.getParent(oldNode);
+  return new Promise((resolve) => {
+    window.requestAnimationFrame(function() {
+      context.replaceChild(newNode, oldNode);
+      resolve(newNode);
+    });
+  });
+});
 lib.removeClass = lib.handleClass(window.DOMTokenList.prototype.remove);
 lib.addClass = lib.handleClass(window.DOMTokenList.prototype.add);
 
-lib.replaceNode = curry((oldNode, newNode) => {
-  const r = asyncAction(document.replaceChild);
-  r(lib.getParent(oldNode), newNode, oldNode);
-});
-
 lib.maybeValid = predicate => item => predicate(item) ? item : null;
-lib.deactivateItem = item => lib.replaceNode(item, lib.removeClass(item, 'is-active'));
-lib.activateItem = item => lib.replaceNode(item, lib.addClass(item, 'is-active'));
+
+lib.showItem = (i, cn = 'is-visible') => lib.replaceNode(i, lib.removeClass(i, cn));
+lib.hideItem = (i, cn = 'is-visible') => lib.replaceNode(i, lib.removeClass(i, cn));
+lib.activateItem = (i, cn = 'is-active') => lib.replaceNode(i, lib.addClass(i, cn));
+lib.deactivateItem = (i, cn = 'is-active') => lib.replaceNode(i, lib.removeClass(i, cn));
+lib.activateLoading = (i, cn = 'is-loading') => lib.replaceNode(i, lib.addClass(i, cn));
+lib.deactivateLoading = (i, cn = 'is-loading') => lib.replaceNode(i, lib.removeClass(i, cn));
+lib.setCurrent = (i, cn = 'is-current') => lib.replaceNode(i, lib.addClass(i, cn));
+lib.unsetCurrent = (i, cn = 'is-current') => lib.replaceNode(i, lib.removeClass(i, cn));
+
+/**
+ * A convenient way to handle Ajax Requests
+ * @param      {(Object)}  requestObj  An object containing the request config
+ * @return     {(Object|Promise)}   An object containing the allowed CRUD
+ *                                  operations. Each operation returns a Promise
+ *                                  which can be used to follow up with its status
+ */
+lib.$http = (requestObj) => {
+  const url = types.str(requestObj.url);
+  const header = requestObj.header;
+  const headerValue = requestObj.headerValue;
+  const core = {
+    ajax: (method, url, args = {}) => {
+      method = types.str(method);
+      args = types.obj(args);
+      const promise = new Promise((resolve, reject) => {
+        const client = new XMLHttpRequest();
+        let uri = url;
+
+        if (args && (method === 'POST' || method === 'PUT')) {
+          uri += '?';
+          let argcount = 0;
+          for (let key of args) {
+            if (argcount++) {
+              uri += '&';
+            }
+            uri += encodeURIComponent(key) + '=' + encodeURIComponent(args[key]);
+          }
+        }
+
+        client.open(method, uri);
+        if (header) {
+          client.setRequestHeader(header, headerValue);
+        }
+        client.send();
+
+        client.onload = function () {
+          if (this.status === 200) {
+            resolve(this.response);
+          } else {
+            reject(this.statusText);
+          }
+        };
+        client.onerror = function () {
+          reject(this.statusText);
+        };
+      });
+
+      return promise;
+    }
+  };
+
+  return {
+    'get': args => core.ajax('GET', url, args),
+    'post': args => core.ajax('POST', url, args),
+    'put': args => core.ajax('PUT', url, args),
+    'delete': args => core.ajax('DELETE', url, args)
+  };
+};
 
 
 let Portfolio = {
