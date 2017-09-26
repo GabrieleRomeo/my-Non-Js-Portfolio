@@ -3,7 +3,7 @@
 import { types } from '../../../sjs/src/types';
 import F from '../../../sjs/src/functional';
 
-const {not, curry, rcompose, maybe, asyncAction, head, tail} = F;
+const {not, curry, rcompose, maybe, asyncAction, head, tail, classOf} = F;
 
 const lib = {not, curry, rcompose, maybe, asyncAction, head, tail};
 lib.getParent = node => node.parentNode;
@@ -36,6 +36,7 @@ lib.activateLoading = (i, cn = 'is-loading') => lib.replaceNode(i, lib.addClass(
 lib.deactivateLoading = (i, cn = 'is-loading') => lib.replaceNode(i, lib.removeClass(i, cn));
 lib.setCurrent = (i, cn = 'is-current') => lib.replaceNode(i, lib.addClass(i, cn));
 lib.unsetCurrent = (i, cn = 'is-current') => lib.replaceNode(i, lib.removeClass(i, cn));
+
 
 /**
  * A convenient way to handle Ajax Requests
@@ -414,6 +415,112 @@ Portfolio.namespace('Animation').scrolling = (function() {
     return {
         scrollTo: scrollTo
     };
+})();
+
+Portfolio.namespace('Utils').Forms = (function() {
+
+  const _toArray = i => classOf(i) === 'Array' ? i : [i];
+
+  /**
+   * Validates input
+   * @param      {(HTMLNode)}  input  The input to be validate
+   * @return     {(Array)}   An Array of errors
+   */
+  const _reduceV = input => (messages, Validator) => {
+    const instance = new Validator();
+    const isValid = instance.validate(input);
+    if (isValid === false) {
+      messages.push(instance.getMessage());
+    }
+    return messages;
+  };
+
+  /**
+   * A class used to collect inputs for a subsequent validation
+   */
+  class Validator {
+    constructor() {
+      this.validationMap = new Map();
+    }
+
+    setValidators(input, validators) {
+      this.validationMap.set(input, _toArray(validators));
+    }
+
+    validate(input) {
+      let validators = this.validationMap.get(input);
+      let result = {};
+      if (validators) {
+        const checks = _reduceV(input);
+        const errors = [].reduce.call(validators, checks, []);
+        result.input = input;
+        result.errors = errors;
+      }
+      return result;
+    }
+
+    validateAll() {
+      let results = [];
+      this.validationMap.forEach((validators, input) => {
+        const checks = _reduceV(input);
+        let errors = validators.reduce(checks, []);
+        results.push({
+          input,
+          errors
+        });
+      });
+
+      return results;
+    }
+  }
+
+  /**
+   * A base class used to validate custom Validators
+   */
+  class Validation {
+    constructor() {
+    }
+    validate(input) {
+      return this.re.test(input.value);
+    }
+    getMessage() {
+      return this.message;
+    }
+    setMessage(message) {
+      this.message = message;
+    }
+  }
+
+  /**
+   * A Validator class used to validate empty strings
+   */
+  class NotEmpty extends Validation {
+    constructor() {
+      super();
+      this.re = /^\s*$/;
+      this.message = 'Empty Field';
+    }
+    validate(input) {
+      return !this.re.test(input.value);
+    }
+  }
+
+  /**
+   * A Validator class used to validate emails
+   */
+  class Email extends Validation {
+    constructor() {
+      super();
+      this.re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      this.message = 'Invalid Email';
+    }
+  }
+
+  return {
+    Validator,
+    NotEmpty: (...args) => new NotEmpty(...args),
+    Email: (...args) => new Email(...args),
+  };
 })();
 
 export { Portfolio, lib };
