@@ -32,6 +32,7 @@
       <link rel="apple-touch-icon" sizes="114x114" href="icons/touch-icon-iphone-retina-120x120.png">
       <link rel="apple-touch-icon" sizes="144x144" href="icons/touch-icon-ipad-retina-152x152.png">
       <script async src="https://use.fontawesome.com/118670e9e2.js"></script>
+      <script async src="https://cdn.emailjs.com/dist/email.min.js"></script>
       <script src="js/template7.min.js"></script>
       <script src="data/db.js"></script>
   </head>
@@ -684,26 +685,32 @@
 
           <!-- End businessCard -->
           <div class="l-form">
-            <form class="c-form" name="concact" method="post" action="#">
+            <form class="c-form" name="concact" id="contact-form" method="post" action="#">
 
               <label class="c-form__label">
                 Name
+                <p class="c-form__status"></p>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your name"
+                       name="name"
                        type="text" required>
               </label>
 
               <label class="c-form__label">
                 Email
+                <p class="c-form__status"></p>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your email"
+                       name="email"
                        type="email" required>
               </label>
 
               <label class="c-form__label">
                 Message
+                <p class="c-form__status"></p>
                 <textarea class="c-form__input form__input--textarea"
                           placeholder="Feel free to contact me anytime"
+                          name="message"
                           cols="100"
                           rows="15"
                           required></textarea>
@@ -711,7 +718,6 @@
 
               <a class="c-button c-button--light c-button--rounded c-button--3D"
                  id="c-button--contact"
-                 onclick="javascript:alert('Sorry, Temporarily disabled')"
                  href="#concact" >
                 <span class="left icon icon-mail" aria-hidden="true"></span>
                 <span class="right title">Write me!</span>
