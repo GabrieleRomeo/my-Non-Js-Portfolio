@@ -13,6 +13,7 @@ const gulp = require('gulp-help')(require('gulp')),
     gutil = require('gulp-util'),
     shell = require('shelljs'),
     $ = require('gulp-load-plugins')(),
+    nodeSassGlobbing = require('node-sass-globbing'),
     readlineSync = require('readline-sync'),
     fs = require('fs');
 
@@ -53,6 +54,7 @@ PATHS.SRC_DIR    = path.join(PATHS.ROOT, 'src');
 PATHS.DIST_DIR   = path.join(PATHS.ROOT, 'public');
 PATHS.TMP        = path.join(PATHS.SRC_DIR, 'tmp');
 PATHS.CSS_SRC    = path.join(PATHS.SRC_DIR, 'stylesheets');
+PATHS.CSS_CMPS   = path.join(PATHS.SRC_DIR, 'components');
 PATHS.CSS_DST    = path.join(PATHS.DIST_DIR, 'css');
 PATHS.JS_SRC     = path.join(PATHS.SRC_DIR, 'js');
 PATHS.JS_DST     = path.join(PATHS.DIST_DIR, 'js');
@@ -89,7 +91,8 @@ HELPS.updateVersion += 'i.e. from 0.1.1 to 0.1.2';
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 gulp.task('_sass', false, () => {
-    return $.rubySass(PATHS.CSS_SRC + '/main.scss', {sourcemap: true})
+    return gulp.src(PATHS.CSS_SRC + '/main.scss')
+            .pipe($.sass({ importer: nodeSassGlobbing }))
             .pipe($.autoprefixer('last 2 version'))
             .pipe($.sourcemaps.write())
             .on('error', onError)
@@ -159,12 +162,12 @@ gulp.task('_copy-html-to-dist', false, () => {
 
 gulp.task('_mv-assets-to-dist', false, () => {
     let all = path.join(PATHS.SRC_DIR, '**/**');
-    let excludeJs  = '!' + PATHS.JS_SRC + '{,/**}';
+    //let excludeJs  = '!' + PATHS.JS_SRC + '{,/**}';
     let excludeCss = '!' + PATHS.CSS_SRC + '{,/**}';
     let excludeImg = '!' + PATHS.IMAGES_SRC + '{,/**}';
     let excludeTmp = '!' + PATHS.TMP + '{,/**}';
 
-    return gulp.src([all, excludeJs, excludeCss, excludeImg, excludeTmp])
+    return gulp.src([all, excludeCss, excludeImg, excludeTmp])
            .on('error', onError)
            .pipe(gulp.dest(PATHS.DIST_DIR));
 });
@@ -361,6 +364,7 @@ gulp.task('server', 'Start the browserSync server', () => {
 
         // Watch .scss files
         gulp.watch(path.join(PATHS.CSS_SRC, '**/*.scss'), ['build-styles']);
+        gulp.watch(path.join(PATHS.CSS_CMPS, '**/*.scss'), ['build-styles']);
 
         // Watch .js files
         gulp.watch(path.join(PATHS.JS_SRC, '**/*.js'), ['build-scripts', () => {

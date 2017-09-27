@@ -24,6 +24,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="css/fontello.css">
       <link rel="stylesheet" href="stylesheets/main.min.css">
+      <link rel="stylesheet" type="text/css" href="components/submitButton/css/normalize.css" />
       <!-- Favicon
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <link rel="shortcut icon" href="icons/favicon.ico">
@@ -31,7 +32,11 @@
       <link rel="apple-touch-icon" sizes="60x60" href="icons/touch-icon-ipad-76x76.png">
       <link rel="apple-touch-icon" sizes="114x114" href="icons/touch-icon-iphone-retina-120x120.png">
       <link rel="apple-touch-icon" sizes="144x144" href="icons/touch-icon-ipad-retina-152x152.png">
+      <script src="components/submitButton/js/modernizr.custom.js"></script>
       <script async src="https://use.fontawesome.com/118670e9e2.js"></script>
+      <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
+      <script src="js/template7.min.js"></script>
+      <script src="data/db.js"></script>
   </head>
   <body>
 
@@ -50,10 +55,10 @@
         <li class="c-sideMenu__item">
           <div class="c-menucard c-menucard--titled" data-title="menu">
             <div class="c-menucard__side">
-              <p class="c-dotNav"></p>
+              <p class="c-dotNav is-current"></p>
             </div>
             <div class="c-menucard__side c-menucard__side--back">
-              <a class="c-sideMenu__link" href="#about" data-section="a">about</a>
+              <a class="c-sideMenu__link is-current" href="#about" data-section="a">about</a>
             </div>
           </div>
         </li>
@@ -180,103 +185,30 @@
     <!-- Start sideMenu component (Mobile only) -->
     <div class="c-sideMenu">
       <nav role="navigation">
-        <ul class="c-sideMenu__items">
-          <li class="c-sideMenu__item">
-            <a class="c-logo" href="#splash" title="Gabriele Romeo">
-              <span class="c-logo__span c-logo__span--first">Gabriele</span>
-              <span class="c-logo__span c-logo__span--last">Romeo</span>
-            </a>
-            <label class="c-sideMenu__label
-                          c-sideMenu__label--close"
-                   for="hamburger__checkbox">
-              <i class="cancel__icon icon-cancel-circle" aria-hidden="true"></i>
-            </label>
-          </li>
-          <li class="c-sideMenu__item">
-            <i class="c-sideMenu__icon fa fa-user-o" aria-hidden="true"></i>
-            <a class="c-sideMenu__link" href="#about">about</a>
-          </li>
-          <li class="c-sideMenu__item">
-            <i class="c-sideMenu__icon fa fa-cubes" aria-hidden="true"></i>
-            <label class="c-sideMenu__label" for="subMenu--trigger-1">projects</label>
-            <input class="input__trigger input__trigger--subMenu"
-                   id="subMenu--trigger-1"
-                   type="checkbox">
-            <ul class="c-subMenu">
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-1">
-                  m.d homepage
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-2">
-                  sidebar
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-3">
-                  web buttons
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-4">
-                  forms
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-5">
-                  calculator
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-6">
-                  shopping cart
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-7">
-                  image gallery
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-8">
-                  css accordion
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-9">
-                  css tab
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-10">
-                  questionnarie
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-11">
-                  JIGSAW Puzzle
-                </label>
-              </li>
-              <li class="c-subMenu__item c-subMenu__item--capitalized">
-                <label class="c-subMenu__label" for="tab__radio-12">
-                  Seed UI Framework
-                </label>
-              </li>
-            </ul>
-          </li>
-          <li class="c-sideMenu__item">
-            <i class="c-sideMenu__icon fa fa-address-card" aria-hidden="true"></i>
-            <a class="c-sideMenu__link" href="#skills">skills</a>
-          </li>
-          <li class="c-sideMenu__item">
-            <i class="c-sideMenu__icon fa fa-envelope-o" aria-hidden="true"></i>
-            <a class="c-sideMenu__link" href="#contact">contact</a>
-          </li>
-          <li class="c-sideMenu__item c-sideMenu__item--copy">
-            &copy; 2016 Gabriele Romeo. All rights reserved.
-          </li>
-        </ul>
+        <script id="t7__sideMenu__item" type="text/template7">
+          <ul class="c-sideMenu__items">
+            <li class="c-sideMenu__item">
+              <a class="c-logo" href="#splash" title="Gabriele Romeo">
+                <span class="c-logo__span c-logo__span--first">Gabriele</span>
+                <span class="c-logo__span c-logo__span--last">Romeo</span>
+              </a>
+              <label class="c-sideMenu__label
+                            c-sideMenu__label--close"
+                     for="hamburger__checkbox">
+                <i class="cancel__icon icon-cancel-circle" aria-hidden="true"></i>
+              </label>
+            </li>
+              {{#each sections}}
+                  <li class="c-sideMenu__item">
+                    <i class="c-sideMenu__icon fa fa-user-o" aria-hidden="true"></i>
+                    <a class="c-sideMenu__link" href="#{{name.toLowerCase()}}">{{name}}</a>
+                  </li>
+              {{/each}}
+            <li class="c-sideMenu__item c-sideMenu__item--copy">
+              &copy; 2016 Gabriele Romeo. All rights reserved.
+            </li>
+          </ul>
+        </script>
       </nav>
     </div>
     <!-- End sideMenu component -->
@@ -288,38 +220,43 @@
 
           <!-- Start Animation -->
           <div class="animation">
-
-            <div class="l-animation l-animation--left">
-              <h2>
-                <span class="animation__span
-                             animation__span--top
-                             animation__span--big"
-                      id="welcomeMsg--1">Welcome to</span>
-                <span class="animation__span
-                             animation__span--bottom"
-                      id="welcomeMsg--2">my portfolio</span>
-              </h2>
-            </div>
-            <div class="l-animation l-animation--right">
-              <h2>
-                <span class="animation__span animation__span--top"
-                      id="welcomeMsg--3">
-                  Would you like to start a new journey
-                </span>
-                <span class="animation__span
-                             animation__span--bottom
-                             animation__span--big"
-                      id="welcomeMsg--4">
-                      together<i class="animation__info">?</i>
-                </span>
-              </h2>
-            </div>
-            <div class="l-animation l-animation--full animation--fadeIN">
-              <img id="geek" src="img/geek.png" alt="Geek">
-              <h2 class="animation__subtitle" id="welcomeMsg--5">
-                I am glad you are here today!
-              </h2>
-            </div>
+            <script id="t7__splash" type="text/template7">
+              <div class="l-animation l-animation--left">
+                <h2>
+                  <span class="animation__span
+                               animation__span--top
+                               animation__span--big"
+                        id="welcomeMsg--1">
+                      {{lookupByCookie this.splash 'part-1'}}
+                  </span>
+                  <span class="animation__span
+                               animation__span--bottom"
+                        id="welcomeMsg--2">
+                      {{lookupByCookie this.splash 'part-2'}}
+                  </span>
+                </h2>
+              </div>
+              <div class="l-animation l-animation--right">
+                <h2>
+                  <span class="animation__span animation__span--top"
+                        id="welcomeMsg--3">
+                    {{lookupByCookie this.splash 'part-3'}}
+                  </span>
+                  <span class="animation__span
+                               animation__span--bottom
+                               animation__span--big"
+                        id="welcomeMsg--4">
+                        {{lookupByCookie this.splash 'part-4'}}
+                  </span>
+                </h2>
+              </div>
+              <div class="l-animation l-animation--full animation--fadeIN">
+                <img id="geek" src="img/geek.png" alt="Geek">
+                <h2 class="animation__subtitle" id="welcomeMsg--5">
+                  {{lookupByCookie this.splash 'part-5'}}
+                </h2>
+              </div>
+            </script>
           </div>
           <!-- End Animation -->
 
@@ -355,64 +292,29 @@
         <div class="c-section__body">
           <img id="about_img" src="img/gabriele_romeo.png" alt="Gabriele Romeo">
           <div class="l-about">
-            <p class="about__paragraph">
-              I am a student at the prestigious
-              <a class="about__link"
-                 href="https://www.bovacademy.com/"
-                 title="Bov Academy"
-                 target="_blank">Bov Academy</a>, and I am an aspiring Full-stack
-                 developer who specializes in creating modern and attractive web
-                 pages.
-            </p>
-            <p class="about__paragraph">
-              I am living in
-              <a class="about__link"
-                 href="https://en.wikipedia.org/wiki/Turin"
-                 title="Turin" target="_blank">
-                 Turin
-              </a>, a beautiful city in northern Italy.
-            </p>
-            <p class="about__paragraph">
-              As you probably know, We
-              <a class="about__link"
-                 href="https://en.wikipedia.org/wiki/Romeo"
-                 title="Romeo"
-                 target="_blank">Romeo</a>(s) are famous for being passionate
-                 lovers.<br>
-              <em class="about__emphasis">
-                Probably it is for this reason that I love what I do, and I am
-                always looking for new exciting projects.
-              </em>
-            </p>
-            <p class="about__paragraph">
-              If you are interested in my work, feel free to contact me anytime.
-            </p>
-            <p class="about__paragraph">
-              Check out some of the projects below to see what I have been up to
-              recently.
-            </p>
-            <p class="about__paragraph about__paragraph--spaced">
-              My hobbies include sports (bodybuilding in particular), gardening,
-              writing (I wrote some technical articles for the Bov academy),
-              reading some interesting book and, above all,
-              <em class="about__emphasis">enjoy my life</em>.
-            </p>
-            <ul class="about__list">
-              <li>work</li>
-              <li>Full-stack Developer</li>
-            </ul>
-            <ul class="about__list">
-              <li>education</li>
-              <li>Master degree -
-                  <em class="about__emphasis smallCaps">in progress</em>
-              </li>
-              <li>Degree in Applied Computer Science from the
-              <a class="about__link" href="http://informatica.uniurb.it/en/home-en/"
-                 title="University of Urbino - Carlo Bo" target="_blank">
-                University of Urbino
-              </a>
-              </li>
-            </ul>
+            <script id="t7__about" type="text/template7">
+              {{#each about.paragraphs}}
+                <p class="about__paragraph{{if this.isSpaced}}about__paragraph--spaced{{/if}}">
+                  {{parseLinks this.text}}
+                </p>
+              {{/each}}
+              <ul class="about__list">
+                <li>work</li>
+                <li>Full-stack Developer</li>
+              </ul>
+              <ul class="about__list">
+                <li>education</li>
+                <li>Master degree -
+                    <em class="about__emphasis smallCaps">in progress</em>
+                </li>
+                <li>Degree in Applied Computer Science from the
+                <a class="about__link" href="http://informatica.uniurb.it/en/home-en/"
+                   title="University of Urbino - Carlo Bo" target="_blank">
+                  University of Urbino
+                </a>
+                </li>
+              </ul>
+            </script>
           </div>
         </div>
       </div>
@@ -426,1624 +328,130 @@
         </div>
 
         <div class="c-section__body">
+          <script id="c-tab" type="text/template7">
 
-          <!-- Start Tab component -->
-          <div class="c-tab">
+            <!-- Start Tab component -->
+            <div class="c-tab">
 
-            <!-- Start Tabs' triggers -->
-            <input class="c-tab__radio" id="tab__radio-1" name="tab__radio" type="radio" checked>
-            <input class="c-tab__radio" id="tab__radio-evoUI" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-2" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-3" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-4" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-5" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-6" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-7" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-8" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-9" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-10" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-11" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-12" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-13" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-14" name="tab__radio" type="radio">
-            <input class="c-tab__radio" id="tab__radio-15" name="tab__radio" type="radio">
-
-            <!-- Start TAB List -->
-            <ul class="c-tab__list">
-
-              <!-- TAB - Modern Developer HOME Page -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-1">
-                  Modern Developer <strong>Home Page</strong>
-                </label>
-                <!-- Start TAB 1 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-1"
-                           name="carousel1__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-2"
-                           name="carousel1__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-3"
-                           name="carousel1__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-4"
-                           name="carousel1__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-1__image_1.png" alt="Homepage Modern Developer">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-1__image_2.png" alt="Homepage Modern Developer">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-1__image_3.png" alt="Homepage Modern Developer">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-1__image_4.png" alt="Homepage Modern Developer">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-3">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-4">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel__radio-1">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel__radio-2">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel__radio-3">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel__radio-4">
-                        <span class="carousel__point"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, GreenSock, Vanilla JavaScript, and a bit of
-                      <em>passion &amp; love</em>
-                      <i class="icon-heartbeat double-flash" aria-hidden="true"></i>
-                    </p>
-                    <p class="project__description">
-                      When <a class="project__link" href="mailto:rb@moderndeveloper.com">@Richard Bovell</a>,
-                      the founder of <a class="about__link"
-                                  href="https://www.bovacademy.com/"
-                                  title="Bov Academy"
-                                  target="_blank">Bov Academy</a>,
-                      asked me to develop the new homepage for the course,
-                      sincerely, I was a little bit nervous because of the big
-                      responsibility.<br>
-                      Now I can say that I am very proud and honored to have
-                      been involved in a project so ambitious and formidable.
-                      The most difficult part was the synchronization of the
-                      various animations at different screen dimensions.<br>
-                      <em>I want to say thank you to Richard
-                      for the great opportunity he gave me.</em>
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://www.moderndeveloper.com"
-                         title="Visit Modern Developer.com"
-                         target="_blank">
-                         www.moderndeveloper.com
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 1 - Content -->
-              </li>
-
-              <!-- TAB - Evolution UI -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-evoUI">
-                  Evolution UI
-                </label>
-                <!-- Start TAB 1 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-evoUI-1"
-                           name="carousel__radio-evoUI__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-evoUI-2"
-                           name="carousel__radio-evoUI__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-evoUI-3"
-                           name="carousel__radio-evoUI__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel__radio-evoUI-4"
-                           name="carousel__radio-evoUI__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-EvoUI__image_1.png" alt="Evolution UI">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-EvoUI__image_2.png" alt="Evolution UI">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-EvoUI__image_3.png" alt="Evolution UI">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-EvoUI__image_4.png" alt="Evolution UI">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel__radio-evoUI-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-evoUI-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-evoUI-3">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel__radio-evoUI-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-evoUI-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel__radio-evoUI-4">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel__radio-evoUI-1">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel__radio-evoUI-2">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel__radio-evoUI-3">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel__radio-evoUI-4">
-                        <span class="carousel__point"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Sass, Vanilla JavaScript, ES6, and a wonderful
-                      <em>Team</em>
-                      <i class="icon-heartbeat double-flash" aria-hidden="true"></i>
-                    </p>
-                    <p class="project__description">
-                      The first of its kind, Evolution UI is an open source
-                      front-end web framework comprising a collection of
-                      innovative and unique web components.
-                      These never-before-seen web components are intended to
-                      provide a different and enriched online experience and
-                      were created by the
-                      <a href="https://students.bovacademy.com/"
-                         title="Visit Bov Students site"
-                         target="_blank">students</a> of Bov Academy Institute
-                         of Programming and Futuristic Engineering (you can
-                         learn more about this project and read a write-up on
-                         each component by visiting the
-                      <a href="https://blog.bovacademy.com/evolution-ui-a-ui-framework-of-dozens-of-innovative-ui-components/"
-                         title="Visit Bov Academy Blog"
-                         target="_blank">Bov Academy Blog</a>).<br>
-                         This framework is intended to be a hub of web
-                         development innovation and we invite everyone to
-                         explore their creativity and contribute something
-                         innovative of their own to keep the project thriving.<br>
-                         <em>
-                         I want to say thank all guys from the Evolution
-                         Core Team
-                         </em>
-                    </p>
-                    <div>
-                      <a href="https://github.com/cbracco"
-                             title="Chris Bracco's Github page"
-                             target="_blank">@Chris Bracco </a>
-                      <a href="hhttps://github.com/jmatembu"
-                             title="Sebastian Ramirez's Github page"
-                             target="_blank">@Sebastian Ramirez-Brunner </a>
-                      <a href="https://github.com/brianhernandez"
-                             title="Brian Hernandez's Github page"
-                             target="_blank">@Brian Hernandez </a>
-                      <a href="https://github.com/aashishnagpal"
-                             title="Aashish Nagpal's Github page"
-                             target="_blank">@Aashish Nagpal </a>
-                    </div>
-                    <p class="project__URLs">
-                      <i class="icon-link-ext" aria-hidden="true">
-                        <a class="project__URL"
-                           href="https://evolution-ui.github.io/evolution-ui/"
-                           title="Visit Evolution UI"
-                           target="_blank">
-                           evolution-ui.github.io/evolution-ui/
-                        </a>
-                      </i>
-                      <i class="icon-github-circled" aria-hidden="true">
-                        <a class="project__URL"
-                           href="https://github.com/evolution-ui/evolution-ui/"
-                           title="Source Code"
-                           target="_blank">
-                           Source
-                        </a>
-                      </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB - Content -->
-              </li>
-
-              <!-- TAB 2 - Sidebar -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-2">Sidebar</label>
-                <!-- Start TAB 2 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel2__radio-1"
-                           name="carousel2__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel2__radio-2"
-                           name="carousel2__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-2__image_1.png" alt="The Sidebar">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-2__image_2.png" alt="The Sidebar">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel2__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel2__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel2__radio-1">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel2__radio-2">
-                        <span class="carousel__point"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, and CSS3
-                    </p>
-                    <p class="project__description">
-                      Profile sidebar developed during the <em>Introduction to CSS</em> course.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_3.html"
-                         title="Visit the project DEMO"
-                         target="_blank">
-                         Project Link
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_3.html"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 1 - Content -->
-              </li>
-              <!-- TAB 3 - Web Buttons -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-3">Web Buttons</label>
-                <!-- Start TAB 3 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel3__radio-1"
-                           name="carousel3__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel3__radio-2"
-                           name="carousel3__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel3__radio-3"
-                           name="carousel3__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-3__image_1.png" alt="CSS3 Web Buttons">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-3__image_2.png" alt="CSS3 Web Buttons">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-3__image_3.png" alt="CSS3 Web Buttons">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel3__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel3__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel3__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel3__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel3__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel3__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel3__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, and CSS3
-                    </p>
-                    <p class="project__description">
-                      Minimal CSS3 Web buttons developed during the <em>Introduction
-                      to CSS</em> course.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_2.html"
-                         title="Visit the project DEMO"
-                         target="_blank">
-                         Project Link
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_2.html"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 3 - Content -->
-              </li>
-              <!-- TAB 4 - Forms -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-4">Forms</label>
-                <!-- Start TAB 4 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel4__radio-1"
-                           name="carousel4__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel4__radio-2"
-                           name="carousel4__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel4__radio-3"
-                           name="carousel4__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel4__radio-4"
-                           name="carousel4__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-4__image_1.png" alt="Web Forms">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-4__image_2.png" alt="Web Forms">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-4__image_3.png" alt="Web Forms">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-4__image_4.png" alt="Web Forms">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel4__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel4__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel4__radio-3">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel4__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel4__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel4__radio-4">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel4__radio-1">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel4__radio-2">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel4__radio-3">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel4__radio-4">
-                        <span class="carousel__point"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Vanilla JavaScript
-                    </p>
-                    <p class="project__description">
-                      A list of web forms developed with the aim to practice
-                      modern development techniques. They make use of a
-                      self-made validation library written in pure Javascript
-                      as well as a utility library.
-                      Have a look at the demos to see the final result.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_4.html"
-                         title="Visit the Form demos"
-                         target="_blank">
-                         Demo
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 4 - Content -->
-              </li>
-              <!-- TAB 5 - Calculator -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-5">Calculator</label>
-                <!-- Start TAB 5 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel5__radio-1"
-                           name="carousel5__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel5__radio-2"
-                           name="carousel5__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel5__radio-3"
-                           name="carousel5__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-5__image_1.png" alt="The Calculator">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-5__image_2.png" alt="The Calculator">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-5__image_3.png" alt="The Calculator">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel5__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel5__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel5__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel5__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel5__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel5__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel5__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, vanilla Javascript
-                    </p>
-                    <p class="project__description">
-                      A fully functional calculator made in three different
-                      versions with a little bit of <em>passion &amp; love</em>
-                      <i class="icon-heartbeat double-flash" aria-hidden="true"></i>
-                       for the <em>Introduction to CSS</em> course.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_5.html"
-                         title="Visit the project DEMO"
-                         target="_blank">
-                         Project Link
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_5.html"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 5 - Content -->
-              </li>
-                <!-- TAB 6 - Shopping Cart -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-6">Shopping Cart</label>
-                <!-- Start TAB 6 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel6__radio-1"
-                           name="carousel6__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel6__radio-2"
-                           name="carousel6__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel6__radio-3"
-                           name="carousel6__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-6__image_1.png" alt="The Shopping Cart">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-6__image_2.png" alt="The Shopping Cart">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-6__image_3.png" alt="The Shopping Cart">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel6__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel6__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel6__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel6__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel6__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel6__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel6__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Vanilla JavaScript
-                    </p>
-                    <p class="project__description">
-                      A demo of an e-commerce website with an integrated shopping
-                      cart at the end of the page. I built it using pure
-                      javascript in functional reactive style.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://gabrieleromeo.github.io/Bov-Projects/CSS-projects/project_6.html"
-                         title="Visit the Form demos"
-                         target="_blank">
-                         Demo
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/GabrieleRomeo/Bov-Projects/tree/master/CSS-projects/project_6.html"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 6 - Content -->
-              </li>
-              <!-- TAB 7 - Image Gallery -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-7">Image Gallery</label>
-                <!-- Start TAB 7 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel7__radio-1"
-                           name="carousel7__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel7__radio-2"
-                           name="carousel7__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel7__radio-3"
-                           name="carousel7__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-7__image_1.jpg" alt="The Image Gallery">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-7__image_2.jpg" alt="The Image Gallery">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel7__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel7__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel7__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel7__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel7__radio-2">
-                        <span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, and CSS3
-                    </p>
-                    <p class="project__description">
-                      Image gallery carousel created during the
-                      <em>Mastering CSS</em> course.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://codepen.io/DrLeleMeo/pen/bwLxVW"
-                         title="View the Image Gallery on Codepen.io"
-                         target="_blank">
-                         View Demo
-                      </a>
-                    </i>
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://codepen.io/DrLeleMeo/pen/XjkPWP"
-                         title="View the Image Gallery 2 on Codepen.io"
-                         target="_blank">
-                         View Demo 2
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 7 - Content -->
-              </li>
-              <!-- TAB 8 - CSS Accordion -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-8">CSS Accordion</label>
-                <!-- Start TAB 8 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel8__radio-1"
-                           name="carousel8__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel8__radio-2"
-                           name="carousel8__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel8__radio-3"
-                           name="carousel8__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-8__image_1.png" alt="CSS Accordion">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-8__image_2.png" alt="CSS Accordion">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-8__image_3.png" alt="CSS Accordion">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel8__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel8__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel8__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel8__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel8__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel8__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel8__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, and CSS3
-                    </p>
-                    <p class="project__description">
-                      A customized version of a <em>CSS3 accordion</em> project
-                      developed during the <em>Mastering CSS</em> course.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://codepen.io/DrLeleMeo/pen/rrqYXg"
-                         title="View the CSS accordion on Codepen.io"
-                         target="_blank">
-                         View Demo
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 8 - Content -->
-              </li>
-              <!-- TAB 9 - CSS Tab -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-9">CSS Tab</label>
-                <!-- Start TAB 9 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel9__radio-1"
-                           name="carousel9__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel9__radio-2"
-                           name="carousel9__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-9__image_1.png" alt="CSS Tab">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-9__image_2.png" alt="CSS Tab">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel9__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel9__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel9__radio-1">
-                        <span class="carousel__point"></span>
-                      </label>
-                      <label for="carousel9__radio-2">
-                        <span class="carousel__point"></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, and CSS3
-                    </p>
-                    <p class="project__description">
-                      A customized version of a <em>CSS3 tab</em> project developed
-                      during the <em>Mastering CSS</em> course.
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://codepen.io/DrLeleMeo/pen/JRryqb"
-                         title="View the CSS Tab on Codepen.io"
-                         target="_blank">
-                         View Demo
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 9 - Content -->
-              </li>
-              <!-- TAB 10 - Questionnaire -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-10">Questionnaire</label>
-                <!-- Start TAB 10 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel10__radio-1"
-                           name="carousel10__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel10__radio-2"
-                           name="carousel10__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-10__image_1.png" alt="The Questionnaire">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-10__image_2.png" alt="The Questionnaire">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel10__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel10__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel10__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel10__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel10__radio-2">
-                        <span></span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Vanilla JavaScript
-                    </p>
-                    <p class="project__description">
-                      I developed this questionnaire with my teammate,
-                      <a class="project__link"
-                         href="https://github.com/stefanfrede"
-                         target="_blank">@Stefan Frede</a>.
-                      The initial requirements were: "Build an app similar to
-                      the popular Google Forms app called the Questionnaire App
-                      including some response fields for collecting information
-                      from end users using HTML and CSS."<br>
-                      As a naming convention for classes in HTML and CSS,
-                      we used the Block, Element, Modifier (BEM) methodology
-                      whereas for the layout we followed a Mobile-First
-                      Responsive-Design approach based on a vertical rhythm
-                      with a base font-size of 16px (100&#37;) and a line-height
-                      of 1.5rem.
-                      We used plain Javascript for the validation as well as
-                      HTML5 Local Storage to memorize the information.
-                      The application logic is written almost entirely in the
-                      functional style (FP).<br>
-                       Well done, Stefan!
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="http://stefanfrede.github.io/moderndeveloper-questionnaire/"
-                         title="Visit the Questionnarie demos"
-                         target="_blank">
-                         Demo
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/stefanfrede/moderndeveloper-questionnaire"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 10 - Content -->
-              </li>
-              <!-- TAB 11 - Seed UI -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-11">JIGSAW Drag & Drop Puzzle</label>
-                <!-- Start TAB 11 - JIGSAW Drag & Drop Puzzle Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel11__radio-1" name="carousel11__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel11__radio-2" name="carousel11__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel11__radio-3" name="carousel11__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-11__image_1.png" alt="JIGSAW Drag & Drop Puzzle">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-11__image_2.png" alt="JIGSAW Drag & Drop Puzzle">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-11__image_3.png" alt="JIGSAW Drag & Drop Puzzle">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel11__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel11__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel11__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel11__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel11__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel11__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel11__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Vanilla Javascript
-                    </p>
-                    <p class="project__description">
-                      This showcase shows the JIGSAW Drag & Drop Puzzle Project
-                      that has a full drag and drop interface.
-                    </p>
-                    <p>
-                      The system is based on the <strong>Model-View-ViewModel
-                      (MVVM) Architectural Pattern</strong>
-                    </p>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://gabrieleromeo.github.io/Bov-Jigsaw-Puzzle/"
-                         title="Visit the Jigsaw Puzzle home page"
-                         target="_blank">
-                         Demo
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/GabrieleRomeo/Bov-Jigsaw-Puzzle"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 11 - Content -->
-              </li>
-              <!-- TAB 12 - Seed UI -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-12">Seed UI Framework</label>
-                <!-- Start TAB 11 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel12__radio-1" name="carousel12__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel12__radio-2" name="carousel12__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel12__radio-3" name="carousel12__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-12__image_1.png" alt="Seed UI Typography">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-12__image_2.png" alt="Seed UI Animations">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/carousel-12__image_3.png" alt="Seed UI Modals and Dot Navigation">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel12__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel12__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel12__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel12__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel12__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel12__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel12__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Vanilla Javascript
-                    </p>
-                    <p class="project__description">
-                      This showcase shows the result of the Hackathon number 3 at
-                      <em>Bov Academy</em>. A three-day event, February the
-                      26(th) - 27(th) - 28(th), 2017, during which our Team developed
-                      an UI Framework called <em>Seed UI</em>.
-                    </p>
-                    <div>
-                      <h4 class="team_members__title">Team Members</h4>
-                        <ul class="list__team">
-                          <li>
-                            <span class="span__role">Project Manager:</span>
-                            <a href="https://github.com/codephobe"
-                               title="Jake Tom's Github profile page"
-                               target="_blank">Jake Tom</a>
-                          </li>
-                          <li>
-                            <span class="span__role">Developer:</span>
-                            <a href="hhttps://github.com/jmatembu"
-                               title="Joseph Michael Matembu's Github profile page"
-                               target="_blank">Joseph Michael Matembu</a>
-                          </li>
-                          <li>
-                            <span class="span__role">Product Manager:</span>
-                            Gabriele Romeo
-                          </li>
-                          <li>
-                            <span class="span__role">Developer:</span>
-                            <a href="https://github.com/Gruximillian"
-                               title="Vojislav Grujić's Github profile page"
-                               target="_blank">Vojislav Grujić</a>
-                          </li>
-                          <li>
-                            <span class="span__role">Developer:</span>
-                            <a href="https://github.com/brianhernandez"
-                               title="Brian Hernandez's Github profile page"
-                               target="_blank">Brian Hernandez</a>
-                          </li>
-                          <li>
-                            <span class="span__role">Developer:</span>
-                            <a href="https://github.com/lenafaure"
-                               title="Léna Faure's Github profile page"
-                               target="_blank">Léna Faure</a>
-                          </li>
-                        </ul>
-                    </div>
-                    <p class="project__URLs">
-                      <i class="icon-link-ext" aria-hidden="true">
-                        <a class="project__URL"
-                           href="https://codephobe.github.io/seed-ui/"
-                           title="Visit the Seed UI home page"
-                           target="_blank">
-                           Demo
-                        </a>
-                      </i>
-                      <i class="icon-github-circled" aria-hidden="true">
-                        <a class="project__URL"
-                           href="https://github.com/codephobe/seed-ui"
-                           title="Source Code"
-                           target="_blank">
-                           Source
-                        </a>
-                      </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB 12 - Content -->
-              </li>
-              <!-- TAB - Music Catalog -->
-              <li class="c-tab__item">
-                <label class="c-tab__label" for="tab__radio-13">Music Catalog</label>
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel13__radio-1" name="carousel13__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel13__radio-2" name="carousel13__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="carousel13__radio-3" name="carousel13__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/music_catalog_1.png" alt="Indexed Music Catalog - list view">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/music_catalog_2.png" alt="Indexed Music Catalog - Search functionality">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/music_catalog_3.png" alt="Indexed Music Catalog - table view">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="carousel13__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel13__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="carousel13__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="carousel13__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="carousel13__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="carousel13__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="carousel13__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3, Vanilla Javascript, ES6, Indexed DB, localStorage
-                    </p>
-                    <p class="project__description">
-                      Each album is stored as an IndexedDB record. The first time
-                      a user visits the page, the data are downloaded from the
-                      Free Music Archive through a <em>XMLHttpRequest</em> and
-                      then stored in IndexedDB.
-                    </p>
-                    <p>
-                      Subsequent visits to the page are loaded the data from
-                      IndexedDB.
-                    </p>
-                    <p>
-                      The Music Catalog project I developed makes use of
-                      <em>IndexedDB</em> as well as the
-                      <em>sessionStorage object</em> for holding
-                      user preference about the view.
-                    </p>
-                    <p>
-                      Long text descriptions are cut and the system shows a
-                      <em>Show More</em> link so that the user can see the
-                      remaining text.
-                    </p>
-                    <p>
-                      A user may switch between the <em>list</em> and <em>table</em>
-                      view using the appropriate button.
-                    </p>
-                    <p>
-                      I also added the search capability so that a user can
-                      seek a particular text within Albums titles and descriptions.
-                    </p>
-                    <p class="project__URLs">
-                      <i class="icon-link-ext" aria-hidden="true">
-                        <a class="project__URL"
-                           href="http://gabrieleromeo.github.io/Bov-Projects/Course-08-Building-high-performance-modern-javascript-web-applications/chapter-08-Frontend-Datastore/music-catalog"
-                           title="Visit the Music Catalog"
-                           target="_blank">
-                           Demo
-                        </a>
-                      </i>
-                      <i class="icon-github-circled" aria-hidden="true">
-                        <a class="project__URL"
-                           href="https://github.com/GabrieleRomeo/Bov-Projects/tree/master/Course-08-Building-high-performance-modern-javascript-web-applications/chapter-08-Frontend-Datastore/music-catalog"
-                           title="Source Code"
-                           target="_blank">
-                           Source
-                        </a>
-                      </i>
-                    </p>
-                  </div>
-                </div>
-                <!-- End TAB -->
-              </li>
+              <!-- Start TAB List -->
+              <ul class="c-tab__list">
+                {{#each projects}}
+                 {{> "tabItems"}}
+                {{/each}}
                 <!-- Sticker TAB Hackthons -->
-              <li class="c-tab__item c-tab__item--sticker">
-                <label class="c-tab__label c-tab__label--sticket">
-                  Hackathons
-                  <img src="img/MD_logo.png" alt="Modern Developer">
-                </label>
-              </li>
-              <!-- TAB 12 - Hackathon number 1 -->
-              <li class="c-tab__item">
-                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-14">#1 - October-2016</label>
-                <!-- Start TAB 11 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
+                <li class="c-tab__item c-tab__item--sticker">
+                  <label class="c-tab__label c-tab__label--sticket">
+                    Hackathons
+                    <img src="img/MD_logo.png" alt="Modern Developer">
+                  </label>
+                </li>
+                {{#each hackathons}}
+                 {{> "tabItems"}}
+                {{/each}}
+              </ul>
+            </div>
+          </script>
+          <!-- Tab item Partial -->
+          <script id="t7__tab__item" type="text/template7">
+            <!-- TAB -  {{name}} -->
+            <li class="c-tab__item {{#if isActive}}is-active{{/if}}">
+              <p class="c-tab__label">
+                {{name}}
+              </p>
+              <!-- Start {{name}} - Content -->
+              <div class="c-tab__content">
+                <div class="c-carousel">
+                  {{#each images}}
                     <input class="c-carousel__input c-carousel__input--trigger"
-                           id="HACKATHON_1__radio-1" name="HACKATHON_1__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="HACKATHON_1__radio-2" name="HACKATHON_1__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="HACKATHON_1__radio-3" name="HACKATHON_1__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
+                           id="carousel__{{replaceAll ../name ' ' '-'}}__radio-{{@index+1}}"
+                           name="carousel__{{replaceAll ../name ' ' '-'}}__radio"
+                           type="radio"
+                           {{#unless @index}}checked{{/unless}}>
+                  {{/each}}
+                  <ul class="c-carousel__list">
+                    {{#each images}}
                       <li class="c-carousel__item">
-                        <img src="img/HACKATHON_1__image_1.png" alt="Dropdown Menu">
+                        <img src="{{../images_path}}/{{this}}" alt="{{../name}}">
                       </li>
-                      <li class="c-carousel__item">
-                        <img src="img/HACKATHON_1__image_2.png" alt="Modal Windows">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/HACKATHON_1__image_3.png" alt="Collapsible">
-                      </li>
-                    </ul>
+                    {{/each}}
+                  </ul>
 
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="HACKATHON_1__radio-1">
+                  <div class="c-carousel__control c-carousel__control--prev">
+                    {{#each images}}
+                      <label for="carousel__{{replaceAll ../name ' ' '-'}}__radio-{{@index+1}}">
                         <i class="icon-left-open" aria-hidden="true"></i>
                       </label>
-                      <label for="HACKATHON_1__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="HACKATHON_1__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="HACKATHON_1__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="HACKATHON_1__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="HACKATHON_1__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="HACKATHON_1__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-
+                    {{/each}}
                   </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3
-                    </p>
-                    <p class="project__description">
-                      This showcase shows the result of the first Hackathon at
-                      <em>Bov Academy</em>. A three-day event, during which our
-                      Team replicated four
-                      <a class="project__link" href="http://materializecss.com/" target="_blank">
-                        Materialize.css
-                      </a> components in pure CSS3 <em>from scratch</em>.
-                    </p>
-                    <p class="project__description">
-                      I developed these projects with my teammate,
-                      <a href="https://github.com/frankstepanski" target="_blank">@Frank Stepanski</a>.
-                    </p>
-                    <div>
-                      <h4 class="team_members__title">Team Members</h4>
-                      <ul class="list__team">
-                        <li><span class="span__role">Mentor:</span> Gabriele Romeo</li>
-                        <li><span class="span__role">Mentee:</span> Frank Stepanski</li>
-                      </ul>
-                    </div>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://frankstepanski.github.io/hackathon-oct-2016"
-                         title="Visit the Hackthon 1 demos"
-                         target="_blank">
-                         Demo
-                      </a>
-                    </i>
-                    <i class="icon-github-circled" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://github.com/frankstepanski/hackathon-oct-2016"
-                         title="Source Code"
-                         target="_blank">
-                         Source
-                      </a>
-                    </i>
-                    </p>
+                  <div class="c-carousel__control c-carousel__control--next">
+                    {{#each images}}
+                      {{unless index}}
+                        <label for="carousel__{{replaceAll ../name ' ' '-'}}__radio-{{@index+2}}">
+                          <i class="icon-right-open" aria-hidden="true"></i>
+                        </label>
+                      {{/unless index}}
+                    {{/each}}
+                  </div>
+
+                  <div class="c-carousel__bullets">
+                    {{#each images}}
+                        <label for="carousel__{{replaceAll ../name ' ' '-'}}__radio-{{@index+1}}">
+                          <span class="carousel__point"></span>
+                        </label>
+                    {{/each}}
                   </div>
                 </div>
-                <!-- End TAB 11 - Content -->
-              </li>
-              <!-- TAB 13 - Hackathon number 2 -->
-              <li class="c-tab__item">
-                <label class="c-tab__label c-tab__label--sticket-item" for="tab__radio-15">#2 - december-2016</label>
-                <!-- Start TAB 12 - Content -->
-                <div class="c-tab__content">
-                  <div class="c-carousel">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="HACKATHON_2__radio-1" name="HACKATHON_2__radio"
-                           type="radio" checked>
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="HACKATHON_2__radio-2" name="HACKATHON_2__radio"
-                           type="radio">
-                    <input class="c-carousel__input c-carousel__input--trigger"
-                           id="HACKATHON_2__radio-3" name="HACKATHON_2__radio"
-                           type="radio">
-                    <ul class="c-carousel__list">
-                      <li class="c-carousel__item">
-                        <img src="img/HACKATHON_2__image_1.png" alt="Dropdown Menu">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/HACKATHON_2__image_2.png" alt="Modal Windows">
-                      </li>
-                      <li class="c-carousel__item">
-                        <img src="img/HACKATHON_2__image_3.png" alt="Collapsible">
-                      </li>
-                    </ul>
-
-                    <div class="c-carousel__control c-carousel__control--prev">
-                      <label for="HACKATHON_2__radio-1">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="HACKATHON_2__radio-2">
-                        <i class="icon-left-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-                    <div class="c-carousel__control c-carousel__control--next">
-                      <label for="HACKATHON_2__radio-2">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                      <label for="HACKATHON_2__radio-3">
-                        <i class="icon-right-open" aria-hidden="true"></i>
-                      </label>
-                    </div>
-
-                    <div class="c-carousel__bullets">
-                      <label for="HACKATHON_2__radio-1">
-                        <span></span>
-                      </label>
-                      <label for="HACKATHON_2__radio-2">
-                        <span></span>
-                      </label>
-                      <label for="HACKATHON_2__radio-3">
-                        <span></span>
-                      </label>
-                    </div>
-
-                  </div>
-                  <div class="project__info">
-                    <p class="project__technologies">
-                      <strong>Technologies:</strong>
-                      HTML5, CSS3
-                    </p>
-                    <p class="project__description">
-                      This showcase shows the result of the Hackathon number 2 at
-                      <em>Bov Academy</em>. A three-day event, December the
-                      9(th) - 10(th) - 11(th), 2016, during which our Team developed
-                      a preliminary version of the <em>Bov Academy Blog</em>.
-                    </p>
-                    <div>
-                      <h4 class="team_members__title">Team Members</h4>
-                        <ul class="list__team">
-                          <li>
-                            <span class="span__role">Project Manager:</span>
-                            <a href="https://github.com/brianhernandez"
-                               title="Brian Hernandez's Github profile page"
-                               target="_blank">Brian Hernandez</a>
-                          </li>
-                          <li>
-                            <span class="span__role">Developer:</span>
-                            <a href="https://github.com/imanuelgittens"
-                               title="Imanuel Gittens' Github profile page"
-                               target="_blank">Imanuel Gittens</a>
-                          </li>
-                          <li><span class="span__role">Developer:</span> Gabriele Romeo</li>
-                          <li>
-                            <span class="span__role">Developer:</span>
-                            <a href="https://github.com/DGeero89"
-                               title="David Gierman's Github profile page"
-                               target="_blank">David Gierman</a>
-                          </li>
-                        </ul>
-                    </div>
-                    <p class="project__URLs">
-                    <i class="icon-link-ext" aria-hidden="true">
-                      <a class="project__URL"
-                         href="https://gabrieleromeo.github.io/bov-academy-blog/"
-                         title="Visit the Hackthon 2 demos"
-                         target="_blank">
-                         Demo
-                      </a>
-                    </i>
+                <div class="project__info">
+                  <p class="project__technologies">
+                    <strong>Technologies:</strong>
+                        {{join technologies delimiter=", "}}
+                  </p>
+                  <p class="project__description">
+                    {{parseLinks description}}
+                    {{#if Team}}
+                      <div>
+                        <h4 class="team_members__title">Team Members</h4>
+                          <ul class="list__team">
+                            {{#each Team}}
+                              <li>
+                                <span class="span__role">{{role}}</span>
+                                <a href="{{url}}"
+                                   title="{{name}}'s Github profile page"
+                                   target="_blank">{{name}}</a>
+                              </li>
+                            {{/each}}
+                          </ul>
+                      </div>
+                    {{/if}}
+                  </p>
+                  <p class="project__URLs">
+                    {{#if URLs[0]}}
+                      <i class="icon-link-ext" aria-hidden="true">
+                        <a class="project__URL"
+                           href="{{URLs[0].URL}}"
+                           title="{{URLs[0].title}}"
+                           target="{{URLs[0].target}}">
+                           {{URLs[0].text}}
+                        </a>
+                      </i>
+                  {{/if}}
+                  {{#if URLs[1]}}
                     <i class="icon-github-circled" aria-hidden="true">
                       <a class="project__URL"
-                         href="https://github.com/GabrieleRomeo/bov-academy-blog"
-                         title="Source Code"
-                         target="_blank">
-                         Source
+                         href="{{URLs[1].URL}}"
+                         title="{{URLs[1].title}}"
+                         target="{{URLs[1].target}}">
+                       {{URLs[1].text}}
                       </a>
                     </i>
-                    </p>
-                  </div>
+                  {{/if}}
+                  </p>
                 </div>
-                <!-- End TAB 12 - Content -->
-              </li>
-            </ul>
-            <!-- End TAB List -->
-          </div>
-          <!-- END Tab component -->
-
+              </div>
+              <!-- End TAB - {{name}} -->
+            </li>
+          </script>
+          <!-- End Tab item Partial -->
         </div>
       </div>
     </section>
@@ -2058,212 +466,90 @@
           <!-- Start Pie -->
           <div class="graph graph--rounded graph--shadowed graph--pie">
             <!-- 100% = 629 -->
-            <ul class="l-graph">
-              <li class="l-graph__item l-graph__item--inline">
-                <div class="c-circle" data-name="Frontend" data-percent="80%">
-                  <svg class="c-circle__svg" viewBox="-10 -10 220 220">
-                  <g class="path__group" transform="translate(100,100)">
-                    <path class="graph__path graph__path--back" d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
-                    <path class="graph__path graph__path--back" d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
-                    <path class="graph__path graph__path--back" d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
-                    <path class="graph__path graph__path--back" d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
-                    <path class="graph__path graph__path--back" d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
-                    <path class="graph__path graph__path--back" d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
-                  </g>
-                  </svg>
-                  <svg class="c-circle__svg c-circle__svg--back" viewBox="-10 -10 220 220">
-                    <path class="graph__path graph__path--front" d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,0 0,
-                             44.771525 0,100 C0,155.228475 44.771525,200 100,
-                             200 C155.228475,200 200,155.228475 200,100 Z"
-                          stroke-dashoffset="503"></path>
-                  </svg>
-                </div>
-              </li>
-              <li class="l-graph__item l-graph__item--inline" data-name="Backend" data-percent="20%">
-                <div class="c-circle" data-name="Backend" data-percent="20%">
-                  <svg class="c-circle__svg" viewBox="-10 -10 220 220">
-                  <g class="path__group" transform="translate(100,100)">
-                    <path class="graph__path graph__path--back" d="M 0,-100 A 100,100 0 0,1 86.6,-50" />
-                    <path class="graph__path graph__path--back" d="M 86.6,-50 A 100,100 0 0,1 86.6,50" />
-                    <path class="graph__path graph__path--back" d="M 86.6,50 A 100,100 0 0,1 0,100" />
-                    <path class="graph__path graph__path--back" d="M 0,100 A 100,100 0 0,1 -86.6,50" />
-                    <path class="graph__path graph__path--back" d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" />
-                    <path class="graph__path graph__path--back" d="M -86.6,-50 A 100,100 0 0,1 0,-100" />
-                  </g>
-                  </svg>
-                  <svg class="c-circle__svg c-circle__svg--back" viewBox="-10 -10 220 220">
-                    <path class="graph__path graph__path--front" d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,
-                             0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,
-                             200 C155.228475,200 200,155.228475 200,100 Z"
-                          stroke-dashoffset="125"></path>
-                  </svg>
-                </div>
-              </li>
-            </ul>
+            <script id="t7__graph" type="text/template7">
+              <ul class="l-graph">
+                <li class="l-graph__item l-graph__item--inline">
+                  <div class="c-circle"
+                       data-name="{{this.skills.types[0].name}}"
+                       data-percent="{{this.skills.types[0].percentage}}%">
+                    <svg class="c-circle__svg" viewBox="-10 -10 220 220">
+                    <g class="path__group" transform="translate(100,100)">
+                      <path class="graph__path graph__path--back" d="M 0,-100 A 100,100 0 0,1 86.6,-50" stroke="url(#cl1)"/>
+                      <path class="graph__path graph__path--back" d="M 86.6,-50 A 100,100 0 0,1 86.6,50" stroke="url(#cl2)"/>
+                      <path class="graph__path graph__path--back" d="M 86.6,50 A 100,100 0 0,1 0,100" stroke="url(#cl3)"/>
+                      <path class="graph__path graph__path--back" d="M 0,100 A 100,100 0 0,1 -86.6,50" stroke="url(#cl4)"/>
+                      <path class="graph__path graph__path--back" d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" stroke="url(#cl5)"/>
+                      <path class="graph__path graph__path--back" d="M -86.6,-50 A 100,100 0 0,1 0,-100" stroke="url(#cl6)"/>
+                    </g>
+                    </svg>
+                    <svg class="c-circle__svg c-circle__svg--back" viewBox="-10 -10 220 220">
+                      <path class="graph__path graph__path--front"
+                            d="M200,100 C200,44.771525 155.228475,0 100,
+                               0 C44.771525,0 0, 44.771525 0,100 C0,
+                               155.228475 44.771525,200 100,
+                               200 C155.228475,200 200,155.228475 200,100 Z"
+                            stroke-dashoffset="{{circle this.skills.types[0].percentage 629}}">
+                      </path>
+                    </svg>
+                  </div>
+                </li>
+                <li class="l-graph__item l-graph__item--inline"
+                    data-name="{{this.skills.types[1].name}}">
+                  <div class="c-circle"
+                       data-name="{{this.skills.types[1].name}}"
+                       data-percent="{{this.skills.types[1].percentage}}">
+                    <svg class="c-circle__svg" viewBox="-10 -10 220 220">
+                    <g class="path__group" transform="translate(100,100)">
+                      <path class="graph__path graph__path--back" d="M 0,-100 A 100,100 0 0,1 86.6,-50" />
+                      <path class="graph__path graph__path--back" d="M 86.6,-50 A 100,100 0 0,1 86.6,50" />
+                      <path class="graph__path graph__path--back" d="M 86.6,50 A 100,100 0 0,1 0,100" />
+                      <path class="graph__path graph__path--back" d="M 0,100 A 100,100 0 0,1 -86.6,50" />
+                      <path class="graph__path graph__path--back" d="M -86.6,50 A 100,100 0 0,1 -86.6,-50" />
+                      <path class="graph__path graph__path--back" d="M -86.6,-50 A 100,100 0 0,1 0,-100" />
+                    </g>
+                    </svg>
+                    <svg class="c-circle__svg c-circle__svg--back" viewBox="-10 -10 220 220">
+                      <path class="graph__path graph__path--front"
+                            d="M200,100 C200,44.771525 155.228475,0 100,0 C44.771525,
+                               0 0,44.771525 0,100 C0,155.228475 44.771525,200 100,
+                               200 C155.228475,200 200,155.228475 200,100 Z"
+                            stroke-dashoffset="{{circle this.skills.types[1].percentage 629}}"></path>
+                    </svg>
+                  </div>
+                </li>
+              </ul>
+            </script>
           </div>
           <!-- End Pie -->
 
           <!-- Start Skills Details -->
           <div class="skills__details">
-
-            <!-- Fronted Skills -->
-            <div class="graph graph--shadowed graph--bars" data-name="frontend">
-              <ul class="graph__list">
-                <li class="graph__item">
-                  <ul class="graph__lines">
-                    <li class="graph__line"><span>Expert</span></li>
-                    <li class="graph__line"><span>Proficent</span></li>
-                    <li class="graph__line"><span>Competent</span></li>
-                    <li class="graph__line"><span>Learning</span></li>
+            <script id="t7__skills" type="text/template7">
+              {{#each skills.types}}
+                <!-- {{name}} Skills -->
+                <div class="graph graph--shadowed graph--bars" data-name="{{name}}">
+                  <ul class="graph__list">
+                    <li class="graph__item">
+                      <ul class="graph__lines">
+                        {{#each ../skills.levels}}
+                          <li class="graph__line"><span>{{this}}</span></li>
+                        {{/each}}
+                      </ul>
+                    </li>
+                    {{#each list}}
+                      <li class="graph__item graph__item--bar" data-title="{{name}}">
+                        <div class="graph__bar graph__bar--{{level}} bck__color--Bittersweet">
+                          <span class="c-tooltip">
+                            {{description}}
+                          </span>
+                        </div>
+                      </li>
+                    {{/each}}
                   </ul>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Javascript">
-                  <div class="graph__bar graph__bar--expert bck__color--Bittersweet">
-                    <span class="c-tooltip">
-                      <strong>Expert: </strong>I love it!
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="HTML5 / CSS3">
-                  <div class="graph__bar graph__bar--expert bck__color--Supernova">
-                    <span class="c-tooltip">
-                      <strong>Expert: </strong>Cool stuff
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Sass">
-                  <div class="graph__bar graph__bar--expert">
-                    <span class="c-tooltip">
-                      <strong>Expert: </strong> I love mixins, functions, and
-                      all the other stuff
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="JQuery">
-                  <div class="graph__bar graph__bar--competent bck__color--malibu">
-                    <span class="c-tooltip">
-                      <strong>Competent: </strong> Lovely (JS) library.
-                        I know how to control It, but I want to master it
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="(JS) GreenSock">
-                  <div class="graph__bar graph__bar--competent">
-                    <span class="c-tooltip">
-                      <strong>Competent: </strong> Have a look at the MD's
-                      Homepage animations, Please
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="React JS">
-                  <div class="graph__bar graph__bar--learning bck__color--Sunshade">
-                    <span class="c-tooltip">
-                      <strong>Learning: </strong> I'm sure that L.MD will improve
-                      this
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Backend Skills -->
-            <div class="graph graph--shadowed graph--bars" data-name="backend">
-              <ul class="graph__list">
-                <li class="graph__item">
-                  <ul class="graph__lines">
-                    <li class="graph__line"><span>Expert</span></li>
-                    <li class="graph__line"><span>Proficent</span></li>
-                    <li class="graph__line"><span>Competent</span></li>
-                    <li class="graph__line"><span>Learning</span></li>
-                  </ul>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="NodeJs">
-                  <div class="graph__bar graph__bar--competent bck__color--Bittersweet">
-                    <span class="c-tooltip">
-                      <strong>Competent: </strong> Not too bad but I need to
-                      improve its profound aspects
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="PHP">
-                  <div class="graph__bar graph__bar--learning bck__color--Supernova">
-                    <span class="c-tooltip">
-                      <strong>Learning: </strong> I used Symfony PHP for a while
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="MongoDB">
-                  <div class="graph__bar graph__bar--learning bck__color--malibu">
-                    <span class="c-tooltip">
-                      <strong>Learning: </strong> I'm sure that L.MD will improve
-                      this
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="MySQL">
-                  <div class="graph__bar graph__bar--learning bck__color--Sunshade">
-                    <span class="c-tooltip">
-                      <strong>Learning: </strong> I used it during University and
-                      for some personal projects. L.MD will improve this
-                    </span>
-                  </div>
-                </li>
-                <li>
-                </li>
-              </ul>
-            </div>
-
-            <!-- Other Skills -->
-            <div class="graph graph--shadowed graph--bars" data-name="Other">
-              <ul class="graph__list">
-                <li class="graph__item">
-                  <ul class="graph__lines">
-                    <li class="graph__line"><span>Expert</span></li>
-                    <li class="graph__line"><span>Proficent</span></li>
-                    <li class="graph__line"><span>Competent</span></li>
-                    <li class="graph__line"><span>Learning</span></li>
-                  </ul>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Written Communication">
-                  <div class="graph__bar graph__bar--proficent bck__color--Bittersweet">
-                    <span class="c-tooltip">
-                      <strong>Proficent: </strong> I like writing. I wrote some
-                      articles for MD
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Problem-Solving">
-                  <div class="graph__bar graph__bar--expert bck__color--Supernova">
-                    <span class="c-tooltip">
-                      <strong>Expert: </strong> I like to solve problems! It's funny
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Project-Management">
-                  <div class="graph__bar graph__bar--competent bck__color--malibu">
-                    <span class="c-tooltip">
-                      <strong>Competent: </strong> I reach the goals, always,
-                      whatever it takes.
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Research">
-                  <div class="graph__bar graph__bar--proficent bck__color--Mauve">
-                    <span class="c-tooltip">
-                      <strong>Proficent: </strong> I like it
-                    </span>
-                  </div>
-                </li>
-                <li class="graph__item graph__item--bar" data-title="Public Speaking">
-                  <div class="graph__bar graph__bar--learning bck__color--Sunshade">
-                    <span class="c-tooltip">
-                      <strong>Learning: </strong> I'm working on this aspect
-                    </span>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
+                </div>
+                <!-- End {{name}} Skills -->
+              {{/each}}
+            </script>
           </div>
           <!-- End Skills Details -->
 
@@ -2283,9 +569,9 @@
             <h2 class="c-random-fact__title">Trivia</h2>
             <i class="c-random-fact__icon fa fa-refresh" id="random-fact__Icon" aria-hidden="true"></i>
             <p class="c-random-fact__paragraph">
-              Did you know that <span id="random-fact__span">
-              120 is the maximum number of power stars a player can get in Super Mario 64 for the Nintendo 64.
-              </span> ?
+              Did you know that
+              120 is the maximum number of power stars a player can get in Super
+              Mario 64 for the Nintendo 64. ?
             </p>
           </div>
 
@@ -2350,7 +636,9 @@
                 </div>
               </div>
               <div class="c-card__face c-card__face--back">
-                <img class="c-card__bgImage" src="img/business_back.jpg" alt="Gabriele Romeo">
+                <img class="c-card__bgImage"
+                     src="components/card/img/business_back.jpg"
+                     alt="Gabriele Romeo">
                 <i class="c-card__icon c-card__icon--back icon-loop" aria-hidden="true">3D</i>
                 <div class="c-card__details">
                   <p class="c-card__sign">
@@ -2399,39 +687,56 @@
 
           <!-- End businessCard -->
           <div class="l-form">
-            <form class="c-form" name="concact" method="post" action="#">
-
+            <form class="c-form" name="concact" id="contact-form" method="post" action="#">
               <label class="c-form__label">
                 Name
+                <span class="c-form__status"></span>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your name"
-                       type="text" required>
+                       name="name"
+                       type="text">
               </label>
 
               <label class="c-form__label">
                 Email
+                <span class="c-form__status"></span>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your email"
-                       type="email" required>
+                       name="email"
+                       type="email">
               </label>
 
               <label class="c-form__label">
                 Message
+                <span class="c-form__status"></span>
                 <textarea class="c-form__input form__input--textarea"
                           placeholder="Feel free to contact me anytime"
+                          name="message"
                           cols="100"
-                          rows="15"
-                          required></textarea>
+                          rows="15"></textarea>
               </label>
+              </form>
 
-              <a class="c-button c-button--light c-button--rounded c-button--3D"
-                 id="c-button--contact"
-                 onclick="javascript:alert('Sorry, Temporarily disabled')"
-                 href="#concact" >
-                <span class="left icon icon-mail" aria-hidden="true"></span>
-                <span class="right title">Write me!</span>
-              </a>
-            </form>
+              <!-- progress button -->
+              <div class="progress-button">
+                <button id="button--contact"><span>Submit</span></button>
+                <svg class="progress-circle" width="70" height="70">
+                  <path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,
+                          17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,
+                          0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,
+                          -32.5 32.5,-32.5z"/>
+                </svg>
+                <svg class="checkmark" width="70" height="70">
+                  <path d="m31.5,46.5l15.3,-23.2"/>
+                  <path d="m31.5,46.5l-8.5,-7.1"/>
+                </svg>
+                <svg class="cross" width="70" height="70">
+                  <path d="m35,35l-9.3,-9.3"/>
+                  <path d="m35,35l9.3,9.3"/>
+                  <path d="m35,35l-9.3,9.3"/>
+                  <path d="m35,35l9.3,-9.3"/>
+                </svg>
+              </div>
           </div>
 
         </div>
@@ -2443,46 +748,26 @@
   <footer id="page-footer" role="contentinfo">
     <section class="c-section">
       <div class="l-container">
-
         <div class="c-section__header">
-
         </div>
-
         <div class="c-section__body">
-
           <div class="c-footer">
 
             <ul class="c-footer__referenceList">
-              <li class="c-footer__referenceItem">
-                <a class="c-footer__link"
-                   href="https://github.com/GabrieleRomeo"
-                   title="Visit my GitHub profile">
-                <i class="c-footer__icon
-                          c-footer__icon--github icon-github-circled-alt2"
-                          aria-hidden="true"></i>
-                  GitHub
-                </a>
-              </li>
-              <li class="c-footer__referenceItem">
-                <a class="c-footer__link"
-                   href="http://www.linkedin.com/in/gabriele-romeo-24968ba8"
-                   title="Visit my Linkedin profile">
-                <i class="c-footer__icon
-                          c-footer__icon--linkedin icon-linkedin-circled"
-                          aria-hidden="true"></i>
-                  Linkedin
-                </a>
-              </li>
-              <li class="c-footer__referenceItem">
-                <a class="c-footer__link"
-                   href="https://twitter.com/Gabriele__Romeo"
-                   title="Visit my Twitter profile">
-                  <i class="c-footer__icon
-                            c-footer__icon--twitter icon-twitter"
-                            aria-hidden="true"></i>
-                  Twitter
-                </a>
-              </li>
+              <script id="t7__socialFooter" type="text/template7">
+                {{#each links.Social}}
+                  <li class="c-footer__referenceItem">
+                    <a class="c-footer__link"
+                       href="{{url}}"
+                       title="{{title}}">
+                    <i class="c-footer__icon
+                              c-footer__icon--github {{icon}}"
+                              aria-hidden="true"></i>
+                      {{name}}
+                    </a>
+                  </li>
+                {{/each}}
+              </script>
             </ul>
 
             <!-- Start Italy's flag -->
@@ -2518,6 +803,9 @@
   </footer>
 
   <script async src="js/main.min.js"></script>
+  <script async src="js/template.js"></script>
+  <script defer src="components/submitButton/js/classie.js"></script>
+  <script src="components/submitButton/js/uiProgressButton.js"></script>
 
   </body>
 </html>
