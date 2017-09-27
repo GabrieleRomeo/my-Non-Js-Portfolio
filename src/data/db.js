@@ -163,6 +163,27 @@ data = {
       "images": ["evolutionUI_01.png", "evolutionUI_02.png", "evolutionUI_03.png", "evolutionUI_04.png"]
     },
     {
+      "name": "SJS Framework",
+      "technologies": ["Gulp", "Babel", "Webpack", "JsDoc", "Vanilla Javascript", "ES6"],
+      "description": "Sjs is a collection of algorithms and functions wrote during my studies at @@BovAcademy/class=about__link@@. <br> Unlike many other js libraries, Sjs aims to be strongly-typed. The main benefit to being strongly-type is that when you pass an argument to a function, the Library checks if it belongs to an expected data type.<br>If this is not the case, the System throws a TypeError Exception.",
+      "URLs": [
+      {
+        "text": "API Docs",
+        "title": "Visit Sjs's API",
+        "URL": "http://api.sjs.surge.sh/",
+        "target": "_blank"
+      },
+      {
+        "text": "Project Repository",
+        "title": "Sjs Repository",
+        "URL": "https://github.com/GabrieleRomeo/sjs",
+        "target": "_blank"
+      }
+      ],
+      "images_path": "components/tab/img/projects/sjs",
+      "images": ["sjs_01.png", "sjs_02.png"]
+    },
+    {
       "name": "Seed UI Framework",
       "technologies": ["HTML5", "CSS3", "Vanilla JavaScript"],
       "description": "This showcase shows the result of the Hackathon number 3 at <em>Bov Academy</em>. A three-day event, February the 26(th) - 27(th) - 28(th), 2017, during which our Team developed an UI Framework called <em>Seed UI</em>.",
