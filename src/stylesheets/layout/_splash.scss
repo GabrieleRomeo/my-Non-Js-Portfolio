@@ -21,6 +21,7 @@ $width: conf($conf-c-splash, animation, width);
       @include flex();
       @include prefix-anim(open 0.4s linear forwards);
       position: relative;
+      justify-content: center;
       width: $width;
       min-height: 150px;
       line-height: 1.7em;
