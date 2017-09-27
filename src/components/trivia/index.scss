@@ -1,0 +1,59 @@
+
+
+$c-random-fact-padding: 50px;
+
+.c-random-fact {
+  color: rgb(255, 255, 255);
+  position: relative;
+  padding-top: $c-random-fact-padding;
+  padding-left: $c-random-fact-padding;
+  padding-right: $c-random-fact-padding;
+  font-family: Neucha,cursive;
+  font-size: 1.2em;
+
+  @include media('screen', '>=tablet') {
+    padding-bottom: 50px;
+  }
+
+
+  @include element(title) {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+  }
+
+  @include element(paragraph) {
+    padding: 21px;
+    background: rgba(255, 255, 255, 0.07);
+  }
+
+  @include element(number) {
+    display: inline-block;
+    margin: 9px 0;
+    padding: 6px;
+    background-color: rgba(0, 0, 0, 0.26);
+    border-radius: 5px;
+  }
+
+  @include element(img) {
+    display: none;
+    position: absolute;
+    left: 0;
+
+      @include media('screen', '>=tablet') {
+        display: initial;
+      }
+  }
+
+  @include element(icon) {
+    @extend %pointer;
+    position: absolute;
+    right: 5%;
+    bottom: 15%;
+
+
+    &.is-loading {
+      animation: rotate 2.5s linear infinite;
+    }
+  }
+
+}

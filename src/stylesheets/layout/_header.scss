@@ -10,7 +10,7 @@
   z-index: z('header');
   transition: transform .5s ease-out;
 
-    @include m('isUp') {
+    &.is-up {
       transform: translateY(-107%);
     }
 
