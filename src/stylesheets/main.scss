@@ -11,6 +11,7 @@
 @import 'base/typography';
 @import 'base/animations';
 @import 'base/configurations';
+@import 'base/general';
 
 @import 'layout/header';
 @import 'layout/section';
@@ -21,6 +22,9 @@
 @import 'layout/section-Contact';
 @import 'layout/footer';
 
+// Import all the dedicated components
+@import '../components/**/index.scss';
+
 @import 'components/animated_icons';
 @import 'components/browserUpgrade';
 @import 'components/logo';
@@ -28,18 +32,12 @@
 @import 'components/navigation';
 @import 'components/search';
 @import 'components/modal';
-@import 'components/sideMenu';
 @import 'components/subMenu';
 @import 'components/button';
-@import 'components/tab-navigation';
 @import 'components/carousel';
 @import 'components/tooltip';
-@import 'components/graph';
-@import 'components/businessCard';
 @import 'components/form';
-@import 'components/italy-flag';
 @import 'components/navicon';
-@import 'components/random-fact';
 
 // @import 'pages/..';
 
