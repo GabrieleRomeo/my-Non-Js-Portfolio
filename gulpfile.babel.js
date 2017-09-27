@@ -162,12 +162,12 @@ gulp.task('_copy-html-to-dist', false, () => {
 
 gulp.task('_mv-assets-to-dist', false, () => {
     let all = path.join(PATHS.SRC_DIR, '**/**');
-    let excludeJs  = '!' + PATHS.JS_SRC + '{,/**}';
+    //let excludeJs  = '!' + PATHS.JS_SRC + '{,/**}';
     let excludeCss = '!' + PATHS.CSS_SRC + '{,/**}';
     let excludeImg = '!' + PATHS.IMAGES_SRC + '{,/**}';
     let excludeTmp = '!' + PATHS.TMP + '{,/**}';
 
-    return gulp.src([all, excludeJs, excludeCss, excludeImg, excludeTmp])
+    return gulp.src([all, excludeCss, excludeImg, excludeTmp])
            .on('error', onError)
            .pipe(gulp.dest(PATHS.DIST_DIR));
 });
