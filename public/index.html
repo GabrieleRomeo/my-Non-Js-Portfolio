@@ -1,192 +1,10 @@
-<!doctype html>
-<html class="no-js" lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Gabriele Romeo - Interactive Portfolio</title>
-    <meta name="description" content="Gabriele Romeo - Portfolio">
-    <meta name="author" content="Gabriele Romeo">
-    <meta name="apple-mobile-web-app-title" content="Gabriele Romeo">
-
-      <!-- Mobile Specific Metas
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
-      <!-- FONT
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-      <link rel="stylesheet"
-            href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300%7CRoboto:100,200,300,400,700%7CNeucha">
-      <link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700"
-            rel="stylesheet">
-      <!-- CSS
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="css/fontello.css?v=@version@">
-      <link rel="stylesheet" href="css/main.min.css?v=@version@">
-      <link rel="stylesheet" type="text/css" href="components/submitButton/css/normalize.css" />
-      <!-- Favicon
-      –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-      <link rel="shortcut icon" href="icons/favicon.ico">
-      <link rel="apple-touch-icon" href="icons/touch-icon-iphone-60x60.png">
-      <link rel="apple-touch-icon" sizes="60x60" href="icons/touch-icon-ipad-76x76.png">
-      <link rel="apple-touch-icon" sizes="114x114" href="icons/touch-icon-iphone-retina-120x120.png">
-      <link rel="apple-touch-icon" sizes="144x144" href="icons/touch-icon-ipad-retina-152x152.png">
-      <script src="components/submitButton/js/modernizr.custom.js"></script>
-      <script async src="https://use.fontawesome.com/118670e9e2.js"></script>
-      <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
-      <script src="js/template7.min.js?v=@version@"></script>
-      <script src="data/db.js"></script>
-  </head>
-  <body>
-
-    <!--[if lt IE 8]>
+<!doctype html><html class="no-js" lang="en"><head><meta charset="utf-8"><meta http-equiv="x-ua-compatible" content="ie=edge"><title>Gabriele Romeo - Interactive Portfolio</title><meta name="description" content="Gabriele Romeo - Portfolio"><meta name="author" content="Gabriele Romeo"><meta name="apple-mobile-web-app-title" content="Gabriele Romeo"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto+Slab:400,700,300%7CRoboto:100,200,300,400,700%7CNeucha"><link href="https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:400,700" rel="stylesheet"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"><link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"><link rel="stylesheet" href="css/fontello.css?v=4.0.0"><link rel="stylesheet" href="css/main.min.css?v=4.0.0"><link rel="stylesheet" type="text/css" href="components/submitButton/css/normalize.css"><link rel="shortcut icon" href="icons/favicon.ico"><link rel="apple-touch-icon" href="icons/touch-icon-iphone-60x60.png"><link rel="apple-touch-icon" sizes="60x60" href="icons/touch-icon-ipad-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="icons/touch-icon-iphone-retina-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="icons/touch-icon-ipad-retina-152x152.png"><script src="components/submitButton/js/modernizr.custom.js"></script><script async src="https://use.fontawesome.com/118670e9e2.js"></script><script defer="defer" src="https://cdn.emailjs.com/dist/email.min.js"></script><script src="js/template7.min.js?v=4.0.0"></script><script src="data/db.js"></script></head><body><!--[if lt IE 8]>
       <p class="browserupgrade">
         You are using an <strong>outdated</strong> browser.
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to
         improve your experience.
       </p>
-    <![endif]-->
-
-  <!-- Start sideMenu component (Desktop) -->
-  <div class="c-sideMenu--desktop">
-    <nav role="navigation">
-      <ul class="c-sideMenu__items">
-        <li class="c-sideMenu__item">
-          <div class="c-menucard c-menucard--titled" data-title="menu">
-            <div class="c-menucard__side">
-              <p class="c-dotNav is-current"></p>
-            </div>
-            <div class="c-menucard__side c-menucard__side--back">
-              <a class="c-sideMenu__link is-current" href="#about" data-section="a">about</a>
-            </div>
-          </div>
-        </li>
-        <li class="c-sideMenu__item">
-          <div class="c-menucard">
-            <div class="c-menucard__side">
-              <p class="c-dotNav"></p>
-            </div>
-            <div class="c-menucard__side c-menucard__side--back">
-              <a class="c-sideMenu__link" href="#projects" data-section="p">Projects</a>
-            </div>
-          </div>
-        </li>
-        <li class="c-sideMenu__item">
-          <div class="c-menucard">
-            <div class="c-menucard__side">
-              <p class="c-dotNav"></p>
-            </div>
-            <div class="c-menucard__side c-menucard__side--back">
-              <a class="c-sideMenu__link" href="#skills" data-section="s">skills</a>
-            </div>
-          </div>
-        </li>
-        <li class="c-sideMenu__item">
-          <div class="c-menucard">
-            <div class="c-menucard__side">
-              <p class="c-dotNav"></p>
-            </div>
-            <div class="c-menucard__side c-menucard__side--back">
-              <a class="c-sideMenu__link" href="#contact" data-section="c">contact</a>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <!-- End sideMenu -->
-
-  <header class="c-header" id="header" role="banner">
-
-    <div class="l-wrapper">
-
-      <div id="hamburger">
-        <ul class="hamburger__list">
-          <li><label for="hamburger__checkbox"></label></li>
-          <li><label for="hamburger__checkbox"></label></li>
-          <li><label for="hamburger__checkbox"></label></li>
-        </ul>
-      </div>
-
-      <a class="c-logo c-scroll" href="#splash" title="Gabriele Romeo">
-        <span class="c-logo__span c-logo__span--first">Gabriele</span>
-        <span class="c-logo__span c-logo__span--last">Romeo</span>
-      </a>
-
-      <!-- Start Navigation -->
-      <nav class="c-navigation" role="navigation">
-        <a class="c-navigation__link" href="#about" title="About" accesskey="1">About</a>
-        <a class="c-navigation__link" href="#projects" title="Projects" accesskey="2">Projects</a>
-        <a class="c-navigation__link" href="#skills" title="Skills" accesskey="3">Skills</a>
-        <a class="c-navigation__link" href="#contact" title="Contact" accesskey="4">Contact</a>
-      </nav>
-
-      <!-- Start Search component -->
-      <div class="c-search" role="search">
-        <input class="c-search__input"
-               id="searchTxt"
-               name="searchTxt"
-               type="text"
-               required>
-        <label class="c-search__label c-search__label--input" for="searchTxt">Search</label>
-        <label class="c-search__label c-search__label--icon" for="searchStatus" accesskey="s">
-          <i class="icon-search" aria-hidden="true"></i>
-        </label>
-        <input id="searchStatus" type="checkbox">
-        <div class="c-modal c-modal--fullScreen">
-          <div class="c-modal__background c-modal__background--dark">
-            <label class="c-modal__label c-modal__label--fullScreen" for="searchStatus"></label>
-            <div class="c-modal__body c-modal__body--black c-modal__body--zoomInDown">
-              <label for="searchStatus">
-                <i class="c-modal__icon c-modal__icon--close icon-cancel-circle" aria-hidden="true"></i>
-              </label>
-                <p class="c-modal__paragraph">Search Temporarily Disabled</p>
-                <p class="c-modal__paragraph
-                          c-modal__paragraph--width
-                          c-modal__paragraph--less_than_320">
-                  device width &lt; 320px
-                </p>
-                <p class="c-modal__paragraph
-                          c-modal__paragraph--width
-                          c-modal__paragraph--320_600">
-                  320px &lt; device width &lt; 600px
-                </p>
-                <p class="c-modal__paragraph
-                          c-modal__paragraph--width
-                          c-modal__paragraph--600_768">
-                  600px &lt; device width &lt; 768px
-                </p>
-                <p class="c-modal__paragraph
-                          c-modal__paragraph--width
-                          c-modal__paragraph--768_1024">
-                  768px &lt; device width &lt; 1024px
-                </p>
-                <p class="c-modal__paragraph
-                          c-modal__paragraph--width
-                          c-modal__paragraph--greater_than_1024">
-                  device width &gt; 1024px
-                </p>
-              </div>
-          </div>
-        </div>
-      </div>
-      <!-- End Search component -->
-
-    </div>
-
-  </header>
-
-  <main role="main">
-
-    <input id="hamburger__checkbox" type="checkbox">
-    <label for="hamburger__checkbox" id="sideMenuFund"></label>
-
-    <!-- Start sideMenu component (Mobile only) -->
-    <div class="c-sideMenu">
-      <nav role="navigation">
-        <script id="t7__sideMenu__item" type="text/template7">
-          <ul class="c-sideMenu__items">
+    <![endif]--><div class="c-sideMenu--desktop"><nav role="navigation"><ul class="c-sideMenu__items"><li class="c-sideMenu__item"><div class="c-menucard c-menucard--titled" data-title="menu"><div class="c-menucard__side"><p class="c-dotNav is-current"></p></div><div class="c-menucard__side c-menucard__side--back"><a class="c-sideMenu__link is-current" href="#about" data-section="a">about</a></div></div></li><li class="c-sideMenu__item"><div class="c-menucard"><div class="c-menucard__side"><p class="c-dotNav"></p></div><div class="c-menucard__side c-menucard__side--back"><a class="c-sideMenu__link" href="#projects" data-section="p">Projects</a></div></div></li><li class="c-sideMenu__item"><div class="c-menucard"><div class="c-menucard__side"><p class="c-dotNav"></p></div><div class="c-menucard__side c-menucard__side--back"><a class="c-sideMenu__link" href="#skills" data-section="s">skills</a></div></div></li><li class="c-sideMenu__item"><div class="c-menucard"><div class="c-menucard__side"><p class="c-dotNav"></p></div><div class="c-menucard__side c-menucard__side--back"><a class="c-sideMenu__link" href="#contact" data-section="c">contact</a></div></div></li></ul></nav></div><header class="c-header" id="header" role="banner"><div class="l-wrapper"><div id="hamburger"><ul class="hamburger__list"><li><label for="hamburger__checkbox"></label></li><li><label for="hamburger__checkbox"></label></li><li><label for="hamburger__checkbox"></label></li></ul></div><a class="c-logo c-scroll" href="#splash" title="Gabriele Romeo"><span class="c-logo__span c-logo__span--first">Gabriele</span> <span class="c-logo__span c-logo__span--last">Romeo</span></a><nav class="c-navigation" role="navigation"><a class="c-navigation__link" href="#about" title="About" accesskey="1">About</a> <a class="c-navigation__link" href="#projects" title="Projects" accesskey="2">Projects</a> <a class="c-navigation__link" href="#skills" title="Skills" accesskey="3">Skills</a> <a class="c-navigation__link" href="#contact" title="Contact" accesskey="4">Contact</a></nav><div class="c-search" role="search"><input class="c-search__input" id="searchTxt" name="searchTxt" type="text" required><label class="c-search__label c-search__label--input" for="searchTxt">Search</label><label class="c-search__label c-search__label--icon" for="searchStatus" accesskey="s"><i class="icon-search" aria-hidden="true"></i></label><input id="searchStatus" type="checkbox"><div class="c-modal c-modal--fullScreen"><div class="c-modal__background c-modal__background--dark"><label class="c-modal__label c-modal__label--fullScreen" for="searchStatus"></label><div class="c-modal__body c-modal__body--black c-modal__body--zoomInDown"><label for="searchStatus"><i class="c-modal__icon c-modal__icon--close icon-cancel-circle" aria-hidden="true"></i></label><p class="c-modal__paragraph">Search Temporarily Disabled</p><p class="c-modal__paragraph c-modal__paragraph--width c-modal__paragraph--less_than_320">device width &lt; 320px</p><p class="c-modal__paragraph c-modal__paragraph--width c-modal__paragraph--320_600">320px &lt; device width &lt; 600px</p><p class="c-modal__paragraph c-modal__paragraph--width c-modal__paragraph--600_768">600px &lt; device width &lt; 768px</p><p class="c-modal__paragraph c-modal__paragraph--width c-modal__paragraph--768_1024">768px &lt; device width &lt; 1024px</p><p class="c-modal__paragraph c-modal__paragraph--width c-modal__paragraph--greater_than_1024">device width &gt; 1024px</p></div></div></div></div></div></header><main role="main"><input id="hamburger__checkbox" type="checkbox"><label for="hamburger__checkbox" id="sideMenuFund"></label><div class="c-sideMenu"><nav role="navigation"><script id="t7__sideMenu__item" type="text/template7"><ul class="c-sideMenu__items">
             <li class="c-sideMenu__item">
               <a class="c-logo" href="#splash" title="Gabriele Romeo">
                 <span class="c-logo__span c-logo__span--first">Gabriele</span>
@@ -207,21 +25,7 @@
             <li class="c-sideMenu__item c-sideMenu__item--copy">
               &copy; 2016 Gabriele Romeo. All rights reserved.
             </li>
-          </ul>
-        </script>
-      </nav>
-    </div>
-    <!-- End sideMenu component -->
-
-    <section class="c-section" id="splash" role="application">
-      <div class="l-container">
-
-        <div class="c-section__body">
-
-          <!-- Start Animation -->
-          <div class="animation">
-            <script id="t7__splash" type="text/template7">
-              <div class="l-animation l-animation--left">
+          </ul></script></nav></div><section class="c-section" id="splash" role="application"><div class="l-container"><div class="c-section__body"><div class="animation"><script id="t7__splash" type="text/template7"><div class="l-animation l-animation--left">
                 <h2>
                   <span class="animation__span
                                animation__span--top
@@ -255,45 +59,7 @@
                 <h2 class="animation__subtitle" id="welcomeMsg--5">
                   {{lookupByCookie this.splash 'part-5'}}
                 </h2>
-              </div>
-            </script>
-          </div>
-          <!-- End Animation -->
-
-          <a class="c-button
-                    c-button--roundedTop
-                    c-button--fadeIN
-                    c-scroll"
-             href="#about" title="About me">
-            <i class="icon-angle-double-down" aria-hidden="true"></i>
-          </a>
-
-          <!-- Back to Top Button -->
-          <a class="c-button
-                    c-button--rounded
-                    c-button--white
-                    c-button--3D
-                    c-button--scroll
-                    c-scroll"
-             href="#splash" title="Back to Top"
-             id="backToTop">
-            <i class="icon-angle-double-down" aria-hidden="true"></i>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <section class="c-section" id="about" role="application">
-      <div class="l-container">
-        <div class="c-section__header">
-          <h2 class="c-section__title" data-section="about">A</h2>
-        </div>
-        <div class="c-section__body">
-          <img id="about_img" src="img/gabriele_romeo.png" alt="Gabriele Romeo">
-          <div class="l-about">
-            <script id="t7__about" type="text/template7">
-              {{#each about.paragraphs}}
+              </div></script></div><a class="c-button c-button--roundedTop c-button--fadeIN c-scroll" href="#about" title="About me"><i class="icon-angle-double-down" aria-hidden="true"></i> </a><a class="c-button c-button--rounded c-button--white c-button--3D c-button--scroll c-scroll" href="#splash" title="Back to Top" id="backToTop"><i class="icon-angle-double-down" aria-hidden="true"></i></a></div></div></section><section class="c-section" id="about" role="application"><div class="l-container"><div class="c-section__header"><h2 class="c-section__title" data-section="about">A</h2></div><div class="c-section__body"><img id="about_img" src="img/gabriele_romeo.png" alt="Gabriele Romeo"><div class="l-about"><script id="t7__about" type="text/template7">{{#each about.paragraphs}}
                 <p class="about__paragraph{{if this.isSpaced}}about__paragraph--spaced{{/if}}">
                   {{parseLinks this.text}}
                 </p>
@@ -313,24 +79,7 @@
                   University of Urbino
                 </a>
                 </li>
-              </ul>
-            </script>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="c-section" id="projects" role="application">
-      <div class="l-container">
-
-        <div class="c-section__header">
-          <h2 class="c-section__title" data-section="projects">P</h2>
-        </div>
-
-        <div class="c-section__body">
-          <script id="c-tab" type="text/template7">
-
-            <!-- Start Tab component -->
+              </ul></script></div></div></div></section><section class="c-section" id="projects" role="application"><div class="l-container"><div class="c-section__header"><h2 class="c-section__title" data-section="projects">P</h2></div><div class="c-section__body"><script id="c-tab" type="text/template7"><!-- Start Tab component -->
             <div class="c-tab">
 
               <!-- Start TAB List -->
@@ -349,11 +98,7 @@
                  {{> "tabItems"}}
                 {{/each}}
               </ul>
-            </div>
-          </script>
-          <!-- Tab item Partial -->
-          <script id="t7__tab__item" type="text/template7">
-            <!-- TAB -  {{name}} -->
+            </div></script><script id="t7__tab__item" type="text/template7"><!-- TAB -  {{name}} -->
             <li class="c-tab__item {{#if isActive}}is-active{{/if}}">
               <p class="c-tab__label">
                 {{name}}
@@ -449,25 +194,7 @@
                 </div>
               </div>
               <!-- End TAB - {{name}} -->
-            </li>
-          </script>
-          <!-- End Tab item Partial -->
-        </div>
-      </div>
-    </section>
-
-    <section class="c-section" id="skills" role="application">
-      <div class="l-container">
-        <div class="c-section__header">
-          <h2 class="c-section__title" data-section="skills">S</h2>
-        </div>
-        <div class="c-section__body">
-
-          <!-- Start Pie -->
-          <div class="graph graph--rounded graph--shadowed graph--pie">
-            <!-- 100% = 629 -->
-            <script id="t7__graph" type="text/template7">
-              <ul class="l-graph">
+            </li></script></div></div></section><section class="c-section" id="skills" role="application"><div class="l-container"><div class="c-section__header"><h2 class="c-section__title" data-section="skills">S</h2></div><div class="c-section__body"><div class="graph graph--rounded graph--shadowed graph--pie"><script id="t7__graph" type="text/template7"><ul class="l-graph">
                 <li class="l-graph__item l-graph__item--inline">
                   <div class="c-circle"
                        data-name="{{this.skills.types[0].name}}"
@@ -517,15 +244,7 @@
                     </svg>
                   </div>
                 </li>
-              </ul>
-            </script>
-          </div>
-          <!-- End Pie -->
-
-          <!-- Start Skills Details -->
-          <div class="skills__details">
-            <script id="t7__skills" type="text/template7">
-              {{#each skills.types}}
+              </ul></script></div><div class="skills__details"><script id="t7__skills" type="text/template7">{{#each skills.types}}
                 <!-- {{name}} Skills -->
                 <div class="graph graph--shadowed graph--bars" data-name="{{name}}">
                   <ul class="graph__list">
@@ -548,214 +267,10 @@
                   </ul>
                 </div>
                 <!-- End {{name}} Skills -->
-              {{/each}}
-            </script>
-          </div>
-          <!-- End Skills Details -->
-
-        </div>
-      </div>
-    </section>
-
-
-    <section class="c-section" id="contact" role="application">
-      <div class="l-container">
-        <div class="c-section__header">
-          <h2 class="c-section__title" data-section="contact">C</h2>
-        </div>
-        <div class="c-section__body">
-
-          <div class="c-random-fact">
-            <h2 class="c-random-fact__title">Trivia</h2>
-            <i class="c-random-fact__icon fa fa-refresh" id="random-fact__Icon" aria-hidden="true"></i>
-            <p class="c-random-fact__paragraph">
-              Did you know that
-              120 is the maximum number of power stars a player can get in Super
-              Mario 64 for the Nintendo 64. ?
-            </p>
-          </div>
-
-          <!-- Start businessCard -->
-          <div class="c-businessCard">
-            <input class="c-businessCard__input c-businessCard__input--trigger"
-                   type="checkbox" />
-            <div class="c-card">
-              <div class="c-card__face c-card__face--front">
-                <i class="c-card__icon icon-loop" aria-hidden="true">
-                    3D
-                </i>
-                <div class="c-card__details">
-                  <h2 class="c-card__heading">Gabriele Romeo</h2>
-                  <p class="c-card__subHeading">Full Stack Developer</p>
-                  <p class="c-card__description">
-                      I am an aspiring Full-stack developer and a very
-                      enthusiastic discoverer. I keep a particular eye on
-                      design and code quality. I love what I do,
-                      and I am always straightforward to new experiences.
-                  </p>
-                  <p class="c-card__contact">
-                    <a class="c-card__link c-card__link--rose"
-                       title="Email me"
-                       href="mailto:gabriele%5Bdot%5Dromeo%5Bat%5Dgmail%5Bdot%5Dcom">
-                      gabriele.romeo<span class="visuallyhidden">-SPAM-PROTECTION</span>@gmail.com
-                    </a>
-                  </p>
-                  <div class="c-card__social">
-                    <figure class="social__encyclopedia">
-                      <img class="encyclopedia__img" src="img/enc1.png" alt="Gabriele Romeo on Encyclopedia.MD">
-                      <figcaption class="encyclopedia__caption">
-                        Gabriele Romeo<br> on
-                        <a class="c-card__link c-card__link--rose" title="Gabriele Romeo on Encyclopedia.MD" href="#">
-                          Encyclopedia.MD
-                        </a>
-                      </figcaption>
-                    </figure>
-                    <ul class="l-social-list">
-                      <li class="l-social-list__item">
-                        <a class="social__link"
-                           href="https://twitter.com/Gabriele__Romeo"
-                           title="Follow me on Twitter" target="_blank">
-                          <img class="social__img" alt="Follow me on Twitter" src="img/twitter.png">
-                        </a>
-                      </li>
-                      <li class="l-social-list__item">
-                        <a class="social__link"
-                           href="https://github.com/GabrieleRomeo"
-                           title="Have a look at my GitHub profile" target="_blank">
-                          <img class="social__img" alt="Have a look at my GitHub profile" src="img/github.png">
-                        </a>
-                      </li>
-                      <li class="l-social-list__item">
-                        <a class="social__link"
-                           href="www.linkedin.com/in/gabriele-romeo-24968ba8" target="_blank">
-                          <img class="social__img" alt="" src="img/linkedin.png">
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-              <div class="c-card__face c-card__face--back">
-                <img class="c-card__bgImage"
-                     src="components/card/img/business_back.jpg"
-                     alt="Gabriele Romeo">
-                <i class="c-card__icon c-card__icon--back icon-loop" aria-hidden="true">3D</i>
-                <div class="c-card__details">
-                  <p class="c-card__sign">
-                    Gabriele Romeo
-                  </p>
-                  <div class="c-card__social">
-                    <ul class="l-social-list">
-                      <li class="l-social-list__item l-social-list__item--block">
-                        <a class="social__link"
-                           href="https://twitter.com/Gabriele__Romeo"
-                           title="Follow me on Twitter" target="_blank">
-                          <img class="social__img"
-                               alt="Follow me on Twitter"
-                               src="img/twitter.png">
-                        </a>
-                        <span class="shadow"></span>
-                      </li>
-                      <li class="l-social-list__item l-social-list__item--block">
-                        <a class="social__link"
-                           href="https://github.com/GabrieleRomeo"
-                           title="Have a look at my GitHub profile" target="_blank">
-                          <img class="social__img"
-                               alt="Have a look at my GitHub profile"
-                               src="img/github.png">
-
-                        </a>
-                        <span class="shadow"></span>
-                      </li>
-                      <li class="l-social-list__item l-social-list__item--block">
-                        <a class="social__link"
-                           href="www.linkedin.com/in/gabriele-romeo-24968ba8" target="_blank">
-                          <img class="social__img"
-                               alt="Have a look at my Linkedin profile"
-                               src="img/linkedin.png">
-
-                        </a>
-                        <span class="shadow"></span>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-
-          <!-- End businessCard -->
-          <div class="l-form">
-            <form class="c-form" name="concact" id="contact-form" method="post" action="#">
-              <label class="c-form__label">
-                Name
-                <span class="c-form__status"></span>
-                <input class="c-form__input c-form__input--notEmptycolored"
-                       placeholder="Enter your name"
-                       name="name"
-                       type="text">
-              </label>
-
-              <label class="c-form__label">
-                Email
-                <span class="c-form__status"></span>
-                <input class="c-form__input c-form__input--notEmptycolored"
-                       placeholder="Enter your email"
-                       name="email"
-                       type="email">
-              </label>
-
-              <label class="c-form__label">
-                Message
-                <span class="c-form__status"></span>
-                <textarea class="c-form__input form__input--textarea"
-                          placeholder="Feel free to contact me anytime"
-                          name="message"
-                          cols="100"
-                          rows="15"></textarea>
-              </label>
-              </form>
-
-              <!-- progress button -->
-              <div class="progress-button">
-                <button id="button--contact"><span>Submit</span></button>
-                <svg class="progress-circle" width="70" height="70">
-                  <path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,
+              {{/each}}</script></div></div></div></section><section class="c-section" id="contact" role="application"><div class="l-container"><div class="c-section__header"><h2 class="c-section__title" data-section="contact">C</h2></div><div class="c-section__body"><div class="c-random-fact"><h2 class="c-random-fact__title">Trivia</h2><i class="c-random-fact__icon fa fa-refresh" id="random-fact__Icon" aria-hidden="true"></i><p class="c-random-fact__paragraph">Did you know that 120 is the maximum number of power stars a player can get in Super Mario 64 for the Nintendo 64. ?</p></div><div class="c-businessCard"><input class="c-businessCard__input c-businessCard__input--trigger" type="checkbox"><div class="c-card"><div class="c-card__face c-card__face--front"><i class="c-card__icon icon-loop" aria-hidden="true">3D</i><div class="c-card__details"><h2 class="c-card__heading">Gabriele Romeo</h2><p class="c-card__subHeading">Full Stack Developer</p><p class="c-card__description">I am an aspiring Full-stack developer and a very enthusiastic discoverer. I keep a particular eye on design and code quality. I love what I do, and I am always straightforward to new experiences.</p><p class="c-card__contact"><a class="c-card__link c-card__link--rose" title="Email me" href="mailto:gabriele%5Bdot%5Dromeo%5Bat%5Dgmail%5Bdot%5Dcom">gabriele.romeo<span class="visuallyhidden">-SPAM-PROTECTION</span>@gmail.com</a></p><div class="c-card__social"><figure class="social__encyclopedia"><img class="encyclopedia__img" src="img/enc1.png" alt="Gabriele Romeo on Encyclopedia.MD"><figcaption class="encyclopedia__caption">Gabriele Romeo<br>on <a class="c-card__link c-card__link--rose" title="Gabriele Romeo on Encyclopedia.MD" href="#">Encyclopedia.MD</a></figcaption></figure><ul class="l-social-list"><li class="l-social-list__item"><a class="social__link" href="https://twitter.com/Gabriele__Romeo" title="Follow me on Twitter" target="_blank"><img class="social__img" alt="Follow me on Twitter" src="img/twitter.png"></a></li><li class="l-social-list__item"><a class="social__link" href="https://github.com/GabrieleRomeo" title="Have a look at my GitHub profile" target="_blank"><img class="social__img" alt="Have a look at my GitHub profile" src="img/github.png"></a></li><li class="l-social-list__item"><a class="social__link" href="www.linkedin.com/in/gabriele-romeo-24968ba8" target="_blank"><img class="social__img" alt="" src="img/linkedin.png"></a></li></ul></div></div></div><div class="c-card__face c-card__face--back"><img class="c-card__bgImage" src="components/card/img/business_back.jpg" alt="Gabriele Romeo"> <i class="c-card__icon c-card__icon--back icon-loop" aria-hidden="true">3D</i><div class="c-card__details"><p class="c-card__sign">Gabriele Romeo</p><div class="c-card__social"><ul class="l-social-list"><li class="l-social-list__item l-social-list__item--block"><a class="social__link" href="https://twitter.com/Gabriele__Romeo" title="Follow me on Twitter" target="_blank"><img class="social__img" alt="Follow me on Twitter" src="img/twitter.png"> </a><span class="shadow"></span></li><li class="l-social-list__item l-social-list__item--block"><a class="social__link" href="https://github.com/GabrieleRomeo" title="Have a look at my GitHub profile" target="_blank"><img class="social__img" alt="Have a look at my GitHub profile" src="img/github.png"> </a><span class="shadow"></span></li><li class="l-social-list__item l-social-list__item--block"><a class="social__link" href="www.linkedin.com/in/gabriele-romeo-24968ba8" target="_blank"><img class="social__img" alt="Have a look at my Linkedin profile" src="img/linkedin.png"> </a><span class="shadow"></span></li></ul></div></div></div></div></div><div class="l-form"><form class="c-form" name="concact" id="contact-form" method="post" action="#"><label class="c-form__label">Name <span class="c-form__status"></span> <input class="c-form__input c-form__input--notEmptycolored" placeholder="Enter your name" name="name" type="text"></label><label class="c-form__label">Email <span class="c-form__status"></span> <input class="c-form__input c-form__input--notEmptycolored" placeholder="Enter your email" name="email" type="email"></label><label class="c-form__label">Message <span class="c-form__status"></span><textarea class="c-form__input form__input--textarea" placeholder="Feel free to contact me anytime" name="message" cols="100" rows="15"></textarea></label></form><div class="progress-button"><button id="button--contact"><span>Submit</span></button> <svg class="progress-circle" width="70" height="70"><path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,
                           17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,
                           0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,
-                          -32.5 32.5,-32.5z"/>
-                </svg>
-                <svg class="checkmark" width="70" height="70">
-                  <path d="m31.5,46.5l15.3,-23.2"/>
-                  <path d="m31.5,46.5l-8.5,-7.1"/>
-                </svg>
-                <svg class="cross" width="70" height="70">
-                  <path d="m35,35l-9.3,-9.3"/>
-                  <path d="m35,35l9.3,9.3"/>
-                  <path d="m35,35l-9.3,9.3"/>
-                  <path d="m35,35l9.3,-9.3"/>
-                </svg>
-              </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer id="page-footer" role="contentinfo">
-    <section class="c-section">
-      <div class="l-container">
-        <div class="c-section__header">
-        </div>
-        <div class="c-section__body">
-          <div class="c-footer">
-
-            <ul class="c-footer__referenceList">
-              <script id="t7__socialFooter" type="text/template7">
-                {{#each links.Social}}
+                          -32.5 32.5,-32.5z"/></svg> <svg class="checkmark" width="70" height="70"><path d="m31.5,46.5l15.3,-23.2"/><path d="m31.5,46.5l-8.5,-7.1"/></svg> <svg class="cross" width="70" height="70"><path d="m35,35l-9.3,-9.3"/><path d="m35,35l9.3,9.3"/><path d="m35,35l-9.3,9.3"/><path d="m35,35l9.3,-9.3"/></svg></div></div></div></div></section></main><footer id="page-footer" role="contentinfo"><section class="c-section"><div class="l-container"><div class="c-section__header"></div><div class="c-section__body"><div class="c-footer"><ul class="c-footer__referenceList"><script id="t7__socialFooter" type="text/template7">{{#each links.Social}}
                   <li class="c-footer__referenceItem">
                     <a class="c-footer__link"
                        href="{{url}}"
@@ -766,46 +281,4 @@
                       {{name}}
                     </a>
                   </li>
-                {{/each}}
-              </script>
-            </ul>
-
-            <!-- Start Italy's flag -->
-            <div class="flag__container">
-              <ul class="c-flag">
-                <li class="c-flag__item c-flag__item--green"></li>
-                <li class="c-flag__item c-flag__item--white"></li>
-                <li class="c-flag__item c-flag__item--red"></li>
-              </ul>
-              <p class="c-flag__country">
-                Made in Italy
-              </p>
-            </div>
-            <!-- End Italy's flag -->
-
-            <p class="c-footer__copy">
-              &copy; 2016 Gabriele Romeo. All rights reserved.
-              <span class="c-footer__credits">
-                - Turin, photo by
-                <a class="c-footer__link c-footer__link--hover-amaranth"
-                   href="https://www.flickr.com/people/96750771@N05/"
-                   title="Alessandro Giannese"
-                   target="_blank">Alessandro Giannese</a>
-              </span>
-            </p>
-          </div>
-
-        </div>
-        <!-- End Footer's Body -->
-
-      </div>
-    </section>
-  </footer>
-
-  <script async src="js/main.min.js?v=@version@"></script>
-  <script async src="js/template.js?v=@version@"></script>
-  <script defer src="components/submitButton/js/classie.js"></script>
-  <script src="components/submitButton/js/uiProgressButton.js"></script>
-
-  </body>
-</html>
+                {{/each}}</script></ul><div class="flag__container"><ul class="c-flag"><li class="c-flag__item c-flag__item--green"></li><li class="c-flag__item c-flag__item--white"></li><li class="c-flag__item c-flag__item--red"></li></ul><p class="c-flag__country">Made in Italy</p></div><p class="c-footer__copy">&copy; 2016 Gabriele Romeo. All rights reserved. <span class="c-footer__credits">- Turin, photo by <a class="c-footer__link c-footer__link--hover-amaranth" href="https://www.flickr.com/people/96750771@N05/" title="Alessandro Giannese" target="_blank">Alessandro Giannese</a></span></p></div></div></div></section></footer><script async src="js/main.min.js?v=4.0.0"></script><script async src="js/template.js?v=4.0.0"></script><script defer="defer" src="components/submitButton/js/classie.js"></script><script src="components/submitButton/js/uiProgressButton.js"></script></body></html>
