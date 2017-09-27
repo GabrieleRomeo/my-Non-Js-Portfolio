@@ -185,7 +185,7 @@
     <!-- Start sideMenu component (Mobile only) -->
     <div class="c-sideMenu">
       <nav role="navigation">
-        <script defer id="t7__sideMenu__item" type="text/template7">
+        <script id="t7__sideMenu__item" type="text/template7">
           <ul class="c-sideMenu__items">
             <li class="c-sideMenu__item">
               <a class="c-logo" href="#splash" title="Gabriele Romeo">
@@ -220,7 +220,7 @@
 
           <!-- Start Animation -->
           <div class="animation">
-            <script defer id="t7__splash" type="text/template7">
+            <script id="t7__splash" type="text/template7">
               <div class="l-animation l-animation--left">
                 <h2>
                   <span class="animation__span
@@ -292,7 +292,7 @@
         <div class="c-section__body">
           <img id="about_img" src="img/gabriele_romeo.png" alt="Gabriele Romeo">
           <div class="l-about">
-            <script defer id="t7__about" type="text/template7">
+            <script id="t7__about" type="text/template7">
               {{#each about.paragraphs}}
                 <p class="about__paragraph{{if this.isSpaced}}about__paragraph--spaced{{/if}}">
                   {{parseLinks this.text}}
@@ -352,7 +352,7 @@
             </div>
           </script>
           <!-- Tab item Partial -->
-          <script defer id="t7__tab__item" type="text/template7">
+          <script id="t7__tab__item" type="text/template7">
             <!-- TAB -  {{name}} -->
             <li class="c-tab__item {{#if isActive}}is-active{{/if}}">
               <p class="c-tab__label">
@@ -466,7 +466,7 @@
           <!-- Start Pie -->
           <div class="graph graph--rounded graph--shadowed graph--pie">
             <!-- 100% = 629 -->
-            <script defer id="t7__graph" type="text/template7">
+            <script id="t7__graph" type="text/template7">
               <ul class="l-graph">
                 <li class="l-graph__item l-graph__item--inline">
                   <div class="c-circle"
@@ -524,7 +524,7 @@
 
           <!-- Start Skills Details -->
           <div class="skills__details">
-            <script defer id="t7__skills" type="text/template7">
+            <script id="t7__skills" type="text/template7">
               {{#each skills.types}}
                 <!-- {{name}} Skills -->
                 <div class="graph graph--shadowed graph--bars" data-name="{{name}}">
@@ -690,7 +690,7 @@
             <form class="c-form" name="concact" id="contact-form" method="post" action="#">
               <label class="c-form__label">
                 Name
-                <p class="c-form__status"></p>
+                <span class="c-form__status"></span>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your name"
                        name="name"
@@ -699,7 +699,7 @@
 
               <label class="c-form__label">
                 Email
-                <p class="c-form__status"></p>
+                <span class="c-form__status"></span>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your email"
                        name="email"
@@ -708,7 +708,7 @@
 
               <label class="c-form__label">
                 Message
-                <p class="c-form__status"></p>
+                <span class="c-form__status"></span>
                 <textarea class="c-form__input form__input--textarea"
                           placeholder="Feel free to contact me anytime"
                           name="message"
@@ -754,7 +754,7 @@
           <div class="c-footer">
 
             <ul class="c-footer__referenceList">
-              <script defer id="t7__socialFooter" type="text/template7">
+              <script id="t7__socialFooter" type="text/template7">
                 {{#each links.Social}}
                   <li class="c-footer__referenceItem">
                     <a class="c-footer__link"
