@@ -24,6 +24,7 @@
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link rel="stylesheet" href="css/fontello.css">
       <link rel="stylesheet" href="stylesheets/main.min.css">
+      <link rel="stylesheet" type="text/css" href="components/submitButton/css/normalize.css" />
       <!-- Favicon
       –––––––––––––––––––––––––––––––––––––––––––––––––– -->
       <link rel="shortcut icon" href="icons/favicon.ico">
@@ -31,8 +32,9 @@
       <link rel="apple-touch-icon" sizes="60x60" href="icons/touch-icon-ipad-76x76.png">
       <link rel="apple-touch-icon" sizes="114x114" href="icons/touch-icon-iphone-retina-120x120.png">
       <link rel="apple-touch-icon" sizes="144x144" href="icons/touch-icon-ipad-retina-152x152.png">
+      <script src="components/submitButton/js/modernizr.custom.js"></script>
       <script async src="https://use.fontawesome.com/118670e9e2.js"></script>
-      <script async src="https://cdn.emailjs.com/dist/email.min.js"></script>
+      <script defer src="https://cdn.emailjs.com/dist/email.min.js"></script>
       <script src="js/template7.min.js"></script>
       <script src="data/db.js"></script>
   </head>
@@ -686,14 +688,13 @@
           <!-- End businessCard -->
           <div class="l-form">
             <form class="c-form" name="concact" id="contact-form" method="post" action="#">
-
               <label class="c-form__label">
                 Name
                 <p class="c-form__status"></p>
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your name"
                        name="name"
-                       type="text" required>
+                       type="text">
               </label>
 
               <label class="c-form__label">
@@ -702,7 +703,7 @@
                 <input class="c-form__input c-form__input--notEmptycolored"
                        placeholder="Enter your email"
                        name="email"
-                       type="email" required>
+                       type="email">
               </label>
 
               <label class="c-form__label">
@@ -712,17 +713,30 @@
                           placeholder="Feel free to contact me anytime"
                           name="message"
                           cols="100"
-                          rows="15"
-                          required></textarea>
+                          rows="15"></textarea>
               </label>
+              </form>
 
-              <a class="c-button c-button--light c-button--rounded c-button--3D"
-                 id="c-button--contact"
-                 href="#concact" >
-                <span class="left icon icon-mail" aria-hidden="true"></span>
-                <span class="right title">Write me!</span>
-              </a>
-            </form>
+              <!-- progress button -->
+              <div class="progress-button">
+                <button id="button--contact"><span>Submit</span></button>
+                <svg class="progress-circle" width="70" height="70">
+                  <path d="m35,2.5c17.955803,0 32.5,14.544199 32.5,32.5c0,
+                          17.955803 -14.544197,32.5 -32.5,32.5c-17.955803,
+                          0 -32.5,-14.544197 -32.5,-32.5c0,-17.955801 14.544197,
+                          -32.5 32.5,-32.5z"/>
+                </svg>
+                <svg class="checkmark" width="70" height="70">
+                  <path d="m31.5,46.5l15.3,-23.2"/>
+                  <path d="m31.5,46.5l-8.5,-7.1"/>
+                </svg>
+                <svg class="cross" width="70" height="70">
+                  <path d="m35,35l-9.3,-9.3"/>
+                  <path d="m35,35l9.3,9.3"/>
+                  <path d="m35,35l-9.3,9.3"/>
+                  <path d="m35,35l9.3,-9.3"/>
+                </svg>
+              </div>
           </div>
 
         </div>
@@ -790,6 +804,8 @@
 
   <script async src="js/main.min.js"></script>
   <script async src="js/template.js"></script>
+  <script defer src="components/submitButton/js/classie.js"></script>
+  <script src="components/submitButton/js/uiProgressButton.js"></script>
 
   </body>
 </html>
