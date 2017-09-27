@@ -8,9 +8,10 @@ const FORM = Portfolio.Utils.Forms;
 const DOM = Portfolio.Utils.Dom;
 
 const emailForm = DOM.$( '.c-form[name="concact"]' );
+const dir = 'components/email/';
 
 const successHTML = `<div class="c-form__result">
-                      <img src="img/sent_icon.png" title="Sent Icon" />
+                      <img src="${dir}/img/sent_icon.png" title="Sent Icon" />
                       <p>Thank you for contanct me</p>
                       <p>I will replay as soon as possible</p>
                     </div>`;
@@ -18,7 +19,7 @@ const successHTML = `<div class="c-form__result">
 const errorHTML = err => {
   const message = JSON.parse(err.text);
   return `<div class="c-form__result">
-            <img src="img/opss_icon.png" title="Sent Icon" />
+            <img src="${dir}/img/opss_icon.png" title="Sent Icon" />
             <p>Opss something went wrong!</p>
             <p>The Server says:</p>
             <p class="error">${message.error}</p>
