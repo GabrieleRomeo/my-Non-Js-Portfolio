@@ -95,6 +95,7 @@ const clearResultMessage = () => {
  */
 const sendEmail = () => {
   _submitButton.getInstance()._submit();
+  emailjs.init('user_aUOPsQzuTNdTRPcxZ6pXS');
   emailjs.sendForm('default_service', 'template_ctNudcMa', 'contact-form')
     .then(function(response) {
       _submitButton.getInstance().stop(1);
@@ -132,7 +133,6 @@ const handleEmail = event => {
  * @returns   {void 0}
  */
 const init = () => {
-  emailjs.init('user_aUOPsQzuTNdTRPcxZ6pXS');
   const emailButton = getParent(DOM.$('#button--contact'));
   const name    = emailForm.elements.name;
   const email   = emailForm.elements.email;
