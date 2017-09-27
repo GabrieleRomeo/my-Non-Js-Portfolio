@@ -1,3 +1,32 @@
+//------------------------------------------------------------------------------
+//                       BusinessCard Configuration
+//------------------------------------------------------------------------------
+
+$base-c-card: (
+  width: 95%,
+  font-size: .7rem,
+  line-height: 1.5rem,
+  hover-rotation: 20deg,
+  icon-loop-size: 1.2em,
+  base-color: white(),
+  heading: (
+    font-family: ('Roboto Slab', serif),
+    font-size: 2rem,
+    font-weight: 300
+  ),
+  subHeading: (
+    font-size: 1.2em,
+    font-weight: 300
+  ),
+  front-face: (
+    color: white(),
+    background: url('../components/card/img/card_background.png') no-repeat
+  ),
+  back-face: (
+    color: white(),
+    background-color: palette(purple-heart, dark)
+  )
+);
 
 @function _c-card-conf($property, $config: $base-c-card) {
   @return conf($config, $property);
@@ -7,6 +36,12 @@ $_conf-front-face: _c-card-conf(front-face);
 $_conf-back-face: _c-card-conf(back-face);
 $_conf-heading: _c-card-conf(heading);
 $_conf-subHeading: _c-card-conf(subHeading);
+
+
+//------------------------------------------------------------------------------
+//                       BusinessCard Component
+//------------------------------------------------------------------------------
+
 
 .c-businessCard {
   position: relative;
