@@ -4,6 +4,7 @@ import { Portfolio, lib } from './lib';
 import sideMenu from '../components/sideMenu/sideMenu';
 import tabHandler from '../components/tab/tab';
 import cardHandler from '../components/card/card';
+import email from '../components/email/email';
 import trivia from '../components/trivia/trivia';
 import documentReady from './document-ready';
 
@@ -35,7 +36,8 @@ function main() {
     card: $( '.c-card' ),
     tab: $( '.c-tab' ),
     scrollButton: $( '.c-button--scroll' ),
-    randomFactTrigger: $( '.c-random-fact' )
+    randomFactTrigger: $( '.c-random-fact' ),
+    emailButton: $( '#button--contact' )
   };
 
   function getSystemInformation() {
@@ -187,6 +189,7 @@ function main() {
 
   // Start custom actions
   requestAnimationFrame(function() {
+    email.init();
     trivia.init();
     setCookie();
   });
@@ -207,6 +210,7 @@ function main() {
   DOMcache.sideMenuMobile.addEventListener('click', sideMenu.mobileClickHandler, false);
 
   DOMcache.card.addEventListener('click', cardHandler, false);
+  DOMcache.emailButton.addEventListener('click', email.handleEmail, false);
   DOMcache.tab.addEventListener('click', tabHandler, false);
 
   DOMcache.randomFactTrigger.addEventListener('click', trivia.handler, false);
