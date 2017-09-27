@@ -1,3 +1,18 @@
+//------------------------------------------------------------------------------
+//                       Side Menu Configuration
+//------------------------------------------------------------------------------
+
+$conf-c-sideMenu: (
+  width: 100%,
+  min-width: 240px,
+  max-width: 320px,
+  item: (
+    line-height: 40px,
+    hover-bg-color: rgb(170, 21, 159),
+    current-bg-color: rgba(125, 19, 117, 0.22)
+  )
+
+);
 
 $width: conf($conf-c-sideMenu, width);
 $min-width: conf($conf-c-sideMenu, min-width);
@@ -7,6 +22,10 @@ $c-item: conf($conf-c-sideMenu, item);
 $c-item-line-height: conf($c-item, line-height);
 $c-item-hover-bg-color: conf($c-item, hover-bg-color);
 $c-item-current-bg-color: conf($c-item, current-bg-color);
+
+//------------------------------------------------------------------------------
+//                       Side Menu Components
+//------------------------------------------------------------------------------
 
 %c-sideMenu--active {
   color: palette(amaranth);
@@ -325,7 +344,7 @@ $c-item-current-bg-color: conf($c-item, current-bg-color);
         display: block;
         position: absolute;
         top: -36px;
-        right: 9px;
+        right: 5px;
         color: #fff;
         font-weight: 500;
         text-transform: capitalize;
