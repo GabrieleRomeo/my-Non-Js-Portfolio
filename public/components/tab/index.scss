@@ -1,0 +1,200 @@
+//------------------------------------------------------------------------------
+//                       Tab Configuration
+//------------------------------------------------------------------------------
+
+$conf-c-tab: (
+  min-height: (
+    content: (
+        media: (
+          '>=tablet': 1250px
+        )
+    )
+  ),
+  width: (
+      content: (
+        media: (
+          '>=tablet': 70%
+        )
+      ),
+      label: (
+        media: (
+          '>=tablet': 30%
+        )
+      )
+    ),
+);
+
+//------------------------------------------------------------------------------
+//                       Tab Components
+//------------------------------------------------------------------------------
+
+$tab__content--min-height: conf(conf(conf($conf-c-tab, min-height), content), media , '>=tablet');
+$tab__content--width: conf(conf(conf($conf-c-tab, width), content), media , '>=tablet');
+$tab__label--width: conf(conf(conf($conf-c-tab, width), label), media , '>=tablet');
+
+.c-tab {
+  margin-top: 150px;
+
+    // .c-tab__radio
+    @include element('radio') {
+      @extend %none;
+    }
+
+    // .c-tab__list
+    @include element('list') {
+      @extend %shadow-2px;
+      position: relative;
+      padding: 0;
+      background-color: palette(alice-blue);
+      list-style: none;
+    }
+
+    // .c-tab__item
+    @include element('item') {
+      &:nth-of-type(1) {
+        @include border-top-radius(10px);
+      }
+
+      &.is-active {
+
+        & .c-tab__label {
+          color: palette(white);
+          background-color: palette(amaranth);
+          @include media-extensible('screen', '>=tablet') {
+            color: palette(amaranth);
+            background-color: palette(white);
+            border-left: 8px solid palette(amaranth);
+          }
+        }
+
+        & .c-tab__content {
+          @include prefix((transform: translate(0, 0)), webkit);
+          padding: 20px;
+          opacity: 1;
+          max-height: $tab__content--min-height;
+          @include media-extensible('screen', '>=tablet') {
+            display: block;
+          }
+        }
+
+      }
+    }
+
+    // .c-tab__content
+    @include element('content') {
+      @include prefix((transform: translate(0, -50%)), webkit);
+      @include prefix((transition: all 0.25s ease-in-out), webkit);
+      margin-top: 0;
+      max-height: 0;
+      color: initial;
+      background-color: palette(white);
+      opacity: 0;
+      overflow: hidden;
+      -webkit-transform: translate(0, -50%);
+      transform: translate(0, -50%);
+      -webkit-transition: all 0.25s ease-in-out;
+      transition: all 0.25s ease-in-out;
+    }
+
+    // .c-tab__label
+    @include element('label') {
+      @include prefix((transition: background-color .7s), webkit);
+      @extend %pointer;
+      display: block;
+      padding: 20px;
+      text-align: center;
+      text-transform: uppercase;
+      background-color: palette(french-lilac);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.22);
+
+        &:hover {
+          background-color: white(.6);
+          color: palette(amaranth);
+        };
+
+        // .c-tab__label--sticker
+        @include modifier('sticket') {
+          font-size: 20px;
+          color: palette(white) !important;
+          background-color: palette(purple-heart) !important;
+          text-transform: uppercase!important;
+          cursor: initial;
+        }
+        // .c-tab__label--sticker-item
+        @include modifier('sticket-item') {
+          font-size: 0.9em;
+          font-variant: small-caps;
+        }
+    }
+
+}
+
+  .c-tab {
+
+    @include media-extensible('screen', '>=tablet') {
+      .c-tab__list,
+      .c-tab__content {
+        height: $tab__content--min-height;
+        min-height: $tab__content--min-height;
+        height: auto;
+      }
+
+      // .c-tab__content
+      @include element('content') {
+        @include absolute(top 0 right 0);
+        display: none;
+        width: $tab__content--width;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
+      }
+
+      // .c-tab__item
+      @include element('item') {
+        &:nth-of-type(1) {
+          border-top-right-radius: initial;
+        }
+      }
+
+      // .c-tab__label
+      @include element('label') {
+        width: $tab__label--width;
+        background-color: initial;
+        text-transform: capitalize;
+        text-align: left;
+        border-bottom: initial;
+
+          // .c-tab__label--sticker
+          @include modifier('sticket') {
+            padding-left: 10px;
+            text-align: center;
+
+              .img { vertical-align: text-top; }
+          }
+          // .c-tab__label--sticker-item
+          @include modifier('sticket-item') {
+            background-color: palette(white, light);
+            padding-right: 50px;
+            text-align: right;
+
+            &:hover {
+              background-color: palette(white, darker);
+            }
+          }
+      }
+    }
+  }
+
+/// HACKS Used to enable placeholders inside @media queries
+/// You may not @extend an outer selector from within @media.
+/// You may only @extend selectors within the same directive.
+
+@include _placeholder('c-tab__label--greater-than-tablet') {
+  color: palette(amaranth);
+  background-color: palette(white);
+  border-left: 8px solid palette(amaranth);
+}
+
+@include _placeholder('c-tab__content--greater-than-tablet') {
+  display: block;
+}
