@@ -22,6 +22,11 @@ let development = $.environments.development;
 let production = $.environments.production;
 
 /**
+ * Imports tasks
+ */
+const getTask = task => require('./gulp-tasks/' + task)(gulp, $);
+
+/**
  * Utility function that takes in an error, makes the OS beep and
  * prints the error to the console
  */
