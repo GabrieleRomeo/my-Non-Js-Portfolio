@@ -1,18 +1,18 @@
 'use strict';
 
-const gulp = require('gulp-help')(require('gulp')),
-  path = require('path'),
-  browserSync = require('browser-sync').create(),
-  runSequence = require('run-sequence'),
-  del = require('del'),
-  args = require('yargs').argv,
-  exec = require('child_process').exec,
-  gutil = require('gulp-util'),
-  shell = require('shelljs'),
-  $ = require('gulp-load-plugins')(),
-  nodeSassGlobbing = require('node-sass-globbing'),
-  readlineSync = require('readline-sync'),
-  fs = require('fs');
+const gulp = require('gulp-help')(require('gulp'));
+const path = require('path');
+const browserSync = require('browser-sync').create();
+const runSequence = require('run-sequence');
+const del = require('del');
+const args = require('yargs').argv;
+const exec = require('child_process').exec;
+const gutil = require('gulp-util');
+const shell = require('shelljs');
+const $ = require('gulp-load-plugins')();
+const nodeSassGlobbing = require('node-sass-globbing');
+const readlineSync = require('readline-sync');
+const fs = require('fs');
 
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel.js';
