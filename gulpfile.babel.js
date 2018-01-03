@@ -46,7 +46,7 @@ let getConfig = () => {
   return json;
 };
 
-// Initialise file path store
+// Initializes file paths
 const PATHS = {};
 
 PATHS.ROOT = '.';
