@@ -18,8 +18,8 @@ import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel.js';
 
 // Initialise environments
-let development = $.environments.development;
-let production = $.environments.production;
+const development = $.environments.development;
+const production = $.environments.production;
 
 /**
  * Imports tasks
@@ -30,7 +30,7 @@ const getTask = task => require('./gulp-tasks/' + task)(gulp, $);
  * Utility function that takes in an error, makes the OS beep and
  * prints the error to the console
  */
-let onError = error => {
+const onError = error => {
   gutil.beep();
   gutil.log(error.message);
   browserSync.notify(error.message);
@@ -41,8 +41,8 @@ let onError = error => {
 /**
  * Utility function that returns the package.json config file
  */
-let getConfig = () => {
-  let json = JSON.parse(fs.readFileSync('./package.json'));
+const getConfig = () => {
+  const json = JSON.parse(fs.readFileSync('./package.json'));
   return json;
 };
 
