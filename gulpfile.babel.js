@@ -16,6 +16,7 @@ const fs = require('fs');
 
 import webpack from 'webpack-stream';
 import webpackConfig from './webpack.config.babel.js';
+import { oneLine } from 'common-tags';
 
 // Initialise environments
 const development = $.environments.development;
@@ -68,15 +69,15 @@ const RELEASEBRANCH = 'release-branch';
 // Gulp HELPS
 const HELPS = {};
 
-HELPS.deploy = `Deploy the software on GitHub and publish on gh-pages the
+HELPS.deploy = oneLine`Deploy the software on GitHub and publish on gh-pages the
                 ./${PATHS.DIST_DIR} dir`;
 
 HELPS.release = 'Update the release version and switch to the release branch';
 
-HELPS.production = `Clean the dist, Build, and Move all the other assets
+HELPS.production = oneLine`Clean the dist, Build, and Move all the other assets
                     and Start the server for a preview`;
 
-HELPS.updateVersion = `It bumps the package.json to the next minor revision.
+HELPS.updateVersion = oneLine`It bumps the package.json to the next minor revision.
                        i.e. from 0.1.1 to 0.1.2`;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
