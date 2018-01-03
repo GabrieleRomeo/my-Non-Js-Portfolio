@@ -91,21 +91,7 @@ HELPS.updateVersion = oneLine`Bumps the package.json to the next minor revision.
     Use gulp help --all to watch all tasks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-gulp.task('_sass', false, getTask('sass'));
-
-gulp.task('_minify-styles', false, () => {
-  return gulp
-    .src(['**/*.css', '!**/*min.css'], { cwd: PATHS.CSS_SRC })
-    .pipe($.rename({ suffix: '.min' }))
-    .pipe(development($.sourcemaps.init()))
-    .pipe($.cssnano())
-    .pipe(development($.sourcemaps.write()))
-    .pipe(production($.size({ showFiles: true })))
-    .on('error', onErr)
-    .pipe(development(gulp.dest(PATHS.CSS_SRC)))
-    .pipe(production(gulp.dest(PATHS.CSS_DST)))
-    .pipe(bSync.stream());
-});
+gulp.task('build-styles', false, getTask('sass'));
 
 gulp.task('_lint', false, () => {
   return gulp
@@ -406,10 +392,6 @@ gulp.task('build-clean', false, () => {
 
 gulp.task('build-scripts', false, callback => {
   runSequence('_lint', '_minify-scripts', '_jasmine', callback);
-});
-
-gulp.task('build-styles', false, callback => {
-  runSequence('_sass', '_minify-styles', callback);
 });
 
 gulp.task('pre-build-html', false, callback => {
