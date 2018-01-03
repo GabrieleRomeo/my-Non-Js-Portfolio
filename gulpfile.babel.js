@@ -2,7 +2,7 @@
 
 const gulp = require('gulp-help')(require('gulp'));
 const path = require('path');
-const browserSync = require('browser-sync').create();
+const bSync = require('browser-sync').create();
 const runSequence = require('run-sequence');
 const del = require('del');
 const args = require('yargs').argv;
@@ -23,21 +23,21 @@ const development = $.environments.development;
 const production = $.environments.production;
 
 /**
- * Imports tasks
- */
-const getTask = task => require('./gulp-tasks/' + task)(gulp, $);
-
-/**
  * Utility function that takes in an error, makes the OS beep and
  * prints the error to the console
  */
-const onError = error => {
+const onErr = error => {
   gutil.beep();
   gutil.log(error.message);
-  browserSync.notify(error.message);
+  bSync.notify(error.message);
   this.emit('end');
   process.exit(2);
 };
+
+/**
+ * Imports tasks
+ */
+const getTask = t => require(`./gulp-tasks/${t}`)(gulp, $, PATHS, bSync, onErr);
 
 /**
  * Utility function that returns the package.json config file
@@ -91,15 +91,7 @@ HELPS.updateVersion = oneLine`Bumps the package.json to the next minor revision.
     Use gulp help --all to watch all tasks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
-gulp.task('_sass', false, () => {
-  return gulp
-    .src(PATHS.CSS_SRC + '/main.scss')
-    .pipe($.sass({ importer: nodeSassGlobbing }))
-    .pipe($.autoprefixer('last 2 version'))
-    .pipe($.sourcemaps.write())
-    .on('error', onError)
-    .pipe(gulp.dest(PATHS.CSS_SRC));
-});
+gulp.task('_sass', false, getTask('sass'));
 
 gulp.task('_minify-styles', false, () => {
   return gulp
@@ -109,10 +101,10 @@ gulp.task('_minify-styles', false, () => {
     .pipe($.cssnano())
     .pipe(development($.sourcemaps.write()))
     .pipe(production($.size({ showFiles: true })))
-    .on('error', onError)
+    .on('error', onErr)
     .pipe(development(gulp.dest(PATHS.CSS_SRC)))
     .pipe(production(gulp.dest(PATHS.CSS_DST)))
-    .pipe(browserSync.stream());
+    .pipe(bSync.stream());
 });
 
 gulp.task('_lint', false, () => {
@@ -121,14 +113,14 @@ gulp.task('_lint', false, () => {
     .pipe($.jshint('.jshintrc'))
     .pipe($.jshint.reporter('jshint-stylish'))
     .pipe($.jshint.reporter('fail'))
-    .on('error', onError);
+    .on('error', onErr);
 });
 
 gulp.task('_jasmine', false, () => {
   return gulp
     .src(path.join(PATHS.JS_DST, 'main.min.js'))
     .pipe($.jasmineBrowser.specRunner())
-    .on('error', onError);
+    .on('error', onErr);
 });
 
 gulp.task('_minify-scripts', false, () => {
@@ -139,7 +131,7 @@ gulp.task('_minify-scripts', false, () => {
     .pipe(production($.uglify()))
     .pipe($.rename({ suffix: '.min' }))
     .pipe(production($.size({ showFiles: true })))
-    .on('error', onError)
+    .on('error', onErr)
     .pipe(development(gulp.dest(PATHS.JS_SRC)))
     .pipe(production(gulp.dest(PATHS.JS_DST)));
 });
@@ -149,7 +141,7 @@ gulp.task('_lint-html', false, () => {
     .src(path.join(PATHS.SRC_DIR, '**/*.html'))
     .pipe($.w3cjs())
     .pipe($.w3cjs.reporter())
-    .on('error', onError);
+    .on('error', onErr);
 });
 
 gulp.task('_append-version-and-minify-html', false, () => {
@@ -164,7 +156,7 @@ gulp.task('_copy-html-to-dist', false, () => {
   return gulp
     .src(path.join(PATHS.SRC_DIR, '**/*.html'))
     .pipe($.replace(/stylesheets/g, 'css'))
-    .on('error', onError)
+    .on('error', onErr)
     .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
@@ -177,7 +169,7 @@ gulp.task('_mv-assets-to-dist', false, () => {
 
   return gulp
     .src([all, excludeCss, excludeImg, excludeTmp])
-    .on('error', onError)
+    .on('error', onErr)
     .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
@@ -198,7 +190,7 @@ gulp.task('_images', false, () => {
         return 'Image built: ' + filepath;
       }),
     )
-    .on('error', onError)
+    .on('error', onErr)
     .pipe(gulp.dest(PATHS.IMAGES_DST));
 });
 
@@ -244,7 +236,7 @@ gulp.task('_add-versioning-tags-to-html', false, () => {
     .src(path.join(PATHS.DIST_DIR, '**/*.html'))
     .pipe($.replace(/(href="css\/.+)\.css/g, '$1.css' + VERSIONING))
     .pipe($.replace(/(src="js\/.+)\.js/g, '$1.js' + VERSIONING))
-    .on('error', onError)
+    .on('error', onErr)
     .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
@@ -365,7 +357,7 @@ gulp.task(
   () => {
     let baseDir = production() ? PATHS.DIST_DIR : PATHS.SRC_DIR;
 
-    browserSync.init({
+    bSync.init({
       server: {
         baseDir: baseDir + '/',
       },
@@ -380,11 +372,11 @@ gulp.task(
       gulp.watch(path.join(PATHS.JS_SRC, '**/*.js'), [
         'build-scripts',
         () => {
-          browserSync.reload();
+          bSync.reload();
         },
       ]);
 
-      gulp.watch(baseDir + '/*.html').on('change', browserSync.reload);
+      gulp.watch(baseDir + '/*.html').on('change', bSync.reload);
     }
   },
   {
