@@ -68,16 +68,16 @@ const RELEASEBRANCH = 'release-branch';
 // Gulp HELPS
 const HELPS = {};
 
-HELPS.deploy = 'Deploy the software on GitHub and publish on gh-pages the ./';
-HELPS.deploy += PATHS.DIST_DIR + ' dir';
+HELPS.deploy = `Deploy the software on GitHub and publish on gh-pages the
+                ./${PATHS.DIST_DIR} dir`;
 
 HELPS.release = 'Update the release version and switch to the release branch';
 
-HELPS.production = 'Clean the dist, Build, and Move all the other assets ';
-HELPS.production += 'and Start the server for a preview';
+HELPS.production = `Clean the dist, Build, and Move all the other assets
+                    and Start the server for a preview`;
 
-HELPS.updateVersion = 'It bumps the package.json to the next minor revision. ';
-HELPS.updateVersion += 'i.e. from 0.1.1 to 0.1.2';
+HELPS.updateVersion = `It bumps the package.json to the next minor revision.
+                       i.e. from 0.1.1 to 0.1.2`;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                            GENERAL SUB-TASKS
