@@ -10,7 +10,6 @@ const exec = require('child_process').exec;
 const gutil = require('gulp-util');
 const shell = require('shelljs');
 const $ = require('gulp-load-plugins')();
-const nodeSassGlobbing = require('node-sass-globbing');
 const readlineSync = require('readline-sync');
 const fs = require('fs');
 
