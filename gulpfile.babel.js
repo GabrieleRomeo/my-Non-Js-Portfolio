@@ -55,11 +55,10 @@ gulp.task('build-scripts', false, getTask('scripts'));
 gulp.task('build-images', false, getTask('images'));
 
 gulp.task('_mv-assets-to-dist', false, () => {
-  let all = path.join(PATHS.SRC_DIR, '**/**');
-  //let excludeJs  = '!' + PATHS.JS_SRC + '{,/**}';
-  let excludeCss = '!' + PATHS.CSS_SRC + '{,/**}';
-  let excludeImg = '!' + PATHS.IMAGES_SRC + '{,/**}';
-  let excludeTmp = '!' + PATHS.TMP + '{,/**}';
+  const all = path.join(PATHS.SRC_DIR, '**/**');
+  const excludeCss = '!' + PATHS.CSS_SRC + '{,/**}';
+  const excludeImg = '!' + PATHS.IMAGES_SRC + '{,/**}';
+  const excludeTmp = '!' + PATHS.TMP + '{,/**}';
 
   return gulp
     .src([all, excludeCss, excludeImg, excludeTmp])
