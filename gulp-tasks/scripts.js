@@ -10,7 +10,7 @@ module.exports = function(gulp, plugins, PATHS, browserSync, onError) {
   gulp.task('_lint', false, () => {
     return gulp
       .src(['**/*.js', '!**/*min.js'], { cwd: PATHS.JS_SRC })
-      .pipe(plugins.jshint('../.jshintrc'))
+      .pipe(plugins.jshint('.jshintrc'))
       .pipe(plugins.jshint.reporter('jshint-stylish'))
       .pipe(plugins.jshint.reporter('fail'))
       .on('error', onError);
