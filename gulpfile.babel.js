@@ -96,29 +96,29 @@ gulp.task('build-scripts', false, getTask('scripts'));
 
 gulp.task('build-images', false, getTask('images'));
 
-gulp.task('_lint-html', false, () => {
-  return gulp
-    .src(path.join(PATHS.SRC_DIR, '**/*.html'))
-    .pipe($.w3cjs())
-    .pipe($.w3cjs.reporter())
-    .on('error', onErr);
-});
+// gulp.task('_lint-html', false, () => {
+//   return gulp
+//     .src(path.join(PATHS.SRC_DIR, '**/*.html'))
+//     .pipe($.w3cjs())
+//     .pipe($.w3cjs.reporter())
+//     .on('error', onErr);
+// });
 
-gulp.task('_append-version-and-minify-html', false, () => {
-  return gulp
-    .src(path.join(PATHS.DIST_DIR, '**/*.html'))
-    .pipe($.versionAppend(['html', 'js', 'css']))
-    .pipe($.htmlmin({ removeComments: true, collapseWhitespace: true }))
-    .pipe(gulp.dest(PATHS.DIST_DIR));
-});
+// gulp.task('_append-version-and-minify-html', false, () => {
+//   return gulp
+//     .src(path.join(PATHS.DIST_DIR, '**/*.html'))
+//     .pipe($.versionAppend(['html', 'js', 'css']))
+//     .pipe($.htmlmin({ removeComments: true, collapseWhitespace: true }))
+//     .pipe(gulp.dest(PATHS.DIST_DIR));
+// });
 
-gulp.task('_copy-html-to-dist', false, () => {
-  return gulp
-    .src(path.join(PATHS.SRC_DIR, '**/*.html'))
-    .pipe($.replace(/stylesheets/g, 'css'))
-    .on('error', onErr)
-    .pipe(gulp.dest(PATHS.DIST_DIR));
-});
+// gulp.task('_copy-html-to-dist', false, () => {
+//   return gulp
+//     .src(path.join(PATHS.SRC_DIR, '**/*.html'))
+//     .pipe($.replace(/stylesheets/g, 'css'))
+//     .on('error', onErr)
+//     .pipe(gulp.dest(PATHS.DIST_DIR));
+// });
 
 gulp.task('_mv-assets-to-dist', false, () => {
   let all = path.join(PATHS.SRC_DIR, '**/**');
@@ -343,28 +343,7 @@ gulp.task('build-clean', false, () => {
   ]);
 });
 
-// gulp.task('build-scripts', false, callback => {
-//   runSequence('_lint', '_minify-scripts', '_jasmine', callback);
-// });
-
-gulp.task('pre-build-html', false, callback => {
-  runSequence(
-    '_copy-html-to-dist',
-    '_add-versioning-tags-to-html',
-    '_lint-html',
-    callback,
-  );
-});
-
-gulp.task('build-html', false, callback => {
-  runSequence(
-    '_copy-html-to-dist',
-    '_add-versioning-tags-to-html',
-    '_lint-html',
-    '_append-version-and-minify-html',
-    callback,
-  );
-});
+gulp.task('build-html', false, getTask('html'));
 
 /*******************************************************************************
 *
@@ -387,7 +366,7 @@ gulp.task('production', HELPS.production, callback => {
   runSequence(
     'build-clean',
     ['build-styles', 'build-scripts', 'build-images', '_mv-assets-to-dist'],
-    'pre-build-html',
+    'build-html',
     'server',
     callback,
   );
