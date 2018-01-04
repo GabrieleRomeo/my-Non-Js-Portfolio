@@ -292,7 +292,7 @@ gulp.task('_delete-release-branch', false, callback => {
 
 gulp.task(
   'server',
-  'Start the browserSync server',
+  'Starts the browserSync server',
   () => {
     let baseDir = production() ? PATHS.DIST_DIR : PATHS.SRC_DIR;
 
