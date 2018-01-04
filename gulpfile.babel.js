@@ -94,7 +94,7 @@ gulp.task('build-styles', false, getTask('sass'));
 
 gulp.task('build-scripts', false, getTask('scripts'));
 
-gulp.task('_images', false, getTask('images'));
+gulp.task('build-images', false, getTask('images'));
 
 gulp.task('_lint-html', false, () => {
   return gulp
@@ -386,7 +386,7 @@ gulp.task('production', HELPS.production, callback => {
 
   runSequence(
     'build-clean',
-    ['build-styles', 'build-scripts', '_images', '_mv-assets-to-dist'],
+    ['build-styles', 'build-scripts', 'build-images', '_mv-assets-to-dist'],
     'pre-build-html',
     'server',
     callback,
