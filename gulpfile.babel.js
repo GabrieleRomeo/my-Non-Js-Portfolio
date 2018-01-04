@@ -11,8 +11,13 @@ const gutil = require('gulp-util');
 const shell = require('shelljs');
 const $ = require('gulp-load-plugins')();
 
-import { oneLine } from 'common-tags';
-import { getConfig, RELEASEBRANCH, VERSIONING } from './gulp.config';
+import {
+  getConfig,
+  RELEASEBRANCH,
+  VERSIONING,
+  HELPS,
+  PATHS,
+} from './gulp.config';
 
 // Initialise environments
 const development = $.environments.development;
@@ -34,38 +39,6 @@ const onErr = error => {
  * Imports tasks
  */
 const getTask = t => require(`./gulp-tasks/${t}`)(gulp, $, PATHS, bSync, onErr);
-
-// Initializes file paths
-const PATHS = {};
-
-PATHS.ROOT = '.';
-PATHS.SRC_DIR = path.join(PATHS.ROOT, 'src');
-PATHS.DIST_DIR = path.join(PATHS.ROOT, 'public');
-PATHS.TMP = path.join(PATHS.SRC_DIR, 'tmp');
-PATHS.CSS_SRC = path.join(PATHS.SRC_DIR, 'stylesheets');
-PATHS.CSS_CMPS = path.join(PATHS.SRC_DIR, 'components');
-PATHS.CSS_DST = path.join(PATHS.DIST_DIR, 'css');
-PATHS.JS_SRC = path.join(PATHS.SRC_DIR, 'js');
-PATHS.JS_DST = path.join(PATHS.DIST_DIR, 'js');
-PATHS.IMAGES_SRC = path.join(PATHS.SRC_DIR, 'img');
-PATHS.IMAGES_DST = path.join(PATHS.DIST_DIR, 'img');
-
-// Gulp HELPS
-const HELPS = {};
-
-HELPS.deploy = oneLine`Deploys the sowftare on Github and publishes the
-                      ./${PATHS.DIST_DIR} dir as
-                      a live page onto the gh-pages branch.`;
-
-HELPS.release = oneLine`Updates the release version and switches to the release
-                        branch`;
-
-HELPS.production = oneLine`Cleans the dist, builds the software, moves all of
-                           the assets under the ./${PATHS.DIST_DIR} dir
-                           and starts the server for a live preview`;
-
-HELPS.updateVersion = oneLine`Bumps the package.json to the next minor revision.
-                      (for example from 0.1.1 to 0.1.2)`;
 
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                            GENERAL SUB-TASKS
