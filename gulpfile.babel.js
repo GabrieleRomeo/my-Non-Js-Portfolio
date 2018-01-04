@@ -10,11 +10,9 @@ const exec = require('child_process').exec;
 const gutil = require('gulp-util');
 const shell = require('shelljs');
 const $ = require('gulp-load-plugins')();
-const readlineSync = require('readline-sync');
-const fs = require('fs');
 
 import { oneLine } from 'common-tags';
-import { RELEASEBRANCH, VERSIONING } from './gulp.config';
+import { getConfig, RELEASEBRANCH, VERSIONING } from './gulp.config';
 
 // Initialise environments
 const development = $.environments.development;
@@ -36,14 +34,6 @@ const onErr = error => {
  * Imports tasks
  */
 const getTask = t => require(`./gulp-tasks/${t}`)(gulp, $, PATHS, bSync, onErr);
-
-/**
- * Utility function that returns the package.json config file
- */
-const getConfig = () => {
-  const json = JSON.parse(fs.readFileSync('./package.json'));
-  return json;
-};
 
 // Initializes file paths
 const PATHS = {};
@@ -353,56 +343,6 @@ gulp.task('production', HELPS.production, callback => {
 * Tag: increment major or minor number
 *
 */
-
-gulp.task('release', HELPS.release, callback => {
-  let config = getConfig();
-
-  const updateTypeList = [
-    'automatic bump',
-    'major',
-    'minor',
-    'patch',
-    'prerelease',
-    'custom version',
-  ];
-  let updateType = '';
-  let specificVersion = '';
-  let index;
-
-  let gulpReleaseTask = 'gulp ';
-
-  if (
-    readlineSync.keyInYNStrict('Do you want to update the release version?')
-  ) {
-    shell.echo('CURRENT VERSION: ' + config.version);
-
-    index = readlineSync.keyInSelect(updateTypeList, 'Which type of bump?');
-
-    if (index === -1) {
-      // CANCEL was pressed
-      return;
-    } else if (index > 0 && index < updateTypeList.length - 1) {
-      updateType = updateTypeList[index];
-    } else if (index === updateTypeList.length - 1) {
-      // Specific version
-      updateType = 'version';
-      specificVersion = readlineSync.question('Specify the version, please: ', {
-        limit: /^(0|(?:[1-9]\d*))\.(0|(?:[1-9]\d*))\.(0|(?:[1-9]\d*))(?:-((?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*))(?:\.(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*)))*))?(?:\+((?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*))(?:\.(?:0|(?:[1-9A-Za-z-][0-9A-Za-z-]*)))*))?$/gm,
-        limitMessage: 'Sorry, $<lastInput> is not a valid Semantic Version.',
-      });
-    }
-
-    runSequence('_checkout-release', 'production', () => {
-      gulpReleaseTask += `update-version --type=${updateType} ${specificVersion}`;
-
-      let child = exec(gulpReleaseTask);
-
-      child.stdout.on('data', data => shell.echo(data));
-    });
-  } else {
-    // Do not update the version, switch to the release branch immediately
-    runSequence('_checkout-release', 'production', callback);
-  }
-});
+gulp.task('release', HELPS.release, getTask('release'));
 
 gulp.task('deploy', HELPS.deploy, getTask('deploy'));
