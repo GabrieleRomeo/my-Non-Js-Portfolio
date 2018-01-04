@@ -92,34 +92,7 @@ HELPS.updateVersion = oneLine`Bumps the package.json to the next minor revision.
 
 gulp.task('build-styles', false, getTask('sass'));
 
-gulp.task('_lint', false, () => {
-  return gulp
-    .src(['portfolio.js', '**/*.js', '!**/*min.js'], { cwd: PATHS.JS_SRC })
-    .pipe($.jshint('.jshintrc'))
-    .pipe($.jshint.reporter('jshint-stylish'))
-    .pipe($.jshint.reporter('fail'))
-    .on('error', onErr);
-});
-
-gulp.task('_jasmine', false, () => {
-  return gulp
-    .src(path.join(PATHS.JS_DST, 'main.min.js'))
-    .pipe($.jasmineBrowser.specRunner())
-    .on('error', onErr);
-});
-
-gulp.task('_minify-scripts', false, () => {
-  return gulp
-    .src(path.join(PATHS.JS_SRC, 'portfolio.js'))
-    .pipe(webpack(webpackConfig))
-    .pipe($.concat('main.js'))
-    .pipe(production($.uglify()))
-    .pipe($.rename({ suffix: '.min' }))
-    .pipe(production($.size({ showFiles: true })))
-    .on('error', onErr)
-    .pipe(development(gulp.dest(PATHS.JS_SRC)))
-    .pipe(production(gulp.dest(PATHS.JS_DST)));
-});
+gulp.task('build-scripts', false, getTask('scripts'));
 
 gulp.task('_lint-html', false, () => {
   return gulp
@@ -389,9 +362,9 @@ gulp.task('build-clean', false, () => {
   ]);
 });
 
-gulp.task('build-scripts', false, callback => {
-  runSequence('_lint', '_minify-scripts', '_jasmine', callback);
-});
+// gulp.task('build-scripts', false, callback => {
+//   runSequence('_lint', '_minify-scripts', '_jasmine', callback);
+// });
 
 gulp.task('pre-build-html', false, callback => {
   runSequence(
