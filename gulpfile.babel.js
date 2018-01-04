@@ -133,27 +133,6 @@ gulp.task('_mv-assets-to-dist', false, () => {
     .pipe(gulp.dest(PATHS.DIST_DIR));
 });
 
-// gulp.task('_images', false, () => {
-//   return gulp
-//     .src(['**/*.{png,gif,jpg}'], { cwd: PATHS.IMAGES_SRC })
-//     .pipe(
-//       $.cache(
-//         $.imagemin({
-//           optimizationLevel: 5,
-//           progressive: true,
-//           interlaced: true,
-//         }),
-//       ),
-//     )
-//     .pipe(
-//       $.print(filepath => {
-//         return 'Image built: ' + filepath;
-//       }),
-//     )
-//     .on('error', onErr)
-//     .pipe(gulp.dest(PATHS.IMAGES_DST));
-// });
-
 /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
                                 VERSIONING TASKS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
