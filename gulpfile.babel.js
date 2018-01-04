@@ -13,8 +13,6 @@ const $ = require('gulp-load-plugins')();
 const readlineSync = require('readline-sync');
 const fs = require('fs');
 
-import webpack from 'webpack-stream';
-import webpackConfig from './webpack.config.babel.js';
 import { oneLine } from 'common-tags';
 
 // Initialise environments
@@ -95,30 +93,6 @@ gulp.task('build-styles', false, getTask('sass'));
 gulp.task('build-scripts', false, getTask('scripts'));
 
 gulp.task('build-images', false, getTask('images'));
-
-// gulp.task('_lint-html', false, () => {
-//   return gulp
-//     .src(path.join(PATHS.SRC_DIR, '**/*.html'))
-//     .pipe($.w3cjs())
-//     .pipe($.w3cjs.reporter())
-//     .on('error', onErr);
-// });
-
-// gulp.task('_append-version-and-minify-html', false, () => {
-//   return gulp
-//     .src(path.join(PATHS.DIST_DIR, '**/*.html'))
-//     .pipe($.versionAppend(['html', 'js', 'css']))
-//     .pipe($.htmlmin({ removeComments: true, collapseWhitespace: true }))
-//     .pipe(gulp.dest(PATHS.DIST_DIR));
-// });
-
-// gulp.task('_copy-html-to-dist', false, () => {
-//   return gulp
-//     .src(path.join(PATHS.SRC_DIR, '**/*.html'))
-//     .pipe($.replace(/stylesheets/g, 'css'))
-//     .on('error', onErr)
-//     .pipe(gulp.dest(PATHS.DIST_DIR));
-// });
 
 gulp.task('_mv-assets-to-dist', false, () => {
   let all = path.join(PATHS.SRC_DIR, '**/**');
