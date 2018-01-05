@@ -33,6 +33,7 @@
     "gulp-connect": "^5.0.0",
     "gulp-cssnano": "^2.1.2",
     "gulp-environments": "^0.1.2",
+    "gulp-git": "^2.5.0",
     "gulp-help": "^1.6.1",
     "gulp-htmlmin": "^3.0.0",
     "gulp-imagemin": "^3.2.0",
@@ -67,9 +68,7 @@
     "webpack-stream": "^4.0.0",
     "yargs": "^7.1.0"
   },
-  "dependencies": {
-    "gulp-git": "^2.1.0"
-  },
+  "dependencies": {},
   "bugs": {
     "url": "https://github.com/GabrieleRomeo/portfolio/issues"
   },
