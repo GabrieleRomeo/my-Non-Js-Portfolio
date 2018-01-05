@@ -5,21 +5,19 @@ export default {
   entry: path.join(__dirname, '/src/js/portfolio.js'),
   output: {
     path: path.join(__dirname, 'src/js/'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
-  plugins: [
-    new webpack.NamedModulesPlugin()
-  ],
+  plugins: [new webpack.NamedModulesPlugin()],
   module: {
     loaders: [
       {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: '/node_modules/',
-          query: {
-              presets: ['es2015']
-          }
-      }
-    ]
-  }
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: '/node_modules/',
+        query: {
+          presets: ['es2015'],
+        },
+      },
+    ],
+  },
 };
