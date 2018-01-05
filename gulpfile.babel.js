@@ -231,7 +231,7 @@ gulp.task(
 
     bSync.init({
       server: {
-        baseDir: baseDir + '/',
+        baseDir: PATHS.DIST_DIR,
       },
     });
 
