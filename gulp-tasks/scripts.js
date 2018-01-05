@@ -18,20 +18,20 @@ module.exports = function(gulp, plugins, PATHS, browserSync, onError) {
 
   gulp.task('_minify-scripts', false, () => {
     return gulp
-      .src(`../${path.join(PATHS.JS_SRC, 'portfolio.js')}`)
+      .src(`${path.join(PATHS.JS_SRC, 'portfolio.js')}`)
       .pipe(webpack(webpackConfig))
       .pipe(plugins.concat('main.js'))
       .pipe(production(plugins.uglify()))
       .pipe(plugins.rename({ suffix: '.min' }))
       .pipe(production(plugins.size({ showFiles: true })))
       .on('error', onError)
-      .pipe(development(gulp.dest(`../${PATHS.JS_SRC}`)))
-      .pipe(production(gulp.dest(`../${PATHS.JS_DST}`)));
+      .pipe(development(gulp.dest(`${PATHS.JS_SRC}`)))
+      .pipe(production(gulp.dest(`${PATHS.JS_DST}`)));
   });
 
   gulp.task('_jasmine', false, () => {
     return gulp
-      .src(`../${path.join(PATHS.JS_DST, 'main.min.js')}`)
+      .src(`${path.join(PATHS.JS_DST, 'main.min.js')}`)
       .pipe(plugins.jasmineBrowser.specRunner())
       .on('error', onError);
   });
