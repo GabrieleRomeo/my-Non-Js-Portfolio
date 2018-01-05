@@ -1,25 +1,29 @@
 import webpack from 'webpack';
-import path from 'path';
+const $ = require('gulp-load-plugins')();
+const { production } = $.environments;
 
 export default {
-  entry: path.join(__dirname, '/src/js/portfolio.js'),
+  devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'src/js/'),
-    filename: 'bundle.js'
+    devtoolLineToLine: true,
+    sourceMapFilename: 'bundle.js.map',
+    pathinfo: true,
+    path: __dirname,
+    filename: production ? 'bundle.min.js' : 'bundle.js',
   },
-  plugins: [
-    new webpack.NamedModulesPlugin()
-  ],
   module: {
     loaders: [
       {
-          test: /\.js$/,
-          loader: 'babel-loader',
-          exclude: '/node_modules/',
-          query: {
-              presets: ['es2015']
-          }
-      }
-    ]
-  }
+        test: /\.js$/,
+        loader: 'babel-loader',
+        exclude: '/node_modules/',
+        query: {
+          presets: ['es2015'],
+        },
+      },
+    ],
+  },
+  plugins: production
+    ? [new webpack.optimize.UglifyJsPlugin({ minimize: true, comments: false })]
+    : [],
 };
