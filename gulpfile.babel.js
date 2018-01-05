@@ -57,11 +57,11 @@ gulp.task('build-images', false, getTask('images'));
 gulp.task('_mv-assets-to-dist', false, () => {
   const all = path.join(PATHS.SRC_DIR, '**/**');
   const excludeCss = '!' + PATHS.CSS_SRC + '{,/**}';
-  const excludeImg = '!' + PATHS.IMAGES_SRC + '{,/**}';
+  // const excludeImg = '!' + PATHS.IMAGES_SRC + '{,/**}';
   const excludeTmp = '!' + PATHS.TMP + '{,/**}';
 
   return gulp
-    .src([all, excludeCss, excludeImg, excludeTmp])
+    .src([all, excludeCss, excludeTmp])
     .on('error', onErr)
     .pipe(gulp.dest(PATHS.DIST_DIR));
 });
@@ -106,8 +106,8 @@ gulp.task(
 gulp.task('_add-versioning-tags-to-html', false, () => {
   return gulp
     .src(path.join(PATHS.DIST_DIR, '**/*.html'))
-    .pipe($.replace(/(href="css\/.+)\.css/g, '$1.css' + VERSIONING))
-    .pipe($.replace(/(src="js\/.+)\.js/g, '$1.js' + VERSIONING))
+    .pipe($.replace('main.min.css', `main.min.css${VERSIONING}`))
+    .pipe($.replace('bundle.js', `bundle.min.js${VERSIONING}`))
     .on('error', onErr)
     .pipe(gulp.dest(PATHS.DIST_DIR));
 });
@@ -286,7 +286,9 @@ gulp.task('build-html', false, getTask('html'));
 
 gulp.task('default', callback => {
   runSequence(
-    ['build-styles', 'build-scripts'],
+    'build-clean',
+    ['build-styles', 'build-scripts', '_mv-assets-to-dist'],
+    'build-html',
     '_lint-html',
     'start-server',
     callback,
