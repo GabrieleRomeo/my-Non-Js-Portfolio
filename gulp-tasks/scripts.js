@@ -5,7 +5,7 @@ const path = require('path');
 const runSequence = require('run-sequence');
 
 module.exports = function(gulp, plugins, PATHS, browserSync, onError) {
-  const { development, production } = plugins.environments;
+  const { production } = plugins.environments;
 
   gulp.task('_lint', false, () => {
     return gulp
@@ -20,13 +20,10 @@ module.exports = function(gulp, plugins, PATHS, browserSync, onError) {
     return gulp
       .src(`${path.join(PATHS.JS_SRC, 'portfolio.js')}`)
       .pipe(webpack(webpackConfig))
-      .pipe(plugins.concat('main.js'))
-      .pipe(production(plugins.uglify()))
-      .pipe(plugins.rename({ suffix: '.min' }))
       .pipe(production(plugins.size({ showFiles: true })))
       .on('error', onError)
-      .pipe(development(gulp.dest(`${PATHS.JS_SRC}`)))
-      .pipe(production(gulp.dest(`${PATHS.JS_DST}`)));
+      .pipe(gulp.dest(`${PATHS.JS_DST}`))
+      .pipe(plugins.debug({ title: 'destination' }));
   });
 
   gulp.task('_jasmine', false, () => {
