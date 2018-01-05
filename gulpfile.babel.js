@@ -224,7 +224,7 @@ gulp.task('_delete-release-branch', false, callback => {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
 
 gulp.task(
-  'server',
+  'start-server',
   'Starts the browserSync server',
   () => {
     let baseDir = production() ? PATHS.DIST_DIR : PATHS.SRC_DIR;
@@ -288,7 +288,7 @@ gulp.task('default', callback => {
   runSequence(
     ['build-styles', 'build-scripts'],
     '_lint-html',
-    'server',
+    'start-server',
     callback,
   );
 });
@@ -300,7 +300,7 @@ gulp.task('production', HELPS.production, callback => {
     'build-clean',
     ['build-styles', 'build-scripts', 'build-images', '_mv-assets-to-dist'],
     'build-html',
-    'server',
+    'start-server',
     callback,
   );
 });
