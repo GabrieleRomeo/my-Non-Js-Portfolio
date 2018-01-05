@@ -12,7 +12,6 @@ module.exports = function(gulp, plugins, PATHS, browserSync, onError) {
       .pipe(development(plugins.sourcemaps.write()))
       .pipe(production(plugins.size({ showFiles: true })))
       .on('error', onError)
-      .pipe(development(gulp.dest(`../${PATHS.CSS_SRC}`)))
       .pipe(production(gulp.dest(`../${PATHS.CSS_DST}`)))
       .pipe(browserSync.stream());
   };
