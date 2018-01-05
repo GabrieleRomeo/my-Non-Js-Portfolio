@@ -6,4 +6,4 @@ node_modules/
 *tmp*
 src/*/*.min.js
 src/*/*.min.css
-src/js/maps/
+public/js/maps/
