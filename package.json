@@ -1,6 +1,6 @@
 {
   "name": "gabriele-romeo-portfolio",
-  "version": "4.1.2",
+  "version": "4.2.0",
   "description": "Gabriele Romeo's portfolio",
   "main": "gulpfile.js",
   "scripts": {
