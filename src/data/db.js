@@ -160,7 +160,7 @@ data = {
       isActive: true,
     },
     {
-      name: 'Evolution UI',
+      name: 'Evolution UI Framework',
       technologies: ['HTML5', 'CSS3', 'Sass', 'Vanilla JavaScript', 'ES6'],
       description:
         'The first of its kind, Evolution UI is an open source front-end web framework comprising a collection of innovative and unique web components. These never-before-seen web components are intended to provide a different and enriched online experience and were created by the @@StudentsBovAcademy@@ of Bov Academy Institute of Programming and Futuristic Engineering (you can learn more about this project and read a write-up on each component by visiting the @@BlogBovAcademy/path=evolution-ui-a-ui-framework-of-dozens-of-innovative-ui-components/@@ ).<br>This framework is intended to be a hub of web development innovation and we invite everyone to explore their creativity and contribute something innovative of their own to keep the project thriving.<br> <em> I want to say thank all guys from the Evolution Core Team </em>',
@@ -187,7 +187,7 @@ data = {
       ],
     },
     {
-      name: 'SJS Framework',
+      name: 'SJS Library',
       technologies: [
         'Gulp',
         'Babel',
